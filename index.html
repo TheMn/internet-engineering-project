@@ -2,6 +2,7 @@
 <html lang="fa">
 <head>
     <link rel=stylesheet href="style/main-style.css" type="text/css">
+    <link rel=stylesheet href="style/searchbox.css" type="text/css">
     <meta charset="UTF-8">
     <title>دبیرستان دوره دوم علامه حلی پنج تهران</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,9 +18,13 @@
 <body>
 
 <header>
-    <nav dir="rtl" id="d_box">
+    <nav id="d_box">
         <img src="files/pics/logo.png" style="height: 64px; width: 64px; margin-left: 2%;">
-        <ul>
+        <form class="search_content">
+            <input dir="rtl" type="text" placeholder='' name="input" class="input" id="search-input">
+            <button type="reset" class="search" id="search-btn"></button>
+        </form>
+        <ul dir="rtl">
             <li>
                 <a href="#">صفحه نخست</a>
             </li>
@@ -37,9 +42,9 @@
             </li>
         </ul>
     </nav>
-    <nav dir="rtl" id="l_box">
+    <nav id="l_box">
         <img src="files/pics/logo.png" style="height: 64px; width: 64px; margin-left: 2%;">
-        <ul>
+        <ul dir="rtl">
             <li>
                 <a href="#">صفحه نخست</a>
             </li>
@@ -83,8 +88,19 @@
 <div id="content">
     <!--<h2>Scroll!</h2>-->
 </div>
-<script>
 
+<script>
+    // updated 2019
+    const input = document.getElementById("search-input");
+    const searchBtn = document.getElementById("search-btn");
+
+    const expand = () => {
+        searchBtn.classList.toggle("close");
+        input.classList.toggle("square");
+    };
+
+    searchBtn.addEventListener("click", expand);
 </script>
+
 </body>
 </html>
