@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>دبیرستان دوره دوم علامه حلی پنج تهران</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
@@ -16,80 +17,219 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-<header>
-    <nav id="d_box">
-        <img src="files/pics/logo.png" style="height: 64px; width: 64px; margin-left: 2%;">
-        <form class="search_content">
-            <input dir="rtl" type="text" placeholder='' name="input" class="input" id="search-input">
-            <button type="reset" class="search" id="search-btn"></button>
-        </form>
-        <ul dir="rtl">
-            <li>
-                <a href="#">صفحه نخست</a>
-            </li>
-            <li>
-                <a href="#">گالری</a>
-            </li>
-            <li>
-                <a href="#">بلاگ</a>
-            </li>
-            <li>
-                <a href="#">پشتیبانی</a>
-            </li>
-            <li>
-                <button type="button" class="btn btn-primary">ثبت نام</button>
-            </li>
-        </ul>
-    </nav>
-    <nav id="l_box">
-        <img src="files/pics/logo.png" style="height: 64px; width: 64px; margin-left: 2%;">
-        <ul dir="rtl">
-            <li>
-                <a href="#">صفحه نخست</a>
-            </li>
-            <li>
-                <a href="#">گالری</a>
-            </li>
-            <li>
-                <a href="#">بلاگ</a>
-            </li>
-            <li>
-                <a href="#">پشتیبانی</a>
-            </li>
-            <li>
-                <button type="button" class="btn btn-primary">ثبت نام</button>
-            </li>
-        </ul>
-    </nav>
-
-    <!--mobile menu-->
-
-    <nav class="mobile-menu" dir="rtl">
-        <input type="checkbox" id="checkbox" class="mobile-menu__checkbox">
-        <label for="checkbox" class="mobile-menu__btn" style="padding-top: 5%">
-            <div class="mobile-menu__icon"></div>
-        </label>
-        <div class="mobile-menu__container">
-            <ul class="mobile-menu__list">
-                <li>
-                    <button type="button" class="btn btn-primary">ثبت نام</button>
-                </li>
-                <li class="mobile-menu__item"><a href="#" class="mobile-menu__link">صفحه نخست</a></li>
-                <li class="mobile-menu__item"><a href="#" class="mobile-menu__link">گالری</a></li>
-                <li class="mobile-menu__item"><a href="#" class="mobile-menu__link">بلاگ</a></li>
-                <li class="mobile-menu__item"><a href="#" class="mobile-menu__link">پشتیبانی</a></li>
-            </ul>
+<a id="home"></a>
+<div class="cover">
+    <div class="logo"></div>
+    <div class="nav">
+        <div class="container-fluid">
+            <div class="row" align="right">
+                <div class="col-md-4">
+                    <form class="search_content">
+                        <input dir="rtl" type="text" placeholder='' name="input" class="input" id="search-input">
+                        <button type="reset" class="search" id="search-btn"></button>
+                    </form>
+                </div>
+                <div class="col-md-8" dir="rtl">
+                    <ul>
+                        <a href="index.html">
+                            <li>صفحه نخست</li>
+                        </a>
+                        <a href="#">
+                            <li id="ie" style="border-right: 1px solid white;padding-right: 0.8em">لینک اول</li>
+                        </a>
+                        <a href="#">
+                            <li>لینک دوم</li>
+                        </a>
+                        <a href="#">
+                            <li>لینک سوم</li>
+                        </a>
+                        <a href="#">
+                            <li>
+                                <button type="button" class="btn btn-primary">ثبت نام</button>
+                            </li>
+                        </a>
+                        <a href="#" dir="ltr">
+                            <li style="float: left; margin-right: 0%;"><i class="fa fa-chevron-down"></i></li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </nav>
 
-</header>
+    </div>
+</div>
 
-<div id="content">
-    <!--<h2>Scroll!</h2>-->
+<!--mobile menu-->
+<nav class="mobile-menu" dir="rtl">
+    <input type="checkbox" id="checkbox" class="mobile-menu__checkbox">
+    <label for="checkbox" class="mobile-menu__btn" style="padding-top: 5%">
+        <div class="mobile-menu__icon"></div>
+    </label>
+    <div class="mobile-menu__container">
+        <ul class="mobile-menu__list">
+            <li>
+                <button type="button" class="btn btn-primary">ثبت نام</button>
+            </li>
+            <li class="mobile-menu__item"><a href="index.html" class="mobile-menu__link">صفحه نخست</a></li>
+            <li class="mobile-menu__item"><a href="index.html" class="mobile-menu__link">لینک اول</a></li>
+            <li class="mobile-menu__item"><a href="#" class="mobile-menu__link">لینک دوم</a></li>
+            <li class="mobile-menu__item"><a href="#" class="mobile-menu__link">لینک سوم</a></li>
+        </ul>
+    </div>
+</nav>
+<!--mobile menu-->
+
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div style="height: 2.5em;"></div>
+                <h3>لورم ایپسوم متن ساختگی.</h3>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها
+                    و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
+                    کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و
+                    آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه
+                    ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که
+                    تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی
+                    دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. </p>
+                <br>
+                <h3>لورم ایپسوم متن ساختگی.</h3>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها
+                    و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
+                    کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و
+                    آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه
+                    ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که
+                    تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی
+                    دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. </p>
+                <h3>لورم ایپسوم متن ساختگی.</h3>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها
+                    و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
+                    کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و
+                    آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه
+                    ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که
+                    تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی
+                    دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. </p>
+                <h3>لورم ایپسوم متن ساختگی.</h3>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها
+                    و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
+                    کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و
+                    آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه
+                    ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که
+                    تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی
+                    دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. </p>
+                <h3>لورم ایپسوم متن ساختگی.</h3>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها
+                    و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
+                    کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و
+                    آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه
+                    ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که
+                    تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی
+                    دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. </p>
+                <br>
+                <h3>لورم ایپسوم متن ساختگی.</h3>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها
+                    و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
+                    کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و
+                    آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه
+                    ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که
+                    تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی
+                    دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. </p>
+                <h3>لورم ایپسوم متن ساختگی.</h3>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها
+                    و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
+                    کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و
+                    آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه
+                    ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که
+                    تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی
+                    دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. </p>
+                <br>
+                <h3>لورم ایپسوم متن ساختگی.</h3>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها
+                    و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
+                    کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و
+                    آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه
+                    ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که
+                    تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی
+                    دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. </p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
+    $(document).ready(function () {
+        console.log("yo");
+        var up, logo;
+        console.log($(".nav").height());
+        up = $(".nav").offset().top;
+        logo = $(".nav").offset().top - $(".logo").height();
+        console.log(logo);
+        if ($(window).scrollTop() > up) {
+            $(".logo").hide();
+            $(".nav").addClass("fix");
+            $(".nav a").css("color", "black");
+            $("#ie").css({
+                "border-right": "1px solid black",
+                "padding-right": "0.8em"
+            });
+        }
+        $(window).scroll(function () {
+
+            windowHeight = $(window).height();
+
+            if ($(window).scrollTop() > logo) {
+                $(".logo").fadeOut();
+            }
+            else {
+                $(".logo").fadeIn();
+            }
+
+            if ($(window).scrollTop() > up) {
+                $(".nav").addClass("fix");
+                $(".nav a").css("color", "black");
+                $("#ie").css({
+                    "border-right": "1px solid black",
+                    "padding-right": "0.8em"
+                });
+                $(".nav ul a:last").attr("href", "#home");
+                console.log("here");
+                $(".nav ul i").removeClass("fa-chevron-down");
+                $(".nav ul i").addClass("fa-chevron-up");
+            }
+            else {
+                $(".nav").removeClass("fix");
+                $(".nav a").css("color", "white");
+                $("#ie").css({
+                    "border-right": "1px solid white",
+                    "padding-right": "0.8em"
+                });
+                $(".nav ul a:last").attr("href", "#about");
+                $(".nav ul i").removeClass("fa-chevron-up");
+                $(".nav ul i").addClass("fa-chevron-down");
+            }
+
+        });
+
+        // Smooth Scrolling //
+        $(function () {
+            $('a[href*="#"]:not([href="#"])').click(function () {
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    if (target.length) {
+                        $('html, body').animate({
+                            scrollTop: target.offset().top
+                        }, 1000);
+                        return false;
+                    }
+                }
+            });
+        });
+        // End of smooth scroll //
+
+    });
+
+    //    search screapt
     // updated 2019
     const input = document.getElementById("search-input");
     const searchBtn = document.getElementById("search-btn");
@@ -100,7 +240,7 @@
     };
 
     searchBtn.addEventListener("click", expand);
-</script>
 
+</script>
 </body>
 </html>

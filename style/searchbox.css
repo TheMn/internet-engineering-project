@@ -1,14 +1,7 @@
-body {
-    color: #fff;
-    margin: 0;
-}
-
 .search_content {
     position: absolute;
     margin-left: 150px;
     top: 35%;
-    /*left: 10%;*/
-    /*transform: translate(-50%, -50%);*/
 }
 
 .search_content.on {
@@ -141,3 +134,12 @@ input {
     /*-ms-transform: translate(-17%, -100%);*/
     /*transform: translate(-17%, -100%);*/
 }
+
+
+
+
+
+
+
+
+

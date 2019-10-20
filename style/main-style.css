@@ -17,124 +17,113 @@
 /*}*/
 /** Inspired by: http://graphicburger.com/flat-design-ui-components/ **/
 /** Line-chart and donut-chart made by @kseso https://codepen.io/Kseso/pen/phiyL **/
-@import url(https://fonts.googleapis.com/css?family=Pacifico|Roboto:400,500);
-
-nav {
-    background: #1A6844;
-    overflow: auto;
-    padding: 22px;
-    position: relative;
-    z-index: 2;
-}
-
-nav h1 {
-    color: #eee;
-    font-family: 'Pacifico', cursive;
-    font-size: 42px;
-    float: left;
-}
-
-nav h1 > a:hover {
-    background: none;
-    color: #C18055;
-}
-
-ul {
-    text-align: center;
-    float: right;
-}
-
-ul li {
-    display: inline-block;
-}
-
-ul li a {
-    text-decoration: none;
-    display: block;
-    padding: 5px 10px;
-    margin: 0 10px;
-    color: #eee;
-    font-family: 'Roboto', sans-serif;
-    text-transform: uppercase;
-    font-size: 14px;
-    line-height: 32px;
-    font-weight: bold;
-    transition: all 200ms linear;
-}
-
-nav a:hover,
-nav#l_box a:hover {
-    color: #C18055;
-    background: #fff;
-}
-
-nav#l_box {
-    background: #fff;
-    position: fixed;
-    box-sizing: border-box;
+body,html{
+    height: 100%;
     width: 100%;
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+h1 {
+    text-align: right;
+    direction: rtl;
+}
+
+h2 {
+    text-align: right;
+    direction: rtl;
+}
+h3 {
+    text-align: right;
+    direction: rtl;
+}
+h4 {
+    text-align: right;
+    direction: rtl;
+}
+h5 {
+    text-align: right;
+    direction: rtl;
+}
+h6 {
+    text-align: right;
+    direction: rtl;
+}
+p {
+    text-align: right;
+    direction: rtl;
+}
+
+a {
+    text-align: right;
+    direction: rtl;
+}
+
+.cover{
+    position: relative;
+    height: 100%;
+    background-image: linear-gradient(to top right, #1A6844, transparent);
+    background-color: #000000;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.logo{
+    height: 10em;
+    width: 10.5em;
+    #border: 1px solid red;
+    position: fixed;
+    top: 2vmax;
+    left: 2vmax;
+    background: url('#####');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.nav{
+    #border: 1px solid blue;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    background: rgba(255,255,255,0.1);
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    width: 100%;
+}
+.nav ul{
+    list-style-type: none
+}
+.nav ul li{
+    display: inline-block;
+    font-size: 1.5em;
+    padding: 0.5em 0.5em;
+}
+.nav a{
+    text-decoration: none;
+    font-size: 14px;
+    color: white;
+}
+.fix{
+    position: fixed;
     top: 0;
+    transition: all, 0.5s;
+    background: rgba(255,255,255,0.985);
     z-index: 1;
-    box-shadow: 0px 2px 2px #fff;
+    width: 100%;
+    height: 85.59px;
+    box-shadow: 0px 0px 0.5em #F2F3F4;
 }
 
-nav#l_box h1,
-nav#l_box a {
-    color: #1A6844;
-}
-
-nav#l_box h1 {
-    font-size: 38px;
-}
-
-nav#l_box h1 > a {
-    color: #C18055;
-}
-
-nav#l_box h1 > a:hover {
-    color: #3ab4a6;
-}
-nav.mobile-menu{
+/*hide mobile links*/
+ul.mobile-menu__list{
     display: none;
 }
-
-div#content {
-    height: 2200px;
-    background: url('https://s-media-cache-ak0.pinimg.com/originals/03/95/6f/03956fed74537b3d7b0858e9a814748d.jpg') repeat 0 0;
-    opacity: 0.9;
-}
-
-/*div#content h2 {*/
-/*color: #fff;*/
-/*font-weight: bold;*/
-/*transform: rotate(-10deg);*/
-/*line-height: 60px;*/
-/*font-size: 48px;*/
-/*text-transform: uppercase;*/
-/*position: fixed;*/
-/*left: 0;*/
-/*right: 0;*/
-/*margin-left: auto;*/
-/*margin-right: auto;*/
-/*position: absolute;*/
-/*width: 10%;*/
-/*bottom: 10%;*/
-/*text-shadow: 2px 2px 2px #333;*/
-/*font-family: 'Pacifico', cursive;*/
-/*}*/
-
-div#content h2:before {
-    display: inline-block;
-    background: url('http://www.menoftheras.com/wp-content/gallery/test/arrow.png') no-repeat 0 0;
-    background-size: cover;
-    width: 239px;
-    height: 200px;
-    content: "";
-    transform: rotate(-80deg);
-    margin-bottom: 40px;
-}
+/*hide mobile links*/
 
 @media (max-width: 700px) {
+    ul.mobile-menu__list{
+        display: block;
+    }
     nav {
         padding: 20px;
     }
@@ -151,16 +140,7 @@ div#content h2:before {
         padding: 20px;
     }
 
-    /*div#content h2 {*/
-    /*width: 30%;*/
-    /*}*/
-    nav#l_box {
-        /*padding: 20px;*/
-        display: none;
-    }
-
-    nav#d_box {
-        /*padding: 20px;*/
+    div.nav {
         display: none;
     }
 
