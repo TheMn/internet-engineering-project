@@ -17,6 +17,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div style="height: 3% ; width: 100%; background-color: rgba(11,154,10,0.5);">
+    <p id="date_place" style="text-align: end; padding-left: 5%">تاریخ اینجا ست شود</p>
+</div>
 <a id="home"></a>
 <div class="cover">
     <div class="logo"></div>
@@ -49,7 +52,7 @@
                             </li>
                         </a>
                         <a href="#" dir="ltr">
-                            <li style="float: left; margin-right: 0%;"><i class="fa fa-chevron-down"></i></li>
+                            <li style="float: left; margin-left: 0%;"><i class="fa fa-chevron-down"></i></li>
                         </a>
                     </ul>
                 </div>
@@ -66,6 +69,16 @@
         <div class="mobile-menu__icon"></div>
     </label>
     <div class="mobile-menu__container">
+        <!--mobile search-->
+        <div class="wrap" dir="rtl" style="margin-top: -75%">
+            <div class="mobile_search">
+                <input type="text" class="searchTerm" placeholder="جستجو کنید">
+                <button type="submit" class="searchButton">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+        <!--mobile search-->
         <ul class="mobile-menu__list">
             <li>
                 <button type="button" class="btn btn-primary">ثبت نام</button>
@@ -78,6 +91,7 @@
     </div>
 </nav>
 <!--mobile menu-->
+
 
 <div id="about">
     <div class="container">
@@ -156,91 +170,14 @@
     </div>
 </div>
 
-<script>
-    $(document).ready(function () {
-        console.log("yo");
-        var up, logo;
-        console.log($(".nav").height());
-        up = $(".nav").offset().top;
-        logo = $(".nav").offset().top - $(".logo").height();
-        console.log(logo);
-        if ($(window).scrollTop() > up) {
-            $(".logo").hide();
-            $(".nav").addClass("fix");
-            $(".nav a").css("color", "black");
-            $("#ie").css({
-                "border-right": "1px solid black",
-                "padding-right": "0.8em"
-            });
-        }
-        $(window).scroll(function () {
+<!--scroll-->
+<script src="style/js/scroll.js"></script>
 
-            windowHeight = $(window).height();
+<!--set search-box-->
+<script src="style/js/search_desk.js"></script>
 
-            if ($(window).scrollTop() > logo) {
-                $(".logo").fadeOut();
-            }
-            else {
-                $(".logo").fadeIn();
-            }
+<!--set date-->
+<script src="style/js/date.js"></script>
 
-            if ($(window).scrollTop() > up) {
-                $(".nav").addClass("fix");
-                $(".nav a").css("color", "black");
-                $("#ie").css({
-                    "border-right": "1px solid black",
-                    "padding-right": "0.8em"
-                });
-                $(".nav ul a:last").attr("href", "#home");
-                console.log("here");
-                $(".nav ul i").removeClass("fa-chevron-down");
-                $(".nav ul i").addClass("fa-chevron-up");
-            }
-            else {
-                $(".nav").removeClass("fix");
-                $(".nav a").css("color", "white");
-                $("#ie").css({
-                    "border-right": "1px solid white",
-                    "padding-right": "0.8em"
-                });
-                $(".nav ul a:last").attr("href", "#about");
-                $(".nav ul i").removeClass("fa-chevron-up");
-                $(".nav ul i").addClass("fa-chevron-down");
-            }
-
-        });
-
-        // Smooth Scrolling //
-        $(function () {
-            $('a[href*="#"]:not([href="#"])').click(function () {
-                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-                    var target = $(this.hash);
-                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                    if (target.length) {
-                        $('html, body').animate({
-                            scrollTop: target.offset().top
-                        }, 1000);
-                        return false;
-                    }
-                }
-            });
-        });
-        // End of smooth scroll //
-
-    });
-
-    //    search screapt
-    // updated 2019
-    const input = document.getElementById("search-input");
-    const searchBtn = document.getElementById("search-btn");
-
-    const expand = () => {
-        searchBtn.classList.toggle("close");
-        input.classList.toggle("square");
-    };
-
-    searchBtn.addEventListener("click", expand);
-
-</script>
 </body>
 </html>
