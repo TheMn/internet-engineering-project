@@ -17,11 +17,12 @@
 /*}*/
 /** Inspired by: http://graphicburger.com/flat-design-ui-components/ **/
 /** Line-chart and donut-chart made by @kseso https://codepen.io/Kseso/pen/phiyL **/
+
 body, html {
     height: 100%;
     width: 100%;
     margin: 0;
-    font-family: 'Samim', sans-serif;
+    font-family: 'sans-serif';
     text-align: center;
     /*font-size: 38px;*/
     /*font-weight: bold;*/
@@ -31,41 +32,49 @@ body, html {
 }
 
 h1 {
+    font-family: 'serif';
     text-align: right;
     direction: rtl;
 }
 
 h2 {
+    font-family: 'serif';
     text-align: right;
     direction: rtl;
 }
 
 h3 {
+    font-family: 'serif';
     text-align: right;
     direction: rtl;
 }
 
 h4 {
+    font-family: 'serif';
     text-align: right;
     direction: rtl;
 }
 
 h5 {
+    font-family: 'serif';
     text-align: right;
     direction: rtl;
 }
 
 h6 {
+    font-family: 'serif';
     text-align: right;
     direction: rtl;
 }
 
 p {
+    font-family: 'serif';
     text-align: right;
     direction: rtl;
 }
 
 a {
+    font-family: 'serif';
     text-align: right;
     direction: rtl;
 }
@@ -95,7 +104,6 @@ a {
 
 .nav {
     #border: 1px solid blue;
-    font-family: 'Montserrat', sans-serif;
     color: white;
     background: rgba(0, 0, 0, 0.5);
     position: absolute;
@@ -142,7 +150,7 @@ div.wrap {
 
 /*hide mobile links*/
 
-@media (max-width: 700px) {
+@media (max-width: 1240px) {
     ul.mobile-menu__list {
         display: block;
     }
@@ -297,3 +305,34 @@ div.wrap {
     }
 
 }
+
+.ftco-footer {
+    font-size: 16px;
+    padding: 5em 0;
+    padding-bottom: 3em;
+    background: #207dff;
+}
+
+.ftco-footer .ftco-footer-widget h2 {
+    font-weight: normal;
+    color: #fff;
+    margin-bottom: 40px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+.ftco-footer .ftco-footer-widget .btn-primary:hover {
+    background: #fff;
+    border: 1px solid #fff !important;
+}
+
+.ftco-footer p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.ftco-footer a {
+    color: rgba(255, 255, 255, 0.7);
+    text-align: right;
+}
+
