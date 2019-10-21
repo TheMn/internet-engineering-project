@@ -21,7 +21,6 @@ body, html {
     height: 100%;
     width: 100%;
     margin: 0;
-
     font-family: 'Samim', sans-serif;
     text-align: center;
     /*font-size: 38px;*/
@@ -89,7 +88,7 @@ a {
     position: fixed;
     top: 2vmax;
     left: 2vmax;
-    /*background: url('#####');*/
+    background: url('#####');
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -238,7 +237,7 @@ div.wrap {
         top: 50px;
         left: 0;
         right: 0;
-        z-index: 999;
+        /*z-index: 999;*/
         height: 0;
         opacity: 1;
         transition: .5s;
