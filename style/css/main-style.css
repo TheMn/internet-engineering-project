@@ -73,7 +73,7 @@ a {
 
 .cover {
     position: relative;
-    height: 98%;
+    height: 97%;
     background-image: linear-gradient(to top right, #1A6844, transparent);
     background-color: #000000;
     background-size: cover;
@@ -98,7 +98,7 @@ a {
     #border: 1px solid blue;
     font-family: 'Montserrat', sans-serif;
     color: white;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.5);
     position: absolute;
     z-index: 2;
     bottom: 0;
