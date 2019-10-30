@@ -19,5 +19,6 @@ from helli5 import views
 
 urlpatterns = [
     url(r'^$', views.home_page),
+    url(r'^something$', views.something),
     url(r'^admin/', admin.site.urls),
 ]

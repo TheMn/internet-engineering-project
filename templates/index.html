@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+{% load staticfiles %}
+
 <html lang="fa">
 <head>
-    <link rel=stylesheet href="style/css/main-style.css" type="text/css">
-    <link rel=stylesheet href="style/css/slider.css" type="text/css">
-    <link rel=stylesheet href="style/css/searchbox.css" type="text/css">
+    <link rel=stylesheet href="{% static 'css/font.css' %}" type="text/css">
+    <link rel=stylesheet href="{% static 'css/slider.css' %}" type="text/css">
+    <link rel=stylesheet href="{% static 'css/searchbox.css' %}" type="text/css">
     <meta charset="UTF-8">
     <title>دبیرستان دوره دوم علامه حلی 5 تهران</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,6 +20,7 @@
 
 </head>
 <body>
+<!--<img src="{% static 'pics/icpc2018.jpg' %}">-->
 <div style="height: 3% ; width: 100%; background-color: #207DFF;">
     <p id="date_place" style="text-align: end; padding-left: 5%">تاریخ اینجا ست شود</p>
 </div>
@@ -281,15 +283,15 @@
 </footer>
 
 <!--scroll-->
-<script src="style/js/scroll.js"></script>
+<script src="{% static 'js/scroll.js' %}"></script>
 
 <!--set search-box-->
-<script src="style/js/search_desk.js"></script>
+<script src="{% static 'js/search_desk.js' %}"></script>
 
 <!--set date-->
-<script src="style/js/date.js"></script>
+<script src="{% static 'js/date.js' %}"></script>
 
-<script src="style/js/slider.js"></script>
+<script src="{% static 'js/slider.js' %}"></script>
 
 </body>
 </html>
