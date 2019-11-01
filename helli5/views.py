@@ -13,6 +13,5 @@ def home_page(request):
 def something(request):
     now = datetime.datetime.now()
     template = loader.get_template('something.html')
-    context = {'current_date': now
-    }
+    context = {'current_date': now}
     return HttpResponse(template.render(context, request))
