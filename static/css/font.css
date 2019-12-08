@@ -1,9 +1,0 @@
-
-@font-face {
-    font-family: 'MyFontName';
-    src: url('/style/fonts/Shabnam-Bold-FD-WOL.ttf') format('ttf'),
-    url('/style/fonts/Shabnam-FD-WOL.ttf') format('ttf'),
-    url('/style/fonts/Shabnam-Light-FD-WOL.ttf') format('ttf');
-    url('/style/fonts/Shabnam-Medium-FD-WOL.ttf') format('ttf');
-    url('/style/fonts/Shabnam-Thin-FD-WOL.ttf') format('ttf');
-}
