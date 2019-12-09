@@ -3,8 +3,18 @@ from django.http import HttpResponse
 import datetime
 from django.shortcuts import render
 
-def home(request):
+
+def index(request):
     return render(request, 'index.html', {})
+
+
+def teacher(request):
+    return render(request, 'teacher.html', {})
+
+
+def blog_single(request):
+    return render(request, 'blog-single.html', {})
+
 
 # def home(request):
 #     now = datetime.datetime.now()
