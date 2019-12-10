@@ -1,3 +1,9 @@
+"""
+from loginApp import views as core_views
+
+    url(r'^signup/$', core_views.signup, name='signup'),
+"""
+
 """helli5 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -13,17 +19,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
-from django.contrib import admin
-from django.urls import path
-from . import views
+from django.conf.urls import url
+from postingApp import views as post_views
 # import postingApp
 
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('teacher/', views.teacher, name='teacher'),
-    path('index/', views.index, name='index'),
-    path('blog_single/', views.blog_single, name='blog_single'),
-    url(r'^postingApp/', include('postingApp.urls')),
+    url(r'^new-post/', post_views.new_post, name='new_post'),
 
 ]
