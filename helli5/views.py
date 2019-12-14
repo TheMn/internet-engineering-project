@@ -11,6 +11,14 @@ def index(request):
 def contact(request):
     return render(request, 'contact.html', {})
 
+def about(request):
+    return render(request, 'about.html', {})
+
+def blog(request):
+    return render(request, 'blog.html', {})
+
+def courses(request):
+    return render(request, 'courses.html', {})
 
 def example(request):
     return render(request, 'example.html', {})
