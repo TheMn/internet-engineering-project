@@ -3,19 +3,19 @@
         <a href="{{ post_url }}" class="block-20 d-flex align-items-end"
            style="background-image: url({{ post_img_url }});">
             <div class="meta-date text-center p-2">
-                <span class="day">{{ post_day }}</span>
-                <span class="mos">{{ post_month }}</span>
-                <span class="yr">{{ post_year }}</span>
+                <span style="font-family: Vazir-Medium" class="day">{{ post_day }}</span>
+                <span style="font-family: Vazir-Medium" class="mos">{{ post_month }}</span>
+                <span style="font-family: Vazir-Medium" class="yr">{{ post_year }}</span>
             </div>
         </a>
         <div class="text bg-white p-4">
-            <h3 class="heading"><a href="{{ post_url }}">{{ post_title }}</a></h3>
-            <p>{{ post_caption }}</p>
+            <h3 style="font-family: Vazir-Medium" class="heading"><a href="{{ post_url }}">{{ post_title }}</a></h3>
+            <p style="font-family: Vazir-Medium">{{ post_caption }}</p>
             <div style="direction: rtl" class="d-flex align-items-center mt-4">
-                <p class="ml-auto mb-0">
-                    <a  style="margin-right: 10px"  href="#" class="meta-chat"><span class="icon-chat"></span>{{ post_comment_counter }}</a>
-                <a href="#" class="mr-2">{{ post_writer }}</a>
-                    <p class="mb-0"><a href="#" class="btn btn-secondary">بیشتر بخوانید <span
+                <p style="font-family: Vazir-Medium" class="ml-auto mb-0">
+                    <a  style="font-family: Vazir-Medium" style="margin-right: 10px"  href="#" class="meta-chat"><span class="icon-chat"></span>{{ post_comment_counter }}</a>
+                <a style="font-family: Vazir-Medium" href="#" class="mr-2">{{ post_writer }}</a>
+                    <p style="font-family: Vazir-Medium" class="mb-0"><a href="#" class="btn btn-secondary">بیشتر بخوانید <span
                         class="ion-ios-arrow-round-back"></span></a></p>
                 </p>
             </div>
