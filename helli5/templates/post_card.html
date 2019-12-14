@@ -11,12 +11,12 @@
         <div class="text bg-white p-4">
             <h3 class="heading"><a href="{{ post_url }}">{{ post_title }}</a></h3>
             <p>{{ post_caption }}</p>
-            <div class="d-flex align-items-center mt-4">
-                <p class="mb-0"><a href="#" class="btn btn-secondary">Read More <span
-                        class="ion-ios-arrow-round-forward"></span></a></p>
+            <div style="direction: rtl" class="d-flex align-items-center mt-4">
                 <p class="ml-auto mb-0">
-                    <a href="#" class="mr-2">{{ post_writer }}</a>
-                    <a href="#" class="meta-chat"><span class="icon-chat"></span>{{ post_comment_counter }}</a>
+                    <a  style="margin-right: 10px"  href="#" class="meta-chat"><span class="icon-chat"></span>{{ post_comment_counter }}</a>
+                <a href="#" class="mr-2">{{ post_writer }}</a>
+                    <p class="mb-0"><a href="#" class="btn btn-secondary">بیشتر بخوانید <span
+                        class="ion-ios-arrow-round-back"></span></a></p>
                 </p>
             </div>
         </div>
