@@ -8,6 +8,14 @@ def index(request):
     return render(request, 'index.html', {})
 
 
+def contact(request):
+    return render(request, 'contact.html', {})
+
+
+def example(request):
+    return render(request, 'example.html', {})
+
+
 def base(request):
     return render(request, 'base.html', {})
 
