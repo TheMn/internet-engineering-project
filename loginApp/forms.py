@@ -16,7 +16,7 @@ class SignUpForm(UserCreationForm):
     password2 = forms.CharField(label=_(u"تایید رمز عبور"),
                                 widget=forms.PasswordInput,
                                 help_text=_("Enter the same password as above, for verification."))
-
+    # TODO: date_birth, prof_pic, location
     class Meta:
         User._meta.get_field('email')._unique = True
         model = User
