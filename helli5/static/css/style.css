@@ -50,6 +50,7 @@
   --danger: #dc3545;
   --light: #f8f9fa;
   --dark: #343a40;
+  --sabz: #294223;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -8643,8 +8644,8 @@ h1, h2, h3, h4, h5,
     right: 0;
     bottom: 0;
     content: '';
-    opacity: .2;
-    background: #000000; }
+    opacity: .6;
+    background: #294223; }
 
 .course {
   margin-bottom: 30px; }
