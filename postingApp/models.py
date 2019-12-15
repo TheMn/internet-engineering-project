@@ -24,6 +24,11 @@ class Profile(models.Model):
     is_active = models.BooleanField(('active'), default=True)
     REQUIRED_FIELDS = [email,user,birth_date]
 
+    def get_first_name(self):
+        return self.first_name
+
+    User.add_to_class("__str__", get_first_name)
+
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
             Profile.objects.create(user=instance)
@@ -38,9 +43,7 @@ class PostStuff(models.Model):
     text = models.TextField(max_length=400)
     date = models.DateTimeField(auto_now_add=True)
     def __str__(self):
-        return self.text
-    def __str__(self):
-        return self.username
+        return '{} {} {} {}'.format(self.username, self.title,self.text,self.date)
 
 class Attachment(models.Model):
     post = models.ForeignKey(PostStuff, on_delete=models.CASCADE)
@@ -63,4 +66,4 @@ class Comment(models.Model):
         self.save()
 
     def __str__(self):
-        return self.text
+        return '{} {} {} {}'.format(self.author, self.text,self.cm_date,self.approved_comment)
