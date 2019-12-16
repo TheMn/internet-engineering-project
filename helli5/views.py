@@ -34,6 +34,9 @@ def teacher(request):
 
 def blog_single(request):
     return render(request, 'blog-single.html', {})
+    
+def login(request):
+    return render(request, 'login.html', {})
 
 
 # def home(request):

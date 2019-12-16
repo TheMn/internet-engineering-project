@@ -32,6 +32,7 @@ urlpatterns = [
     path('blog/', views.blog, name='blog'),
     path('courses/', views.courses, name='courses'),
     path('blog_single/', views.blog_single, name='blog_single'),
+    path('login/', views.login, name='login'),
     url(r'^postingApp/', include('postingApp.urls')),
 
 ]
