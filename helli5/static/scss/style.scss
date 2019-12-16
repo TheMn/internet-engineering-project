@@ -8,11 +8,11 @@ $white: #fff;
 $black: #000000;
 // $darken: #3a4348;
 
-$primary: #1eaaf1;
+$primary: #dea44a;
 $secondary: #fda638;
-$tertiary: #8cc152;
-$quarternary: #f1453d;
-$fifth: #5d50c6;
+$tertiary: #73a29e;
+$quarternary: #294223;
+$fifth: #9d6d4d;
 
 
 @mixin border-radius($radius) {
@@ -329,7 +329,7 @@ h1, h2, h3, h4, h5,
 		bottom: 0;
 		content: '';
 		opacity: .3;
-		background: $quarternary;
+		background: #294223;
 	}
 	&.hero-wrap-2{
 		height: 300px;
@@ -606,7 +606,7 @@ h1, h2, h3, h4, h5,
 }
 
 .bg-quarternary{
-	background: $quarternary;
+	background: #294223;
 }
 
 .bg-fifth{
@@ -685,11 +685,11 @@ h1, h2, h3, h4, h5,
 		}
 	}
 	&.btn-quarternary {
-		background: $quarternary;
-		border: 1px solid $quarternary;
+		background: #294223;
+		border: 1px solid #294223;
 		color: $white;
 		&:hover, &:focus, &:active {
-			border: 1px solid $quarternary;
+			border: 1px solid #294223;
 			color :$white;
 		}
 	}
