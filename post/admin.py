@@ -1,9 +1,10 @@
 from django.contrib import admin
 from .models import PostStuff
-from .models import Profile
+
 from .models import Comment
 from .models import Attachment
 from .models import Role
+from .models import Profile
 
 # Register your models here.
 admin.site.register(PostStuff)

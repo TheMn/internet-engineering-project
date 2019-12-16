@@ -1,41 +1,28 @@
 from django.db import models
+
+# Create your models here.
+from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
 class Profile(models.Model):
-    # ROLE_TEACHER = 1
-    # ROLE_STUDENT = 2
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    email = models.EmailField(('email address'), unique=True,default='SOME STRING')
-    # STATUS = (
-    #     (1, ('Teacher')),
-    #     (2, ('Student')),
-    # )
-    # status = models.PositiveSmallIntegerField(
-    #     choices=STATUS,
-    #     default=1,
-    # )
-    img = models.ImageField(upload_to='profile')
-    location = models.CharField(max_length=30, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    img = models.ImageField(upload_to='profilePic')
+    phone = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
-    date_joined = models.DateTimeField(('date joined'), auto_now_add=True)
-    is_active = models.BooleanField(('active'), default=True)
-    REQUIRED_FIELDS = [email,user,birth_date]
 
-    def get_first_name(self):
-        return self.first_name
 
-    # User.add_to_class("__str__", get_first_name)
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
 
-    # def create_user_profile(sender, instance, created, **kwargs):
-    #     if created:
-    #         Profile.objects.create(user=instance)
-    #
-    # @receiver(post_save, sender=User)
-    # def save_user_profile(sender, instance, **kwargs):
-    #     instance.profile.save()
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
 
 class Role(models.Model):
     person = models.ForeignKey(Profile, on_delete=models.CASCADE)
@@ -52,7 +39,6 @@ class Role(models.Model):
         return '{} {} {} {} {} {} {} {}'.format(self.is_student, self.is_teacher, self.is_consulter, self.is_moavenP,
                                                 self.is_moavenA, self.is_moavenE, self.is_principle, self.is_parent)
 
-
 class PostStuff(models.Model):
     title = models.CharField(max_length=100)
     username = models.ForeignKey(Profile, on_delete=models.CASCADE)
@@ -65,21 +51,13 @@ class Attachment(models.Model):
     post = models.ForeignKey(PostStuff, on_delete=models.CASCADE)
     attach = models.FileField(upload_to='uploads/%Y/%m/%d/')
 
-
 class Comment(models.Model):
     post = models.ForeignKey(PostStuff, on_delete=models.CASCADE)
     author = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    text = models.TextField()
+    text = models.TextField(max_length=400)
     cm_date = models.DateTimeField(auto_now_add=True)
-    approved_comment = models.BooleanField(default=False)
 
-#this below line will allow our comment table to be related to 2 different tables
     class Meta:
         unique_together = (('post', 'author'),)
 
-    def approve(self):
-        self.approved_comment = True
-        self.save()
 
-    def __str__(self):
-        return '{} {} {} {}'.format(self.author, self.text,self.cm_date,self.approved_comment)

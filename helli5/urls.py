@@ -27,6 +27,6 @@ urlpatterns = [
     path('teacher/', views.teacher, name='teacher'),
     path('index/', views.index, name='index'),
     path('blog_single/', views.blog_single, name='blog_single'),
-    url(r'^postingApp/', include('postingApp.urls')),
+   # url(r'^postingApp/', include('postingApp.urls')),
 
 ]
