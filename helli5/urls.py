@@ -28,6 +28,6 @@ urlpatterns = [
     path('index/', views.index, name='index'),
     path('blog_single/', views.blog_single, name='blog_single'),
     url(r'^postingApp/', include('postingApp.urls')),
-    path('froala_editor/', include('froala_editor.urls')),
+    path('djrichtextfield/', include('djrichtextfield.urls')),
 
 ]

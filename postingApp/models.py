@@ -1,5 +1,5 @@
 from django.db import models
-from froala_editor.fields import FroalaField
+from djrichtextfield.models import RichTextField
 
 # Create your models here.
 class User(models.Model):
@@ -9,7 +9,7 @@ class User(models.Model):
 class PostStuff(models.Model):
     title = models.CharField(max_length=100)
     username = models.ForeignKey(User, on_delete=models.CASCADE)
-    text = FroalaField()
+    text = RichTextField
     img = models.ImageField(upload_to='profile')
     attachment = models.FileField(upload_to='uploads/%Y/%m/%d/')
     date = models.DateTimeField(auto_now_add=True)

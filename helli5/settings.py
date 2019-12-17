@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'postingApp',
-    'froala_editor',
+    'djrichtextfield',
 ]
 
 MIDDLEWARE = [
@@ -125,10 +125,13 @@ STATICFILES_DIRS = [
     os.path.join(SITE_ROOT, "static/"),
 ]
 
-FRAOLA_EDITOR_THIRD_PARTY = ('image_aviary', 'spell_checker')
-FROALA_EDITOR_PLUGINS = ('align', 'char_counter', 'code_beautifier' ,'code_view', 'colors', 'draggable', 'emoticons',
-        'entities', 'file', 'font_family', 'font_size', 'fullscreen', 'image_manager', 'image', 'inline_style',
-        'line_breaker', 'link', 'html','lists', 'paragraph_format', 'paragraph_style', 'quick_insert', 'quote', 'save', 'table',
-        'url', 'video')
-
-FROALA_INCLUDE_JQUERY = True
+DJRICHTEXTFIELD_CONFIG = {
+    'js': ['//tinymce.cachefly.net/4.1/tinymce.min.js'],
+    'init_template': 'djrichtextfield/init/tinymce.js',
+    'settings': {
+        'menubar': False,
+        'plugins': 'link image',
+        'toolbar': 'bold italic | link image | removeformat |  link unlink image table',
+        'width': 700
+    }
+}
