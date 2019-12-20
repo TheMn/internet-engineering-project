@@ -1,6 +1,5 @@
 from django.db import models
-
-# Create your models here.
+from djrichtextfield.models import RichTextField
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -40,11 +39,16 @@ class Role(models.Model):
         return '{} {} {} {} {} {} {} {}'.format(self.is_student, self.is_teacher, self.is_consulter, self.is_moavenP,
                                                 self.is_moavenA, self.is_moavenE, self.is_principle, self.is_parent)
 
+# Create your models here.
+class User(models.Model):
+    username = models.CharField(max_length=50)
+
 
 class PostStuff(models.Model):
     title = models.CharField(max_length=100)
-    username = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    text = models.TextField(max_length=400)
+    username = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    text = RichTextField()
+    img = models.ImageField(upload_to='profile')
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -54,7 +58,6 @@ class PostStuff(models.Model):
 class Attachment(models.Model):
     post = models.ForeignKey(PostStuff, on_delete=models.CASCADE)
     attach = models.FileField(upload_to='uploads/%Y/%m/%d/')
-
 
 class Comment(models.Model):
     post = models.ForeignKey(PostStuff, on_delete=models.CASCADE)

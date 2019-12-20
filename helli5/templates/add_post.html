@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {{form.media}}
+</head>
+<body>
+<div>
+    {}
+  <form action="{% url 'get_post' %}" method="post" novalidate>{% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+</div>
+
+</body>
+</html>
