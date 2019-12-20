@@ -7,3 +7,4 @@ postingApp/migrations/0009_auto_20191220_1319.py
 postingApp/migrations/0010_auto_20191220_1323.py
 postingApp/migrations/__pycache__/
 uploads/
+.idea/
