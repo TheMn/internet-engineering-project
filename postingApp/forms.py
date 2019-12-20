@@ -1,11 +1,11 @@
 from django import forms
-from djrichtextfield.widgets import RichTextWidget
+from djrichtextfield.models import RichTextField
 from .models import PostStuff
 
 
 class PageForm(forms.ModelForm):
-    content = forms.CharField(widget= RichTextWidget)
+    text = RichTextField(field_settings='advanced')
 
     class Meta:
         model = PostStuff
-        fields = ('content', )
+        fields = ('text',)

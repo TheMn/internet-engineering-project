@@ -8,8 +8,8 @@ class User(models.Model):
 
 class PostStuff(models.Model):
     title = models.CharField(max_length=100)
-    username = models.ForeignKey(User, on_delete=models.CASCADE)
-    text = RichTextField
+    username = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    text = RichTextField()
     img = models.ImageField(upload_to='profile')
     attachment = models.FileField(upload_to='uploads/%Y/%m/%d/')
     date = models.DateTimeField(auto_now_add=True)
