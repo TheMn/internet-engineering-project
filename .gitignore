@@ -1,1 +1,9 @@
 db.sqlite3
+helli5/__pycache__/
+postingApp/__pycache__/
+postingApp/migrations/0007_auto_20191213_1744.py
+postingApp/migrations/0008_auto_20191217_1213.py
+postingApp/migrations/0009_auto_20191220_1319.py
+postingApp/migrations/0010_auto_20191220_1323.py
+postingApp/migrations/__pycache__/
+uploads/
