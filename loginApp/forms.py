@@ -16,11 +16,13 @@ class SignUpForm(UserCreationForm):
     password2 = forms.CharField(label=_(u"تایید رمز عبور"),
                                 widget=forms.PasswordInput,
                                 help_text=_("Enter the same password as above, for verification."))
-    # TODO: date_birth, prof_pic, location
+    birth_date = forms.DateField(required=False, help_text="Enter your birth date.", label=u'تاریخ تولد')
+    prof_pic = forms.ImageField(required=False)
+
     class Meta:
         User._meta.get_field('email')._unique = True
         model = User
-        fields = ('username', 'first_name', 'phoneNumber', 'last_name', 'email', 'password1', 'password2',)
+        fields = ('username', 'first_name', 'phoneNumber', 'last_name', 'email', 'password1', 'password2', 'birth_date', 'prof_pic', )
         labels = {
             'username': _(u'نام کاربری'),
         }
