@@ -31,7 +31,7 @@ urlpatterns = [
     path('blog_single/', views.blog_single, name='blog_single'),
     path('djrichtextfield/', include('djrichtextfield.urls')),
 
-    url(r'^account/', include('loginApp.urls')),
+    url(r'^accounts/', include('loginApp.urls')),
     url(r'^post/', include('postingApp.urls')),
 
 ]
