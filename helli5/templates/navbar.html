@@ -7,6 +7,7 @@
                         <div class="icon bg-fifth mr-2 d-flex justify-content-center align-items-center"><span
                                 class="icon-map"></span></div>
                         <span class="text">198 West 21th Street, Suite 721 New York NY 10016</span>
+<!--                        TODO: Add date and time if needed -->
                     </div>
                     <div class="col-md pr-4 d-flex topper align-items-center">
                         <div class="icon bg-secondary mr-2 d-flex justify-content-center align-items-center"><span
@@ -43,7 +44,7 @@
                 <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">login</a></li>
 <!--                TODO: Add profile page if needed-->
                 {% else %}
-                <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">logout</a></li>
+                <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">{{ user.username }} (logout)</a></li>
                 {% endif %}
             </ul>
         </div>
