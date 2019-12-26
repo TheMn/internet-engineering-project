@@ -39,7 +39,12 @@
                 <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
                 <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-<!--                TODO: check if user logged in ~ show profile -->
+                {% if not user.is_authenticated %}
+                <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">login</a></li>
+<!--                TODO: Add profile page if needed-->
+                {% else %}
+                <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">logout</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>
