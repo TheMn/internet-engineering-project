@@ -4,14 +4,23 @@
         <div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
             <div style="direction: rtl" class="col-lg-12 d-block">
                 <div class="row d-flex">
+
                     <div class="col-md-5 pr-4 d-flex topper align-items-center">
                         <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
                                 class="icon-person text-center"></span></div>
-                        <span style="font-family: Vazir-Medium"><a href="{% url 'login' %}" style="color:white;font-family: Vazir-Medium">ورود</a></span>
+                        {% if not user.is_authenticated %}
+                        <span style="font-family: Vazir-Medium"><a href="{% url 'login' %}"
+                                                                   style="color:white;font-family: Vazir-Medium">ورود</a></span>
+<!--                        TODO: Add profile page if needed-->
+                        {% else %}
+                        <span style="font-family: Vazir-Medium"><a href="{% url 'logout' %}"
+                                                                   style="color:white;font-family: Vazir-Medium">{{ user.username }})(خروج)</a></span>
+                        {% endif %}
                     </div>
-                    <div style="text-align: left" class="col-md pr-4 d-flex topper align-items-center">
 
-                        <span style="font-family: Vazir-Medium" class="text text-left">تاریخ در اینجا درج شود</span>
+                    <div style="text-align: left" class="col-md pr-4 d-flex topper align-items-center">
+                        <span style="font-family: Vazir-Medium" class="text text-left">خوش آمدید</span>
+<!--                        TODO: Add time and date-->
                     </div>
 
                 </div>
@@ -19,17 +28,20 @@
         </div>
     </div>
 </div>
+
 <nav style="direction: rtl" class="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light"
      id="ftco-navbar">
     <div class="container d-flex align-items-center">
+        <a class="navbar-brand" href="{% url 'index' %}" style="font-family:Vazir-Bold">دبیرستان دوره دوم علامه حلی ۵
+            تهران</a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="oi oi-menu"></span> منو
+            <span class="oi oi-menu"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="{% url 'index' %}" style="font-family: Vazir-Medium"
-                                               class="nav-link pl-0">خانه</a></li>
                 <li class="nav-item"><a href="{% url 'teacher' %}" style="font-family: Vazir-Medium" class="nav-link">دبیران</a>
                 </li>
                 <li class="nav-item"><a href="{% url 'courses' %}" style="font-family: Vazir-Medium" class="nav-link">دروس</a>
@@ -40,13 +52,8 @@
                     ما</a></li>
                 <li class="nav-item"><a href="{% url 'contact' %}" style="font-family: Vazir-Medium" class="nav-link">ارتباط
                     با ما</a></li>
-                <!--                TODO: check if user logged in ~ show profile -->
             </ul>
         </div>
-        <a class="navbar-brand" href="index.html">لوگو</a>
-        <!-- Begin ToolsIR.com Jalali code -->
-        <div style="display:none;"><h2><a href="http://www.toolsir.com/">دریافت کد تاریخ شمسی</a></h2></div>
-        <!-- End ToolsIR.com Jalali code -->
+
     </div>
 </nav>
-
