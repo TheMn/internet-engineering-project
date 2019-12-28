@@ -22,20 +22,25 @@
             <div class="col-md-6 p-4 p-md-5 order-md-last bg-light">
                 <form action="#">
                     <div class="form-group">
-                        <input style="text-align:right; font-family: Vazir-Medium" type="text" class="form-control" placeholder="نام شما">
+                        <input style="text-align:right; font-family: Vazir-Medium" type="text" class="form-control"
+                               placeholder="نام شما">
                     </div>
                     <div class="form-group">
-                        <input style="text-align:right; font-family: Vazir-Medium" type="text" class="form-control" placeholder="رایانامتان">
+                        <input style="text-align:right; font-family: Vazir-Medium" type="text" class="form-control"
+                               placeholder="رایانامتان">
                     </div>
                     <div class="form-group">
-                        <input style="text-align:right; font-family: Vazir-Medium" type="text" class="form-control" placeholder="موضوع">
+                        <input style="text-align:right; font-family: Vazir-Medium" type="text" class="form-control"
+                               placeholder="موضوع">
                     </div>
                     <div class="form-group">
-                        <textarea style="text-align:right; font-family: Vazir-Medium" name="" id="" cols="30" rows="7" class="form-control"
+                        <textarea style="text-align:right; font-family: Vazir-Medium" name="" id="" cols="30" rows="7"
+                                  class="form-control"
                                   placeholder="پیامتان را اینجا وارد نمایید"></textarea>
                     </div>
                     <div class="form-group">
-                        <input style="font-family: Vazir-Medium;"type="submit" value="ارسال پیام" class="btn btn-primary py-3 px-5">
+                        <input style="font-family: Vazir-Medium;" type="submit" value="ارسال پیام"
+                               class="btn btn-primary py-3 px-5">
                     </div>
                 </form>
             </div>
@@ -47,3 +52,9 @@
     </div>
 </section>
 {% endblock %}
+
+{% block extra_js %}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+{% endblock %}
+
+
