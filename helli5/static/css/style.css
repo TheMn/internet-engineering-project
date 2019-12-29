@@ -1,9 +1,33 @@
-/*!
- * Bootstrap v4.2.1 (https://getbootstrap.com/)
- * Copyright 2011-2018 The Bootstrap Authors
- * Copyright 2011-2018 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
+
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+    font-family: Vazir-Regular;
+    src: url('../fonts/vaziri/Vazir-Black.ttf');
+}
+
+@font-face {
+    font-family: Vazir-Bold;
+    src: url('../fonts/vaziri/Vazir-Bold.ttf');
+}
+
+@font-face {
+    font-family: Vazir-Medium;
+    src: url('../fonts/vaziri/Vazir-Light.ttf');
+}
+
+@font-face {
+    font-family: Vazir-Bold;
+    src: url('../fonts/vaziri/Vazir-Medium.ttf');
+}
+
+@font-face {
+    font-family: Vazir-Thin;
+    src: url('../fonts/vaziri/Vazir-Thin.ttf');
+}
+/*//////////////////////////////////////////////*/
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -26,6 +50,7 @@
   --danger: #dc3545;
   --light: #f8f9fa;
   --dark: #343a40;
+  --sabz: #294223;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -33,6 +58,29 @@
   --breakpoint-xl: 1200px;
   --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
+
+/*div, label, ul, li, a, span, font, td, tr, table, h1, h2, h3, h4, h5, h6, tr, ol {*/
+/*    direction: rtl*/
+/*}*/
+
+h1, h2, h3, h4, h5, h6, p, a {
+  text-align: right;
+  /*margin-right: 15px;*/
+  /*margin-left: 15px;*/
+}
+
+span{
+  text-align: right;
+  margin-right: 10px;
+  margin-left: 15px;
+}
+
+span#x, #xx, #xxx{
+    text-align: right;
+  margin-right: 0px;
+  margin-left: 0px;
+}
 
 *,
 *::before,
@@ -51,7 +99,8 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: Vazir-Medium, sans-serif;
+  /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";*/
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -419,7 +468,7 @@ kbd {
   padding: 0.2rem 0.4rem;
   font-size: 87.5%;
   color: #fff;
-  background-color: #212529;
+                  background-color: #212529;
   border-radius: 0.2rem; }
   kbd kbd {
     padding: 0;
@@ -8415,7 +8464,7 @@ h1, h2, h3, h4, h5,
   background: #1eaaf1; }
 
 .bg-secondary {
-  background: #fda638 !important; }
+  background: #dea44a !important; }
 
 .bg-tertiary {
   background: #8cc152; }
@@ -8476,11 +8525,11 @@ h1, h2, h3, h4, h5,
         border-color: #fff;
         color: #1eaaf1; }
   .btn.btn-secondary {
-    background: #fda638;
-    border: 1px solid #fda638;
+    background: #dea44a;
+    border: 1px solid #dea44a;
     color: #fff; }
     .btn.btn-secondary:hover, .btn.btn-secondary:focus, .btn.btn-secondary:active {
-      border: 1px solid #fda638;
+      border: 1px solid #dea44a;
       color: #fff; }
   .btn.btn-tertiary {
     background: #8cc152;
@@ -8539,7 +8588,7 @@ h1, h2, h3, h4, h5,
       border-radius: 50%; }
       .ftco-services .services .icon span {
         font-size: 50px;
-        color: #1eaaf1; }
+        color: #9d6d4d; }
     .ftco-services .services .media-body {
       color: rgba(255, 255, 255, 0.8); }
       @media (max-width: 767.98px) {
@@ -8557,7 +8606,7 @@ h1, h2, h3, h4, h5,
     position: relative;
     width: 80px;
     height: 80px;
-    background: #1eaaf1;
+    background: #73a29e;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
@@ -8595,8 +8644,8 @@ h1, h2, h3, h4, h5,
     right: 0;
     bottom: 0;
     content: '';
-    opacity: .2;
-    background: #000000; }
+    opacity: .7;
+    background: #294223; }
 
 .course {
   margin-bottom: 30px; }
@@ -8608,7 +8657,7 @@ h1, h2, h3, h4, h5,
     .course .text .subheading {
       color: #000000; }
       .course .text .subheading span {
-        color: #fda638; }
+        color: #dea44a; }
     .course .text h3 {
       font-weight: 500;
       font-size: 24px; }
@@ -8676,7 +8725,7 @@ h1, h2, h3, h4, h5,
     -ms-transition: all 0.3s ease;
     transition: all 0.3s ease; }
     .staff .ftco-social li a {
-      color: #fda638; }
+      color: #dea44a; }
   .staff:hover .ftco-social, .staff:focus .ftco-social {
     opacity: 1;
     top: -40px; }
@@ -8914,7 +8963,7 @@ textarea.form-control {
     .ftco-footer .ftco-footer-widget .logo {
       color: #1eaaf1; }
       .ftco-footer .ftco-footer-widget .logo span {
-        color: #fda638; }
+        color: #dea44a; }
     .ftco-footer .ftco-footer-widget ul li a span {
       color: #fff; }
     .ftco-footer .ftco-footer-widget .btn-primary {
@@ -8969,7 +9018,7 @@ textarea.form-control {
     .ftco-footer .subscribe-form .form-group .submit {
       color: #fff !important;
       font-size: 16px;
-      background: #5d50c6 !important;
+      background: #294223 !important;
       border: none !important;
       -webkit-border-radius: 2px;
       -moz-border-radius: 2px;
@@ -8982,7 +9031,7 @@ textarea.form-control {
       transition: all 0.3s ease; }
       .ftco-footer .subscribe-form .form-group .submit:hover {
         cursor: pointer;
-        background: #1eaaf1 !important; }
+        background: #DEA44A !important; }
   .ftco-footer .subscribe-form .icon {
     position: absolute;
     top: 50%;
@@ -9081,7 +9130,7 @@ textarea.form-control {
 .heading-section h2 {
   font-size: 44px;
   font-weight: 600;
-  color: #fda638; }
+  color: #dea44a; }
   .heading-section h2 span {
     color: #5d50c6; }
   @media (max-width: 767.98px) {
@@ -9254,7 +9303,7 @@ textarea.form-control {
     content: '';
     z-index: -1;
     opacity: 0;
-    background: #fda638; }
+    background: #dea44a; }
 
 .ftco-counter {
   overflow-x: hidden;

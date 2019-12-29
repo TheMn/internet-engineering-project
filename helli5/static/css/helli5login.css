@@ -1,0 +1,500 @@
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+    font-family: Vazir-Regular;
+    src: url('../fonts/vaziri/Vazir-Black.ttf');
+}
+
+@font-face {
+    font-family: Vazir-Bold;
+    src: url('../fonts/vaziri/Vazir-Bold.ttf');
+}
+
+@font-face {
+    font-family: Vazir-Medium;
+    src: url('../fonts/vaziri/Vazir-Light.ttf');
+}
+
+@font-face {
+    font-family: Vazir-Bold;
+    src: url('../fonts/vaziri/Vazir-Medium.ttf');
+}
+
+@font-face {
+    font-family: Vazir-Thin;
+    src: url('../fonts/vaziri/Vazir-Thin.ttf');
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ RESTYLE TAG ]*/
+
+/** {*/
+/*    margin: 0px;*/
+/*    padding: 0px;*/
+/*    box-sizing: border-box;*/
+/*}*/
+
+/*body, html {*/
+/*    height: 100%;*/
+/*    font-family: Vazir-Regular, sans-serif;*/
+/*}*/
+
+/*---------------------------------------------*/
+/*a {*/
+/*    font-family: Vazir-Regular;*/
+/*    font-size: 14px;*/
+/*    line-height: 1.7;*/
+/*    color: #25274d;*/
+/*    margin: 0px;*/
+/*    transition: all 0.4s;*/
+/*    -webkit-transition: all 0.4s;*/
+/*    -o-transition: all 0.4s;*/
+/*    -moz-transition: all 0.4s;*/
+/*}*/
+
+/*a:focus {*/
+/*    outline: none !important;*/
+/*}*/
+
+/*a:hover {*/
+/*    text-decoration: none;*/
+/*    color: #ff9b00;*/
+/*}*/
+
+/*---------------------------------------------*/
+
+
+/*h1, h2, h3, h4, h5, h6 {*/
+/*    margin: 0px;*/
+/*}*/
+
+/*p {*/
+/*    font-family: Vazir-Regular;*/
+/*    font-size: 14px;*/
+/*    line-height: 1.7;*/
+/*    color: #25274d;*/
+/*    margin: 0px;*/
+/*}*/
+
+/*ul, li {*/
+/*    margin: 0px;*/
+/*    list-style-type: none;*/
+/*}*/
+
+/*---------------------------------------------*/
+helli5input {
+    outline: none;
+    border: none;
+}
+
+helli5textarea {
+    outline: none;
+    border: none;
+}
+
+helli5textarea:focus, helli5input:focus {
+    border-color: transparent !important;
+}
+
+helli5input:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+helli5input:focus:-moz-placeholder {
+    color: transparent;
+}
+
+helli5input:focus::-moz-placeholder {
+    color: transparent;
+}
+
+helli5input:focus:-ms-input-placeholder {
+    color: transparent;
+}
+
+helli5textarea:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+helli5textarea:focus:-moz-placeholder {
+    color: transparent;
+}
+
+helli5textarea:focus::-moz-placeholder {
+    color: transparent;
+}
+
+helli5textarea:focus:-ms-input-placeholder {
+    color: transparent;
+}
+
+helli5input::-webkit-input-placeholder {
+    color: #999999;
+}
+
+helli5input:-moz-placeholder {
+    color: #999999;
+}
+
+helli5input::-moz-placeholder {
+    color: #999999;
+}
+
+helli5input:-ms-input-placeholder {
+    color: #999999;
+}
+
+helli5textarea::-webkit-input-placeholder {
+    color: #999999;
+}
+
+helli5textarea:-moz-placeholder {
+    color: #999999;
+}
+
+helli5textarea::-moz-placeholder {
+    color: #999999;
+}
+
+helli5textarea:-ms-input-placeholder {
+    color: #999999;
+}
+
+/*---------------------------------------------*/
+helli5button {
+    outline: none !important;
+    border: none;
+    background: transparent;
+}
+
+helli5button:hover {
+    cursor: pointer;
+}
+
+iframe {
+    border: none !important;
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ Utility ]*/
+.helli5txt1 {
+    font-family: Vazir-Regular;
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
+    color: #999999;
+}
+
+.helli5txt2 {
+    font-family: Vazir-Regular;
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
+    color: #25274d;
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ login ]*/
+
+.helli5limiter {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.helli5container-login100 {
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    /*background: #9053c7;*/
+    /*background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);*/
+    /*background: -o-linear-gradient(-135deg, #c850c0, #4158d0);*/
+    /*background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);*/
+    /*background: linear-gradient(-135deg, #c850c0, #4158d0);*/
+}
+
+.helli5wrap-login100 {
+    width: 960px;
+    background: #F5F5F5;
+    /*border-radius: 0.5rem;*/
+    overflow: hidden;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 177px 130px 33px 95px;
+}
+
+/*------------------------------------------------------------------
+[  ]*/
+.helli5login100-pic {
+    width: 316px;
+}
+
+.helli5login100-pic img {
+    max-width: 100%;
+}
+
+/*------------------------------------------------------------------
+[  ]*/
+.helli5login100-form {
+    width: 290px;
+}
+
+.helli5login100-form-title {
+    font-family: Vazir-Bold;
+    font-size: 24px;
+    color: #25274d;
+    line-height: 1.2;
+    text-align: center;
+
+    width: 100%;
+    display: block;
+    padding-bottom: 54px;
+}
+
+/*---------------------------------------------*/
+.helli5wrap-input100 {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    margin-bottom: 10px;
+}
+
+.helli5input100 {
+    font-family: Vazir-Medium;
+    font-size: 15px;
+    line-height: 1.5;
+    /*color: #666666;*/
+
+    display: block;
+    width: 100%;
+    background: #FFFFFF;
+    height: 50px;
+    /*border-radius: 0.5rem;*/
+    padding: 0 68px 0 30px;
+}
+
+/*------------------------------------------------------------------
+[ Focus ]*/
+.helli5focus-input100 {
+    display: block;
+    position: absolute;
+    /*border-radius: 0.5rem;*/
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 0px 0px 0px;
+    /*color: rgba(255, 155, 0, 1);*/
+}
+
+.helli5input100:focus + .helli5focus-input100 {
+    -webkit-animation: anim-shadow 0.5s ease-in-out forwards;
+    animation: anim-shadow 0.5s ease-in-out forwards;
+}
+
+@-webkit-keyframes anim-shadow {
+    to {
+        box-shadow: 0px 0px 70px 25px;
+        opacity: 0;
+    }
+}
+
+@keyframes anim-shadow {
+    to {
+        box-shadow: 0px 0px 70px 25px;
+        opacity: 0;
+    }
+}
+
+.helli5symbol-input100 {
+    font-size: 15px;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    /*border-radius: 0.5rem;*/
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    padding-right: 35px;
+    pointer-events: none;
+    color: #294223;
+
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.helli5input100:focus + .helli5focus-input100 + .helli5symbol-input100 {
+    color: #294223;
+    padding-right: 25px;
+}
+
+/*------------------------------------------------------------------
+[ Button ]*/
+.helli5container-login100-form-btn {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.helli5login100-form-btn {
+    font-family: Vazir-Bold;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #fff;
+    text-transform: uppercase;
+
+    width: 100%;
+    height: 50px;
+    /*border-radius: 0.5rem;*/
+    background: #294223;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*padding: 0 25px;*/
+
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.helli5login100-form-btn:hover {
+    background: #DEA44A;
+}
+
+/*------------------------------------------------------------------
+[ Responsive ]*/
+
+@media (max-width: 992px) {
+    .helli5wrap-login100 {
+        padding: 177px 90px 33px 85px;
+    }
+
+    .helli5login100-pic {
+        width: 35%;
+    }
+
+    .helli5login100-form {
+        width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .helli5wrap-login100 {
+        padding: 100px 80px 33px 80px;
+    }
+
+    .helli5login100-pic {
+        display: none;
+    }
+
+    .helli5login100-form {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .helli5wrap-login100 {
+        padding: 100px 15px 33px 15px;
+    }
+}
+
+/*------------------------------------------------------------------
+[ Alert validate ]*/
+
+.helli5validate-input {
+    position: relative;
+}
+
+.helli5alert-validate::before {
+    content: attr(data-validate);
+    position: absolute;
+    max-width: 70%;
+    background-color: white;
+    border: 1px solid #c80000;
+    border-radius: 13px;
+    padding: 4px 25px 4px 10px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 8px;
+    pointer-events: none;
+
+    font-family: Vazir-Medium;
+    color: #c80000;
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: left;
+
+    visibility: hidden;
+    opacity: 0;
+
+    -webkit-transition: opacity 0.4s;
+    -o-transition: opacity 0.4s;
+    -moz-transition: opacity 0.4s;
+    transition: opacity 0.4s;
+}
+
+.helli5alert-validate::after {
+    content: "\f06a";
+    font-family: FontAwesome;
+    display: block;
+    position: absolute;
+    color: #c80000;
+    font-size: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 13px;
+}
+
+.helli5alert-validate:hover:before {
+    visibility: visible;
+    opacity: 1;
+}
+
+@media (max-width: 992px) {
+    .helli5alert-validate::before {
+        visibility: visible;
+        opacity: 1;
+    }
+}
