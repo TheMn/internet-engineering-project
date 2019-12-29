@@ -1,46 +1,60 @@
-<div class="py-2 bg-primary">
+{% load static %}
+<div style="direction: rtl; background: #1c7430" class="py-2">
     <div class="container">
         <div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
-            <div class="col-lg-12 d-block">
+            <div style="direction: rtl" class="col-lg-12 d-block">
                 <div class="row d-flex">
+
                     <div class="col-md-5 pr-4 d-flex topper align-items-center">
-                        <div class="icon bg-fifth mr-2 d-flex justify-content-center align-items-center"><span
-                                class="icon-map"></span></div>
-                        <span class="text">198 West 21th Street, Suite 721 New York NY 10016</span>
+                        <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
+                                class="icon-person text-center"></span></div>
+                        {% if not user.is_authenticated %}
+                        <span style="font-family: Vazir-Medium"><a href="#"
+                                                                   style="color:white;font-family: Vazir-Medium">ورود</a></span>
+                        <!--                        TODO: Add profile page if needed-->
+                        {% else %}
+                        <span style="font-family: Vazir-Medium"><a href="{% url 'logout' %}"
+                                                                   style="color:white;font-family: Vazir-Medium">{{ user.username }})(خروج)</a></span>
+                        {% endif %}
                     </div>
-                    <div class="col-md pr-4 d-flex topper align-items-center">
-                        <div class="icon bg-secondary mr-2 d-flex justify-content-center align-items-center"><span
-                                class="icon-paper-plane"></span></div>
-                        <span class="text">youremail@email.com</span>
+
+                    <div style="text-align: left" class="col-md pr-4 d-flex topper align-items-center">
+                        <span style="font-family: Vazir-Medium" class="text text-left">خوش آمدید</span>
+                        <!--                        TODO: Add time and date-->
                     </div>
-                    <div class="col-md pr-4 d-flex topper align-items-center">
-                        <div class="icon bg-tertiary mr-2 d-flex justify-content-center align-items-center"><span
-                                class="icon-phone2"></span></div>
-                        <span class="text">+ 1235 2355 98</span>
-                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light" id="ftco-navbar">
+
+<nav style="direction: rtl" class="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light"
+     id="ftco-navbar">
     <div class="container d-flex align-items-center">
-        <a class="navbar-brand" href="index.html">Kiddos</a>
+        <a class="navbar-brand" href="{% url 'index' %}" style="font-family:Vazir-Bold">دبیرستان دوره دوم علامه حلی ۵
+            تهران</a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="oi oi-menu"></span> Menu
+            <span class="oi oi-menu"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="index.html" class="nav-link pl-0">Home</a></li>
-                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="{% url 'teacher' %}" class="nav-link">Teacher</a></li>
-                <li class="nav-item"><a href="courses.html" class="nav-link">Courses</a></li>
-                <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
-                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-<!--                TODO: check if user logged in ~ show profile -->
+                <!--                TODO: Uncomment this buttons after completing directed pages-->
+                <!--                <li class="nav-item"><a href="{% url 'teacher' %}" style="font-family: Vazir-Medium" class="nav-link">دبیران</a>-->
+                <!--                </li>-->
+                <!--                <li class="nav-item"><a href="{% url 'courses' %}" style="font-family: Vazir-Medium" class="nav-link">دروس</a>-->
+                <!--                </li>-->
+                <!--                <li class="nav-item"><a href="{% url 'blog' %}" style="font-family: Vazir-Medium"-->
+                <!--                                        class="nav-link">بلاگ</a></li>-->
+                <li class="nav-item"><a href="{% url 'about' %}" style="font-family: Vazir-Medium" class="nav-link">درباره
+                    ما</a></li>
+                <li class="nav-item"><a href="{% url 'contact' %}" style="font-family: Vazir-Medium" class="nav-link">ارتباط
+                    با ما</a></li>
             </ul>
         </div>
+
     </div>
 </nav>
