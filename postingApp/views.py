@@ -5,13 +5,6 @@ from django.utils.timezone import now
 from .models import PostStuff
 from django.shortcuts import render
 
-def index(request):
-    featured = PostStuff.objects.filter(featured=True)
-    context={
-        'object_list': featured
-    }
-    return render(request,'index.html',context)
-
 
 def make_post(request):
     form = PageForm

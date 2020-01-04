@@ -13,14 +13,14 @@
                                                                    style="color:white;font-family: Vazir-Medium">ورود</a></span>
                         <!--                        TODO: Add profile page if needed-->
                         {% else %}
-                        <span style="font-family: Vazir-Medium"><a href="{% url 'logout' %}"
-                                                                   style="color:white;font-family: Vazir-Medium">{{ user.username }})(خروج)</a></span>
+                        <span style="font-family: Vazir-Medium"><a href="/"
+                                                                   style="color:white;font-family: Vazir-Medium">({{ user.username }}) خروج</a></span>
                         {% endif %}
                     </div>
 
                     <div style="text-align: left" class="col-md pr-4 d-flex topper align-items-center">
-                        <span style="font-family: Vazir-Medium" class="text text-left">خوش آمدید</span>
-                        <!--                        TODO: Add time and date-->
+                        <span style="font-family: Vazir-Medium" class="text text-left">{{ time_now | date:'Y-m-d H:i' }}</span>
+                        <!--                        TODO: taqvim jalaali-->
                     </div>
 
                 </div>

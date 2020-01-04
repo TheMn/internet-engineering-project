@@ -1,24 +1,34 @@
 from django.template import loader
 from django.http import HttpResponse
-import datetime
+from datetime import datetime as dt
 from django.shortcuts import render
+from postingApp.models import PostStuff
 
 
 def index(request):
-    return render(request, 'index.html', {})
+    featured = PostStuff.objects.filter(featured=True)
+    context = {
+        'object_list': featured,
+        'date': dt.now()
+    }
+    return render(request, 'index.html', context)
 
 
 def contact(request):
     return render(request, 'contact.html', {})
 
+
 def about(request):
     return render(request, 'about.html', {})
+
 
 def blog(request):
     return render(request, 'blog.html', {})
 
+
 def courses(request):
     return render(request, 'courses.html', {})
+
 
 def example(request):
     return render(request, 'example.html', {})
@@ -35,9 +45,9 @@ def teacher(request):
 def blog_single(request):
     return render(request, 'blog-single.html', {})
 
+
 def login(request):
     return render(request, 'login.html', {})
-
 
 # def home(request):
 #     now = datetime.datetime.now()
