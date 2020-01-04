@@ -2,10 +2,15 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .forms import PageForm
 from django.utils.timezone import now
-
+from .models import PostStuff
+from django.shortcuts import render
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    featured = PostStuff.objects.filter(featured=True)
+    context={
+        'object_list': featured
+    }
+    return render(request,'index.html',context)
 
 
 def make_post(request):

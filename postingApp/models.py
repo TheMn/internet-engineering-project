@@ -4,13 +4,19 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    img = models.ImageField(upload_to='profilePic')
+    img = models.ImageField(upload_to='profilePic',blank=True)
     phone = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return self.user.username
 
 
 @receiver(post_save, sender=User)
@@ -39,25 +45,30 @@ class Role(models.Model):
         return '{} {} {} {} {} {} {} {}'.format(self.is_student, self.is_teacher, self.is_consulter, self.is_moavenP,
                                                 self.is_moavenA, self.is_moavenE, self.is_principle, self.is_parent)
 
-# Create your models here.
-class User(models.Model):
-    username = models.CharField(max_length=50)
+class Category(models.Model):
+    title = models.CharField(max_length=20);
+    def __str__(self):
+        return self.title
 
 
 class PostStuff(models.Model):
     title = models.CharField(max_length=100)
-    username = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    username = models.ForeignKey(Profile, on_delete=models.CASCADE)
     text = RichTextField()
     img = models.ImageField(upload_to='profile')
     date = models.DateTimeField(auto_now_add=True)
+    comment_count = models.IntegerField(default=0)
+    categories = models.ManyToManyField(Category)
+    featured = models.BooleanField(default=True)
 
     def __str__(self):
-        return '{} {} {} {}'.format(self.username, self.title, self.text, self.date)
+        return self.title
 
 
 class Attachment(models.Model):
     post = models.ForeignKey(PostStuff, on_delete=models.CASCADE)
     attach = models.FileField(upload_to='uploads/%Y/%m/%d/')
+
 
 class Comment(models.Model):
     post = models.ForeignKey(PostStuff, on_delete=models.CASCADE)
