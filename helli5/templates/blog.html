@@ -17,12 +17,14 @@
         </div>
     </div>
 </section>
+
 <section>
-    {% if user.is_authenticated and not user.role.is_student %}
-    <p class="mb-0"><a href="{% url 'get_post' %}" class="btn btn-secondary">new post<span
-                                    class="ion-ios-arrow-round-forward"></span></a></p>
+    {% if user.is_authenticated and not user.profile.role.is_student %}
+    <p class="mb-0"><a href="{% url 'add_post' %}" class="btn btn-secondary">new post<span
+            class="ion-ios-arrow-round-forward"></span></a></p>
     {% endif %}
 </section>
+
 <section class="ftco-section bg-light">
     <div class="container">
         <div class="row">

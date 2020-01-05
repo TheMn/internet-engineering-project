@@ -6,7 +6,7 @@ from .models import PostStuff
 from django.shortcuts import render
 
 
-def make_post(request):
+def add_post(request):
     form = PageForm
     if request.method == 'POST':
         form = PageForm(request.POST, request.FILES)

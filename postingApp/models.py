@@ -31,7 +31,7 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 class Role(models.Model):
-    person = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    person = models.OneToOneField(Profile, on_delete=models.CASCADE)
     is_teacher = models.BooleanField(default=False)
     is_student = models.BooleanField(default=False)
     is_consulter = models.BooleanField(default=False)
@@ -42,8 +42,7 @@ class Role(models.Model):
     is_principle = models.BooleanField(default=False)
 
     def __str__(self):
-        return '{} {} {} {} {} {} {} {}'.format(self.is_student, self.is_teacher, self.is_consulter, self.is_moavenP,
-                                                self.is_moavenA, self.is_moavenE, self.is_principle, self.is_parent)
+        return '{}'.format(self.is_student)
 
 
 class Category(models.Model):
