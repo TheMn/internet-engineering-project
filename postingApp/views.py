@@ -8,7 +8,7 @@ from django.shortcuts import render
 
 def make_post(request):
     form = PageForm
-    if request.method == 'POST' :
+    if request.method == 'POST':
         form = PageForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
@@ -16,4 +16,4 @@ def make_post(request):
             post.post_date = now()
             post.save()
             form = PageForm
-    return render(request, 'add_post.html', {'form': form,})
+    return render(request, 'add_post.html', {'form': form, })

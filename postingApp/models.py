@@ -11,7 +11,7 @@ User = get_user_model()
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    img = models.ImageField(upload_to='profilePic',blank=True)
+    img = models.ImageField(upload_to='profilePic', blank=True)
     phone = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
 
@@ -45,8 +45,10 @@ class Role(models.Model):
         return '{} {} {} {} {} {} {} {}'.format(self.is_student, self.is_teacher, self.is_consulter, self.is_moavenP,
                                                 self.is_moavenA, self.is_moavenE, self.is_principle, self.is_parent)
 
+
 class Category(models.Model):
     title = models.CharField(max_length=20);
+
     def __str__(self):
         return self.title
 

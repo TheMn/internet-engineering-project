@@ -8,8 +8,7 @@ from postingApp.models import PostStuff
 def index(request):
     featured = PostStuff.objects.filter(featured=True)
     context = {
-        'object_list': featured,
-        'date': dt.now()
+        'object_list': featured
     }
     return render(request, 'index.html', context)
 
@@ -26,16 +25,10 @@ def blog(request):
     return render(request, 'blog.html', {})
 
 
+# TODO: Define these:
+
 def courses(request):
     return render(request, 'courses.html', {})
-
-
-def example(request):
-    return render(request, 'example.html', {})
-
-
-def base(request):
-    return render(request, 'base.html', {})
 
 
 def teacher(request):

@@ -6,8 +6,7 @@
 </head>
 <body>
 <div>
-    {}
-  <form action="{% url 'get_post' %}" method="post" novalidate>{% csrf_token %}
+  <form action="{% url 'add_post' %}" method="post" novalidate>{% csrf_token %}
     {{ form }}
     <input type="submit" value="Submit">
 </form>
