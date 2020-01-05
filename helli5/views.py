@@ -8,7 +8,7 @@ from postingApp.models import PostStuff
 def index(request):
     featured = PostStuff.objects.filter(featured=True)
     context = {
-        'object_list': featured
+        'featured_posts': featured
     }
     return render(request, 'index.html', context)
 

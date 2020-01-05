@@ -10,9 +10,9 @@
                  data-scrollax-parent="true">
                 <div class="col-md-8 text-center ftco-animate">
                     <h1 style="font-family:Vazir-Bold; text-align: center" class="mb-4">آغاز سال تحصیلی ۹۹-۱۳۹۸</h1>
-<!--                    <p style="font-family:Vazir-Medium; text-align: center"><a href="#"-->
-<!--                                                                               class="btn btn-secondary px-4 py-3 mt-3">بیشتر-->
-<!--                        بخوانید</a></p>-->
+                    <!--                    <p style="font-family:Vazir-Medium; text-align: center"><a href="#"-->
+                    <!--                                                                               class="btn btn-secondary px-4 py-3 mt-3">بیشتر-->
+                    <!--                        بخوانید</a></p>-->
                 </div>
             </div>
         </div>
@@ -25,9 +25,9 @@
                  data-scrollax-parent="true">
                 <div class="col-md-8 text-center ftco-animate">
                     <h1 style="font-family:Vazir-Bold; text-align: center" class="mb-4">سمینار علوم و فنون حلی ۵</h1>
-<!--                    <p style="font-family:Vazir-Medium; text-align: center"><a href="#"-->
-<!--                                                                               class="btn btn-secondary px-4 py-3 mt-3">بیشتر-->
-<!--                        بخوانید</a></p>-->
+                    <!--                    <p style="font-family:Vazir-Medium; text-align: center"><a href="#"-->
+                    <!--                                                                               class="btn btn-secondary px-4 py-3 mt-3">بیشتر-->
+                    <!--                        بخوانید</a></p>-->
                 </div>
             </div>
         </div>
@@ -101,25 +101,50 @@
 
 {% include 'school_history.html' %}
 
-<!--TODO: uncomment posts part:-->
-<!--<section class="ftco-section bg-light">-->
-<!--    <div class="container">-->
-<!--        <div class="row justify-content-center mb-5 pb-2">-->
-<!--            <div class="col-md-8 text-center heading-section ftco-animate">-->
-<!--                <h2 style="color:#9d6d4d; font-family:Vazir-Bold; text-align: center" class="mb-4">بلاگ</h2>-->
-<!--                <p style="font-family:Vazir-Medium; text-align: center">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از-->
-<!--                    صنعت چاپ و با استفاده از طراحان گرافیک است. </p>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="row">-->
-<!--            {% static 'images/image_1.jpg' as post_pic %}-->
-<!--            {% include 'post_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad' post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398 post_comment_counter=0 %}-->
-<!--            {% include 'post_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad' post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398 post_comment_counter=0 %}-->
-<!--            {% include 'post_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad' post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398 post_comment_counter=0 %}-->
-
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-2">
+            <div class="col-md-8 text-center heading-section ftco-animate">
+                <h2 style="color:#9d6d4d; font-family:Vazir-Bold; text-align: center" class="mb-4">بلاگ</h2>
+                <p style="font-family:Vazir-Medium; text-align: center">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                    صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
+            </div>
+        </div>
+        <div class="row">
+            {% for fpost in featured_posts %}
+            <div class="col-md-6 col-lg-4 ftco-animate">
+                <div class="blog-entry">
+                    <!--                    TODO: Add fpost.url-->
+                    <a href="/" class="block-20 d-flex align-items-end"
+                    <!--                       TODO: Add image source-->
+                    style="background-image: url({{ fpost.img.url }});">
+                    <div class="meta-date text-center p-2">
+                        <!--                            TODO: Extract day, month and year from fpost.date-->
+                        <!--                            <span class="day">{{ post_day }}</span>-->
+                        <!--                            <span class="mos">{{ post_month }}</span>-->
+                        <!--                            <span class="yr">{{ post_year }}</span>-->
+                    </div>
+                    </a>
+                    <div class="text bg-white p-4">
+                        <h3 class="heading"><a href="/">{{ fpost.title }}</a></h3>
+                        <!--                        TODO: Change fpost.text to fpost.overview-->
+                        <p>{{ fpost.text }}</p>
+                        <div class="d-flex align-items-center mt-4">
+                            <p class="mb-0"><a href="#" class="btn btn-secondary">Read More <span
+                                    class="ion-ios-arrow-round-forward"></span></a></p>
+                            <p class="ml-auto mb-0">
+                                <a href="#" class="mr-2">{{ fpost.username }}</a>
+                                <a href="#" class="meta-chat"><span class="icon-chat"></span>{{ fpost.comment_count
+                                    }}</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 
 <!--TODO: uncomment this part: -->
 <!--<section class="ftco-intro" style="background-image: url({% static 'images/C-_Users_Mohamma_Desktop_DSC_00672.jpg' %});"-->
