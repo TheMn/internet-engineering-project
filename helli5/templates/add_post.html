@@ -6,10 +6,15 @@
 </head>
 <body>
 <div>
-  <form action="{% url 'add_post' %}" method="post" novalidate>{% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
+    {% if not user.profile.role.is_student %}
+    <form action="{% url 'add_post' %}" method="post" novalidate>{% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+    {% else %}
+    <p>شما به این صفحه دسترسی ندارید</p>
+    {% endif %}
+
 </div>
 
 </body>

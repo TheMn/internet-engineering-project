@@ -55,7 +55,7 @@ class Category(models.Model):
 class PostStuff(models.Model):
     title = models.CharField(max_length=100)
     username = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    text = RichTextField()
+    text = RichTextField(field_settings='advanced')
     img = models.ImageField(upload_to='profile')
     date = models.DateTimeField(auto_now_add=True)
     comment_count = models.IntegerField(default=0)
