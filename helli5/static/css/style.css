@@ -3579,13 +3579,16 @@ input[type="button"].btn-block {
   background-size: 100% 100%; }
 
 @media (max-width: 575.98px) {
+
   .navbar-expand-sm > .container,
   .navbar-expand-sm > .container-fluid {
+    font-size: 0.8rem;
     padding-right: 0;
     padding-left: 0; } }
 
 @media (min-width: 576px) {
   .navbar-expand-sm {
+    font-size: 0.8rem;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -ms-flex-flow: row nowrap;
@@ -6287,6 +6290,9 @@ button.bg-dark:focus {
   float: none !important; }
 
 @media (min-width: 576px) {
+  #helli-logo{
+    font-size: 18px;
+  }
   .float-sm-left {
     float: left !important; }
   .float-sm-right {
@@ -7040,6 +7046,9 @@ button.bg-dark:focus {
     margin-left: auto !important; } }
 
 @media (min-width: 768px) {
+  #helli-logo{
+    font-size: 20px;
+  }
   .m-md-0 {
     margin: 0 !important; }
   .mt-md-0,
@@ -7294,6 +7303,9 @@ button.bg-dark:focus {
     margin-left: auto !important; } }
 
 @media (min-width: 992px) {
+  #helli-logo{
+    font-size: 22px;
+  }
   .m-lg-0 {
     margin: 0 !important; }
   .mt-lg-0,
@@ -7548,6 +7560,9 @@ button.bg-dark:focus {
     margin-left: auto !important; } }
 
 @media (min-width: 1200px) {
+  #helli-logo{
+    font-size: 22px;
+  }
   .m-xl-0 {
     margin: 0 !important; }
   .mt-xl-0,
@@ -7827,8 +7842,13 @@ button.bg-dark:focus {
 
 .text-center {
   text-align: center !important; }
-
+@media(max-width: 576px){
+  #helli-logo{
+    font-size: 15px;
+  }
+}
 @media (min-width: 576px) {
+
   .text-sm-left {
     text-align: left !important; }
   .text-sm-right {
