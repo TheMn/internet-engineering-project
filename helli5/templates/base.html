@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
     <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
     {% block extra_head %} {% endblock %}
 
 </head>
@@ -38,7 +39,18 @@
 {% include 'footer.html' %}
 {% include 'loader.html' %}
 {% include 'scripts.html' %}
-{% block extra_js %} {% endblock %}
+<script>
+var d = new Date();
+var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+document.getElementById("day").innerHTML = d.getDate();
+document.getElementById("month").innerHTML = months[d.getMonth()];
+document.getElementById("year").innerHTML = d.getFullYear();
+// document.getElementById("demo").innerHTML = d;
+</script>{% block extra_js %}
+
+
+
+{% endblock %}
 </body>
 
 </html>
