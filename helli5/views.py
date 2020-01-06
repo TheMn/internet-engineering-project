@@ -6,9 +6,9 @@ from postingApp.models import PostStuff
 
 
 def index(request):
-    featured = PostStuff.objects.filter(featured=True)
+    latest = PostStuff.objects.order_by('-date')[0:3]
     context = {
-        'featured_posts': featured
+        'latest_posts': latest
     }
     return render(request, 'index.html', context)
 
@@ -22,6 +22,10 @@ def about(request):
 
 
 def blog(request):
+    # featured = PostStuff.objects.filter(featured=True)
+    # context = {
+    #     'featured_posts': featured,
+    # }
     return render(request, 'blog.html', {})
 
 
