@@ -1,0 +1,1 @@
+from postingApp import models

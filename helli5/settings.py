@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'postingApp',
+    'loginApp',
     'djrichtextfield',
 ]
 
@@ -120,6 +121,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [
     os.path.join(SITE_ROOT, "static/"),
 ]
+
+LOGIN_REDIRECT_URL = '/index'
 
 DJRICHTEXTFIELD_CONFIG = {
     'js': ['//tinymce.cachefly.net/4.1/tinymce.min.js'],

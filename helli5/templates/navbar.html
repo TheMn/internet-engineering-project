@@ -1,27 +1,24 @@
 {% load static %}
-<div style="direction: rtl; background: #1c7430" class="py-2">
+<div style="direction: rtl; background: #2A4324" class="py-2">
     <div class="container">
         <div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
             <div style="direction: rtl" class="col-lg-12 d-block">
-                <div class="row d-flex">
+                <div class="row">
 
-                    <div class="col-md-5 pr-4 d-flex topper align-items-center">
+                    <div class="col-md-6 pr-6 d-flex topper align-items-center">
                         <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
                                 class="icon-person text-center"></span></div>
                         {% if not user.is_authenticated %}
-                        <span style="font-family: Vazir-Medium"><a href="#"
+                        <span style="font-family: Vazir-Medium"><a href="{% url 'login' %}"
                                                                    style="color:white;font-family: Vazir-Medium">ورود</a></span>
                         <!--                        TODO: Add profile page if needed-->
                         {% else %}
-                        <span style="font-family: Vazir-Medium"><a href="/"
-                                                                   style="color:white;font-family: Vazir-Medium">({{ user.username }}) خروج</a></span>
+                        <span style="font-family: Vazir-Medium"><a href="{% url 'logout' %}"
+                                                                   style="color:white;font-family: Vazir-Medium">{{ user.username }}(خروج)</a></span>
                         {% endif %}
                     </div>
 
-                    <div style="text-align: left" class="col-md pr-4 d-flex topper align-items-center">
-                        <span style="font-family: Vazir-Medium" class="text text-left">{{ time_now | date:'Y-m-d H:i' }}</span>
-                        <!--                        TODO: taqvim jalaali-->
-                    </div>
+                    <p div class="col-md-6 pr-6" style="text-align: left; color: white; font-family: Vazir-Medium; margin-bottom: -1%" id="date_place" style="text-align: end; padding-left: 5%">تاریخ اینجا ست شود</p>
 
                 </div>
             </div>
@@ -32,7 +29,8 @@
 <nav style="direction: rtl" class="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light"
      id="ftco-navbar">
     <div class="container d-flex align-items-center">
-        <a class="navbar-brand" href="{% url 'index' %}" style="font-family:Vazir-Bold">دبیرستان دوره دوم علامه حلی ۵
+        <a class="navbar-brand" id="helli-logo" href="{% url 'index' %}" style="font-family:Vazir-Bold">دبیرستان دوره
+            دوم علامه حلی ۵
             تهران</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
