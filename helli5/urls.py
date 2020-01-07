@@ -28,6 +28,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('base/', views.base, name='base'),
     path('teacher/', views.teacher, name='teacher'),
+    path('honors_card/', views.honors_card, name='honors_card'),
+    path('honors/', views.honors, name='honors'),
     path('example/', views.example, name='example'),
     path('contact/', views.contact, name='contact'),
     path('about/', views.about, name='about'),

@@ -11,14 +11,25 @@ def index(request):
 def contact(request):
     return render(request, 'contact.html', {})
 
+
+def honors(request):
+    return render(request, 'honors.html', {})
+
+
 def about(request):
     return render(request, 'about.html', {})
+
 
 def blog(request):
     return render(request, 'blog.html', {})
 
+def honors_card(request):
+    return render(request, 'honors_card.html', {})
+
+
 def courses(request):
     return render(request, 'courses.html', {})
+
 
 def example(request):
     return render(request, 'example.html', {})
@@ -35,9 +46,9 @@ def teacher(request):
 def blog_single(request):
     return render(request, 'blog-single.html', {})
 
+
 def login(request):
     return render(request, 'login.html', {})
-
 
 # def home(request):
 #     now = datetime.datetime.now()
