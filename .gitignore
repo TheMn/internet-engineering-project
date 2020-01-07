@@ -8,3 +8,5 @@ postingApp/migrations/0010_auto_20191220_1323.py
 postingApp/migrations/
 uploads/
 .idea/
+.idea/misc.xml
+.idea/internet-engineering-project.iml

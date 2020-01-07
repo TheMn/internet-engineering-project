@@ -34,6 +34,7 @@
     </div>
 </section>
 
+
 <!--TODO: Add this section:-->
 <section class="ftco-services ftco-no-pb">
     <div class="container-wrap">
@@ -100,27 +101,28 @@
     </div>
 </section>
 
+<!--TODO: uncomment posts part:-->
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-2">
+            <div class="col-md-8 text-center heading-section ftco-animate">
+                <h2 style="color:#9d6d4d; font-family:Vazir-Bold; text-align: center" class="mb-4">بلاگ</h2>
+                <p style="font-family:Vazir-Medium; text-align: center">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                    صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
+            </div>
+        </div>
+        <div class="row">
+            {% static 'images/image_1.jpg' as post_pic %}
+            {% include 'post_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad' post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398 post_comment_counter=0 %}
+            {% include 'post_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad' post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398 post_comment_counter=0 %}
+            {% include 'post_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad' post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398 post_comment_counter=0 %}
+
+        </div>
+    </div>
+</section>
+
 {% include 'school_history.html' %}
 
-<!--TODO: uncomment posts part:-->
-<!--<section class="ftco-section bg-light">-->
-<!--    <div class="container">-->
-<!--        <div class="row justify-content-center mb-5 pb-2">-->
-<!--            <div class="col-md-8 text-center heading-section ftco-animate">-->
-<!--                <h2 style="color:#9d6d4d; font-family:Vazir-Bold; text-align: center" class="mb-4">بلاگ</h2>-->
-<!--                <p style="font-family:Vazir-Medium; text-align: center">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از-->
-<!--                    صنعت چاپ و با استفاده از طراحان گرافیک است. </p>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="row">-->
-<!--            {% static 'images/image_1.jpg' as post_pic %}-->
-<!--            {% include 'post_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad' post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398 post_comment_counter=0 %}-->
-<!--            {% include 'post_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad' post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398 post_comment_counter=0 %}-->
-<!--            {% include 'post_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad' post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398 post_comment_counter=0 %}-->
-
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
 
 <!--TODO: uncomment this part: -->
 <!--<section class="ftco-intro" style="background-image: url({% static 'images/C-_Users_Mohamma_Desktop_DSC_00672.jpg' %});"-->

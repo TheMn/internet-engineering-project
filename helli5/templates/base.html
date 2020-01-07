@@ -40,13 +40,16 @@
 {% include 'loader.html' %}
 {% include 'scripts.html' %}
 <script>
-var d = new Date();
-var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-document.getElementById("day").innerHTML = d.getDate();
-document.getElementById("month").innerHTML = months[d.getMonth()];
-document.getElementById("year").innerHTML = d.getFullYear();
+// var d = new Date();
+// var d = $.calendars.newDate(1388, 1, 1, 'persian', 'fa');
+// var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+// document.getElementById("day").innerHTML = d.getDate();
+// document.getElementById("month").innerHTML = months[d.getMonth()];
+// document.getElementById("year").innerHTML = d.getFullYear();
 // document.getElementById("demo").innerHTML = d;
-</script>{% block extra_js %}
+
+</script>
+{% block extra_js %}
 
 
 
