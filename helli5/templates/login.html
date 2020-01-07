@@ -1,78 +1,41 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block title %} صفحه ورود {% endblock %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>sign-in testing</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<div style="margin-top: -10%" class="helli5limiter">
-    <div class="helli5container-login100">
-        <div class="helli5wrap-login100">
-            <div class="helli5login100-pic js-tilt" data-tilt>
-                <img src="{% static 'images/img-01.png' %}" alt="IMG">
-            </div>
+</head>
+<body>
+<h2>Log in to My Site</h2>
+{% if form.errors %}
+<p style="color: red">Your username and password didn't match. Please try again.</p>
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}"/>
+    {% for field in form %}
+    <p>
+        {{ field.label_tag }}<br>
+        {{ field }}<br>
+        {% for error in field.errors %}
+    <p style="color: red">{{ error }}</p>
+    {% endfor %}
+    {% if field.help_text %}
+    <p>
+        <small style="color: grey">{{ field.help_text }}</small>
+    </p>
+    {% endif %}
+    </p>
+    {% endfor %}
+    <button type="submit">Log in</button>
+    <a href="{% url 'signup' %}">New to My Site? Sign up</a>
+</form>
 
-            <form class="helli5login100-form validate-form">
-					<span class="helli5login100-form-title">
-						ورود اعضا
-					</span>
+<footer>
 
-                <div class="helli5wrap-input100 helli5validate-input"
-                     data-validate="Valid email is required: ex@abc.xyz">
-                    <input style="text-align: right" class="helli5input100" type="text" name="email"
-                           placeholder="رایانامه">
-                    <span class="helli5focus-input100"></span>
-                    <span dir="rtl" class="helli5symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-                </div>
+</footer>
 
-                <div class="helli5wrap-input100 helli5validate-input" data-validate="Password is required">
-                    <input style="text-align: right" class="helli5input100" type="password" name="pass"
-                           placeholder="گذرواژه">
-                    <span class="helli5focus-input100"></span>
-                    <span dir="rtl" class="helli5symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-                </div>
 
-                <div class="helli5container-login100-form-btn">
-                    <button class="helli5login100-form-btn">
-                        ورود
-                    </button>
-                </div>
-
-                <div class="helli5text-center p-t-12">
-						<span class="helli5txt1 text-center">
-							فراموشی
-						</span>
-                    <a class="helli5txt2 text-center" href="#">
-                        شناسه / گذرواژه ?
-                    </a>
-                </div>
-
-                <div class="helli5text-center p-t-136">
-                    <a class="helli5txt2" href="#">
-                        اگر حساب ندارید، هم اکنون عضو شوید
-                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                    </a>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-{% endblock %}
-
-{% block extra_js %}
-<script src="{% static '/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
-<script src="{% static '/vendor/bootstrap/js/popper.js' %}"></script>
-<script src="{% static '/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-<script src="{% static '/vendor/select2/select2.min.js' %}"></script>
-<script src="{% static '/vendor/tilt/tilt.jquery.min.js' %}"></script>
-<script>
-    $('.js-tilt').tilt({
-        scale: 1.1
-    })
-</script>
-<script src="{% static '/js/mainjs.js' %}"></script>
-
-{% endblock %}
+</body>
+</html>

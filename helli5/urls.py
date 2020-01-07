@@ -18,10 +18,12 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 # import postingApp
+import loginApp
 from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
+
     path('', views.index, name='index'),
     path('admin/', admin.site.urls),
     path('base/', views.base, name='base'),
@@ -32,7 +34,9 @@ urlpatterns = [
     path('blog/', views.blog, name='blog'),
     path('courses/', views.courses, name='courses'),
     path('blog_single/', views.blog_single, name='blog_single'),
-    path('login/', views.login, name='login'),
-    url(r'^postingApp/', include('postingApp.urls')),
+    path('djrichtextfield/', include('djrichtextfield.urls')),
+
+    url(r'^accounts/', include('loginApp.urls')),
+    url(r'^post/', include('postingApp.urls')),
 
 ]
