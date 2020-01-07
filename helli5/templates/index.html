@@ -128,7 +128,7 @@
                     <div class="text bg-white p-4">
                         <h3 class="heading"><a href="/">{{ fpost.title }}</a></h3>
                         <!--                        TODO: Change fpost.text to fpost.overview-->
-                        <p>{{ fpost.text }}</p>
+                        <p>{{ fpost.text|safe }}</p>
                         <div class="d-flex align-items-center mt-4">
                             <p class="mb-0"><a href="#" class="btn btn-secondary">Read More <span
                                     class="ion-ios-arrow-round-forward"></span></a></p>
