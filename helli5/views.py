@@ -3,6 +3,7 @@ from django.http import HttpResponse
 import datetime
 from django.shortcuts import render
 from postingApp.models import PostStuff
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def index(request):
@@ -26,7 +27,22 @@ def about(request):
 
 
 def blog(request):
-    return render(request, 'blog.html', {})
+    post_list = PostStuff.objects.all()
+    paginator = Paginator(post_list, 1)
+    page_request_var = 'page'
+    page = request.GET.get(page_request_var)
+    try:
+        paginated_queryset = paginator.page(page)
+    except PageNotAnInteger:
+        paginated_queryset = paginator.page(1)
+    except EmptyPage:
+        paginated_queryset = paginator.page(paginator.num_pages)
+    context = {
+        'queryset': paginated_queryset,
+        'page_request_var': page_request_var,
+
+    }
+    return render(request, 'blog.html', context)
 
 
 def honors_card(request):

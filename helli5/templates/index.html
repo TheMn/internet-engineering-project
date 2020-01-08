@@ -112,31 +112,30 @@
         <div class="row">
             {% for fpost in latest_posts %}
             <div class="col-md-6 col-lg-4 ftco-animate">
-                <div class="blog-entry">
-                    <!--                    TODO: Add fpost.url-->
+                <div style="border-radius: 0px 20px 0px 20px; box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1), 0 5px 15px 0 rgba(0, 0, 0, 0.1);"
+                     class="blog-entry">
                     <a href="{{ fpost.img.url }}" class="block-20 d-flex align-items-end"
-
-                    style="background-image: url({{ fpost.img.url }});">
-                    <div class="meta-date text-center p-2">
-                        <!--                            TODO: Extract day, month and year from fpost.date-->
-                                                    <span class="day">2020</span>
-                                                    <span class="mos">10</span>
-                                                    <span class="yr">09</span>
-                    </div>
+                       style="border-radius: 0px  20px 0px 0px; background-image: url({{ fpost.img.url }});">
+                        <div style="border-radius: 0px  20px 0px 0px; background: #2A4324"
+                             class="meta-date text-center p-2">
+                            <span style="font-family: Vazir-Medium" class="day">{{ fpost.date|date:"d" }}</span>
+                            <span style="font-family: Vazir-Medium" class="mos">{{ fpost.date|date:"m" }}</span>
+                            <span style="font-family: Vazir-Medium" class="yr">{{ fpost.date|date:"y" }}</span>
+                        </div>
                     </a>
-
-                    <div class="text bg-white p-4">
-                        <h3 class="heading"><a href="/">{{ fpost.title }}</a></h3>
-                        <!--                        TODO: Change fpost.text to fpost.overview-->
-                        <p>{{ fpost.text|safe }}</p>
-                        <div class="d-flex align-items-center mt-4">
-                            <p class="mb-0"><a href="#" class="btn btn-secondary">Read More <span
-                                    class="ion-ios-arrow-round-forward"></span></a></p>
-                            <p class="ml-auto mb-0">
-                                <a href="#" class="mr-2">{{ fpost.username }}</a>
-                                <a href="#" class="meta-chat"><span class="icon-chat">
-
-                                </span>{{ fpost.comment_count }}</a>
+                    <div style="border-radius: 0px 0px 0px 20px" class="text bg-white p-4">
+                        <h3 style="font-family: Vazir-Medium" class="heading">
+                            <a href="/">{{ fpost.title }}</a></h3>
+                        <p style="font-family: Vazir-Medium">{{ fpost.text|safe }}</p>
+                        <div style="direction: rtl" class="d-flex align-items-center mt-4">
+                            <p style="font-family: Vazir-Medium" class="ml-auto mb-0">
+                                <a style="font-family: Vazir-Medium" style="margin-right: 10px" href="#"
+                                   class="meta-chat"><span class="icon-chat"></span>{{ fpost.comment_count }}</a>
+                                <a style="font-family: Vazir-Medium; color: #74A29E" href="#" class="mr-2">
+                                    {{ fpost.username }}</a>
+                            <p style="font-family: Vazir-Medium" class="mb-0"><a href="#" class="btn btn-secondary">بیشتر
+                                بخوانید <span
+                                        class="ion-ios-arrow-round-back"></span></a></p>
                             </p>
                         </div>
                     </div>
