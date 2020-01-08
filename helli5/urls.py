@@ -33,12 +33,10 @@ urlpatterns = [
     path('example/', views.example, name='example'),
     path('contact/', views.contact, name='contact'),
     path('about/', views.about, name='about'),
-    path('blog/', views.blog, name='blog'),
     path('courses/', views.courses, name='courses'),
-    path('blog_single/', views.blog_single, name='blog_single'),
     path('djrichtextfield/', include('djrichtextfield.urls')),
 
     url(r'^accounts/', include('loginApp.urls')),
-    url(r'^post/', include('postingApp.urls')),
+    url(r'^blog/', include('postingApp.urls')),
 
 ]
