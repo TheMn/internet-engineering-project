@@ -122,7 +122,7 @@ STATICFILES_DIRS = [
     os.path.join(SITE_ROOT, "static/"),
 ]
 
-LOGIN_REDIRECT_URL = '/index'
+LOGIN_REDIRECT_URL = '/'
 
 DJRICHTEXTFIELD_CONFIG = {
     'js': ['//tinymce.cachefly.net/4.1/tinymce.min.js'],
