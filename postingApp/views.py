@@ -29,6 +29,11 @@ def blog(request):
 def blog_single(request, id):
     post = get_object_or_404(PostStuff, id=id)
     featured_posts = PostStuff.objects.filter(featured=True)[:5]
+    # form = CommentForm(request.POST or None)
+    # if request.method == "POST":
+    #     if form.is_valid():
+    #         form.instance.
+    #         form.save()
     context = {
         'featured_posts': featured_posts,
         'this_post': post

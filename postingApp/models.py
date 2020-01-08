@@ -71,6 +71,10 @@ class PostStuff(models.Model):
             'id': self.id
         })
 
+    @property
+    def get_comments(self):
+        return self.comments.all()
+
 
 class Attachment(models.Model):
     post = models.ForeignKey(PostStuff, on_delete=models.CASCADE)
@@ -78,7 +82,7 @@ class Attachment(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(PostStuff, on_delete=models.CASCADE)
+    post = models.ForeignKey(PostStuff, related_name='comments', on_delete=models.CASCADE)
     author = models.ForeignKey(Profile, on_delete=models.CASCADE)
     text = models.TextField(max_length=400)
     cm_date = models.DateTimeField(auto_now_add=True)
