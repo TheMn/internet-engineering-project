@@ -3,7 +3,7 @@ from django.shortcuts import render
 from .forms import PageForm
 from django.utils.timezone import now
 from .models import PostStuff
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
@@ -26,10 +26,12 @@ def blog(request):
     return render(request, 'blog.html', context)
 
 
-def blog_single(request):
+def blog_single(request, id):
+    post = get_object_or_404(PostStuff, id=id)
     featured_posts = PostStuff.objects.filter(featured=True)[:5]
     context = {
-        'featured_posts': featured_posts
+        'featured_posts': featured_posts,
+        'this_post': post
     }
     return render(request, 'blog_single.html', context)
 

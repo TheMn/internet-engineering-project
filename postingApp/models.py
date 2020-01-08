@@ -67,7 +67,9 @@ class PostStuff(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse()
+        return reverse('blog_single', kwargs={
+            'id': self.id
+        })
 
 
 class Attachment(models.Model):
