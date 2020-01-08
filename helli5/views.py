@@ -1,6 +1,6 @@
 from django.template import loader
 from django.http import HttpResponse
-from datetime import datetime as dt
+import datetime
 from django.shortcuts import render
 from postingApp.models import PostStuff
 
@@ -17,22 +17,32 @@ def contact(request):
     return render(request, 'contact.html', {})
 
 
+def honors(request):
+    return render(request, 'honors.html', {})
+
+
 def about(request):
     return render(request, 'about.html', {})
 
 
 def blog(request):
-    # featured = PostStuff.objects.filter(featured=True)
-    # context = {
-    #     'featured_posts': featured,
-    # }
     return render(request, 'blog.html', {})
 
 
-# TODO: Define these:
+def honors_card(request):
+    return render(request, 'honors_card.html', {})
+
 
 def courses(request):
     return render(request, 'courses.html', {})
+
+
+def example(request):
+    return render(request, 'example.html', {})
+
+
+def base(request):
+    return render(request, 'base.html', {})
 
 
 def teacher(request):

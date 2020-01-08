@@ -5,11 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+<!--    <link rel="stylesheet" href="css/login.css">-->
+
 </head>
 <body>
-<h2>Log in to My Site</h2>
+<h2>ورود به پنل کاربری</h2>
 {% if form.errors %}
-<p style="color: red">Your username and password didn't match. Please try again.</p>
+<p style="color: red">نام کاربری و گذرواژه شما با هم تطابق ندارد، مجددا تلاش کنید</p>
 {% endif %}
 <form method="post">
     {% csrf_token %}
@@ -32,10 +34,18 @@
     <a href="{% url 'signup' %}">New to My Site? Sign up</a>
 </form>
 
+<!--<div class="login">-->
+<!--    <h1>Login</h1>-->
+<!--    <form method="post">-->
+<!--        <input type="text" name="u" placeholder="Username" required="required" />-->
+<!--        <input type="password" name="p" placeholder="Password" required="required" />-->
+<!--        <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>-->
+<!--    </form>-->
+<!--</div>-->
+
 <footer>
 
 </footer>
-
 
 </body>
 </html>
