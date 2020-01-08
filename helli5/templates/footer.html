@@ -54,9 +54,10 @@
             <div class="col-md-6 col-lg-3">
                 <div class="ftco-footer-widget mb-5">
                     <h2 style="font-family: Vazir-Bold" class="ftco-heading-2">عضویت در خبرنامه</h2>
-                    <form action="#" class="subscribe-form">
+                    <form action="{% url 'index' %}" method="POST" class="subscribe-form">
+                        {% csrf_token %}
                         <div class="form-group">
-                            <input style="font-family: Vazir-Medium" type="text" class="form-control mb-2 text-center"
+                            <input type="email" name="email" id="email" style="font-family: Vazir-Medium" class="form-control mb-2 text-center"
                                    placeholder="رایانامه خود را وارد نمایید">
                             <input style="font-family: Vazir-Medium" type="submit" value="عضویت"
                                    class="form-control submit px-3">
