@@ -280,6 +280,12 @@ button {
     border-radius: 0;
 }
 
+@media (min-width: 894px) {
+    #seachbox {
+        width: 60%;
+    }
+}
+
 button:focus {
     outline: 1px dotted;
     outline: 5px auto -webkit-focus-ring-color;
