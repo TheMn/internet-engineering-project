@@ -14,219 +14,278 @@
                         class="ion-ios-arrow-back"></i></a></span> <span>بلاگ <i
                         class="ion-ios-arrow-back"></i></span></p>
             </div>
+
+            {% if user.is_authenticated and not user.profile.role.is_student %}
+            <div class="row col-12">
+                <p style="margin-right: auto; margin-left: auto; border-radius:50%; box-shadow: 0 10px 10px 0 rgba(255, 204, 153, .80), 0 10px 15px 0 rgba(255, 204, 0, .15)" class="mb-0" style="margin-: 10px"><a style="font-family: Vazir-Medium" href="{% url 'add_post' %}"
+                                                         class="btn btn-secondary">نوشته ی
+                    جدید<span
+                            class="icon-plus"></span></a></p>
+            </div>
+            {% endif %}
         </div>
     </div>
 </section>
 
-<section class="ftco-section bg-light" dir="rtl">
-    <div class="container" style="margin-top: -3%">
-        {% if user.is_authenticated and not user.profile.role.is_student %}
-    <p class="mb-0"><a href="{% url 'add_post' %}" class="btn btn-secondary">نوشته ی جدید<span
-            class="icon-plus"></span></a></p>
-    {% endif %}
+
+<section class="ftco-section" style="direction: rtl">
+
+    <div class="container">
         <div class="row">
-            <div dir="rtl" class="sidebar-box" id="seachbox"
-                 style="margin-right: auto; margin-left: auto; margin-top: auto; margin-bottom: auto">
-                <form action="#" class="search-form"
-                      style="border-top-right-radius: 20px; border-bottom-left-radius: 20px">
-                    <div class="form-group">
-                        <span class="icon icon-search"></span>
-                        <input style="border-top-right-radius: 20px; border-bottom-left-radius: 20px; font-family: Vazir-Medium"
-                               type="text" class="form-control"
-                               placeholder="عنوانی را جستجو کنید">
+            <div style="text-align: right" class="col-lg-8 sidebar ftco-animate">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 ftco-animate">
+                        <div class="blog-entry" dir="ltr"
+                             style="border-bottom-left-radius:20px; border-top-right-radius:20px; box-shadow: 0 8px 10px 0 rgba(0, 0, 0, .12), 0 10px 15px 0 rgba(0, 0, 0, .10)">
+                            <a href="blog-single.html" class="block-20 d-flex align-items-end"
+                               style="background-image: url({% static 'images/image_1.jpg' %});border-top-right-radius: 20px">
+                                <div class="meta-date text-center p-2"
+                                     style="border-top-right-radius: 20px; background: #2A4324">
+                                    <span style="font-family: Vazir-Medium" class="day">24</span>
+                                    <span style="font-family: Vazir-Medium" class="mos">آذر</span>
+                                    <span style="font-family: Vazir-Medium" class="yr">1398</span>
+                                </div>
+                            </a>
+                            <div class="text bg-white p-4" style="border-bottom-left-radius: 20px">
+                                <h3 style="font-family: Vazir-Bold" class="heading"><a href="#">عنوان ست شود</a></h3>
+                                <p style="font-family: Vazir-Medium">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                                    صنعت
+                                    چاپ و
+                                    با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                    سطرآنچنان
+                                    که
+                                    لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود
+                                    ابزارهای
+                                    کاربردی می باشد. </p>
+                                <div style="direction: rtl" class="d-flex align-items-center mt-4">
+                                    <p class="ml-auto mb-0">
+                                        <a style="font-family: Vazir-Medium" style="margin-right: 10px" href="#"
+                                           class="mr-2">حسن</a>
+                                        <a style="font-family: Vazir-Medium" href="#" class="meta-chat"><span
+                                                class="icon-chat"></span> 3</a>
+                                    </p>
+                                    <p style="font-family: Vazir-Medium" class="mb-0"><a href="#"
+                                                                                         class="btn btn-secondary">بیشتر
+                                        بخوانید <span
+                                                class="ion-ios-arrow-round-back"></span></a></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </form>
+
+                    <div class="col-sm-12 col-md-6 ftco-animate">
+                        <div class="blog-entry" dir="ltr"
+                             style="border-bottom-left-radius:20px; border-top-right-radius:20px; box-shadow: 0 8px 10px 0 rgba(0, 0, 0, .12), 0 10px 15px 0 rgba(0, 0, 0, .10)">
+                            <a href="blog-single.html" class="block-20 d-flex align-items-end"
+                               style="background-image: url({% static 'images/image_1.jpg' %});border-top-right-radius: 20px">
+                                <div class="meta-date text-center p-2"
+                                     style="border-top-right-radius: 20px; background: #2A4324">
+                                    <span style="font-family: Vazir-Medium" class="day">24</span>
+                                    <span style="font-family: Vazir-Medium" class="mos">آذر</span>
+                                    <span style="font-family: Vazir-Medium" class="yr">1398</span>
+                                </div>
+                            </a>
+                            <div class="text bg-white p-4" style="border-bottom-left-radius: 20px">
+                                <h3 style="font-family: Vazir-Bold" class="heading"><a href="#">عنوان ست شود</a></h3>
+                                <p style="font-family: Vazir-Medium">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                                    صنعت
+                                    چاپ و
+                                    با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                    سطرآنچنان
+                                    که
+                                    لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود
+                                    ابزارهای
+                                    کاربردی می باشد. </p>
+                                <div style="direction: rtl" class="d-flex align-items-center mt-4">
+                                    <p class="ml-auto mb-0">
+                                        <a style="font-family: Vazir-Medium" style="margin-right: 10px" href="#"
+                                           class="mr-2">حسن</a>
+                                        <a style="font-family: Vazir-Medium" href="#" class="meta-chat"><span
+                                                class="icon-chat"></span> 3</a>
+                                    </p>
+                                    <p style="font-family: Vazir-Medium" class="mb-0"><a href="#"
+                                                                                         class="btn btn-secondary">بیشتر
+                                        بخوانید <span
+                                                class="ion-ios-arrow-round-back"></span></a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 ftco-animate">
+                        <div class="blog-entry" dir="ltr"
+                             style="border-bottom-left-radius:20px; border-top-right-radius:20px; box-shadow: 0 8px 10px 0 rgba(0, 0, 0, .12), 0 10px 15px 0 rgba(0, 0, 0, .10)">
+                            <a href="blog-single.html" class="block-20 d-flex align-items-end"
+                               style="background-image: url({% static 'images/image_1.jpg' %});border-top-right-radius: 20px">
+                                <div class="meta-date text-center p-2"
+                                     style="border-top-right-radius: 20px; background: #2A4324">
+                                    <span style="font-family: Vazir-Medium" class="day">24</span>
+                                    <span style="font-family: Vazir-Medium" class="mos">آذر</span>
+                                    <span style="font-family: Vazir-Medium" class="yr">1398</span>
+                                </div>
+                            </a>
+                            <div class="text bg-white p-4" style="border-bottom-left-radius: 20px">
+                                <h3 style="font-family: Vazir-Bold" class="heading"><a href="#">عنوان ست شود</a></h3>
+                                <p style="font-family: Vazir-Medium">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                                    صنعت
+                                    چاپ و
+                                    با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                    سطرآنچنان
+                                    که
+                                    لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود
+                                    ابزارهای
+                                    کاربردی می باشد. </p>
+                                <div style="direction: rtl" class="d-flex align-items-center mt-4">
+                                    <p class="ml-auto mb-0">
+                                        <a style="font-family: Vazir-Medium" style="margin-right: 10px" href="#"
+                                           class="mr-2">حسن</a>
+                                        <a style="font-family: Vazir-Medium" href="#" class="meta-chat"><span
+                                                class="icon-chat"></span> 3</a>
+                                    </p>
+                                    <p style="font-family: Vazir-Medium" class="mb-0"><a href="#"
+                                                                                         class="btn btn-secondary">بیشتر
+                                        بخوانید <span
+                                                class="ion-ios-arrow-round-back"></span></a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row no-gutters my-5" dir="ltr">
+                    <div class="col text-center">
+                        <div class="block-27">
+                            <ul>
+                                <li style="border-color:#2A4324"><a href="#"><i style="color:#2A4324;"
+                                                                                class="ion-ios-arrow-back"></i></a></li>
+                                <li class="active"><span>1</span></li>
+                                <li><a style="color:#2A4324" href="#">2</a></li>
+                                <li><a style="color:#2A4324 " href="#">3</a></li>
+                                <li><a style="color:#2A4324" href="#">4</a></li>
+                                <li><a style="color:#2A4324" href="#">5</a></li>
+                                <li><a style="color:#2A4324" href="#"><i class="ion-ios-arrow-forward"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
+            <div style="text-align: right" class="col-lg-4 sidebar ftco-animate">
+                <div dir="rtl" class="sidebar-box" style="width: 100%">
+                    <form action="#" class="search-form"
+                          style="border-top-right-radius: 20px; border-bottom-left-radius: 20px">
+                        <div class="form-group">
+                            <span class="icon icon-search"></span>
+                            <input style="border-top-right-radius: 20px; border-bottom-left-radius: 20px; font-family: Vazir-Medium"
+                                   type="text" class="form-control"
+                                   placeholder="عنوانی را جستجو کنید">
+                        </div>
+                    </form>
+                </div>
+                <div class="sidebar-box ftco-animate">
+                    <h3 style="font-family: Vazir-Bold">پست های داغ</h3>
+                    <div class="block-21 mb-4 d-flex"
+                         style="background: #FAFAFA; border-bottom-left-radius: 20px; border-top-right-radius: 20px;">
+                        <div class="">
+                            <h3 style="font-family: Vazir-Bold; margin-left: 5%; margin-right: 5%; margin-top: 5%"
+                                class="heading"><a style="color: #1b1e21"
+                                                   href="#">لورم ایپسوم متن ساختگی با
+                                تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </a></h3>
+                            <hr>
+                            <div class="meta container" style="margin-bottom: 2%">
+                                <div class="row" style="margin-right: 10px; margin-top: 5px; margin-top: -5px">
+                                    <div style="margin-left: 10px"><span class="icon-calendar"></span><a
+                                            style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium"
+                                            href="#"> آبان</a></div>
+                                    <div><span class="icon-person"></span><a
+                                            style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium"
+                                            href="#">سکینه</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block-21 mb-4 d-flex"
+                         style="background: #FAFAFA; border-bottom-left-radius: 20px; border-top-right-radius: 20px;">
+                        <div class="">
+                            <h3 style="font-family: Vazir-Bold; margin-left: 5%; margin-right: 5%; margin-top: 5%"
+                                class="heading"><a style="color: #1b1e21"
+                                                   href="#">لورم ایپسوم متن ساختگی با
+                                تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </a></h3>
+                            <hr>
+                            <div class="meta container" style="margin-bottom: 2%">
+                                <div class="row" style="margin-right: 10px; margin-top: 5px; margin-top: -5px">
+                                    <div style="margin-left: 10px"><span class="icon-calendar"></span><a
+                                            style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium"
+                                            href="#"> آبان</a></div>
+                                    <div><span class="icon-person"></span><a
+                                            style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium"
+                                            href="#">سکینه</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="sidebar-box ftco-animate">
+                        <h3 style="font-family: Vazir-Bold">تگ ها</h3>
+                        <ul class="tagcloud m-0 p-0">
+                            <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
+                               class="tag-cloud-link">تگ 1</a>
+                            <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
+                               class="tag-cloud-link">تگ 2</a>
+                            <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
+                               class="tag-cloud-link">تگ 3</a>
+                            <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
+                               class="tag-cloud-link">تگ 4</a>
+                            <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
+                               class="tag-cloud-link">تک 5</a>
+                            <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
+                               class="tag-cloud-link">تگ 6</a>
+                            <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
+                               class="tag-cloud-link">تگ شماره های دیگر</a>
+                        </ul>
+                    </div>
+                    <div class="sidebar-box ftco-animate" style="direction: ltr">
+                        <h3 style="font-family: Vazir-Bold">دسته بندی</h3>
+                        <ul class="categories">
+                            <div class="row">
+                                <div style="text-align: left" class="col-lg-4 ">
+                                    <span>(6)</span>
+                                </div>
+                                <div class="col-lg-8 ">
+                                    <li><a style="font-family: Vazir-Medium" href="#">دسته اول </a></li>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row">
+                                <div style="text-align: left" class="col-lg-4 ">
+                                    <span>(8)</span>
+                                </div>
+                                <div class="col-lg-8 ">
+                                    <li><a style="font-family: Vazir-Medium" href="#">دسته دوم </a></li>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row">
+                                <div style="text-align: left" class="col-lg-4 ">
+                                    <span>(5)</span>
+                                </div>
+                                <div class="col-lg-8 ">
+                                    <li><a style="font-family: Vazir-Medium" href="#">دسته سوم </a></li>
+                                </div>
+                            </div>
+                            <hr>
+                        </ul>
+                    </div>
+                </div>
+
+            </div><!-- END COL -->
         </div>
-        <div class="row">
-            <div class="col-md-6 col-lg-4 ftco-animate">
-                <div class="blog-entry" dir="ltr"
-                     style="border-bottom-left-radius:20px; border-top-right-radius:20px; box-shadow: 0 8px 10px 0 rgba(0, 0, 0, .12), 0 10px 15px 0 rgba(0, 0, 0, .10)">
-                    <a href="blog-single.html" class="block-20 d-flex align-items-end"
-                       style="background-image: url({% static 'images/image_1.jpg' %});border-top-right-radius: 20px">
-                        <div class="meta-date text-center p-2"
-                             style="border-top-right-radius: 20px; background: #2A4324">
-                            <span style="font-family: Vazir-Medium" class="day">24</span>
-                            <span style="font-family: Vazir-Medium" class="mos">آذر</span>
-                            <span style="font-family: Vazir-Medium" class="yr">1398</span>
-                        </div>
-                    </a>
-                    <div class="text bg-white p-4" style="border-bottom-left-radius: 20px">
-                        <h3 style="font-family: Vazir-Bold" class="heading"><a href="#">عنوان ست شود</a></h3>
-                        <p style="font-family: Vazir-Medium">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
-                            با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
-                            لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
-                            کاربردی می باشد. </p>
-                        <div style="direction: rtl" class="d-flex align-items-center mt-4">
-                            <p class="ml-auto mb-0">
-                                <a style="font-family: Vazir-Medium" style="margin-right: 10px" href="#"
-                                   class="mr-2">حسن</a>
-                                <a style="font-family: Vazir-Medium" href="#" class="meta-chat"><span
-                                        class="icon-chat"></span> 3</a>
-                            </p>
-                            <p style="font-family: Vazir-Medium" class="mb-0"><a href="#" class="btn btn-secondary">بیشتر
-                                بخوانید <span
-                                        class="ion-ios-arrow-round-back"></span></a></p>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 ftco-animate">
-                <div class="blog-entry" dir="ltr"
-                     style="border-bottom-left-radius:20px; border-top-right-radius:20px; box-shadow: 0 8px 10px 0 rgba(0, 0, 0, .12), 0 10px 15px 0 rgba(0, 0, 0, .10)">
-                    <a href="blog-single.html" class="block-20 d-flex align-items-end"
-                       style="background-image: url({% static 'images/image_1.jpg' %});border-top-right-radius: 20px">
-                        <div class="meta-date text-center p-2"
-                             style="border-top-right-radius: 20px; background: #2A4324">
-                            <span style="font-family: Vazir-Medium" class="day">24</span>
-                            <span style="font-family: Vazir-Medium" class="mos">آذر</span>
-                            <span style="font-family: Vazir-Medium" class="yr">1398</span>
-                        </div>
-                    </a>
-                    <div class="text bg-white p-4" style="border-bottom-left-radius: 20px">
-                        <h3 style="font-family: Vazir-Bold" class="heading"><a href="#">عنوان ست شود</a></h3>
-                        <p style="font-family: Vazir-Medium">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
-                            با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
-                            لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
-                            کاربردی می باشد. </p>
-                        <div style="direction: rtl" class="d-flex align-items-center mt-4">
-                            <p class="ml-auto mb-0">
-                                <a style="font-family: Vazir-Medium" style="margin-right: 10px" href="#"
-                                   class="mr-2">حسن</a>
-                                <a style="font-family: Vazir-Medium" href="#" class="meta-chat"><span
-                                        class="icon-chat"></span> 3</a>
-                            </p>
-                            <p style="font-family: Vazir-Medium" class="mb-0"><a href="#" class="btn btn-secondary">بیشتر
-                                بخوانید <span
-                                        class="ion-ios-arrow-round-back"></span></a></p>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 ftco-animate">
-                <div class="blog-entry" dir="ltr"
-                     style="border-bottom-left-radius:20px; border-top-right-radius:20px; box-shadow: 0 8px 10px 0 rgba(0, 0, 0, .12), 0 10px 15px 0 rgba(0, 0, 0, .10)">
-                    <a href="blog-single.html" class="block-20 d-flex align-items-end"
-                       style="background-image: url({% static 'images/image_1.jpg' %});border-top-right-radius: 20px">
-                        <div class="meta-date text-center p-2"
-                             style="border-top-right-radius: 20px; background: #2A4324">
-                            <span style="font-family: Vazir-Medium" class="day">24</span>
-                            <span style="font-family: Vazir-Medium" class="mos">آذر</span>
-                            <span style="font-family: Vazir-Medium" class="yr">1398</span>
-                        </div>
-                    </a>
-                    <div class="text bg-white p-4" style="border-bottom-left-radius: 20px">
-                        <h3 style="font-family: Vazir-Bold" class="heading"><a href="#">عنوان ست شود</a></h3>
-                        <p style="font-family: Vazir-Medium">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
-                            با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
-                            لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
-                            کاربردی می باشد. </p>
-                        <div style="direction: rtl" class="d-flex align-items-center mt-4">
-                            <p class="ml-auto mb-0">
-                                <a style="font-family: Vazir-Medium" style="margin-right: 10px" href="#"
-                                   class="mr-2">حسن</a>
-                                <a style="font-family: Vazir-Medium" href="#" class="meta-chat"><span
-                                        class="icon-chat"></span> 3</a>
-                            </p>
-                            <p style="font-family: Vazir-Medium" class="mb-0"><a href="#" class="btn btn-secondary">بیشتر
-                                بخوانید <span
-                                        class="ion-ios-arrow-round-back"></span></a></p>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 ftco-animate">
-                <div class="blog-entry" dir="ltr"
-                     style="border-bottom-left-radius:20px; border-top-right-radius:20px; box-shadow: 0 8px 10px 0 rgba(0, 0, 0, .12), 0 10px 15px 0 rgba(0, 0, 0, .10)">
-                    <a href="blog-single.html" class="block-20 d-flex align-items-end"
-                       style="background-image: url({% static 'images/image_1.jpg' %});border-top-right-radius: 20px">
-                        <div class="meta-date text-center p-2"
-                             style="border-top-right-radius: 20px; background: #2A4324">
-                            <span style="font-family: Vazir-Medium" class="day">24</span>
-                            <span style="font-family: Vazir-Medium" class="mos">آذر</span>
-                            <span style="font-family: Vazir-Medium" class="yr">1398</span>
-                        </div>
-                    </a>
-                    <div class="text bg-white p-4" style="border-bottom-left-radius: 20px">
-                        <h3 style="font-family: Vazir-Bold" class="heading"><a href="#">عنوان ست شود</a></h3>
-                        <p style="font-family: Vazir-Medium">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
-                            با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
-                            لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
-                            کاربردی می باشد. </p>
-                        <div style="direction: rtl" class="d-flex align-items-center mt-4">
-                            <p class="ml-auto mb-0">
-                                <a style="font-family: Vazir-Medium" style="margin-right: 10px" href="#"
-                                   class="mr-2">حسن</a>
-                                <a style="font-family: Vazir-Medium" href="#" class="meta-chat"><span
-                                        class="icon-chat"></span> 3</a>
-                            </p>
-                            <p style="font-family: Vazir-Medium" class="mb-0"><a href="#" class="btn btn-secondary">بیشتر
-                                بخوانید <span
-                                        class="ion-ios-arrow-round-back"></span></a></p>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 ftco-animate">
-                <div class="blog-entry" dir="ltr"
-                     style="border-bottom-left-radius:20px; border-top-right-radius:20px; box-shadow: 0 8px 10px 0 rgba(0, 0, 0, .12), 0 10px 15px 0 rgba(0, 0, 0, .10)">
-                    <a href="blog-single.html" class="block-20 d-flex align-items-end"
-                       style="background-image: url({% static 'images/image_1.jpg' %});border-top-right-radius: 20px">
-                        <div class="meta-date text-center p-2"
-                             style="border-top-right-radius: 20px; background: #2A4324">
-                            <span style="font-family: Vazir-Medium" class="day">24</span>
-                            <span style="font-family: Vazir-Medium" class="mos">آذر</span>
-                            <span style="font-family: Vazir-Medium" class="yr">1398</span>
-                        </div>
-                    </a>
-                    <div class="text bg-white p-4" style="border-bottom-left-radius: 20px">
-                        <h3 style="font-family: Vazir-Bold" class="heading"><a href="#">عنوان ست شود</a></h3>
-                        <p style="font-family: Vazir-Medium">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
-                            با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
-                            لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
-                            کاربردی می باشد. </p>
-                        <div style="direction: rtl" class="d-flex align-items-center mt-4">
-                            <p class="ml-auto mb-0">
-                                <a style="font-family: Vazir-Medium" style="margin-right: 10px" href="#"
-                                   class="mr-2">حسن</a>
-                                <a style="font-family: Vazir-Medium" href="#" class="meta-chat"><span
-                                        class="icon-chat"></span> 3</a>
-                            </p>
-                            <p style="font-family: Vazir-Medium" class="mb-0"><a href="#" class="btn btn-secondary">بیشتر
-                                بخوانید <span
-                                        class="ion-ios-arrow-round-back"></span></a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row no-gutters my-5" dir="ltr">
-            <div class="col text-center">
-                <div class="block-27">
-                    <ul>
-                        <li style="border-color:#2A4324"><a href="#"><i style="color:#2A4324;"
-                                                                        class="ion-ios-arrow-back"></i></a></li>
-                        <li class="active"><span>1</span></li>
-                        <li><a style="color:#2A4324" href="#">2</a></li>
-                        <li><a style="color:#2A4324 " href="#">3</a></li>
-                        <li><a style="color:#2A4324" href="#">4</a></li>
-                        <li><a style="color:#2A4324" href="#">5</a></li>
-                        <li><a style="color:#2A4324" href="#"><i class="ion-ios-arrow-forward"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
 </section>
+
 {% endblock %}
 
 
