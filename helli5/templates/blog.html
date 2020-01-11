@@ -18,15 +18,12 @@
     </div>
 </section>
 
-<section>
-    {% if user.is_authenticated and not user.profile.role.is_student %}
+<section class="ftco-section bg-light" dir="rtl">
+    <div class="container" style="margin-top: -3%">
+        {% if user.is_authenticated and not user.profile.role.is_student %}
     <p class="mb-0"><a href="{% url 'add_post' %}" class="btn btn-secondary">نوشته ی جدید<span
             class="icon-plus"></span></a></p>
     {% endif %}
-</section>
-
-<section class="ftco-section bg-light" dir="rtl">
-    <div class="container" style="margin-top: -3%">
         <div class="row">
             <div dir="rtl" class="sidebar-box" id="seachbox"
                  style="margin-right: auto; margin-left: auto; margin-top: auto; margin-bottom: auto">
