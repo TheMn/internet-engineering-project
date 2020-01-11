@@ -3,7 +3,7 @@
 }
 
 body {
-    font-family: sans-serif;
+    font-family: Vazir-Medium;
 }
 
 select {
@@ -42,7 +42,6 @@ select {
 
 .element-item .name {
     position: absolute;
-
     /*left: 10px;*/
     /*top: 60px;*/
     text-transform: none;
@@ -175,7 +174,7 @@ p.date, p.author {
 
 .canvas-95 {
     margin: 0 auto;
-    width: 98%;
+    width: 100%;
 }
 
 ul, ol {
