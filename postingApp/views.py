@@ -18,10 +18,11 @@ def blog(request):
         paginated_queryset = paginator.page(1)
     except EmptyPage:
         paginated_queryset = paginator.page(paginator.num_pages)
+    featured_posts = PostStuff.objects.filter(featured=True)[:5]
     context = {
         'queryset': paginated_queryset,
         'page_request_var': page_request_var,
-
+        'featured_posts': featured_posts,
     }
     return render(request, 'blog.html', context)
 
