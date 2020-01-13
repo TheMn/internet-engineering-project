@@ -21,20 +21,22 @@ from . import views
 import loginApp
 from django.contrib import admin
 from django.urls import include, path
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
 
-    path('', views.index, name='index'),
-    path('admin/', admin.site.urls),
-    path('teacher/', views.teacher, name='teacher'),
-    path('contact/', views.contact, name='contact'),
-    path('about/', views.about, name='about'),
-    path('blog/', views.blog, name='blog'),
-    path('courses/', views.courses, name='courses'),
-    path('blog_single/', views.blog_single, name='blog_single'),
-    path('djrichtextfield/', include('djrichtextfield.urls')),
+                  path('', views.index, name='index'),
+                  path('admin/', admin.site.urls),
+                  path('teacher/', views.teacher, name='teacher'),
+                  path('contact/', views.contact, name='contact'),
+                  path('about/', views.about, name='about'),
+                  path('blog/', views.blog, name='blog'),
+                  path('courses/', views.courses, name='courses'),
+                  path('blog_single/', views.blog_single, name='blog_single'),
+                  path('djrichtextfield/', include('djrichtextfield.urls')),
 
-    url(r'^accounts/', include('loginApp.urls')),
-    url(r'^post/', include('postingApp.urls')),
+                  url(r'^accounts/', include('loginApp.urls')),
+                  url(r'^post/', include('postingApp.urls')),
 
-]
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
