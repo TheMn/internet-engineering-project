@@ -307,6 +307,25 @@ input {
     overflow: visible;
 }
 
+@media (max-width: 992px) {
+    .id_user{
+        display: none;
+    }
+    .user_response{
+        display: block;
+    }
+
+}
+
+@media (min-width: 992px) {
+    .id_user{
+        display: block;
+    }
+    .user_response {
+        display: none;
+    }
+}
+
 button,
 select {
     text-transform: none;
@@ -8946,7 +8965,7 @@ button.bg-dark:focus {
 
 .pr-2,
 .px-2 {
-    padding-right: 0.5rem !important;
+    /*padding-right: 0.5rem !important;*/
 }
 
 .pb-2,
@@ -11306,7 +11325,7 @@ h1, h2, h3, h4, h5,
 
 .topper {
     font-size: 15px;
-    width: 100%;
+    /*width: 100%;*/
     display: block;
 }
 

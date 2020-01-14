@@ -19,10 +19,10 @@
                                                                                 class="text">خیابان ایرانشهر جنوبی، بعد از تقاطع سمیه، پلاک ۵۰</span>
                             </li>
                             <li><span style="font-family: Vazir-Medium" class="icon icon-phone"></span><span
-                                    class="text">۸۸۳۲۹۱۸۲</span></li>
+                                    class="text" style="font-family:Vazir-Medium;">۸۸۳۲۹۱۸۲</span></li>
                             <li><span style="font-family: Vazir-Medium" class="icon icon-telegram"></span><a
                                     href="https://t.me/allamehelli5"><span
-                                    class="text" style="color: inherit">کانال اطلاع رسانی</span></a></li>
+                                    class="text" style="font-family:Vazir-Medium; color: inherit">کانال اطلاع رسانی</span></a></li>
 
                             <!--                            TODO: Add email address-->
                             <!--                            <li><a href="#"><span style="font-family: Vazir-Medium"-->
@@ -40,13 +40,13 @@
                     <ul class="list-unstyled">
                         <li style="font-family:Vazir-Medium; text-align: right; margin-right: -10%"><a
                                 href="https://www.medu.ir/fa/"><span
-                                class="ion-ios-arrow-round-back mr-2"></span>وزارت آموزش و پرورش</a></li>
+                                class="ion-ios-arrow-round-back mr-2" style="line-height:2em"></span>وزارت آموزش و پرورش</a></li>
                         <li style="font-family:Vazir-Medium; text-align: right; margin-right: -10%"><a
                                 href="https://www.irysc.com/"><span
-                                class="ion-ios-arrow-round-back mr-2"></span>المپیادهای علمی ایران</a></li>
+                                class="ion-ios-arrow-round-back mr-2" style="line-height:2em"></span>المپیادهای علمی ایران</a></li>
                         <li style="font-family:Vazir-Medium; text-align: right; margin-right: -10%"><a
                                 href="https://www.helli.ir/portal/"><span
-                                class="ion-ios-arrow-round-back mr-2"></span>دبیرستان علامه حلی تهران</a></li>
+                                class="ion-ios-arrow-round-back mr-2" style="line-height:2em"></span>دبیرستان علامه حلی تهران</a></li>
                     </ul>
                 </div>
             </div>
@@ -57,9 +57,9 @@
                     <form action="{% url 'index' %}" method="POST" class="subscribe-form">
                         {% csrf_token %}
                         <div class="form-group">
-                            <input type="email" name="email" id="email" style="font-family: Vazir-Medium" class="form-control mb-2 text-center"
+                            <input type="email" name="email" id="email" style="font-family: Vazir-Medium; border-top-right-radius: 20px" class="form-control mb-2 text-center"
                                    placeholder="رایانامه خود را وارد نمایید">
-                            <input style="font-family: Vazir-Medium" type="submit" value="عضویت"
+                            <input style="font-family: Vazir-Medium; border-bottom-left-radius: 20px" type="submit" value="عضویت"
                                    class="form-control submit px-3">
                         </div>
                     </form>

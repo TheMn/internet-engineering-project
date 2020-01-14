@@ -2,24 +2,24 @@
 <div style="direction: rtl; background: #2A4324" class="py-2">
     <div class="container">
         <div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
-            <div style="direction: rtl" class="col-lg-12 d-block">
+            <div style="direction: rtl" class="col-12 d-block">
                 <div class="row">
-
-                    <div class="col-md-6 pr-6 d-flex topper align-items-center">
+                    <div class="col-6 pr-6 d-flex topper align-items-center">
                         <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
-                                class="icon-person text-center"></span></div>
+                                class="icon-person text-center id_user"></span></div>
                         {% if not user.is_authenticated %}
-                        <span style="font-family: Vazir-Medium"><a href="{% url 'login' %}"
-                                                                   style="color:white;font-family: Vazir-Medium">ورود</a></span>
-                        <!--                        TODO: Add profile page if needed-->
+                        <a href="{% url 'login' %}" style="color:white;font-family: Vazir-Medium"><span
+                                style="font-family: Vazir-Medium" class="id_user"> ورود</span></a>
+                        <!--TODO: Add profile page if needed-->
                         {% else %}
-                        <span style="font-family: Vazir-Medium"><a href="{% url 'logout' %}"
-                                                                   style="color:white;font-family: Vazir-Medium">{{ user.username }}(خروج)</a></span>
+                        <a href="{% url 'logout' %}" style="color:white;font-family: Vazir-Medium"><span
+                                style="font-family: Vazir-Medium" class="id_user">{{ user.username }}  [خروج]</span></a>
                         {% endif %}
                     </div>
 
-                    <p div class="col-md-6 pr-6" style="text-align: left; color: white; font-family: Vazir-Medium; margin-bottom: -1%" id="date_place" style="text-align: end; padding-left: 5%">تاریخ اینجا ست شود</p>
-
+                    <p class="col-6 pr-6"
+                       style="text-align: left; margin-top: 0.5%; color: white; font-family: Vazir-Thin; margin-bottom: -1%"
+                       id="date_place" style="padding-left: 5%">تاریخ اینجا ست شود</p>
                 </div>
             </div>
         </div>
@@ -51,6 +51,13 @@
                     ما</a></li>
                 <li class="nav-item"><a href="{% url 'contact' %}" style="font-family: Vazir-Medium" class="nav-link">ارتباط
                     با ما</a></li>
+                {% if not user.is_authenticated %}
+                <li class="nav-item user_response"><a href="{% url 'login' %}" style="font-family: Vazir-Medium"
+                                        class="nav-link">ورود</a></li>
+                {% else %}
+                <li class="nav-item user_response"><a href="{% url 'login' %}" style="font-family: Vazir-Medium"
+                                        class="nav-link">{{ user.username }} [خروج]</a></li>
+                {% endif %}
             </ul>
         </div>
 
