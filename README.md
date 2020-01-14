@@ -26,7 +26,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-360/)
+[![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg?style=flat-square)](https://www.python.org/downloads/release/python-360/)
 
 ![Helli5](http://bayanbox.ir/preview/3435310080500137853/Logo1.jpg)
 
@@ -122,14 +122,13 @@ Project Link: [https://github.com/TheMn/internet-engineering-project](https://gi
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=flat-square
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=flat-square
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
+[contributors-shield]: https://img.shields.io/github/contributors/TheMn/internet-engineering-project?style=flat-square
+[contributors-url]: https://github.com/TheMn/internet-engineering-project/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/TheMn/internet-engineering-project?style=flat-square
+[forks-url]: https://github.com/TheMn/internet-engineering-project/network/members
+[stars-shield]: https://img.shields.io/github/stars/TheMn/internet-engineering-project?style=flat-square
+[stars-url]: https://github.com/TheMn/internet-engineering-project/stargazers
+[issues-shield]: https://img.shields.io/github/issues/TheMn/internet-engineering-project?style=flat-square
+[issues-url]: https://github.com/TheMn/internet-engineering-project/issues
+
 
