@@ -2,7 +2,8 @@
 {% load static %}
 {% block title %} درباره ما {% endblock %}
 {% block content %}
-<section class="hero-wrap hero-wrap-2" style="background-image: url({% static '/images/حیاط-دبیرستان-علامه-حلی-۵.JPG' %});">
+<section class="hero-wrap hero-wrap-2"
+         style="background-image: url({% static '/images/حیاط-دبیرستان-علامه-حلی-۵.JPG' %});">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -21,12 +22,24 @@
     <div class="container">
         <div class="row">
             {% static 'images/image_1.jpg' as post_pic %}
-            {% include 'honors_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad' post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398 post_comment_counter=0 %}
-            {% include 'honors_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad' post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398 post_comment_counter=0 %}
-            {% include 'honors_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad' post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398 post_comment_counter=0 %}
-            {% include 'honors_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad' post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398 post_comment_counter=0 %}
-            {% include 'honors_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad' post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398 post_comment_counter=0 %}
-            {% include 'honors_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad' post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398 post_comment_counter=0 %}
+            {% include 'honors_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad'
+            post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398
+            post_comment_counter=0 %}
+            {% include 'honors_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad'
+            post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398
+            post_comment_counter=0 %}
+            {% include 'honors_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad'
+            post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398
+            post_comment_counter=0 %}
+            {% include 'honors_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad'
+            post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398
+            post_comment_counter=0 %}
+            {% include 'honors_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad'
+            post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398
+            post_comment_counter=0 %}
+            {% include 'honors_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad'
+            post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398
+            post_comment_counter=0 %}
 
         </div>
     </div>
