@@ -70,7 +70,7 @@ the opportunity to inform students, upload homework and etc.
 in order to run this project you need to install few packages which its listed below
 
 
-1)python 3.7 (on linux)
+1)python 3.7
 ```
 $ sudo apt-get update
 $ sudo apt-get install python3.7
