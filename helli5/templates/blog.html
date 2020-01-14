@@ -33,10 +33,11 @@
 
     <div class="container">
         <div class="row">
-            {% for fpost in queryset %}
 
             <div style="text-align: right" class="col-lg-8 sidebar ftco-animate">
                 <div class="row">
+                                {% for fpost in queryset %}
+
                     <div class="col-sm-12 col-md-6 ftco-animate">
                         <div class="blog-entry" dir="ltr"
                              style="border-bottom-left-radius:20px; border-top-right-radius:20px; box-shadow: 0 8px 10px 0 rgba(0, 0, 0, .12), 0 10px 15px 0 rgba(0, 0, 0, .10)">
@@ -53,7 +54,7 @@
                                 <h3 style="font-family: Vazir-Bold" class="heading"><a href="#">{{ fpost.title }}</a>
                                 </h3>
                                 <p style="font-family: Vazir-Medium">
-                                    {{ fpost.text|safe }} </p>
+                                    {{ fpost.text|safe }} </p>f
                                 <div style="direction: rtl" class="d-flex align-items-center mt-4">
                                     <p class="ml-auto mb-0">
                                         <a style="font-family: Vazir-Medium" style="margin-right: 10px" href="#"
@@ -119,7 +120,7 @@
                     <div class="block-21 mb-4 d-flex"
                          style="background: #FAFAFA; border-bottom-left-radius: 20px; border-top-right-radius: 20px;">
                         <!--                        <a class="blog-img mr-4" style="background-image: url({{ fpost.img.url }});"></a>-->
-                        <div class="text">
+                        <div class="text col-12">
                             <h3 class="heading"
                                 style="font-family: Vazir-Bold; margin-left: 5%; margin-right: 5%; margin-top: 5%"><a
                                     href="{{ fpost.get_absolute_url }}" style="color: #1b1e21">
@@ -131,6 +132,8 @@
                                     <div style="margin-left: 10px"><span class="icon-calendar"></span><a
                                             style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium"
                                             href="#">{{ fpost.date|date:"Y m d" }}</a></div>
+                                </div>
+                                <div class="row" style="margin-right: 10px; margin-top: 5px; margin-top: -5px">
                                     <div><span class="icon-person"></span><a
                                             style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium"
                                             href="#">{{ fpost.username }}</a></div>

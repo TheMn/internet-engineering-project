@@ -9,7 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def blog(request):
     post_list = PostStuff.objects.all()
-    paginator = Paginator(post_list, 1)
+    paginator = Paginator(post_list, 6)
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
     try:
