@@ -1,0 +1,77 @@
+/**
+ * More sensible default box-sizing:
+ * css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
+ */
+html {
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.site-header,
+.site-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.site-header {
+  height: 100px;
+  background-color: #e7eaed;
+}
+
+.content-area {
+  display: flex;
+}
+
+.site-main {
+  width: 75%;
+}
+
+.sidebar-area {
+  background-color: #f9f9f9;
+  position: relative;
+  width: 290px;
+}
+
+.side-navigation.fixed {
+  position: fixed;
+  top: 0;
+  width: 290px;
+}
+.side-navigation.bottom {
+  position: absolute;
+  bottom: 0;
+  top: auto;
+  width: 290px;
+}
+.side-navigation .menu {
+  padding-top: 15px;
+  list-style-type: none;
+}
+.side-navigation .menu-item {
+  position: relative;
+}
+.side-navigation .menu-item:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  background-color: #DEA44A;
+  transition: width 0.3s ease-in;
+}
+.side-navigation .menu-item:hover:before {
+  width: 100%;
+}
+.side-navigation .menu-item a {
+  color: #2A4324;
+  text-decoration: none;
+  position: relative;
+  display: block;
+  padding: 18px 10px;
+}

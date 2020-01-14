@@ -59,6 +59,9 @@ def base(request):
 def error503(request):
     return render(request, 'error503.html', {})
 
+def course_single(request):
+    return render(request, 'course_single.html', {})
+
 
 def teacher(request):
     return render(request, 'teacher.html', {})
