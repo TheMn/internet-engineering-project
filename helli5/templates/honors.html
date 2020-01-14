@@ -40,7 +40,7 @@
                                 id="firstSelector"
                                 class="filters-select form-control">
                             <option style="font-family: Vazir-Medium" value="*">همه ی حوزه ها</option>
-                            <option style="font-family: Vazir-Medium" value=".konkour">کنکور</option>
+                            <option style="font-family: Vazir-Medium" value=".کنکور">کنکور</option>
                             <option style="font-family: Vazir-Medium" value=".olampiad">المپیاد</option>
                             <option style="font-family: Vazir-Medium" value=".pajouheshi">پژوهشی</option>
                             <option style="font-family: Vazir-Medium" value=".qoraani">قرآنی</option>
@@ -77,7 +77,7 @@
         <div class="row grid isotope">
 
             {% for honor_card in all_honors %}
-            <div class="element-item konkour sal98 col-md-6 col-lg-4" style="width: 100%">
+            <div class="{{ honor_card.get_class }}" style="width: 100%">
                 <div dir="rtl"
                      style="margin-right:5px;margin-top: 10px;margin-left: 5px;margin-bottom: 10px; height:150px;
                      border-radius: 0px 20px 0px 20px;
