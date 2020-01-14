@@ -40,10 +40,6 @@ def about(request):
     return render(request, 'about.html', {})
 
 
-def honors_card(request):
-    return render(request, 'honors_card.html', {})
-
-
 def courses(request):
     return render(request, 'courses.html', {})
 

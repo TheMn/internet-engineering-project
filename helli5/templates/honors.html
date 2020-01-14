@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} درباره ما {% endblock %}
+{% block title %} افتخارات {% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/search_honors.css' %}">
+{% endblock %}
+
 {% block content %}
 <section class="hero-wrap hero-wrap-2"
          style="background-image: url({% static '/images/حیاط-دبیرستان-علامه-حلی-۵.JPG' %});">
@@ -17,35 +21,100 @@
     </div>
 </section>
 
-
-<section class="ftco-section bg-light">
-    <div class="container">
-        <div class="row">
-            {% static 'images/image_1.jpg' as post_pic %}
-            {% include 'honors_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad'
-            post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398
-            post_comment_counter=0 %}
-            {% include 'honors_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad'
-            post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398
-            post_comment_counter=0 %}
-            {% include 'honors_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad'
-            post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398
-            post_comment_counter=0 %}
-            {% include 'honors_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad'
-            post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398
-            post_comment_counter=0 %}
-            {% include 'honors_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad'
-            post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398
-            post_comment_counter=0 %}
-            {% include 'honors_card.html' with post_title='post-test' post_caption='dar inja caption neveshte mishavad'
-            post_writer='themn' post_url='' post_img_url=post_pic post_day=1 post_month='dey' post_year=1398
-            post_comment_counter=0 %}
-
+<section style="background: #fafafa; padding-top: 1%">
+    <div class="container" dir="rtl">
+        <div class="canvas-95">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <p style="font-family: Vazir-Medium" for="quicksearch">جستجو</p>
+                        <input style="border-top-right-radius: 20px; border-bottom-left-radius: 20px; font-family: Vazir-Medium"
+                               type="text" id="quicksearch"
+                               placeholder="عنوانی را جستجو کنید" class="form-control"/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <p style="font-family: Vazir-Medium" for="firstSelector">حوزه</p>
+                        <select style="border-top-right-radius: 20px; border-bottom-left-radius: 20px; font-family: Vazir-Medium"
+                                id="firstSelector"
+                                class="filters-select form-control">
+                            <option style="font-family: Vazir-Medium" value="*">همه ی حوزه ها</option>
+                            <option style="font-family: Vazir-Medium" value=".konkour">کنکور</option>
+                            <option style="font-family: Vazir-Medium" value=".olampiad">المپیاد</option>
+                            <option style="font-family: Vazir-Medium" value=".pajouheshi">پژوهشی</option>
+                            <option style="font-family: Vazir-Medium" value=".qoraani">قرآنی</option>
+                            <!--                        <option value=".alkali, .alkaline-earth">alkali and alkaline-earth</option>-->
+                            <!--                        <option value=":not(.transition)">not transition</option>-->
+                            <!--                        <option value=".metal:not(.transition)">metal but not transition</option>-->
+                            <!--                        <option value="numberGreaterThan50">number > 50</option>-->
+                            <!--                        <option value="ium">name ends with &ndash;ium</option>-->
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <p style="font-family: Vazir-Medium" for="selectorTwo">سال تحصیلی</p>
+                        <select style="border-top-right-radius: 20px; border-bottom-left-radius: 20px; font-family: Vazir-Medium"
+                                id="selectorTwo" class="filters-select2 form-control">
+                            <option style="font-family: Vazir-Medium" value="*">همه ی دوره ها</option>
+                            <option style="font-family: Vazir-Medium" value=".sal98">98-99</option>
+                            <option style="font-family: Vazir-Medium" value=".sal97">97-98</option>
+                            <option style="font-family: Vazir-Medium" value=".sal96">96-97</option>
+                            <!--                        <option value=":not(.transition)">not transition</option>-->
+                            <!--                        <option value=".metal:not(.transition)">metal but not transition</option>-->
+                            <!--                        <option value="numberGreaterThan50">number > 50</option>-->
+                            <!--                        <option value="ium">name ends with &ndash;ium</option>-->
+                        </select>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</section>
+<section class="ftco-section bg-light" dir="rtl">
+    <div class="container" style="margin-top: -4%">
+        <div class="row grid isotope">
+
+            {% for honor_card in all_honors %}
+            <div class="element-item konkour sal98 col-md-6 col-lg-4" style="width: 100%">
+                <div dir="rtl"
+                     style="margin-right:5px;margin-top: 10px;margin-left: 5px;margin-bottom: 10px; height:150px;
+                     border-radius: 0px 20px 0px 20px;
+                     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1), 0 5px 15px 0 rgba(0, 0, 0, 0.1);"
+                     class="row">
+
+                    <a href="" class="col-4 block-20 d-flex align-items-end"
+                       style="border-radius: 0px  20px 0px 0px; height:150px;
+                       background-image: url({{ honor_card.avatar.url }});">
+                    </a>
+                    <div style="border-radius: 0px 0px 0px 20px; height:150px" class="col-8 text bg-white p-4">
+                        <h3 style="font-family: Vazir-Bold; font-size: 22px" class="heading">
+                            <a style="color: #2A4324">{{ honor_card.name }}</a>
+                        </h3>
+                        {% for cat in honor_card.categories.all %}
+                        <p style="font-family: Vazir-Medium">{{ cat.title }}</p>
+                        {% endfor %}
+                        <div style="direction: rtl" class="d-flex align-items-center mt-4">
+                            <p style="font-family: Vazir-Medium" class="ml-auto mb-0">
+                                <a style="font-family: Vazir-Medium;
+                                color: #74A29E" href="#" class="mr-2">{{ honor_card.period }}</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <!--    </div>-->
+    </div>
+
 </section>
 
 {% endblock %}
 {% block extra_js %}
-
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+<script src='https://npmcdn.com/isotope-layout@3/dist/isotope.pkgd.js'></script>
+<script src="{% static 'js/honor.js' %}"></script>
 {% endblock %}

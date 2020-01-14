@@ -26,17 +26,16 @@ from django.conf.urls.static import static
 
 urlpatterns = [
 
-    path('', views.index, name='index'),
-    path('admin/', admin.site.urls),
-    path('teacher/', views.teacher, name='teacher'),
-    path('honors_card/', views.honors_card, name='honors_card'),
-    path('honors/', views.honors, name='honors'),
-    path('contact/', views.contact, name='contact'),
-    path('about/', views.about, name='about'),
-    path('courses/', views.courses, name='courses'),
-    path('djrichtextfield/', include('djrichtextfield.urls')),
+  path('', views.index, name='index'),
+  path('admin/', admin.site.urls),
+  path('teacher/', views.teacher, name='teacher'),
+  path('contact/', views.contact, name='contact'),
+  path('about/', views.about, name='about'),
+  path('courses/', views.courses, name='courses'),
+  path('djrichtextfield/', include('djrichtextfield.urls')),
 
-    url(r'^accounts/', include('loginApp.urls')),
-    url(r'^blog/', include('postingApp.urls')),
+  url(r'^accounts/', include('loginApp.urls')),
+  url(r'^blog/', include('postingApp.urls')),
+  url(r'honors/', include('honorsApp.urls')),
 
-              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
