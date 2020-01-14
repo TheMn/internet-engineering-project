@@ -36,6 +36,10 @@ def honors(request):
     return render(request, 'honors.html', {})
 
 
+def course_teacher(request):
+    return render(request, 'course_teacher.html', {})
+
+
 def about(request):
     return render(request, 'about.html', {})
 
@@ -50,6 +54,10 @@ def example(request):
 
 def base(request):
     return render(request, 'base.html', {})
+
+
+def error503(request):
+    return render(request, 'error503.html', {})
 
 
 def teacher(request):

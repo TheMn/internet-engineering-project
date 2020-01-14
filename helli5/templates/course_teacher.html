@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_2.jpg' %});">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 style="font-family: Vazir-Bold" class="mb-2 bread">کلاس ها</h1>
+                <p style="font-family: Vazir-Medium" class="breadcrumbs"><span class="mr-2"><a href="index.html">صفحه اصلی <i
+                        class="ion-ios-arrow-back"></i></a></span> <span>کلاس ها <i
+                        class="ion-ios-arrow-back"></i></span></p>
+            </div>
+
+            <div class="row col-12">
+                <p style="margin-right: auto; margin-left: auto; border-radius:50%; box-shadow: 0 10px 10px 0 rgba(255, 204, 153, .80), 0 10px 15px 0 rgba(255, 204, 0, .15)"
+                   class="mb-0" style="margin-: 10px"><a style="font-family: Vazir-Medium" href="{% url 'add_post' %}"
+                                                         class="btn btn-secondary">افزودن کلاس<span
+                            class="icon-plus"></span></a></p>
+            </div>
+
+            <!--            {% if user.is_authenticated and not user.profile.role.is_student %}-->
+            <!--            <div class="row col-12">-->
+            <!--                <p style="margin-right: auto; margin-left: auto; border-radius:50%; box-shadow: 0 10px 10px 0 rgba(255, 204, 153, .80), 0 10px 15px 0 rgba(255, 204, 0, .15)"-->
+            <!--                   class="mb-0" style="margin-: 10px"><a style="font-family: Vazir-Medium" href="{% url 'add_post' %}"-->
+            <!--                                                         class="btn btn-secondary">نوشته ی-->
+            <!--                    جدید<span-->
+            <!--                            class="icon-plus"></span></a></p>-->
+            <!--            </div>-->
+            <!--            {% endif %}-->
+        </div>
+    </div>
+</section>
+
+
+<section class="ftco-section" style="direction: rtl">
+
+    <div class="container">
+        <div class="row">
+
+            <div style="text-align: right" class="col-lg-8 sidebar ftco-animate">
+                <div class="row">
+
+                    <div class="col-sm-12 col-md-6 ftco-animate">
+                        <div class="blog-entry" dir="ltr"
+                             style="border-bottom-left-radius:20px; border-top-right-radius:20px; box-shadow: 0 8px 10px 0 rgba(0, 0, 0, .12), 0 10px 15px 0 rgba(0, 0, 0, .10)">
+                            <a href="#" class="block-20 d-flex align-items-end"
+                               style="background-image: url({% static 'images/bg_2.jpg' %});border-top-right-radius: 20px">
+                                <div class="meta-date text-center p-2"
+                                     style="border-top-right-radius: 20px; background: #2A4324">
+                                    <span style="font-family: Vazir-Medium" class="day">98-1</span>
+                                </div>
+                            </a>
+                            <div class="text bg-white p-4" style="border-bottom-left-radius: 20px; color: #2A4324">
+                                <h3 style="font-family: Vazir-Bold; text-align: center" class="heading"><a href="#">عنوان
+                                    کلاس در اینجا درج شود</a>
+                                </h3>
+                                <hr>
+                                <div style="direction: rtl" class="d-flex align-items-center mt-4">
+                                    <p class="ml-auto mb-0" style="text-align: center">
+                                        <a style="margin-right: 10px; color: #6c757d" href="#"
+                                           class="mr-2 icon-pencil"><a
+                                                style="margin-right: 15px; font-family: Vazir-Medium">حکیم
+                                            ابو القاسم
+                                            فردوسی</a></a>
+                                    <div style=" float: left">
+                                        <a style="font-family: Vazir-Medium" href="#"
+                                           class="meta-chat">98<span
+                                                class="icon-card_membership"></span></a></div>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="row no-gutters my-5" dir="ltr">
+                    <div class="col text-center">
+                        <div class="block-27">
+                            <ul>
+                                {% if queryset.has_previous %}
+                                <li><a href="?{{ page_request_var }}={{ queryset.previous_page_number }}">
+                                    <i class="ion-ios-arrow-back"></i></a></li>
+                                {% endif %}
+
+                                <li class="active"><a href="?{{ page_request_var }}={{ queryset.number }}">
+                                    {{ queryset.number }}</a></li>
+
+                                {% if queryset.has_next %}
+                                <li><a href="?{{ page_request_var }}={{ queryset.next_page_number }}">
+                                    <i class="ion-ios-arrow-forward"></i></a></li>
+                                {% endif %}
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div style="text-align: right" class="col-lg-4 sidebar ftco-animate">
+                <div dir="rtl" class="sidebar-box" style="width: 100%">
+                    <form action="#" class="search-form"
+                          style="border-top-right-radius: 20px; border-bottom-left-radius: 20px">
+                        <div class="form-group">
+                            <span class="icon icon-search"></span>
+                            <input style="border-top-right-radius: 20px; border-bottom-left-radius: 20px; font-family: Vazir-Medium"
+                                   type="text" class="form-control"
+                                   placeholder="عنوانی را جستجو کنید">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="sidebar-box ftco-animate">
+                    <h3 style="font-family: Vazir-Bold">مطالب مهم</h3>
+                    {% for fpost in featured_posts %}
+                    <div class="block-21 mb-4 d-flex"
+                         style="background: #FAFAFA; border-bottom-left-radius: 20px; border-top-right-radius: 20px;">
+                        <!--                        <a class="blog-img mr-4" style="background-image: url({{ fpost.img.url }});"></a>-->
+                        <div class="text col-12">
+                            <h3 class="heading"
+                                style="font-family: Vazir-Bold; margin-left: 5%; margin-right: 5%; margin-top: 5%"><a
+                                    href="{{ fpost.get_absolute_url }}" style="color: #1b1e21">
+                                {{ fpost.title }}
+                            </a></h3>
+                            <hr>
+                            <div class="meta container" style="margin-bottom: 2%">
+                                <div class="row" style="margin-right: 10px; margin-top: 5px; margin-top: -5px">
+                                    <div style="margin-left: 10px"><span class="icon-calendar"></span><a
+                                            style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium"
+                                            href="#">{{ fpost.date|date:"Y m d" }}</a></div>
+                                </div>
+                                <div class="row" style="margin-right: 10px; margin-top: 5px; margin-top: -5px">
+                                    <div><span class="icon-person"></span><a
+                                            style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium"
+                                            href="#">{{ fpost.username }}</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <br>
+                </div>
+                <div class="sidebar-box ftco-animate">
+                    <h3 style="font-family: Vazir-Bold">تگ ها</h3>
+                    <ul class="tagcloud m-0 p-0">
+                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
+                           class="tag-cloud-link">تگ 1</a>
+                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
+                           class="tag-cloud-link">تگ 2</a>
+                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
+                           class="tag-cloud-link">تگ 3</a>
+                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
+                           class="tag-cloud-link">تگ 4</a>
+                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
+                           class="tag-cloud-link">تک 5</a>
+                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
+                           class="tag-cloud-link">تگ 6</a>
+                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
+                           class="tag-cloud-link">تگ شماره های دیگر</a>
+                    </ul>
+                </div>
+                <div class="sidebar-box ftco-animate" style="direction: ltr">
+                    <h3 style="font-family: Vazir-Bold">دسته بندی</h3>
+                    <ul class="categories">
+                        <div class="row">
+                            <div style="text-align: left" class="col-lg-4 ">
+                                <span>(6)</span>
+                            </div>
+                            <div class="col-lg-8 ">
+                                <li><a style="font-family: Vazir-Medium" href="#">دسته اول </a></li>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="row">
+                            <div style="text-align: left" class="col-lg-4 ">
+                                <span>(8)</span>
+                            </div>
+                            <div class="col-lg-8 ">
+                                <li><a style="font-family: Vazir-Medium" href="#">دسته دوم </a></li>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="row">
+                            <div style="text-align: left" class="col-lg-4 ">
+                                <span>(5)</span>
+                            </div>
+                            <div class="col-lg-8 ">
+                                <li><a style="font-family: Vazir-Medium" href="#">دسته سوم </a></li>
+                            </div>
+                        </div>
+                        <hr>
+                    </ul>
+                </div>
+            </div>
+
+        </div><!-- END COL -->
+    </div>
+</section>
+{% endblock %}
