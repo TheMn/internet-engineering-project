@@ -37,9 +37,10 @@
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
-* [Usage](#usage)
 * [Roadmap](#roadmap)
-* [Contact](#contact)
+* [Database structure](#database-structure)
+* [Contributers](#contributers)
+
 
 
 
@@ -64,7 +65,8 @@ the opportunity to inform students, upload homework and etc.
 
 <!-- GETTING STARTED -->
 ## Getting started
-###Prerequisites
+
+### Prerequisites
 in order to run this project you need to install few packages which its listed below
 
 
@@ -101,8 +103,8 @@ See the [Network graph](https://github.com/TheMn/internet-engineering-project/ne
 
 <!-- LICENSE -->
 ## Database structure
-* we've used sqlite3 as our db manager which is the django default database
-* below is an Er Diagram of our models and their relations
+* we've used sqlite3 as our db manager which is the django default database.
+* below is an Er Diagram of our models and their relations.
  
 ![Image of Er](http://bayanbox.ir/view/8823936539620629848/db-er.jpg)
 
