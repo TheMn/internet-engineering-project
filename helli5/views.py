@@ -67,8 +67,13 @@ def course_single(request):
 def teacher(request):
     return render(request, 'teacher.html', {})
 
+
 def homework(request):
     return render(request, 'homework.html', {})
+
+
+def add_post_teacher(request):
+    return render(request, 'add_post_teacher.html', {})
 
 
 def login(request):
