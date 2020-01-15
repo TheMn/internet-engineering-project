@@ -1,10 +1,10 @@
-
 from djrichtextfield.models import RichTextField
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth import get_user_model
 from django.urls import reverse
+from courseApp.models import Homework
 
 User = get_user_model()
 
@@ -54,9 +54,10 @@ class Category(models.Model):
 
 class PostStuff(models.Model):
     title = models.CharField(max_length=100)
+    # homework = models.ForeignKey(Homework, on_delete=models.CASCADE, blank=True)
     username = models.ForeignKey(Profile, on_delete=models.CASCADE)
     text = RichTextField()
-    description = models.CharField(max_length=150)
+    description = models.CharField(max_length=150, blank=True)
     img = models.ImageField(upload_to="thumbnails")
     date = models.DateTimeField(auto_now_add=True)
     comment_count = models.IntegerField(default=0)

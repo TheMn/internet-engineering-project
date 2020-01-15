@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'postingApp',
     'loginApp',
     'honorsApp',
+    'courseApp',
     'djrichtextfield',
 ]
 
