@@ -70,7 +70,7 @@
         <div class="row grid isotope">
 
             {% for honor_card in all_honors %}
-            <div class="{{ honor_card.get_class }}" style="width: 100%">
+            <div class="element-item col-md-6 col-lg-4 {{ honor_card.get_class }}" style="width: 100%">
                 <div dir="rtl"
                      style="margin-right:5px;margin-top: 10px;margin-left: 5px;margin-bottom: 10px; height:150px;
                      border-radius: 0px 20px 0px 20px;
@@ -85,9 +85,7 @@
                         <h3 style="font-family: Vazir-Bold; font-size: 22px" class="heading">
                             <a style="color: #2A4324">{{ honor_card.name }}</a>
                         </h3>
-                        {% for cat in honor_card.categories.all %}
-                        <p style="font-family: Vazir-Medium">{{ cat.title }}</p>
-                        {% endfor %}
+                        <p style="font-family: Vazir-Medium">{{ honor_card.title }}</p>
                         <div style="direction: rtl" class="d-flex align-items-center mt-4">
                             <p style="font-family: Vazir-Medium" class="ml-auto mb-0">
                                 <a style="font-family: Vazir-Medium;
