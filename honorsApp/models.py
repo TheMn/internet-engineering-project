@@ -1,14 +1,21 @@
 from django.db import models
 from postingApp.models import Category
+from datetime import datetime as dt
+
+
+def period_choices():
+    school_start_year = 2011
+    periods = ["دوره "+str(x - school_start_year + 1) for x in range(school_start_year, dt.now().year)]
+    return tuple([list(x) for x in zip(range(len(periods)), periods)])
 
 
 # Create your models here.
 class Honors(models.Model):
     name = models.CharField(max_length=50)
-    title = models.CharField(max_length=150)
+    title = models.CharField(max_length=150, blank=True)
     avatar = models.ImageField(upload_to="honors")
     categories = models.ManyToManyField(Category)
-    period = models.CharField(max_length=50)
+    period = models.CharField(max_length=50, choices=period_choices())
 
     def __str__(self):
         return self.name
@@ -16,4 +23,4 @@ class Honors(models.Model):
     @property
     def get_class(self):
         category = " ".join([cat.title for cat in self.categories.all()])
-        return ''.join(["element-item col-md-6 col-lg-4 ", category])
+        return ''.join([self.period, " element-item col-md-6 col-lg-4 ", category])
