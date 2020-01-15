@@ -39,16 +39,13 @@
                         <select style="border-top-right-radius: 20px; border-bottom-left-radius: 20px; font-family: Vazir-Medium"
                                 id="firstSelector"
                                 class="filters-select form-control">
+
                             <option style="font-family: Vazir-Medium" value="*">همه ی حوزه ها</option>
-                            <option style="font-family: Vazir-Medium" value=".کنکور">کنکور</option>
-                            <option style="font-family: Vazir-Medium" value=".olampiad">المپیاد</option>
-                            <option style="font-family: Vazir-Medium" value=".pajouheshi">پژوهشی</option>
-                            <option style="font-family: Vazir-Medium" value=".qoraani">قرآنی</option>
-                            <!--                        <option value=".alkali, .alkaline-earth">alkali and alkaline-earth</option>-->
-                            <!--                        <option value=":not(.transition)">not transition</option>-->
-                            <!--                        <option value=".metal:not(.transition)">metal but not transition</option>-->
-                            <!--                        <option value="numberGreaterThan50">number > 50</option>-->
-                            <!--                        <option value="ium">name ends with &ndash;ium</option>-->
+                            {% for cat in all_cats %}
+                                {% if cat.is_honored %}
+                                    <option style="font-family: Vazir-Medium" value=".{{ cat.title }}">{{ cat.title }}</option>
+                                {% endif %}
+                            {% endfor %}
                         </select>
                     </div>
                 </div>
@@ -58,13 +55,9 @@
                         <select style="border-top-right-radius: 20px; border-bottom-left-radius: 20px; font-family: Vazir-Medium"
                                 id="selectorTwo" class="filters-select2 form-control">
                             <option style="font-family: Vazir-Medium" value="*">همه ی دوره ها</option>
-                            <option style="font-family: Vazir-Medium" value=".sal98">98-99</option>
-                            <option style="font-family: Vazir-Medium" value=".sal97">97-98</option>
-                            <option style="font-family: Vazir-Medium" value=".sal96">96-97</option>
-                            <!--                        <option value=":not(.transition)">not transition</option>-->
-                            <!--                        <option value=".metal:not(.transition)">metal but not transition</option>-->
-                            <!--                        <option value="numberGreaterThan50">number > 50</option>-->
-                            <!--                        <option value="ium">name ends with &ndash;ium</option>-->
+                            {% for per in all_periods %}
+                                <option style="font-family: Vazir-Medium" value=".{{ per }}">{{ per }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>
