@@ -33,6 +33,7 @@ urlpatterns = [
   path('error503/', views.error503, name='error503'),
   path('contact/', views.contact, name='contact'),
   path('course_single/', views.course_single, name='course_single'),
+  path('homework/', views.homework, name='homework'),
   path('about/', views.about, name='about'),
   path('courses/', views.courses, name='courses'),
   path('djrichtextfield/', include('djrichtextfield.urls')),

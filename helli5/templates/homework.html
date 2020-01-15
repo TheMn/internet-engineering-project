@@ -1,0 +1,242 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}عنوان تمرین{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+<link rel="stylesheet" href="{% static 'css/table.css' %}">
+<link rel="stylesheet" href="{% static 'css/upload.css' %}">
+{% endblock %}
+{% block content %}
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_3.jpg' %});">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 style="font-family: Vazir-Bold" class="mb-2 bread">تمرین</h1>
+                <p style="font-family: Vazir-Medium" class="breadcrumbs"><span class="mr-2"><a href="index.html">صفحه نخست <i
+                        class="ion-ios-arrow-back"></i></a></span> <span class="mr-2"><a
+                        href="index.html">کلاس های من <i class="ion-ios-arrow-back"></i></a></span> <span>عنوان درس<i
+                        class="ion-ios-arrow-back"></i></a></span> <span>تمرین<i
+                        class="ion-ios-arrow-back"></i></span></p>
+            </div>
+            <div class="row col-12">
+                <p style=" margin-left: 0; border-radius:50%; box-shadow: 0 10px 10px 0 rgba(255, 0, 0, .50), 0 10px 15px 0 rgba(255, 102, 102, .15)"
+                   class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium" href="#"
+                                                        class="btn btn-danger">حذف تمرین<span
+                        class="icon-delete"></span></a>
+                </p>
+                <p style=" margin-left: 10px; border-radius:50%; box-shadow: 0 10px 10px 0 rgba(255, 204, 153, .50), 0 10px 15px 0 rgba(255, 204, 0, .15)"
+                   class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium" href="#"
+                                                        class="btn btn-secondary">ویرایش تمرین<span
+                        class="icon-edit"></span></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="content-area" dir="rtl">
+    <aside class="sidebar-area" role="complementary">
+        <nav class="side-navigation" role="navigation">
+            <ul class="menu">
+                <li class="menu-item" style="margin-top: 5%">
+                    <a onclick="openCity(event, 'tamrin')" id="defaultOpen" href="#" style="font-family: Vazir-Medium">صورت
+                        تمرین</a>
+                </li><!-- /.menu-item -->
+                <li class="menu-item">
+                    <a onclick="openCity(event, 'studentlist')" style="font-family: Vazir-Medium" href="#">کلیه ارسال
+                        ها</a>
+                </li><!-- /.menu-item -->
+                <li class="menu-item" style="font-family: Vazir-Medium">
+                    <a onclick="openCity(event, 'lastsend')" href="#">آخرین ارسال</a>
+                </li><!-- /.menu-item -->
+                <li class="menu-item" style="font-family: Vazir-Medium">
+                    <a onclick="openCity(event, 'question')" href="#">پرسش و پاسخ</a>
+                </li><!-- /.menu-item -->
+            </ul><!-- /.menu -->
+
+
+            <!--            <div class="tab">-->
+            <!--                <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>-->
+            <!--                <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>-->
+            <!--                <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>-->
+            <!--            </div>-->
+
+        </nav><!-- #site-navigation -->
+    </aside><!-- #secondary -->
+    <div id="tamrin" class="tabcontent col-lg-8">
+        <div class="container">
+            <div class="row" style="margin-top: 2%">
+                <h3 class="col-sm-8"
+                    style="margin-top:10px; margin-right: 10px; font-family: Vazir-Bold; font-size: 18px">عنوان
+                    تمرین</h3>
+                <p class="col-sm-3" style=" margin-left: 10px; border-radius:50%"
+                   class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium" href="#"
+                                                        class="btn btn-primary">دانلود فایل<span
+                        class="icon-download"></span></a>
+                </p>
+            </div>
+        </div>
+        <hr>
+        <div style="font-family: Vazir-Medium; margin-bottom: 10px">
+            <p style="margin-left: 2%; margin-right: 2%">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای
+                شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در
+                شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری
+                را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می
+                توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز
+                شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار
+                گیرد. لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز
+                و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و
+                آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای
+                علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و
+                دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای
+                اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. </p>
+        </div>
+    </div>
+
+    <div id="studentlist" class="tabcontent col-lg-8">
+        <div class="container">
+            <div class="row">
+                <h3 class="col-sm-5"
+                    style="margin-top:10px; margin-right: 10px; font-family: Vazir-Bold; font-size: 18px">کلیه ارسال های
+                    تمرین فلان</h3>
+
+                <div style="float: left">
+                    <p class="mb-0" style="padding: 5px; float: left"><a style="font-family: Vazir-Medium"
+                                                                         href="#"
+                                                                         class="btn btn-primary">دریافت همه<span
+                            class="icon-download"></span></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <table style="font-family: Vazir-Medium; margin-bottom: 10px">
+            <tr>
+                <th>#</th>
+                <th>نام خانوادگی</th>
+                <th>نام</th>
+                <th>شماره دانش آموزی</th>
+                <th>تاریخ بارگزاری</th>
+                <th>لینک دریافت</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>علیزاده</td>
+                <td>سمیه</td>
+                <td>951482512</td>
+                <td>1398/11/12</td>
+                <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a href="#">دریافت</a></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>علیزاده</td>
+                <td>سمیه</td>
+                <td>951482512</td>
+                <td>1398/11/12</td>
+                <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a href="#">دریافت</a></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>علیزاده</td>
+                <td>سمیه</td>
+                <td>951482512</td>
+                <td>1398/11/12</td>
+                <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a href="#">دریافت</a></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>علیزاده</td>
+                <td>سمیه</td>
+                <td>951482512</td>
+                <td>1398/11/12</td>
+                <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a href="#">دریافت</a></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>علیزاده</td>
+                <td>سمیه</td>
+                <td>951482512</td>
+                <td>1398/11/12</td>
+                <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a href="#">دریافت</a></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>علیزاده</td>
+                <td>سمیه</td>
+                <td>951482512</td>
+                <td>1398/11/12</td>
+                <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a href="#">دریافت</a></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="lastsend" class="tabcontent">
+        <div class="container">
+            <div class="row">
+                <h3 class="col-sm-12"
+                    style="margin-top:10px; margin-right: 10px; font-family: Vazir-Bold; font-size: 18px">آخرین ارسال
+                    تمرین فلان</h3>
+            </div>
+
+            <div class="container">
+                <div class="upload">
+                    <div class="upload-box">
+                        <i class="fa fa-cloud-upload fa-4x"></i>
+                        <div class="edit">
+                            <span style="font-family: Vazir-Medium">فایل را کشیده و یا انتخاب کنید</span>
+                            <button style="border-top-right-radius:20px; border-bottom-left-radius: 20px; font-family: Vazir-Medium"
+                                    class="button primary">انتخاب فایل
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="question" class="tabcontent col-lg-8">
+        <h3>Tokyo</h3>
+        <p>Tokyo is the capital of Japan.</p>
+        <p>Tokyo is the capital of Japan.</p>
+        <p>Tokyo is the capital of Japan.</p>
+    </div>
+</div><!-- /.content-area -->
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>
+<script>
+    (function () {
+
+        $('.upload-box')
+            .on('dragenter dragover', function () {
+                $(this).addClass('hover');
+            })
+            .on('dragend dragleave drop', function () {
+                $(this).removeClass('hover');
+            });
+
+    })();
+</script>
+{% endblock %}
