@@ -5,7 +5,7 @@ from datetime import datetime as dt
 
 def period_choices():
     school_start_year = 2011
-    periods = ["دوره " + str(x - school_start_year + 1) for x in range(school_start_year, dt.now().year)]
+    periods = ["دوره" + str(x - school_start_year + 1) for x in range(school_start_year, dt.now().year)]
     return [x for x in zip(periods, periods)]
 
 

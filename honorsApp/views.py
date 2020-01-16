@@ -7,7 +7,7 @@ from honorsApp import *
 # Create your views here.
 def period_options():
     school_start_year = 2011
-    return ["دوره " + str(x - school_start_year + 1) for x in range(school_start_year, dt.now().year)]
+    return ["دوره" + str(x - school_start_year + 1) for x in range(school_start_year, dt.now().year)]
 
 
 def honors(request):

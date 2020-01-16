@@ -42,9 +42,11 @@
 
                             <option style="font-family: Vazir-Medium" value="*">همه ی حوزه ها</option>
                             {% for cat in all_cats %}
-                                {% if cat.is_honored %}
-                                    <option style="font-family: Vazir-Medium" value=".{{ cat.title }}">{{ cat.title }}</option>
-                                {% endif %}
+                            {% if cat.is_honored %}
+                            <option style="font-family: Vazir-Medium" value=".{{ cat.title }}">
+                                {{ cat.title }}
+                            </option>
+                            {% endif %}
                             {% endfor %}
                         </select>
                     </div>
@@ -56,7 +58,9 @@
                                 id="selectorTwo" class="filters-select2 form-control">
                             <option style="font-family: Vazir-Medium" value="*">همه ی دوره ها</option>
                             {% for per in all_periods %}
-                                <option style="font-family: Vazir-Medium" value=".{{ per }}">{{ per }}</option>
+                            <option style="font-family: Vazir-Medium" value=".{{ per }}">
+                                {{ per }}
+                            </option>
                             {% endfor %}
                         </select>
                     </div>
