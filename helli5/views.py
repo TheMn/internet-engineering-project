@@ -56,9 +56,6 @@ def teacher(request):
     return render(request, 'teacher.html', {})
 
 
-def login(request):
-    return render(request, 'login.html', {})
-
 # def home(request):
 #     now = datetime.datetime.now()
 #     html = "<html><body>It is now %s.</body></html>" % now

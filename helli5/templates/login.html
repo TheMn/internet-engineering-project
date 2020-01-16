@@ -45,105 +45,133 @@
         </div>
         <div class="col-lg-5" dir="rtl" style="; margin-top: 20px">
             <div class="login-wrap col-lg-12">
-            <div class="login-html">
-                <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label
-                    style="font-family: Vazir-Medium; font-size: 20px; text-align: right; float: right" for="tab-1"
-                    class="tab">ورود
-                به
-                پنل کاربری</label>
-                <input id="tab-2" type="radio" name="tab" class="sign-up"><label
-                    style="font-family: Vazir-Medium; font-size: 20px; text-align: right; float: contour" for="tab-2"
-                    class="tab">ثبت
-                نام</label>
-                <div class="login-form">
-                    <div class="sign-in-htm">
-                        <div class="group">
-                            <label style="font-family: Vazir-Medium; margin-top: 15px; font-size: 14px; text-align: right"
-                                   for="user"
-                                   class="label">نام کاربری</label>
-                            <input id="user" type="text" class="input">
+                <div class="login-html">
+                    <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label
+                        style="font-family: Vazir-Medium; font-size: 20px; text-align: right; float: right" for="tab-1"
+                        class="tab">ورود
+                    به
+                    پنل کاربری</label>
+                    <input id="tab-2" type="radio" name="tab" class="sign-up">
+                    <label style="font-family: Vazir-Medium; font-size: 20px; text-align: right; float: contour"
+                           for="tab-2"
+                           class="tab">ثبت
+                        نام</label>
+                    <!--                LOGIN-->
+                    <div class="login-form">
+                        <div class="sign-in-htm">
+                            {% if form.errors %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert"
+                                 style="font-family: Vazir-Medium; direction: rtl; text-align: right">
+                                نام کاربری یا رمز عبور صحیح نمی باشد
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            {% endif %}
+                            <!--                            {% if next %}-->
+                            <!--                            {% if user.is_authenticated %}-->
+                            <!--                            <p>Your account doesn't have access to this page. To proceed,-->
+                            <!--                                please login with an account that has access.</p>-->
+                            <!--                            {% else %}-->
+                            <!--                            <p>Please login to see this page.</p>-->
+                            <!--                            {% endif %}-->
+                            <!--                            {% endif %}-->
+                            <form id="login-form" method="post"
+                                  action="{% url 'login' %}">
+                                {% csrf_token %}
+                                <div class="group">
+                                    <label style="font-family: Vazir-Medium; margin-top: 15px; font-size: 14px; text-align: right"
+                                           for="id_username"
+                                           class="label">نام کاربری</label>
+                                    <input id="id_username" name="username" type="text" class="input">
+                                </div>
+                                <div class="group">
+                                    <label style="font-family: Vazir-Medium; font-size: 14px; text-align: right"
+                                           for="id_password"
+                                           class="label">گذرواژه</label>
+                                    <input id="id_password" name="password" type="password" class="input">
+                                </div>
+                                <div class="group">
+                                    <input id="id_check" name="remember_me" type="checkbox" class="check" checked>
+
+                                    <label class="col-lg-12"
+                                           style="font-family: Vazir-Medium; font-size: 14px; text-align: right"
+                                           for="id_check"><span
+                                            class="icon"></span> مرا به خاطر بسپار</label>
+                                </div>
+                                <div class="group">
+                                    <input style="font-family: Vazir-Bold; font-size: 20px" type="submit" class="button"
+                                           value="ورود">
+                                </div>
+                                <!--                                TODO: forget password-->
+                                <!--                                <div class="hr"></div>-->
+                                <!--                                <div class="foot-lnk">-->
+                                <!--                                    <a style="font-family: Vazir-Medium; font-size: 16px" href="#forgot">گذرواژه ام را-->
+                                <!--                                        فراموش-->
+                                <!--                                        کردم</a>-->
+                                <!--                                </div>-->
+                            </form>
                         </div>
-                        <div class="group">
-                            <label style="font-family: Vazir-Medium; font-size: 14px; text-align: right" for="pass"
-                                   class="label">گذرواژه</label>
-                            <input id="pass" type="password" class="input" data-type="password">
-                        </div>
-                        <div class="group">
-                            <input id="check" type="checkbox" class="check" checked>
-                            <label class="col-lg-12"
-                                   style="font-family: Vazir-Medium; font-size: 14px; text-align: right"
-                                   for="check"><span
-                                    class="icon"></span> مرا به خاطر بدار</label>
-                        </div>
-                        <div class="group">
-                            <input style="font-family: Vazir-Bold; font-size: 20px" type="submit" class="button"
-                                   value="ورود">
-                        </div>
-                        <div class="hr"></div>
-                        <div class="foot-lnk">
-                            <a style="font-family: Vazir-Medium; font-size: 16px" href="#forgot">گذرواژه ام را
-                                فراموش
-                                کردم</a>
-                        </div>
-                    </div>
-                    <div class="sign-up-htm">
-                        <div class="group">
-                            <label style="font-family: Vazir-Medium; margin-top: 15px; font-size: 14px; text-align: right"
-                                   for="user"
-                                   class="label">نام کاربری</label>
-                            <input id="user" type="text" class="input">
-                        </div>
-                        <div class="group">
-                            <label style="font-family: Vazir-Medium; font-size: 14px; text-align: right" for="user"
-                                   class="label">نام خانوادگی</label>
-                            <input id="lastname" type="text" class="input">
-                        </div>
-                        <div class="group">
-                            <label style="font-family: Vazir-Medium; font-size: 14px; text-align: right" for="user"
-                                   class="label">نام</label>
-                            <input id="firstname" type="text" class="input">
-                        </div>
-                        <div class="group">
-                            <label style="font-family: Vazir-Medium; font-size: 14px; text-align: right" for="pass"
-                                   class="label">تاریخ تولد</label>
-                            <input id="dateofbirth" type="date" class="input">
-                        </div>
-                        <div class="group">
-                            <label style="font-family: Vazir-Medium; font-size: 14px; text-align: right" for="pass"
-                                   class="label">رایانامه</label>
-                            <input id="email" type="text" class="input">
-                        </div>
-                        <div class="group">
-                            <label style="font-family: Vazir-Medium; font-size: 14px; text-align: right" for="pass"
-                                   class="label">موبایل</label>
-                            <input id="mobile" type="tel" class="input">
-                        </div>
-                        <div class="group">
-                            <label style="font-family: Vazir-Medium; font-size: 14px; text-align: right" for="pass"
-                                   class="label">گذرواژه</label>
-                            <input id="pass" type="password" class="input" data-type="password">
-                        </div>
-                        <div class="group">
-                            <label style="font-family: Vazir-Medium; font-size: 14px; text-align: right" for="pass"
-                                   class="label">تکرار گذرواژه</label>
-                            <input id="pass" type="password" class="input" data-type="password">
-                        </div>
-                        <br>
-                        <div class="group">
-                            <input style="font-family: Vazir-Medium; font-size: 20px" type="submit" class="button"
-                                   value="ثبت نام">
-                        </div>
-                        <div class="hr"></div>
-                        <div class="foot-lnk">
-                            <label style="font-family: Vazir-Medium; font-size: 16px" for="tab-1">قبلا ثبت نام کرده
-                                ام</label>
+
+                        <!--                    END LOGIN-->
+                        <div class="sign-up-htm">
+                            <div class="group">
+                                <label style="font-family: Vazir-Medium; margin-top: 15px; font-size: 14px; text-align: right"
+                                       for="user"
+                                       class="label">نام کاربری</label>
+                                <input id="user" type="text" class="input">
+                            </div>
+                            <div class="group">
+                                <label style="font-family: Vazir-Medium; font-size: 14px; text-align: right" for="user"
+                                       class="label">نام خانوادگی</label>
+                                <input id="lastname" type="text" class="input">
+                            </div>
+                            <div class="group">
+                                <label style="font-family: Vazir-Medium; font-size: 14px; text-align: right" for="user"
+                                       class="label">نام</label>
+                                <input id="firstname" type="text" class="input">
+                            </div>
+                            <div class="group">
+                                <label style="font-family: Vazir-Medium; font-size: 14px; text-align: right" for="pass"
+                                       class="label">تاریخ تولد</label>
+                                <input id="dateofbirth" type="date" class="input">
+                            </div>
+                            <div class="group">
+                                <label style="font-family: Vazir-Medium; font-size: 14px; text-align: right" for="pass"
+                                       class="label">رایانامه</label>
+                                <input id="email" type="text" class="input">
+                            </div>
+                            <div class="group">
+                                <label style="font-family: Vazir-Medium; font-size: 14px; text-align: right" for="pass"
+                                       class="label">موبایل</label>
+                                <input id="mobile" type="tel" class="input">
+                            </div>
+                            <div class="group">
+                                <label style="font-family: Vazir-Medium; font-size: 14px; text-align: right" for="pass"
+                                       class="label">گذرواژه</label>
+                                <input id="pass" type="password" class="input" data-type="password">
+                            </div>
+                            <div class="group">
+                                <label style="font-family: Vazir-Medium; font-size: 14px; text-align: right" for="pass"
+                                       class="label">تکرار گذرواژه</label>
+                                <input id="pass" type="password" class="input" data-type="password">
+                            </div>
+                            <br>
+                            <div class="group">
+                                <input style="font-family: Vazir-Medium; font-size: 20px" type="submit" class="button"
+                                       value="ثبت نام">
+                            </div>
+                            <div class="hr"></div>
+                            <div class="foot-lnk">
+                                <label style="font-family: Vazir-Medium; font-size: 16px" for="tab-1">قبلا ثبت نام کرده
+                                    ام</label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 </div>
 
