@@ -68,6 +68,10 @@ def teacher(request):
     return render(request, 'teacher.html', {})
 
 
+def add_course(request):
+    return render(request, 'add_course.html', {})
+
+
 def homework(request):
     return render(request, 'homework.html', {})
 

@@ -2266,6 +2266,13 @@ pre code {
     }
 }
 
+@media (max-width: 1075px) {
+    #leftsidebar {
+        display: none;
+    }
+
+}
+
 .form-control::-ms-expand {
     background-color: transparent;
     border: 0;
