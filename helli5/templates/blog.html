@@ -103,12 +103,12 @@
 
             <div style="text-align: right" class="col-lg-4 sidebar ftco-animate">
                 <div dir="rtl" class="sidebar-box" style="width: 100%">
-                    <form action="#" class="search-form"
+                    <form action="{% url 'search' %}" class="search-form"
                           style="border-top-right-radius: 20px; border-bottom-left-radius: 20px">
                         <div class="form-group">
                             <span class="icon icon-search"></span>
                             <input style="border-top-right-radius: 20px; border-bottom-left-radius: 20px; font-family: Vazir-Medium"
-                                   type="text" class="form-control"
+                                   type="text" name="q" class="form-control"
                                    placeholder="عنوانی را جستجو کنید">
                         </div>
                     </form>

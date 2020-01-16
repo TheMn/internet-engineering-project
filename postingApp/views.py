@@ -5,9 +5,37 @@ from django.utils.timezone import now
 from .models import PostStuff
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models.functions import Extract
+from django.db.models import Count,Q
+
+
+
+
+
+
+# def get_archive_count():
+#     #months = PostStuff.objects.annotate(month_stamp=Extract('time_stamp', 'month')).values_list('month_stamp', flat=True)
+#     queryset = PostStuff.objects.values('date').annotate(Count('d'))
+#
+#     return months
+
+def search(request):
+    queryset = PostStuff.objects.all()
+    query = request.GET.get('q')
+    if query:
+        queryset =  queryset.filter(Q(title__icontains=query)|
+                                    Q(text__icontains=query)
+                                    ).distinct()
+        context = {
+            'queryset':queryset
+        }
+        return render(request,'search_results.html',context)
+
 
 
 def blog(request):
+    # archive_count = get_archive_count()
+    # print(archive_count)
     post_list = PostStuff.objects.all()
     paginator = Paginator(post_list, 6)
     page_request_var = 'page'
@@ -23,6 +51,7 @@ def blog(request):
         'queryset': paginated_queryset,
         'page_request_var': page_request_var,
         'featured_posts': featured_posts,
+        # 'archive_count': archive_count,
     }
     return render(request, 'blog.html', context)
 
