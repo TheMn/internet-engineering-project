@@ -267,15 +267,72 @@
                         <hr>
                         <h6 style="display: inline; float: right; padding: 5px"><p style="font-family: Vazir-Medium"
                                                                                    href="#">نام نویسنده</p></h6>
-                        <h6 style="display: inline; float: right; padding: 5px">1398/11/12 <p style="margin-right: 5px; margin-left: 5px; display: inline;">|</p><p
-                                style="display: inline; font-family: Vazir-Medium" href="#">13:15:49</p></h6>
-                        <div class="btn btn-dark" style="float: right; font-family: Vazir-Medium; font-size: 12px; margin-right: 10px">پاسخ</div>
+                        <h6 style="display: inline; float: right; padding: 5px">1398/11/12 <p
+                                style="margin-right: 5px; margin-left: 5px; display: inline;">|</p>
+                            <p
+                                    style="display: inline; font-family: Vazir-Medium" href="#">13:15:49</p></h6>
+                        <div class="btn btn-dark" onclick="opencomment()"
+                             style="float: right; font-family: Vazir-Medium; font-size: 12px; margin-right: 10px">پاسخ
+                        </div>
+
                         <h6 class="hov" style="display: inline; padding: 5px"><a style="font-family: Vazir-Medium"
                                                                                  href="#" class="hov"><span
                                 class="icon-edit hov"></span>ویرایش</a></h6>
-                        <h6 class="hov2" style="display: inline; padding: 5px"><a style="font-family: Vazir-Medium"
-                                                                                  href="#" class="hov2"><span
-                                class="icon-delete hov2"></span>حذف</a>
+                        <h6 class="hov2" data-toggle="modal" data-target="#exampleModal"
+                            style="display: inline; padding: 5px"><a style="font-family: Vazir-Medium"
+                                                                     href="#" class="hov2"><span
+                                class="icon-delete hov2" data-toggle="modal" data-target="#exampleModal"></span>حذف</a>
+                        </h6>
+                    </div>
+
+                    <div style="float:right; margin-bottom:20px; padding: 15px" class="qcardx qcard-1 col-11">
+                        <div style="height: 80px;border-right-style: solid; border-color: #DEA44A; border-right-style: solid;">
+                            <p style="font-family:Vazir-Thin; height: 77px; overflow:hidden; margin: 8px">سلام همونطور
+                                که در توضیحات پروژه هم ذکر شده، فرمول‌ها برای نسخه رایج
+                                (Binary) هستند و برای اطلاع از تفاوت نسخه Multiclass می‌تونید این مقاله رو مطالعه کنید.
+                                بله، همونطور که گفتید باید به کمک تعداد پیش‌بینی درست و نادرست هر دسته‌بندی/کلاس،
+                                ارزیابی رو انجام بدید. به عنوان مثال Precision یک کلاس، برابر هست با نسبت تعداد پیش‌بینی
+                                درست اون کلاس به کل تعداد پیش‌بینی همون کلاس. همچنین از اونجا که با این روش معیار
+                                ارزیابی برای هر کلاس بصورت جداگانه محاسبه میشه، نیاز به استفاده از یکی از روش‌های
+                                میانگین‌گیری (Micro Average یا Macro Average) برای رسیدن به یک ارزیابی نهایی دارید.</p>
+                        </div>
+                        <hr style="background: #DEA44A">
+                        <p style="font-family:Vazir-Medium;">شاید براتون اتفاق افتاده باشه که یه متن طولانی داخل یه باکس
+                            باعث بزرگ شدن طولی یا عرضی بدی بشه خیلی مواقع هم از دستتون در میره و اصلا متوجهش نمیشین چون
+                            انتظار متن طولانی رو ندارین و مثلا سر یه عنوان طولانی ظاهر به کلی بهم میریزه.</p>
+                        <hr>
+                        <div class="icard">
+                            <div id="ifont" class="icon-image"
+                                 style="margin: 10px; font-size: 65px; text-align: center"></div>
+                            <hr>
+                            <p style="font-family: Vazir-Medium; font-size: 10px; margin-left: 10px; margin-right: 10px;">
+                                اسم فایل (محدود شود)</p>
+                        </div>
+                        <div id="inputcomment">
+                            <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525"
+                                      required="required"></textarea>
+                        </div>
+                        <!-- Button trigger modal -->
+                        <hr>
+                        <h6 style="display: inline; float: right; padding: 5px"><p style="font-family: Vazir-Medium"
+                                                                                   href="#">نام نویسنده</p></h6>
+                        <h6 style="display: inline; float: right; padding: 5px">1398/11/12 <p
+                                style="margin-right: 5px; margin-left: 5px; display: inline;">|</p>
+                            <p
+                                    style="display: inline; font-family: Vazir-Medium" href="#">13:15:49</p></h6>
+                        <div class="btn btn-dark" onclick="opencomment()"
+                             style="float: right; font-family: Vazir-Medium; font-size: 12px; margin-right: 10px">پاسخ
+                        </div>
+
+                        <h6 class="hov" style="display: inline; padding: 5px"><a style="font-family: Vazir-Medium"
+                                                                                 href="#" class="hov"><span
+                                class="icon-edit hov"></span>ویرایش</a></h6>
+                        <h6 class="hov2" data-toggle="modal" data-target="#exampleModal"
+                            style="display: inline; padding: 5px"><a style="font-family: Vazir-Medium"
+                                                                     href="#" class="hov2"><span
+                                class="icon-delete hov2" data-toggle="modal" data-target="#exampleModal"></span>حذف</a>
+                            <!-- Button trigger modal -->
+                            {% include 'modal.html' %}
                         </h6>
                     </div>
                 </div>
@@ -323,5 +380,15 @@
             });
 
     })();
+</script>
+<script>
+    function opencomment() {
+        var x = document.getElementById("inputcomment");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
 </script>
 {% endblock %}

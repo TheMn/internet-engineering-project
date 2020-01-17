@@ -1,5 +1,15 @@
 .qcard {
-    background: #f9f9f9;
+    background: #e6ffe6;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.qcardx {
+    background: #fefefe;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
     display: inline-block;
@@ -9,7 +19,7 @@
 }
 
 .icard {
-    background: #f1f1f1;
+    background: #E7F7E5;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
     display: inline-block;
