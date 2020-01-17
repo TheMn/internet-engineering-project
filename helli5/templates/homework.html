@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
 <link rel="stylesheet" href="{% static 'css/table.css' %}">
 <link rel="stylesheet" href="{% static 'css/upload.css' %}">
+<link rel="stylesheet" href="{% static 'css/question_box.css' %}">
 {% endblock %}
 {% block content %}
 
@@ -205,6 +206,7 @@
                             ارسال
                             تمرین فلان</h3>
                     </div>
+                    <hr>
                     <div style="text-align: right; font-family: Vazir-Medium" class="w-100 p-3 alert alert-danger">
                         <strong>تذکر</strong> مهلت ارسال این پروژه به اتمام رسیده است.
                     </div>
@@ -230,7 +232,8 @@
                 <div class="container-fluid">
                     <div class="row" style="margin-top: 2%">
                         <h3 class="col-sm-8"
-                            style="margin-top:10px; margin-right: 10px; font-family: Vazir-Bold; font-size: 18px">پرسش و پاسخ</h3>
+                            style="margin-top:10px; margin-right: 10px; font-family: Vazir-Bold; font-size: 18px">پرسش و
+                            پاسخ</h3>
 
                         <div>
                             <p class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium"
@@ -240,8 +243,33 @@
                             </p>
                         </div>
                     </div>
+                    <hr>
+                    <div style="margin-bottom:20px; padding: 15px" class="qcard qcard-1">
+                        <h3 style="font-family:Vazir-Bold; font-size: 22px">عنوان سوال</h3>
+                        <p style="font-family:Vazir-Medium;">سلام
+                            همونطور که در توضیحات پروژه هم ذکر شده، فرمول‌ها برای نسخه رایج (Binary) هستند و برای اطلاع
+                            از تفاوت نسخه Multiclass می‌تونید این مقاله رو مطالعه کنید.
+                            بله، همونطور که گفتید باید به کمک تعداد پیش‌بینی درست و نادرست هر دسته‌بندی/کلاس، ارزیابی رو
+                            انجام بدید.
+                            به عنوان مثال Precision یک کلاس، برابر هست با نسبت تعداد پیش‌بینی درست اون کلاس به کل تعداد
+                            پیش‌بینی همون کلاس.
+                            همچنین از اونجا که با این روش معیار ارزیابی برای هر کلاس بصورت جداگانه محاسبه میشه، نیاز به
+                            استفاده از یکی از روش‌های میانگین‌گیری (Micro Average یا Macro Average) برای رسیدن به یک
+                            ارزیابی نهایی دارید.</p>
+                        <hr>
+                        <div class="icard">
+                            <div id="ifont" class="icon-image" style="margin: 10px; font-size: 65px; text-align: center"></div>
+                            <hr>
+                            <p style="font-family: Vazir-Medium; font-size: 10px; margin-left: 10px; margin-right: 10px;">اسم فایل (محدود شود)</p>
+                        </div>
+                        <hr>
+                        <h6 style="display: inline; float: right; padding: 5px"><a style="font-family: Vazir-Medium" href="#">نام نویسنده</a>
+                        <h6 class="hov" style="display: inline; padding: 5px"><a style="font-family: Vazir-Medium" href="#" class="hov"><span class="icon-edit hov"></span>ویرایش</a>
+                        <h6 class="hov2" style="display: inline; padding: 5px"><a style="font-family: Vazir-Medium" href="#" class="hov2"><span class="icon-delete hov2"></span>حذف</a>
+                            </h6>
+                    </div>
+                    </div>
                 </div>
-                <hr>
             </div>
         </div>
     </div>

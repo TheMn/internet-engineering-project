@@ -308,19 +308,21 @@ input {
 }
 
 @media (max-width: 992px) {
-    .id_user{
+    .id_user {
         display: none;
     }
-    .user_response{
+
+    .user_response {
         display: block;
     }
 
 }
 
 @media (min-width: 992px) {
-    .id_user{
+    .id_user {
         display: block;
     }
+
     .user_response {
         display: none;
     }
@@ -2272,6 +2274,7 @@ pre code {
     }
 
 }
+
 
 .form-control::-ms-expand {
     background-color: transparent;
