@@ -1,5 +1,7 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
+
 from .forms import PageForm, CommentForm
 from django.utils.timezone import now
 from .models import PostStuff, Comment
@@ -60,6 +62,9 @@ def blog_single(request, id):
             form.instance.author = request.user.profile
             form.instance.post = post
             form.save()
+            return redirect(reverse("blog_single", kwargs={
+                'id': post.pk
+            }))
     context = {
         'comment_form': form,
         'featured_posts': featured_posts,
