@@ -8,10 +8,14 @@ from loginApp.models import Subscriber
 
 def index(request):
     if request.method == "POST":
-        email = request.POST["email"]
-        new_subscriber = Subscriber()
-        new_subscriber.email = email
-        new_subscriber.save()
+        if request.POST.get('submit') == 'عضویت':
+            try:
+                email = request.POST["email"]
+                new_subscriber = Subscriber()
+                new_subscriber.email = email
+                new_subscriber.save()
+            except Exception:
+                pass
     latest = PostStuff.objects.order_by('-date')[0:3]
     context = {
         'latest_posts': latest
@@ -44,25 +48,5 @@ def courses(request):
     return render(request, 'courses.html', {})
 
 
-def example(request):
-    return render(request, 'example.html', {})
-
-
-def base(request):
-    return render(request, 'base.html', {})
-
-
 def teacher(request):
     return render(request, 'teacher.html', {})
-
-
-# def home(request):
-#     now = datetime.datetime.now()
-#     html = "<html><body>It is now %s.</body></html>" % now
-#     return HttpResponse(html)
-#
-# def home(request):
-#
-#     template = loader.get_template('index.html')
-#
-#     return HttpResponse(template.render(request, {}))
