@@ -71,10 +71,12 @@ class PostStuff(models.Model):
         return reverse('blog_single', kwargs={
             'id': self.id
         })
+
     def get_update_url(self):
         return reverse('blog_update', kwargs={
             'id': self.id
         })
+
     def get_delete_url(self):
         return reverse('blog_delete', kwargs={
             'id': self.id
@@ -83,6 +85,9 @@ class PostStuff(models.Model):
     @property
     def get_comments(self):
         return self.comments.all()
+
+    def comment_count(self):
+        return Comment.objects.filter(post=self).count()
 
 
 class Attachment(models.Model):
@@ -95,6 +100,3 @@ class Comment(models.Model):
     author = models.ForeignKey(Profile, on_delete=models.CASCADE)
     text = models.TextField(max_length=400)
     cm_date = models.DateTimeField(auto_now_add=True)
-
-    # class Meta:
-    #     unique_together = (('post', 'author'),)
