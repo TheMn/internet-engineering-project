@@ -147,20 +147,10 @@
                 <div class="sidebar-box ftco-animate">
                     <h3 style="font-family: Vazir-Bold">تگ ها</h3>
                     <ul class="tagcloud m-0 p-0">
+                       {% for cat in categories %}
                         <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
-                           class="tag-cloud-link">تگ 1</a>
-                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
-                           class="tag-cloud-link">تگ 2</a>
-                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
-                           class="tag-cloud-link">تگ 3</a>
-                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
-                           class="tag-cloud-link">تگ 4</a>
-                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
-                           class="tag-cloud-link">تک 5</a>
-                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
-                           class="tag-cloud-link">تگ 6</a>
-                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
-                           class="tag-cloud-link">تگ شماره های دیگر</a>
+                           class="tag-cloud-link">{{cat.title}}</a>
+                        {% endfor %}
                     </ul>
                 </div>
                 <div class="sidebar-box ftco-animate" style="direction: ltr">

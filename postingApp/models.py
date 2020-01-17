@@ -71,6 +71,14 @@ class PostStuff(models.Model):
         return reverse('blog_single', kwargs={
             'id': self.id
         })
+    def get_update_url(self):
+        return reverse('blog_update', kwargs={
+            'id': self.id
+        })
+    def get_delete_url(self):
+        return reverse('blog_delete', kwargs={
+            'id': self.id
+        })
 
     @property
     def get_comments(self):
