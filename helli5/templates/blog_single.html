@@ -109,33 +109,34 @@
                     </ul>
                     <!-- END comment-list -->
                     {% if user.is_authenticated %}
-
                     <div class="comment-form-wrap pt-5">
                         <h3 style="font-family: Vazir-Bold" class="mb-5 h4 font-weight-bold">نظر ثبت کنید</h3>
-                        <form action="#" class="p-5 bg-light"
+                        <form method="POST" action="." class="p-5 bg-light"
                               style="border-top-right-radius: 20px; border-bottom-left-radius: 20px">
-                            <div class="form-group">
-                                <input style="font-family: Vazir-Medium; border-top-right-radius: 20px; border-bottom-left-radius: 20px"
-                                       type="text" class="form-control" id="name"
-                                       placeholder="نام *">
-                            </div>
-                            <div class="form-group">
-                                <input style="font-family: Vazir-Medium; border-top-right-radius: 20px; border-bottom-left-radius: 20px"
-                                       type="email" class="form-control" id="email"
-                                       placeholder="رایانامه *">
-                            </div>
-                            <div class="form-group">
-                                <input style="font-family: Vazir-Medium; border-top-right-radius: 20px; border-bottom-left-radius: 20px"
-                                       type="url" class="form-control" id="website"
-                                       placeholder="تارنما">
-                            </div>
-
-                            <div class="form-group">
-                                <textarea
-                                        style="font-family: Vazir-Medium; border-top-right-radius: 20px; border-bottom-left-radius: 20px"
-                                        name="" id="message" cols="30" rows="10"
-                                        class="form-control" placeholder="پیام"></textarea>
-                            </div>
+                            {% csrf_token %}
+                            <!--                            <div class="form-group">-->
+                            <!--                                <input style="font-family: Vazir-Medium; border-top-right-radius: 20px; border-bottom-left-radius: 20px"-->
+                            <!--                                       type="text" class="form-control" id="name"-->
+                            <!--                                       placeholder="نام *">-->
+                            <!--                            </div>-->
+                            <!--                            <div class="form-group">-->
+                            <!--                                <input style="font-family: Vazir-Medium; border-top-right-radius: 20px; border-bottom-left-radius: 20px"-->
+                            <!--                                       type="email" class="form-control" id="email"-->
+                            <!--                                       placeholder="رایانامه *">-->
+                            <!--                            </div>-->
+                            <!--                            <div class="form-group">-->
+                            <!--                                <input style="font-family: Vazir-Medium; border-top-right-radius: 20px; border-bottom-left-radius: 20px"-->
+                            <!--                                       type="url" class="form-control" id="website"-->
+                            <!--                                       placeholder="تارنما">-->
+                            <!--                            </div>-->
+                            {{ comment_form }}
+                            <!--                            <div class="form-group">-->
+                            <!--                                 -->
+                            <!--                                <textarea-->
+                            <!--                                        style="font-family: Vazir-Medium; border-top-right-radius: 20px; border-bottom-left-radius: 20px"-->
+                            <!--                                        name="" id="message" cols="30" rows="10"-->
+                            <!--                                        class="form-control" placeholder="پیام"></textarea>-->
+                            <!--                            </div>-->
                             <div class="form-group">
                                 <input style="font-family: Vazir-Medium; " type="submit" value="ارسال نظر"
                                        class="btn py-3 px-4 btn-primary">

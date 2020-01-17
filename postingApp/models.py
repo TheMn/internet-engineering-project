@@ -88,5 +88,5 @@ class Comment(models.Model):
     text = models.TextField(max_length=400)
     cm_date = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
-        unique_together = (('post', 'author'),)
+    # class Meta:
+    #     unique_together = (('post', 'author'),)
