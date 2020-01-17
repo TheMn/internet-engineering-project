@@ -36,6 +36,10 @@ def honors(request):
     return render(request, 'honors.html', {})
 
 
+def course_teacher(request):
+    return render(request, 'course_teacher.html', {})
+
+
 def about(request):
     return render(request, 'about.html', {})
 
@@ -52,8 +56,28 @@ def base(request):
     return render(request, 'base.html', {})
 
 
+def error503(request):
+    return render(request, 'error503.html', {})
+
+
+def course_single(request):
+    return render(request, 'course_single.html', {})
+
+
 def teacher(request):
     return render(request, 'teacher.html', {})
+
+
+def add_course(request):
+    return render(request, 'add_course.html', {})
+
+
+def homework(request):
+    return render(request, 'homework.html', {})
+
+
+def add_post_teacher(request):
+    return render(request, 'add_post_teacher.html', {})
 
 
 def login(request):

@@ -1,0 +1,251 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}تک درس{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+<link rel="stylesheet" href="{% static 'css/table.css' %}">
+{% endblock %}
+{% block content %}
+<section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_3.jpg' %});">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 style="font-family: Vazir-Bold" class="mb-2 bread">درس</h1>
+                <p style="font-family: Vazir-Medium" class="breadcrumbs"><span class="mr-2"><a href="index.html">صفحه نخست <i
+                        class="ion-ios-arrow-back"></i></a></span> <span class="mr-2"><a href="index.html">بلاگ <i
+                        class="ion-ios-arrow-back"></i></a></span> <span>عنوان درس<i
+                        class="ion-ios-arrow-back"></i></span></p>
+            </div>
+            <div class="row col-12">
+                <p style=" margin-left: 0; border-radius:50%; box-shadow: 0 10px 10px 0 rgba(255, 0, 0, .50), 0 10px 15px 0 rgba(255, 102, 102, .15)"
+                   class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium" href="#"
+                                                        class="btn btn-danger">حذف کلاس<span class="icon-delete"></span></a>
+                </p>
+                <p style=" margin-left: 10px; border-radius:50%; box-shadow: 0 10px 10px 0 rgba(255, 204, 153, .50), 0 10px 15px 0 rgba(255, 204, 0, .15)"
+                   class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium" href="#"
+                                                        class="btn btn-secondary">ویرایش کلاس<span
+                        class="icon-edit"></span></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="content-area" dir="rtl">
+    <aside class="sidebar-area" role="complementary">
+        <nav class="side-navigation" role="navigation">
+            <ul class="menu">
+                <p style="margin-left: auto; margin-right: auto"
+                   class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium" href="#"
+                                                        class="btn btn-secondary">افزودن تمرین<span
+                        class="icon-import_contacts"></span></a>
+                </p>
+                <li class="menu-item" style="margin-top: 5%">
+                    <a onclick="openCity(event, 'tamrin')" id="defaultOpen" href="#" style="font-family: Vazir-Medium">تمرین
+                        های من</a>
+                </li><!-- /.menu-item -->
+                <li class="menu-item">
+                    <a onclick="openCity(event, 'studentlist')" href="#" style="font-family: Vazir-Medium">لیست دانش
+                        آموزان</a>
+                </li><!-- /.menu-item -->
+            </ul><!-- /.menu -->
+
+
+            <!--            <div class="tab">-->
+            <!--                <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>-->
+            <!--                <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>-->
+            <!--                <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>-->
+            <!--            </div>-->
+
+        </nav><!-- #site-navigation -->
+    </aside><!-- #secondary -->
+
+    <div class="container-fluid" style="overflow-x: auto">
+        <div class="row">
+            <div id="tamrin" class="tabcontent col-lg-10">
+                <div class="container-fluid">
+                    <div class="row" style="margin-top: 2%">
+                        <h3 class="col-sm-12"
+                            style="margin-top:10px; margin-right: 10px; font-family: Vazir-Bold; font-size: 18px">لیست
+                            تمرینات
+                            درس فلان</h3>
+                    </div>
+                </div>
+                <hr>
+                <table style="font-family: Vazir-Medium; margin-bottom: 10px">
+                    <tr>
+                        <th>#</th>
+                        <th>نام تمرین</th>
+                        <th> تاریخ شروع</th>
+                        <th>مهلت ارسال</th>
+                        <th>تعداد ارسال</th>
+                        <th></th>
+                    </tr>
+                    <tr class="clickablerow">
+                        <td>1</td>
+                        <td>هشت وزیر</td>
+                        <td>1398/11/12</td>
+                        <td>1398/11/20</td>
+                        <td>9</td>
+                        <td><a href="https://www.w3schools.com/html/">مشاهده</a></td>
+                    </tr>
+
+                </table>
+            </div>
+
+            <div id="studentlist" class="tabcontent col-lg-10" style="overflow-x: auto">
+                <div class="container">
+                    <div class="row" style="margin-top: 2%">
+                        <h3 class="col-sm-8"
+                            style="margin-top:10px; margin-right: 10px; text-align:right; font-family: Vazir-Bold; font-size: 18px">
+                            لیست
+                            دانش
+                            آموزان کلاس فلان</h3>
+
+                        <p class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium"
+                                                                href="#"
+                                                                class="btn btn-primary">خروجی اکسل<span
+                                class="icon-exit_to_app"></span></a>
+                        </p>
+                        <p class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium"
+                                                                href="#"
+                                                                class="btn btn-secondary">پرینت<span
+                                class="icon-print"></span></a>
+                        </p>
+                    </div>
+                </div>
+
+                <hr>
+                <table style="font-family: Vazir-Medium; margin-bottom: 10px">
+                    <tr>
+                        <th>#</th>
+                        <th>نام خانوادگی</th>
+                        <th>نام</th>
+                        <th>شماره دانش آموزی</th>
+                        <th>شماره همراه</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>علیزاده</td>
+                        <td>سمیه</td>
+                        <td>951482512</td>
+                        <td>1234567890</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>علیزاده</td>
+                        <td>سمیه</td>
+                        <td>951482512</td>
+                        <td>1234567890</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>علیزاده</td>
+                        <td>سمیه</td>
+                        <td>951482512</td>
+                        <td>1234567890</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>علیزاده</td>
+                        <td>سمیه</td>
+                        <td>951482512</td>
+                        <td>1234567890</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>علیزاده</td>
+                        <td>سمیه</td>
+                        <td>951482512</td>
+                        <td>1234567890</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>علیزاده</td>
+                        <td>سمیه</td>
+                        <td>951482512</td>
+                        <td>1234567890</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>علیزاده</td>
+                        <td>سمیه</td>
+                        <td>951482512</td>
+                        <td>1234567890</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>علیزاده</td>
+                        <td>سمیه</td>
+                        <td>951482512</td>
+                        <td>1234567890</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>علیزاده</td>
+                        <td>سمیه</td>
+                        <td>951482512</td>
+                        <td>1234567890</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>علیزاده</td>
+                        <td>سمیه</td>
+                        <td>951482512</td>
+                        <td>1234567890</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>علیزاده</td>
+                        <td>سمیه</td>
+                        <td>951482512</td>
+                        <td>1234567890</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>علیزاده</td>
+                        <td>سمیه</td>
+                        <td>951482512</td>
+                        <td>1234567890</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="Tokyo" class="tabcontent">
+                <h3>Tokyo</h3>
+                <p>Tokyo is the capital of Japan.</p>
+            </div>
+        </div>
+    </div>
+</div><!-- /.content-area -->
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>
+<!--<script>-->
+<!--    $(function () {-->
+<!--        $(".clickablerow").on("click", function () {-->
+<!--            location.href="http://google.com";-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+{% endblock %}

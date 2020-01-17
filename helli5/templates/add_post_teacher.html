@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<form action="" style="font-family: Vazir-Medium" dir="rtl">
+
+    <div class="container col-md-8 offset-md-2 div-border py-2 mt-5">
+        <div class="row justify-content-center">
+            <h3 style="font-family: Vazir-Bold; color: #DEA44B">افزودن پست جدید</h3>
+        </div>
+
+        <div class="row mt-3 pt-2 justify-content-center">
+            <div class="col-md-10 mx-5">
+                <label class="row" style="margin-right: 1%" for="title">عنوان</label>
+                <input style="border-bottom-left-radius: 20px; border-top-right-radius: 20px" class="form-control" type="text" placeholder="عنوان را وارد نمایید" name="title">
+            </div>
+        </div>
+
+        <div class="row mt-3 pt-2 justify-content-center">
+            <div class="col-md-10 mx-5">
+                <label class="row" style="margin-right: 1%" for="user">کاربر</label>
+                <select style="border-bottom-left-radius: 20px; border-top-right-radius: 20px" class="form-control col-md-4">
+                    <option>انتخاب نمایید</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mt-2 pt-2 justify-content-center">
+            <div class="col-md-10 mx-5 ">
+                <label class="row" style="margin-right: 1%" for="category">دسته بندی</label>
+                <input style="border-bottom-left-radius: 20px; border-top-right-radius: 20px" class="form-control" type="text" placeholder="دسته بندی ای را برگزینید" name="category">
+            </div>
+        </div>
+
+
+        <div class="row mt-2 pt-2 justify-content-center">
+            <div class="col-md-10 mx-5 ">
+                <label class="row" style="margin-right: 1%" for="image">بارگزاری تصویر</label>
+                <input class="form-control-file" type="file" name="image">
+            </div>
+        </div>
+
+
+        <div class="row mt-2 pt-2 justify-content-center">
+            <div class="col-md-10 mx-5 ">
+                <label class="row" style="margin-right: 1%" for="tag">تگ</label>
+                <input style="border-bottom-left-radius: 20px; border-top-right-radius: 20px" class="form-control" type="text" placeholder="تگ را وارد نمایید" name="tag">
+            </div>
+        </div>
+
+
+        <div class="row mt-2 pt-2 justify-content-center">
+            <div class="col-md-10 mx-5 ">
+                <label class="row" style="margin-right: 1%" for="description">توضیحات</label>
+                <textarea style="border-bottom-left-radius: 20px; border-top-right-radius: 20px" class="form-control" style="min-height: 150px"
+                          placeholder="توضیحات پست را وارد نمایید" required></textarea>
+            </div>
+        </div>
+
+
+        <div class="row my-2 pt-4 justify-content-center">
+            <div class="col-md-10 mx-5" style="margin-bottom: 5%">
+                <input type="submit" class="btn btn-primary col-md-12 " name="save" value="ارسال پست جدید">
+            </div>
+        </div>
+    </div>
+
+</form>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    var $module = angular.module('diary', []);
+
+    $module.controller('diaryC', ['$scope', function ($scope) {
+        var $this = this;
+
+        this.diaryPosts = [
+            {
+                "date": "05.11.2016",
+                "title": "Third post",
+                "text": 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia vel, suscipit, porro illo animi impedit, quaerat perspiciatis maxime beatae dolorem iusto'
+            },
+            {
+                "date": "02.11.2016",
+                "title": "First post",
+                "text": 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia vel, suscipit.'
+            },
+            {
+                "date": "08.11.2016",
+                "title": "4th post",
+                "text": 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia vel, suscipit.'
+            },
+            {
+                "date": "04.11.2016",
+                "title": "Second post",
+                "text": 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia vel, suscipit, porro illo animi impedit, quaerat'
+            },
+            {
+                "date": "09.11.2016",
+                "title": "5th post",
+                "text": 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia vel, suscipit, porro illo animi impedit. Tempore, rerum quae eaque atque.'
+            },
+            {
+                "date": "12.11.2016",
+                "title": "6th post",
+                "text": 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia vel, suscipit, porro illo animi impedit, quaerat perspiciatis maxime beatae dolorem iusto repellendus consectetur nemo sapiente.'
+            }
+        ].map(function (item) {
+            item.date = new Date(item.date);
+            return item;
+        });
+
+        $scope.$on('newPost', function (event, data) {
+            $this.diaryPosts.push(data);
+        });
+    }]);
+
+
+    $module.controller('formC', ['$scope', function ($scope) {
+        this.post = {};
+
+        this.submit = function () {
+            this.post.date = Date.now();
+            $scope.$emit('newPost', this.post);
+            reset(this);
+        }
+
+        function reset(its) {
+            its.post = {}
+        }
+    }]);
+
+    $module.controller('diaryPosts', ['$scope', function ($scope) {
+        this.limit = true;
+
+        this.dateParse = function (obj) {
+            var dateArr = obj.date.split('.');
+            console.log(dateArr);
+            return Date.parse(dateArr[0], dateArr[1], dateArr[2]);
+        }
+    }]);
+
+    $module.controller('ctrlNFilter', ['$scope', function ($scope) {
+        this.arr = [11, 7, 6, 8, 25, 88, 12, 3, 99, 24, 63];
+    }]);
+
+    $module.filter("sortOE", function () {
+        return function (num) {
+            var num = num.sort(function (a, b) {
+                return a - b;
+            });
+
+            var arrOdd = num.filter(function (num) {
+                    return num % 2 == 0
+                }),
+                arrEven = num.filter(function (num) {
+                    return num % 2 == 1
+                });
+
+            return arrEven.concat(arrOdd);
+        }
+    });
+
+
+    $module.directive('test', function () {
+        return "<span>Hello Habr!</span>"
+    });
+
+</script>
+
+{% endblock %}
