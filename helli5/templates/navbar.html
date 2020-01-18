@@ -51,6 +51,7 @@
                     ما</a></li>
                 <li class="nav-item"><a href="{% url 'contact' %}" style="font-family: Vazir-Medium" class="nav-link">ارتباط
                     با ما</a></li>
+                <li style="margin-top: auto; margin-bottom: auto; padding: 5px"><a href="{% url 'course_teacher' %}" style="font-family: Vazir-Medium" class="nav-link btn btn-secondary">کلاس</a></li>
                 {% if not user.is_authenticated %}
                 <li class="nav-item user_response"><a href="{% url 'login' %}" style="font-family: Vazir-Medium"
                                         class="nav-link">ورود</a></li>
