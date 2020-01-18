@@ -2,10 +2,11 @@ from django.db import models
 from djrichtextfield.models import RichTextField
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 from django.contrib.auth import get_user_model
 from django.urls import reverse
+from .utils import unique_slug_generator
 
 User = get_user_model()
 
@@ -56,6 +57,7 @@ class Category(models.Model):
 
 class PostStuff(models.Model):
     title = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True)
     username = models.ForeignKey(Profile, on_delete=models.CASCADE)
     text = RichTextField()
     img = models.ImageField(upload_to="thumbnails")
@@ -69,17 +71,17 @@ class PostStuff(models.Model):
 
     def get_absolute_url(self):
         return reverse('blog_single', kwargs={
-            'id': self.id
+            'slug': self.slug
         })
 
     def get_update_url(self):
         return reverse('blog_update', kwargs={
-            'id': self.id
+            'slug': self.slug
         })
 
     def get_delete_url(self):
         return reverse('blog_delete', kwargs={
-            'id': self.id
+            'slug': self.slug
         })
 
     @property
@@ -88,6 +90,14 @@ class PostStuff(models.Model):
 
     def comment_count(self):
         return Comment.objects.filter(post=self).count()
+
+
+def pre_save_post_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = unique_slug_generator(instance)
+
+
+pre_save.connect(pre_save_post_receiver, sender=PostStuff)
 
 
 class Attachment(models.Model):

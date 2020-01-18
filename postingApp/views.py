@@ -55,8 +55,8 @@ def blog(request):
     return render(request, 'blog.html', context)
 
 
-def blog_single(request, id):
-    post = get_object_or_404(PostStuff, id=id)
+def blog_single(request, slug):
+    post = get_object_or_404(PostStuff, slug=slug)
     categories = Category.objects.all()
     featured_posts = PostStuff.objects.filter(featured=True)[:5]
     form = CommentForm(request.POST or None)
@@ -66,7 +66,7 @@ def blog_single(request, id):
             form.instance.post = post
             form.save()
             return redirect(reverse("blog_single", kwargs={
-                'id': post.pk
+                'slug': post.pk
             }))
     context = {
         'comment_form': form,
@@ -84,9 +84,9 @@ def get_author(user):
     return None
 
 
-def blog_update(request, id):
+def blog_update(request, slug):
     title = 'Update'
-    post = get_object_or_404(PostStuff, id=id)
+    post = get_object_or_404(PostStuff, slug=slug)
     form = PageForm(request.POST or None, request.FILES or None, instance=post)
     author = get_author(request.user.profile)
     if request.method == "POST":
@@ -94,7 +94,7 @@ def blog_update(request, id):
             form.instance.author = author
             form.save()
             return redirect(reverse("blog_single", kwargs={
-                'id': form.instance.id
+                'slug': form.instance.slug
             }))
     context = {
         'title': title,
@@ -103,11 +103,10 @@ def blog_update(request, id):
     return render(request, 'add_post.html', context)
 
 
-def blog_delete(request, id):
-    post = get_object_or_404(PostStuff, id=id)
+def blog_delete(request, slug):
+    post = get_object_or_404(PostStuff, slug=slug)
     post.delete()
     return redirect(reverse("blog"))
-
 
 
 def add_post(request):
