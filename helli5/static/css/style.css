@@ -632,7 +632,11 @@ pre code {
     .container {
         max-width: 720px;
     }
+    .inout{
+        text-align: center;
+    }
 }
+
 
 @media (min-width: 992px) {
     .container {

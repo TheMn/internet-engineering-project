@@ -4,9 +4,9 @@
         <div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
             <div style="direction: rtl" class="col-12 d-block">
                 <div class="row">
-                    <div class="col-6 pr-6 d-flex topper align-items-center">
+                    <div class="col-md-6 pr-6 d-flex align-items-center">
                         <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
-                                class="icon-person text-center id_user"></span></div>
+                                class="icon-person text-center id_user" style="color: #fefefe; margin-top: auto; margin-bottom: auto; margin-left: -3px"></span></div>
                         {% if not user.is_authenticated %}
                         <a href="{% url 'login' %}" style="color:white;font-family: Vazir-Medium"><span
                                 style="font-family: Vazir-Medium" class="id_user"> ورود</span></a>
@@ -17,7 +17,7 @@
                         {% endif %}
                     </div>
 
-                    <p class="col-6 pr-6"
+                    <p class="inout col-md-6 pr-6"
                        style="text-align: left; margin-top: 0.5%; color: white; font-family: Vazir-Thin; margin-bottom: -1%"
                        id="date_place" style="padding-left: 5%">تاریخ اینجا ست شود</p>
                 </div>
