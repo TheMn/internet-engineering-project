@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/tag.css' %}">
+{% endblock %}
 {% block content %}
 <form action="" style="font-family: Vazir-Medium" dir="rtl">
 
-    <div class="container col-md-8 offset-md-2 div-border py-2 mt-5">
+    <div class="container col-md-8 offset-md-2 div-border py-2 mt-5"
+         style="background: #FAFAFA; border-bottom-left-radius: 20px; border-top-right-radius: 20px; margin-bottom: 20px">
         <div class="row justify-content-center">
             <h3 style="font-family: Vazir-Bold; color: #DEA44B">افزودن پست جدید</h3>
         </div>
@@ -12,14 +16,16 @@
         <div class="row mt-3 pt-2 justify-content-center">
             <div class="col-md-10 mx-5">
                 <label class="row" style="margin-right: 1%" for="title">عنوان</label>
-                <input style="border-bottom-left-radius: 20px; border-top-right-radius: 20px" class="form-control" type="text" placeholder="عنوان را وارد نمایید" name="title">
+                <input style="border-bottom-left-radius: 20px; border-top-right-radius: 20px" class="form-control"
+                       type="text" placeholder="عنوان را وارد نمایید" name="title">
             </div>
         </div>
 
         <div class="row mt-3 pt-2 justify-content-center">
             <div class="col-md-10 mx-5">
                 <label class="row" style="margin-right: 1%" for="user">کاربر</label>
-                <select style="border-bottom-left-radius: 20px; border-top-right-radius: 20px" class="form-control col-md-4">
+                <select style="border-bottom-left-radius: 20px; border-top-right-radius: 20px"
+                        class="form-control col-md-4">
                     <option>انتخاب نمایید</option>
                 </select>
             </div>
@@ -28,7 +34,8 @@
         <div class="row mt-2 pt-2 justify-content-center">
             <div class="col-md-10 mx-5 ">
                 <label class="row" style="margin-right: 1%" for="category">دسته بندی</label>
-                <input style="border-bottom-left-radius: 20px; border-top-right-radius: 20px" class="form-control" type="text" placeholder="دسته بندی ای را برگزینید" name="category">
+                <input style="border-bottom-left-radius: 20px; border-top-right-radius: 20px" class="form-control"
+                       type="text" placeholder="دسته بندی ای را برگزینید" name="category">
             </div>
         </div>
 
@@ -44,7 +51,11 @@
         <div class="row mt-2 pt-2 justify-content-center">
             <div class="col-md-10 mx-5 ">
                 <label class="row" style="margin-right: 1%" for="tag">تگ</label>
-                <input style="border-bottom-left-radius: 20px; border-top-right-radius: 20px" class="form-control" type="text" placeholder="تگ را وارد نمایید" name="tag">
+                <!--                <input style="border-bottom-left-radius: 20px; border-top-right-radius: 20px" class="form-control" type="text" placeholder="تگ را وارد نمایید" name="tag">-->
+                <div class="box">
+                    <input type="text" class="transform-me" placeholder="تگ های خود را وارد نمایید" value="tag1,">
+                </div>
+                <P style="margin-top: -4%; font-size: 14px">با فشردن Enter تگ ها را از هم جدا نمایید و با کلیک کردن بر روی تگ ها، آن ها را حذف کنید</P>
             </div>
         </div>
 
@@ -52,7 +63,8 @@
         <div class="row mt-2 pt-2 justify-content-center">
             <div class="col-md-10 mx-5 ">
                 <label class="row" style="margin-right: 1%" for="description">توضیحات</label>
-                <textarea style="border-bottom-left-radius: 20px; border-top-right-radius: 20px" class="form-control" style="min-height: 150px"
+                <textarea style="border-bottom-left-radius: 20px; border-top-right-radius: 20px"
+                          class="form-control" style="min-height: 150px"
                           placeholder="توضیحات پست را وارد نمایید" required></textarea>
             </div>
         </div>
@@ -168,5 +180,145 @@
     });
 
 </script>
+<script>
+    tagsField(document.querySelector('.transform-me'));
 
+
+    //
+    // Tags Field
+    //
+
+    function tagsField(input) {
+
+        // Get current tags
+        var currentTags = input.value.split(',').filter(Boolean);
+
+        // Store KeyCodes
+        var ENTER = 13,
+            COMMA = 188,
+            TAB = 9,
+            SEMICOLON = 186;
+
+        // Create elements for the UI
+        var containerEl = document.createElement('div');
+        containerEl.classList.add('tags-field');
+
+        var inlineField = document.createElement('input');
+        inlineField.type = 'text';
+        inlineField.classList.add('inline-field');
+
+        // Render UI elements to the DOM and hide the original input
+        hideInput(input);
+        containerEl.appendChild(inlineField);
+        input.parentNode.appendChild(containerEl);
+
+        // Add current tags to the UI if they exist
+        if (currentTags.length > 0) {
+            currentTags.forEach(function (tag) {
+
+                var currentTagEl = document.createElement('div');
+                currentTagEl.classList.add('tag');
+                currentTagEl.textContent = tag;
+
+                currentTagEl.addEventListener('click', removeTag, false);
+
+                // tagsEl.appendChild(currentTagEl);
+                containerEl.insertBefore(currentTagEl, inlineField);
+
+            });
+        }
+
+        // Bind the fieldHandler function to the inline input field
+        inlineField.addEventListener('keydown', fieldHandler, false);
+
+        containerEl.addEventListener('click', function () {
+            inlineField.focus();
+        });
+
+
+        //
+        // Function: Field Handler
+        //
+
+        function fieldHandler(event) {
+
+            // console.log('Field Handler', event.target);
+
+            if (event.keyCode === ENTER || event.keyCode === COMMA || event.keyCode === TAB || event.keyCode === SEMICOLON) {
+
+                event.preventDefault();
+
+                if (event.target.value === '') {
+                    console.log('Field is EMPTY');
+                } else {
+                    addTag(event);
+                }
+            }
+
+        }
+
+
+        //
+        // Function: Add Tag
+        //
+
+        function addTag(event) {
+
+            var tag = event.target.value;
+            var tagExists = input.value.indexOf(tag);
+
+            if (tagExists != -1) {
+
+                console.log('Tag already exists!');
+
+            } else {
+
+                input.value = input.value + event.target.value + ',';
+
+                var tagEl = document.createElement('div');
+                tagEl.classList.add('tag');
+                tagEl.textContent = tag;
+
+                tagEl.addEventListener('click', removeTag, false);
+
+                // tagsEl.appendChild(tagEl);
+                containerEl.insertBefore(tagEl, inlineField);
+
+                event.target.value = '';
+
+            }
+
+        }
+
+
+        //
+        // Function: Remove Tag
+        //
+
+        function removeTag(event) {
+
+            var tag = event.target.textContent + ',';
+            var tagExists = input.value.indexOf(tag);
+
+            if (tagExists != -1) {
+
+                input.value = input.value.replace(tag, '');
+
+                event.target.parentNode.removeChild(event.target);
+            }
+
+        }
+
+
+        //
+        // Function: Hide Input
+        //
+
+        function hideInput(input) {
+            input.style.display = 'none';
+            input.style.visibility = 'hidden';
+        }
+
+    }
+</script>
 {% endblock %}
