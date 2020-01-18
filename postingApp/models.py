@@ -46,7 +46,8 @@ class Role(models.Model):
 
 
 class Category(models.Model):
-    title = models.CharField(max_length=20);
+    title = models.CharField(max_length=20)
+    is_honored = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

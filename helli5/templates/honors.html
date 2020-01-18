@@ -39,16 +39,15 @@
                         <select style="border-top-right-radius: 20px; border-bottom-left-radius: 20px; font-family: Vazir-Medium"
                                 id="firstSelector"
                                 class="filters-select form-control">
+
                             <option style="font-family: Vazir-Medium" value="*">همه ی حوزه ها</option>
-                            <option style="font-family: Vazir-Medium" value=".کنکور">کنکور</option>
-                            <option style="font-family: Vazir-Medium" value=".olampiad">المپیاد</option>
-                            <option style="font-family: Vazir-Medium" value=".pajouheshi">پژوهشی</option>
-                            <option style="font-family: Vazir-Medium" value=".qoraani">قرآنی</option>
-                            <!--                        <option value=".alkali, .alkaline-earth">alkali and alkaline-earth</option>-->
-                            <!--                        <option value=":not(.transition)">not transition</option>-->
-                            <!--                        <option value=".metal:not(.transition)">metal but not transition</option>-->
-                            <!--                        <option value="numberGreaterThan50">number > 50</option>-->
-                            <!--                        <option value="ium">name ends with &ndash;ium</option>-->
+                            {% for cat in all_cats %}
+                            {% if cat.is_honored %}
+                            <option style="font-family: Vazir-Medium" value=".{{ cat.title }}">
+                                {{ cat.title }}
+                            </option>
+                            {% endif %}
+                            {% endfor %}
                         </select>
                     </div>
                 </div>
@@ -58,13 +57,11 @@
                         <select style="border-top-right-radius: 20px; border-bottom-left-radius: 20px; font-family: Vazir-Medium"
                                 id="selectorTwo" class="filters-select2 form-control">
                             <option style="font-family: Vazir-Medium" value="*">همه ی دوره ها</option>
-                            <option style="font-family: Vazir-Medium" value=".sal98">98-99</option>
-                            <option style="font-family: Vazir-Medium" value=".sal97">97-98</option>
-                            <option style="font-family: Vazir-Medium" value=".sal96">96-97</option>
-                            <!--                        <option value=":not(.transition)">not transition</option>-->
-                            <!--                        <option value=".metal:not(.transition)">metal but not transition</option>-->
-                            <!--                        <option value="numberGreaterThan50">number > 50</option>-->
-                            <!--                        <option value="ium">name ends with &ndash;ium</option>-->
+                            {% for per in all_periods %}
+                            <option style="font-family: Vazir-Medium" value=".{{ per }}">
+                                {{ per }}
+                            </option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>
@@ -77,7 +74,7 @@
         <div class="row grid isotope">
 
             {% for honor_card in all_honors %}
-            <div class="{{ honor_card.get_class }}" style="width: 100%">
+            <div class="element-item col-md-6 col-lg-4 {{ honor_card.get_class }}" style="width: 100%">
                 <div dir="rtl"
                      style="margin-right:5px;margin-top: 10px;margin-left: 5px;margin-bottom: 10px; height:150px;
                      border-radius: 0px 20px 0px 20px;
@@ -92,9 +89,7 @@
                         <h3 style="font-family: Vazir-Bold; font-size: 22px" class="heading">
                             <a style="color: #2A4324">{{ honor_card.name }}</a>
                         </h3>
-                        {% for cat in honor_card.categories.all %}
-                        <p style="font-family: Vazir-Medium">{{ cat.title }}</p>
-                        {% endfor %}
+                        <p style="font-family: Vazir-Medium">{{ honor_card.title }}</p>
                         <div style="direction: rtl" class="d-flex align-items-center mt-4">
                             <p style="font-family: Vazir-Medium" class="ml-auto mb-0">
                                 <a style="font-family: Vazir-Medium;
