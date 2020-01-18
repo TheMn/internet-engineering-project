@@ -147,8 +147,8 @@
                         <td>سمیه</td>
                         <td>951482512</td>
                         <td>1398/11/12</td>
-                        <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a href="#">دریافت</a>
-                        </td>
+                        <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a
+                                href="#">دریافت</a></a></td>
                     </tr>
                     <tr>
                         <td>2</td>
@@ -156,7 +156,8 @@
                         <td>سمیه</td>
                         <td>951482512</td>
                         <td>1398/11/12</td>
-                        <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a href="#">دریافت</a>
+                        <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a
+                                href="#">دریافت</a></a>
                         </td>
                     </tr>
                     <tr>
@@ -165,7 +166,8 @@
                         <td>سمیه</td>
                         <td>951482512</td>
                         <td>1398/11/12</td>
-                        <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a href="#">دریافت</a>
+                        <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a
+                                href="#">دریافت</a></a>
                         </td>
                     </tr>
                     <tr>
@@ -174,7 +176,8 @@
                         <td>سمیه</td>
                         <td>951482512</td>
                         <td>1398/11/12</td>
-                        <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a href="#">دریافت</a>
+                        <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a
+                                href="#">دریافت</a></a>
                         </td>
                     </tr>
                     <tr>
@@ -183,7 +186,8 @@
                         <td>سمیه</td>
                         <td>951482512</td>
                         <td>1398/11/12</td>
-                        <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a href="#">دریافت</a>
+                        <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a
+                                href="#">دریافت</a></a>
                         </td>
                     </tr>
                     <tr>
@@ -192,7 +196,8 @@
                         <td>سمیه</td>
                         <td>951482512</td>
                         <td>1398/11/12</td>
-                        <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a href="#">دریافت</a>
+                        <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a
+                                href="#">دریافت</a></a>
                         </td>
                     </tr>
                 </table>
@@ -264,6 +269,18 @@
                             <p style="font-family: Vazir-Medium; font-size: 10px; margin-left: 10px; margin-right: 10px;">
                                 اسم فایل (محدود شود)</p>
                         </div>
+                        <div id="inputcomment0" class="cmd" style="display: none; font-family: Vazir-Medium">
+                            <div class="form-group" style="margin-bottom: 60px; margin-top: 15px">
+                                <textarea class="form-control" rows="5"
+                                          style="border-top-right-radius: 20px; border-bottom-left-radius: 20px"></textarea>
+                                <p class="btn btn-light" onclick="closecomment('inputcomment0', 'rp_id0')"
+                                   style="float: right; display: inline-block; margin-top: 10px; margin-right: 10px">
+                                    لغو</p>
+                                <p class="btn btn-success"
+                                   style="float: right; display: inline-block; margin-top: 10px;; margin-right: 10px">
+                                    ارسال</p>
+                            </div>
+                        </div>
                         <hr>
                         <h6 style="display: inline; float: right; padding: 5px"><p style="font-family: Vazir-Medium"
                                                                                    href="#">نام نویسنده</p></h6>
@@ -271,7 +288,7 @@
                                 style="margin-right: 5px; margin-left: 5px; display: inline;">|</p>
                             <p
                                     style="display: inline; font-family: Vazir-Medium" href="#">13:15:49</p></h6>
-                        <div class="btn btn-dark" onclick="opencomment()"
+                        <div id="rp_id0" class="btn btn-dark" onclick="opencomment('inputcomment0','rp_id0')"
                              style="float: right; font-family: Vazir-Medium; font-size: 12px; margin-right: 10px">پاسخ
                         </div>
 
@@ -308,9 +325,17 @@
                             <p style="font-family: Vazir-Medium; font-size: 10px; margin-left: 10px; margin-right: 10px;">
                                 اسم فایل (محدود شود)</p>
                         </div>
-                        <div id="inputcomment">
-                            <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525"
-                                      required="required"></textarea>
+                        <div id="inputcomment" class="cmd" style="display: none; font-family: Vazir-Medium">
+                            <div class="form-group" style="margin-bottom: 60px; margin-top: 15px">
+                                <textarea class="form-control" rows="5"
+                                          style="border-top-right-radius: 20px; border-bottom-left-radius: 20px"></textarea>
+                                <p class="btn btn-light" onclick="closecomment('inputcomment', 'rp_id1')"
+                                   style="float: right; display: inline-block; margin-top: 10px; margin-right: 10px">
+                                    لغو</p>
+                                <p class="btn btn-success"
+                                   style="float: right; display: inline-block; margin-top: 10px;; margin-right: 10px">
+                                    ارسال</p>
+                            </div>
                         </div>
                         <!-- Button trigger modal -->
                         <hr>
@@ -320,7 +345,7 @@
                                 style="margin-right: 5px; margin-left: 5px; display: inline;">|</p>
                             <p
                                     style="display: inline; font-family: Vazir-Medium" href="#">13:15:49</p></h6>
-                        <div class="btn btn-dark" onclick="opencomment()"
+                        <div id="rp_id1" class="btn btn-dark" onclick="opencomment('inputcomment','rp_id1')"
                              style="float: right; font-family: Vazir-Medium; font-size: 12px; margin-right: 10px">پاسخ
                         </div>
 
@@ -382,13 +407,20 @@
     })();
 </script>
 <script>
-    function opencomment() {
-        var x = document.getElementById("inputcomment");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
+    function opencomment(cm_id, rp_id) {
+        var x = document.getElementById(cm_id);
+        var y = document.getElementById(rp_id);
+        x.style.display = "block";
+        y.style.display = "none";
     }
+
+    function closecomment(cm_id, rp_id) {
+        var x = document.getElementById(cm_id);
+        var y = document.getElementById(rp_id);
+        x.style.display = "none";
+        y.style.display = "block";
+
+    }
+
 </script>
 {% endblock %}
