@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth import authenticate
 
 
 class SignUpForm(UserCreationForm):
@@ -22,7 +23,27 @@ class SignUpForm(UserCreationForm):
     class Meta:
         User._meta.get_field('email')._unique = True
         model = User
-        fields = ('username', 'first_name', 'last_name', 'phone', 'email', 'password1', 'password2', 'birth_date', 'img', )
+        fields = (
+            'username', 'first_name', 'last_name', 'phone', 'email', 'password1', 'password2', 'birth_date', 'img',)
         labels = {
             'username': _(u'نام کاربری'),
         }
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=255, required=True)
+    password = forms.CharField(widget=forms.PasswordInput, required=True)
+
+    def clean(self):
+        username = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+        user = authenticate(username=username, password=password)
+        if not user:
+            raise forms.ValidationError("login error")
+        return self.cleaned_data
+
+    def login(self, request):
+        username = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+        user = authenticate(username=username, password=password)
+        return user
