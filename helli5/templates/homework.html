@@ -85,7 +85,8 @@
                     <div class="row" style="margin-top: 2%">
                         <h3 class="col-sm-7"
                             style="margin-top:10px; margin-right: 10px; font-family: Vazir-Bold; font-size: 18px">
-                            {{ this_assignment.title }}
+                            مهلت ارسال:
+                            {{ this_assignment.deadline|date:"M,j - H:i" }}
                         </h3>
                         <p class="col-sm-2" style=" margin-left: 10px; border-radius:50%"
                            class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium" href="#"
@@ -138,9 +139,9 @@
                     {% for ans in this_assignment.get_answers %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
-                        <td>{{ ans.student.user.profile.last_name }}</td>
-                        <td>{{ ans.student.user.profile.first_name }}</td>
-                        <td>951482512</td>
+                        <td>{{ ans.student.last_name }}</td>
+                        <td>{{ ans.student.first_name }}</td>
+                        <td>{{ ans.student.id }}</td>
                         <td>{{ ans.upDate }}</td>
                         <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a
                                 href="{{ ans.HW.url }}">دریافت</a></a></td>

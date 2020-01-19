@@ -30,21 +30,25 @@ class Homework(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     deadline = models.DateTimeField()
 
+    @property
     def get_answers(self):
         return self.answers.all()
+
+    @property
+    def get_questions(self):
+        return self.questions.all()
 
     def __str__(self):
         return self.title
 
 
 def generate_file_url(self, filename):
-    url = "homeworks/%s/%s/" % (self.homework.course.id, self.homework.id)
-    print(url)
+    url = '/'.join(['homeworks', str(self.homework.course.id), str(self.homework.id), filename])
     return url
 
 
 class Answers(models.Model):
-    homework = models.ForeignKey(Homework, on_delete=models.CASCADE)
+    homework = models.ForeignKey(Homework, related_name="answers", on_delete=models.CASCADE)
     student = models.ForeignKey(User, on_delete=models.CASCADE, related_name="student_answer")
     upDate = models.DateTimeField(auto_now_add=True)
     HW = models.FileField(upload_to=generate_file_url)
@@ -56,7 +60,7 @@ class Answers(models.Model):
 
 
 class Question(models.Model):
-    homework = models.ForeignKey(Homework, on_delete=models.CASCADE)
+    homework = models.ForeignKey(Homework, related_name="questions", on_delete=models.CASCADE)
     title = models.CharField(max_length=30, blank=True)
     text = models.TextField(max_length=400)
     date = models.DateField(auto_now_add=True)
