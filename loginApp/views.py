@@ -21,7 +21,6 @@ def login(request):
         elif request.POST.get('submit') == 'ثبت نام':
             signup_form = SignUpForm(request.POST)
             if signup_form.is_valid():
-
                 user = signup_form.save()
                 user.refresh_from_db()  # load the profile instance created by the signal
                 user.profile.birth_date = signup_form.cleaned_data.get('birth_date')
@@ -33,7 +32,6 @@ def login(request):
                 print(user)
                 auth_login(request, user)
                 return redirect('index')
-
 
     context = {
         'login_form': login_form,

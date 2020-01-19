@@ -28,19 +28,15 @@ urlpatterns = [
 
   path('', views.index, name='index'),
   path('admin/', admin.site.urls),
-  path('course_teacher/', views.course_teacher, name='course_teacher'),
-  path('error503/', views.error503, name='error503'),
   path('contact/', views.contact, name='contact'),
-  path('course_single/', views.course_single, name='course_single'),
-  path('add_post_teacher/', views.add_post_teacher, name='add_post_teacher'),
-  path('add_course/', views.add_course, name='add_course'),
-  path('homework/', views.homework, name='homework'),
   path('about/', views.about, name='about'),
-  path('courses/', views.courses, name='courses'),
+
+  # path('error503/', views.error503, name='error503'),
   path('djrichtextfield/', include('djrichtextfield.urls')),
 
   url(r'^accounts/', include('loginApp.urls')),
   url(r'^blog/', include('postingApp.urls')),
-  url(r'honors/', include('honorsApp.urls')),
+  url(r'^honors/', include('honorsApp.urls')),
+  url(r'^courses/', include('courseApp.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

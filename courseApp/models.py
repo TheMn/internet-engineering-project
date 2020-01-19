@@ -19,8 +19,6 @@ class Course(models.Model):
         unique_together = (('period', 'title'),)
 
 
-
-
 class Homework(models.Model):
     title = models.CharField(max_length=100)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
@@ -29,7 +27,6 @@ class Homework(models.Model):
 
 class Answers(models.Model):
     homework = models.ForeignKey(Homework, on_delete=models.CASCADE)
-    student = models.ForeignKey(User, on_delete=models.CASCADE,related_name="student_answer")
+    student = models.ForeignKey(User, on_delete=models.CASCADE, related_name="student_answer")
     upDate = models.DateTimeField(auto_now_add=True)
     HW = models.FileField()
-

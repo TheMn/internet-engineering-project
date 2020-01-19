@@ -53,3 +53,7 @@ def add_post(request):
             post.save()
             form = PageForm
     return render(request, 'add_post.html', {'form': form, })
+
+
+def add_post_teacher(request):
+    return render(request, 'add_post_teacher.html', {})
