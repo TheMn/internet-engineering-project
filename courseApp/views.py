@@ -4,7 +4,11 @@ from .models import *
 
 
 def courses(request):
-    return render(request, 'courses.html', {})
+    course_list = Course.objects.all()
+    context = {
+        'course_list': course_list
+    }
+    return render(request, 'courses.html', context)
 
 
 def add_course(request):

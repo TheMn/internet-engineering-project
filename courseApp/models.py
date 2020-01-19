@@ -20,6 +20,11 @@ class Course(models.Model):
     class Meta:
         unique_together = (('period', 'title'),)
 
+    def get_absolute_url(self):
+        return reverse('course_single', kwargs={
+            'course_id  ': self.id
+        })
+
     def __str__(self):
         return self.title
 

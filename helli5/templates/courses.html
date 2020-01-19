@@ -43,39 +43,44 @@
 
             <div style="text-align: right" class="col-lg-12 sidebar ftco-animate">
                 <div class="row">
-
+                    {% for crs in course_list %}
                     <div class="col-sm-12 col-md-6 col-lg-4 ftco-animate">
                         <div class="blog-entry" dir="ltr"
-                             style="border-bottom-left-radius:20px; border-top-right-radius:20px; box-shadow: 0 8px 10px 0 rgba(0, 0, 0, .12), 0 10px 15px 0 rgba(0, 0, 0, .10)">
-                            <a href="#" class="block-20 d-flex align-items-end"
-                               style="background-image: url({% static 'images/bg_3.jpg' %});border-top-right-radius: 20px">
+                             style="border-bottom-left-radius:20px; border-top-right-radius:20px;
+                             box-shadow: 0 8px 10px 0 rgba(0, 0, 0, .12), 0 10px 15px 0 rgba(0, 0, 0, .10)">
+                            <a href="{{ crs.get_absolute_url }}" class="block-20 d-flex align-items-end"
+                               style="background-image: url({{ crs.thumbnail.url }});
+                               border-top-right-radius: 20px">
                                 <!--                                <a class="icon-add_circle" style="font-size: 25px;position: absolute"></a>-->
                                 <div class="meta-date text-center p-2"
                                      style="border-top-right-radius: 20px; background: #2A4324">
-                                    <span style="font-family: Vazir-Medium" class="day">98-1</span>
+                                    <span style="font-family: Vazir-Medium" class="day">{{ crs.period }}</span>
                                 </div>
                             </a>
                             <div class="text bg-white p-4" style="border-bottom-left-radius: 20px; color: #2A4324">
-                                <h3 style="font-family: Vazir-Bold; text-align: center" class="heading"><a href="#">عنوان
-                                    کلاس در اینجا درج شود</a>
+                                <h3 style="font-family: Vazir-Bold; text-align: center" class="heading"><a href="#">
+                                    {{ crs.title }}
+                                </a>
                                 </h3>
                                 <hr>
                                 <div style="direction: rtl" class="d-flex align-items-center mt-4">
                                     <p class="ml-auto mb-0" style="text-align: center">
                                         <a style="margin-right: 10px; color: #6c757d" href="#"
                                            class="mr-2 icon-pencil"><a
-                                                style="margin-right: 15px; font-family: Vazir-Medium">حکیم
-                                            ابو القاسم
-                                            فردوسی</a></a>
+                                                style="margin-right: 15px; font-family: Vazir-Medium">
+                                            {{ crs.teacher }}
+                                        </a></a>
                                     <div style=" float: left">
                                         <a style="font-family: Vazir-Medium" href="#"
-                                           class="meta-chat">98<span
+                                           class="meta-chat">{{ crs.student_count }}<span
                                                 class="icon-card_membership"></span></a></div>
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
+
                 </div>
             </div>
         </div><!-- END COL -->
