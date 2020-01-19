@@ -27,6 +27,9 @@
                    class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium" href="#"
                                                         class="btn btn-danger">حذف تمرین<span
                         class="icon-delete"></span></a>
+                    <!-- Button trigger modal -->
+
+                    <!-- Button trigger modal -->
                 </p>
                 <p style=" margin-left: 10px; border-radius:50%; box-shadow: 0 10px 10px 0 rgba(255, 204, 153, .50), 0 10px 15px 0 rgba(255, 204, 0, .15)"
                    class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium" href="#"
@@ -295,10 +298,10 @@
                         <h6 class="hov" style="display: inline; padding: 5px"><a style="font-family: Vazir-Medium"
                                                                                  href="#" class="hov"><span
                                 class="icon-edit hov"></span>ویرایش</a></h6>
-                        <h6 class="hov2" data-toggle="modal" data-target="#exampleModal"
-                            style="display: inline; padding: 5px"><a style="font-family: Vazir-Medium"
-                                                                     href="#" class="hov2"><span
-                                class="icon-delete hov2" data-toggle="modal" data-target="#exampleModal"></span>حذف</a>
+                        <h6 dir="rtl" class="hov2" data-toggle="modal" data-target="#exampleModal"
+                            style="display: inline; padding: 5px">
+                            <a style="font-family: Vazir-Medium" href="#" class="hov2">
+                                <span class="icon-delete hov2" data-toggle="modal" data-target="#exampleModal"></span>حذف</a>
                         </h6>
                     </div>
 
@@ -357,7 +360,28 @@
                                                                      href="#" class="hov2"><span
                                 class="icon-delete hov2" data-toggle="modal" data-target="#exampleModal"></span>حذف</a>
                             <!-- Button trigger modal -->
-                            {% include 'modal.html' %}
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 style="font-family: Vazir-Bold" class="modal-title"
+                                                id="exampleModalLabel">اخطار برای حذف سوال</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div style="font-family: Vazir-Medium" class="modal-body">
+                                            آیا پیام شما حذف شود ؟
+                                        </div>
+                                        <div style="font-family: Vazir-Medium" class="modal-footer">
+                                            <button type="button" class="btn " data-dismiss="modal">ببند</button>
+                                            <button type="button" class="btn btn-danger">حذف کن</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Button trigger modal -->
                         </h6>
                     </div>
                 </div>

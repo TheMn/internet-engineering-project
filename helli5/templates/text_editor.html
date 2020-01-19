@@ -1,4 +1,7 @@
-
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/texteditor.css' %}">
+{% endblock %}
 <div class="formatter">
    <button class="btn btn-default" data-command="bold">
     <i class="fa fa-bold"></i>
@@ -49,3 +52,7 @@
 </div>
 <small>[ WHAT YOU GET ]</small>
 <div class="text">Text Goes Here</div>
+
+{% block extra_js %}
+<script src="{% static 'js/texteditor.js' %}"></script>
+{% endblock %}
