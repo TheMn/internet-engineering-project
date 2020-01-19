@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
-                <h1 style="font-family: Vazir-Bold" class="mb-2 bread">تمرین</h1>
+                <h1 style="font-family: Vazir-Bold" class="mb-2 bread">{{ this_assignment.title }}</h1>
                 <p style="font-family: Vazir-Medium" class="breadcrumbs"><span class="mr-2"><a href="index.html">صفحه نخست <i
                         class="ion-ios-arrow-back"></i></a></span> <span class="mr-2"><a
                         href="index.html">کلاس های من <i class="ion-ios-arrow-back"></i></a></span> <span>عنوان درس<i
@@ -49,13 +49,21 @@
                     <a onclick="openCity(event, 'tamrin')" id="defaultOpen" href="#" style="font-family: Vazir-Medium">صورت
                         تمرین</a>
                 </li><!-- /.menu-item -->
+
+                {% if user.is_authenticated %}
+                {% if user.profile.role.is_teacher %}
                 <li class="menu-item">
                     <a onclick="openCity(event, 'studentlist')" style="font-family: Vazir-Medium" href="#">کلیه ارسال
                         ها</a>
                 </li><!-- /.menu-item -->
+                {% endif %}
+                {% if user.profile.role.is_student %}
                 <li class="menu-item" style="font-family: Vazir-Medium">
                     <a onclick="openCity(event, 'lastsend')" href="#">آخرین ارسال</a>
                 </li><!-- /.menu-item -->
+                {% endif %}
+                {% endif %}
+
                 <li class="menu-item" style="font-family: Vazir-Medium">
                     <a onclick="openCity(event, 'question')" href="#">پرسش و پاسخ</a>
                 </li><!-- /.menu-item -->
@@ -75,45 +83,27 @@
             <div id="tamrin" class="tabcontent col-lg-10">
                 <div class="container-fluid">
                     <div class="row" style="margin-top: 2%">
-                        <h3 class="col-sm-8"
-                            style="margin-top:10px; margin-right: 10px; font-family: Vazir-Bold; font-size: 18px">عنوان
-                            تمرین</h3>
-                        <p class="col-sm-3" style=" margin-left: 10px; border-radius:50%"
+                        <h3 class="col-sm-7"
+                            style="margin-top:10px; margin-right: 10px; font-family: Vazir-Bold; font-size: 18px">
+                            {{ this_assignment.title }}
+                        </h3>
+                        <p class="col-sm-2" style=" margin-left: 10px; border-radius:50%"
                            class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium" href="#"
                                                                 class="btn btn-primary">دانلود فایل<span
                                 class="icon-download"></span></a>
+                        </p>
+                        <p class="col-sm-2" style=" margin-left: 10px; border-radius:50%"
+                           class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium" href="#"
+                                                                class="btn btn-secondary">ارسال پاسخ<span
+                                class="icon-upload"></span></a>
                         </p>
                     </div>
                 </div>
                 <hr>
                 <div style="font-family: Vazir-Medium; margin-bottom: 10px">
-                    <p style="margin-left: 2%; margin-right: 2%">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                        چاپ و با
-                        استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
-                        و برای
-                        شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای
-                        زیادی در
-                        شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت
-                        بیشتری
-                        را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این
-                        صورت می
-                        توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد و زمان
-                        مورد نیاز
-                        شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده
-                        قرار
-                        گیرد. لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
-                        است.
-                        چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی
-                        مورد نیاز
-                        و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته،
-                        حال و
-                        آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان
-                        رایانه ای
-                        علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که
-                        تمام و
-                        دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی
-                        دستاوردهای
-                        اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. </p>
+                    <p style="margin-left: 2%; margin-right: 2%">
+                        {{ this_assignment.text }}
+                    </p>
                 </div>
             </div>
 
@@ -123,7 +113,7 @@
                         <h3 class="col-sm-8"
                             style="margin-top:10px; margin-right: 10px; font-family: Vazir-Bold; font-size: 18px">کلیه
                             ارسال های
-                            تمرین فلان</h3>
+                            تمرین</h3>
 
                         <div>
                             <p class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium"
@@ -135,6 +125,7 @@
                     </div>
                 </div>
                 <hr>
+
                 <table style="font-family: Vazir-Medium; margin-bottom: 10px">
                     <tr>
                         <th>#</th>
@@ -144,65 +135,17 @@
                         <th>تاریخ بارگزاری</th>
                         <th>لینک دریافت</th>
                     </tr>
+                    {% for ans in this_assignment.get_answers %}
                     <tr>
-                        <td>1</td>
-                        <td>علیزاده</td>
-                        <td>سمیه</td>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ ans.student.user.profile.last_name }}</td>
+                        <td>{{ ans.student.user.profile.first_name }}</td>
                         <td>951482512</td>
-                        <td>1398/11/12</td>
+                        <td>{{ ans.upDate }}</td>
                         <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a
-                                href="#">دریافت</a></a></td>
+                                href="{{ ans.HW.url }}">دریافت</a></a></td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>علیزاده</td>
-                        <td>سمیه</td>
-                        <td>951482512</td>
-                        <td>1398/11/12</td>
-                        <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a
-                                href="#">دریافت</a></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>علیزاده</td>
-                        <td>سمیه</td>
-                        <td>951482512</td>
-                        <td>1398/11/12</td>
-                        <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a
-                                href="#">دریافت</a></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>علیزاده</td>
-                        <td>سمیه</td>
-                        <td>951482512</td>
-                        <td>1398/11/12</td>
-                        <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a
-                                href="#">دریافت</a></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>علیزاده</td>
-                        <td>سمیه</td>
-                        <td>951482512</td>
-                        <td>1398/11/12</td>
-                        <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a
-                                href="#">دریافت</a></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>علیزاده</td>
-                        <td>سمیه</td>
-                        <td>951482512</td>
-                        <td>1398/11/12</td>
-                        <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a
-                                href="#">دریافت</a></a>
-                        </td>
-                    </tr>
+                    {% endfor %}
                 </table>
             </div>
 
