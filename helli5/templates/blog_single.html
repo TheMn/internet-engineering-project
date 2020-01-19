@@ -57,17 +57,17 @@
                         {% for comment in this_post.get_comments %}
 
                         <li class="comment">
+                            <div class="vcard bio" style="float: right">
+                                <img src="{% static 'images/teacher-1.jpg' %}" alt="Image placeholder">
+                            </div>
                             <div class="comment-body">
-                                <h3 style="font-family: Vazir-Bold">{{ comment.author }}</h3>
-                                <div style="text-align: right" class="meta mb-2">{{ comment.cm_date|date:"Y m d" }}
+                                <h3 style="font-family: Vazir-Bold; margin-right: 2%">{{ comment.author }}</h3>
+                                <div style="font-family: Vazir-Medium; text-align: right; margin-right: 2%" class="meta mb-2">{{ comment.cm_date|date:"Y m d" }}
                                 </div>
                                 <p style="font-family: Vazir-Medium">
                                     {{ comment.text }}
                                 </p>
                                 <!--                                <p style="font-family: Vazir-Medium"><a href="#" class="reply">پاسخ</a></p>-->
-                            </div>
-                            <div class="vcard bio">
-                                <img src="{% static 'images/teacher-1.jpg' %}" alt="Image placeholder">
                             </div>
                         </li>
                         {% endfor %}

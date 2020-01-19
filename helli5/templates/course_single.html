@@ -4,6 +4,7 @@
 {% block title %}تک درس{% endblock %}
 {% block extra_head %}
 <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+<link rel="stylesheet" href="{% static 'css/sidebar2.css' %}">
 <link rel="stylesheet" href="{% static 'css/table.css' %}">
 {% endblock %}
 {% block content %}
@@ -18,74 +19,77 @@
                         class="ion-ios-arrow-back"></i></a></span> <span>عنوان درس<i
                         class="ion-ios-arrow-back"></i></span></p>
             </div>
-            <div class="row col-12">
-                <p style=" margin-left: 0; border-radius:50%; box-shadow: 0 10px 10px 0 rgba(255, 0, 0, .50), 0 10px 15px 0 rgba(255, 102, 102, .15)"
-                   class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium" href="#"
-                                                        class="btn btn-danger" data-toggle="modal"
-                                                        data-target="#exampleModal">حذف کلاس<span
+            <div class="row col-lg-12">
+                <p style="border-radius:50%; box-shadow: 0 10px 10px 0 rgba(255, 0, 0, .50), 0 10px 15px 0 rgba(255, 102, 102, .15)"
+                   style="padding: 5px"><a style="font-family: Vazir-Medium; font-size: 14px" href="#"
+                                           class="btn btn-danger" data-toggle="modal"
+                                           data-target="#exampleModal">حذف کلاس<span
                         class="icon-delete"></span></a>
-                    <!-- Button trigger modal -->
-                <div dir="rtl" class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 style="font-family: Vazir-Bold" class="modal-title"
-                                    id="exampleModalLabel">اخطار برای حذف کلاس</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div style="text-align: right; font-family: Vazir-Medium" class="modal-body">
-                                آیا از حذف کردن این کلاس اطمینان دارید؟
-                            </div>
-                            <div style="font-family: Vazir-Medium" class="modal-footer">
-                                <button type="button" class="btn " data-dismiss="modal">ببند</button>
-                                <button type="button" class="btn btn-danger">حذف کن</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Button trigger modal -->
                 </p>
                 <p style=" margin-left: 10px; border-radius:50%; box-shadow: 0 10px 10px 0 rgba(255, 204, 153, .50), 0 10px 15px 0 rgba(255, 204, 0, .15)"
-                   class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium" href="#"
-                                                        class="btn btn-secondary">ویرایش کلاس<span
+                   style="padding: 5px"><a style="font-family: Vazir-Medium; font-size: 14px" href="#"
+                                           class="btn btn-secondary">ویرایش کلاس<span
                         class="icon-edit"></span></a>
                 </p>
             </div>
+            <!-- Button trigger modal -->
+            <div dir="rtl" class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 style="font-family: Vazir-Bold" class="modal-title"
+                                id="exampleModalLabel">اخطار برای حذف کلاس</h5>
+                        </div>
+                        <div style="text-align: right; font-family: Vazir-Medium" class="modal-body">
+                            آیا از حذف کردن این کلاس اطمینان دارید؟
+                        </div>
+                        <div style="font-family: Vazir-Medium" class="modal-footer">
+                            <button type="button" class="btn " data-dismiss="modal">ببند</button>
+                            <button type="button" class="btn btn-danger">حذف کن</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Button trigger modal -->
         </div>
     </div>
 </section>
 
 <div class="content-area" dir="rtl">
-    <aside class="sidebar-area" role="complementary">
+    <aside class="sidebar-area x1x" role="complementary">
         <nav class="side-navigation" role="navigation">
             <ul class="menu">
                 <p style="margin-left: auto; margin-right: auto"
-                   class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium" href="#"
-                                                        class="btn btn-secondary">افزودن تمرین<span
+                   class="mb-0" style="padding: 5px"><a style="font-size: 15px; font-family: Vazir-Medium" href="#"
+                                                        class="btn btn-secondary" onclick="closeNav()">افزودن تمرین<span
                         class="icon-import_contacts"></span></a>
                 </p>
                 <li class="menu-item" style="margin-top: 5%">
-                    <a onclick="openCity(event, 'tamrin')" id="defaultOpen" href="#" style="font-family: Vazir-Medium">تمرین
-                        های من</a>
+                    <a onclick="openCity(event, 'tamrin')" id="defaultOpen" href="#"
+                       style="font-size: 15px; font-family: Vazir-Medium">تمرین های من</a>
                 </li><!-- /.menu-item -->
                 <li class="menu-item">
-                    <a onclick="openCity(event, 'studentlist')" href="#" style="font-family: Vazir-Medium">لیست دانش
+                    <a onclick="openCity(event, 'studentlist')" href="#"
+                       style="font-size: 15px; font-family: Vazir-Medium">لیست دانش
                         آموزان</a>
                 </li><!-- /.menu-item -->
             </ul><!-- /.menu -->
-
-
-            <!--            <div class="tab">-->
-            <!--                <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>-->
-            <!--                <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>-->
-            <!--                <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>-->
-            <!--            </div>-->
-
         </nav><!-- #site-navigation -->
     </aside><!-- #secondary -->
+    <span id="sidebar2" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    <div id="mySidenav" class="sidenav"><!-- /.menu2 -->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <p style="margin-left: auto; margin-right: auto"
+           class="mb-0" style="padding: 5px"><a style="font-size: 15px; font-family: Vazir-Medium" href="#"
+                                                class="btn-secondary" onclick="closeNav()">افزودن تمرین<span
+                class="icon-import_contacts"></span></a>
+        </p>
+        <a onclick="openCity(event, 'tamrin'), closeNav()" href="#" style="font-size: 18px; font-family: Vazir-Medium">تمرین
+            های من</a>
+        <a onclick="openCity(event, 'studentlist'), closeNav()" href="#"
+           style="font-size: 18px; font-family: Vazir-Medium">لیست دانش آموزان</a>
+    </div><!-- /.menu2 -->
 
     <div class="container-fluid" style="overflow-x: auto">
         <div class="row">
@@ -122,23 +126,25 @@
 
             <div id="studentlist" class="tabcontent col-lg-10" style="overflow-x: auto">
                 <div class="container">
-                    <div class="row" style="margin-top: 2%">
-                        <h3 class="col-sm-8"
-                            style="margin-top:10px; margin-right: 10px; text-align:right; font-family: Vazir-Bold; font-size: 18px">
+                    <div class="row" style="direction: rtl; margin-top: 2%">
+                        <h3 style="margin-top:10px; text-align:right; font-family: Vazir-Bold; font-size: 18px">
                             لیست
                             دانش
                             آموزان کلاس فلان</h3>
-
-                        <p class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium"
-                                                                href="#"
-                                                                class="btn btn-primary">خروجی اکسل<span
-                                class="icon-exit_to_app"></span></a>
-                        </p>
-                        <p class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium"
-                                                                href="#"
-                                                                class="btn btn-secondary">پرینت<span
-                                class="icon-print"></span></a>
-                        </p>
+                        <div style="float: left; margin-left: 0px; float: left">
+                            <p class="mb-0" style="padding: 5px; display: inline; float: left"><a
+                                    style="font-family: Vazir-Medium"
+                                    href="#"
+                                    class="btn btn-primary">خروجی اکسل<span
+                                    class="icon-exit_to_app"></span></a>
+                            </p>
+                            <p class="mb-0" style="padding: 5px; display: inline; float: left"><a
+                                    style="font-family: Vazir-Medium"
+                                    href="#"
+                                    class="btn btn-secondary">پرینت<span
+                                    class="icon-print"></span></a>
+                            </p>
+                        </div>
                     </div>
                 </div>
 
@@ -273,4 +279,22 @@
 <!--        });-->
 <!--    });-->
 <!--</script>-->
+<script>
+    function openNav() {
+        document.getElementById("x1x").style.display = "block";
+    }
+
+    function closeNav() {
+        document.getElementById("x1x").style.display = "none";
+    }
+</script>
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
 {% endblock %}

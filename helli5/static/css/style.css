@@ -316,6 +316,13 @@ input {
         display: block;
     }
 
+    .x1x {
+        display: none;
+    }
+    #sidebar2{
+        display: block;
+    }
+
 }
 
 @media (min-width: 992px) {
@@ -324,6 +331,12 @@ input {
     }
 
     .user_response {
+        display: none;
+    }
+    .x1x {
+        display: block;
+    }
+    #sidebar2{
         display: none;
     }
 }
@@ -632,7 +645,8 @@ pre code {
     .container {
         max-width: 720px;
     }
-    .inout{
+
+    .inout {
         text-align: center;
     }
 }

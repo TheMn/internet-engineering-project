@@ -41,17 +41,12 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <!--                TODO: Uncomment this buttons after completing directed pages-->
-                <!--                <li class="nav-item"><a href="{% url 'teacher' %}" style="font-family: Vazir-Medium" class="nav-link">دبیران</a>-->
-                <!--                </li>-->
-                <!--                <li class="nav-item"><a href="{% url 'courses' %}" style="font-family: Vazir-Medium" class="nav-link">دروس</a>-->
-                <!--                </li>-->
-                <!--                <li class="nav-item"><a href="{% url 'blog' %}" style="font-family: Vazir-Medium"-->
-                <!--                                        class="nav-link">بلاگ</a></li>-->
+
                 <li class="nav-item"><a href="{% url 'about' %}" style="font-family: Vazir-Medium" class="nav-link">درباره
                     ما</a></li>
                 <li class="nav-item"><a href="{% url 'contact' %}" style="font-family: Vazir-Medium" class="nav-link">ارتباط
                     با ما</a></li>
-                <li style="margin-top: auto; margin-bottom: auto; padding: 5px"><a href="{% url 'course_teacher' %}" style="font-family: Vazir-Medium" class="nav-link btn btn-secondary">کلاس</a></li>
+                <li style="margin-top: auto; margin-bottom: auto; padding: 5px"><a href="{% url 'course_teacher' %}" style="font-family: Vazir-Medium; color: #DEA44A" class="nav-link">کلاس</a></li>
                 {% if not user.is_authenticated %}
                 <li class="nav-item user_response"><a href="{% url 'login' %}" style="font-family: Vazir-Medium"
                                         class="nav-link">ورود</a></li>
