@@ -31,8 +31,8 @@ class Course(models.Model):
 class Homework(models.Model):
     title = models.CharField(max_length=100)
     text = models.TextField(max_length=400)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    HW = models.FileField()
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='homeworks')
+    created_at = models.DateTimeField(auto_now_add=True)
     deadline = models.DateTimeField()
 
     @property

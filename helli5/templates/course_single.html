@@ -1,21 +1,23 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}تک درس{% endblock %}
+{% block title %}{{ this_course.title }}{% endblock %}
+{% block meta_description %}صفحه ی مربوط به {{ this_course.title }}{% endblock %}
+
 {% block extra_head %}
 <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
 <link rel="stylesheet" href="{% static 'css/table.css' %}">
 {% endblock %}
 {% block content %}
-<section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_3.jpg' %});">
+<section class="hero-wrap hero-wrap-2" style="background-image: url({{ this_course.thumbnail.url }});">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
                 <h1 style="font-family: Vazir-Bold" class="mb-2 bread">{{ this_course.title }}</h1>
                 <p style="font-family: Vazir-Medium" class="breadcrumbs"><span class="mr-2"><a href="index.html">صفحه نخست <i
-                        class="ion-ios-arrow-back"></i></a></span> <span class="mr-2"><a href="index.html">بلاگ <i
-                        class="ion-ios-arrow-back"></i></a></span> <span>عنوان درس<i
+                        class="ion-ios-arrow-back"></i></a></span> <span class="mr-2"><a href="index.html">دروس<i
+                        class="ion-ios-arrow-back"></i></a></span> <span>{{ this_course.title }}<i
                         class="ion-ios-arrow-back"></i></span></p>
             </div>
             <div class="row col-12">
@@ -87,9 +89,9 @@
                 <div class="container-fluid">
                     <div class="row" style="margin-top: 2%">
                         <h3 class="col-sm-12"
-                            style="margin-top:10px; margin-right: 10px; font-family: Vazir-Bold; font-size: 18px">لیست
-                            تمرینات
-                            درس فلان</h3>
+                            style="margin-top:10px; margin-right: 10px; font-family: Vazir-Bold; font-size: 18px">
+                            لیست تمرینات
+                        </h3>
                     </div>
                 </div>
                 <hr>
@@ -100,17 +102,18 @@
                         <th> تاریخ شروع</th>
                         <th>مهلت ارسال</th>
                         <th>تعداد ارسال</th>
-                        <th></th>
+                        <th>لینک دسترسی</th>
                     </tr>
+                    {% for homework in this_course.homeworks.all %}
                     <tr class="clickablerow">
-                        <td>1</td>
-                        <td>هشت وزیر</td>
-                        <td>1398/11/12</td>
-                        <td>1398/11/20</td>
-                        <td>9</td>
-                        <td><a href="https://www.w3schools.com/html/">مشاهده</a></td>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ homework.title }}</td>
+                        <td>{{ homework.created_at|date:"M,j - H:i" }}</td>
+                        <td>{{ homework.deadline|date:"M,j - H:i" }}</td>
+                        <td></td>
+                        <td><a class="ion-ios-arrow-round-back" href="/courses/{{ homework.course.id }}/{{ homework.id }}"> مشاهده</a></td>
                     </tr>
-
+                    {% endfor %}
                 </table>
             </div>
 
@@ -121,7 +124,8 @@
                             style="margin-top:10px; margin-right: 10px; text-align:right; font-family: Vazir-Bold; font-size: 18px">
                             لیست
                             دانش
-                            آموزان کلاس فلان</h3>
+                            آموزان
+                        </h3>
 
                         <p class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium"
                                                                 href="/courses/{{ this_course.id }}/download_excel"
