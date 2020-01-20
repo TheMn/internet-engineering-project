@@ -37,6 +37,7 @@
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
+  * [Runnig the Project Locally](#running-the-project-locally)
 * [Roadmap](#roadmap)
 * [Database structure](#database-structure)
 * [Contributers](#contributers)
@@ -94,6 +95,21 @@ $ sudo apt install python3-pil
 $ pip install django-richtextfield
 ```
 
+<!-- Running the Project Locally -->
+### Running the Project Locally
+First, clone the repository to your local machine:
+```
+$ git clone git@github.com:TheMn/internet-engineering-project.git
+```
+Create the database
+```
+$ python manage.py makemigrations
+$ python manage.py migrate
+```
+Finally, run the development server
+```
+$ python manage.py runserver
+```
 
 <!-- ROADMAP -->
 ## Roadmap
