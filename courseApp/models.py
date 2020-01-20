@@ -2,11 +2,11 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils.text import slugify
 from django.urls import reverse
+from .utils import create_zip
+# from honorsApp.models import period_choices
 
 User = get_user_model()
 
-
-# Create your models here.
 
 class Course(models.Model):
     thumbnail = models.ImageField(upload_to="courses")
@@ -14,7 +14,6 @@ class Course(models.Model):
     title = models.CharField(max_length=50)
     students = models.ManyToManyField(User, related_name="students_enrolled_course")
     period = models.CharField(max_length=50)
-    HW = models.FileField()
     student_count = models.IntegerField()
 
     class Meta:
@@ -22,7 +21,7 @@ class Course(models.Model):
 
     def get_absolute_url(self):
         return reverse('course_single', kwargs={
-            'course_id  ': self.id
+            'course_id': self.id
         })
 
     def __str__(self):
@@ -33,6 +32,7 @@ class Homework(models.Model):
     title = models.CharField(max_length=100)
     text = models.TextField(max_length=400)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    HW = models.FileField()
     deadline = models.DateTimeField()
 
     @property
@@ -42,6 +42,10 @@ class Homework(models.Model):
     @property
     def get_questions(self):
         return self.questions.all()
+
+    # def download_all(self):
+    #     zip_file = create_zip(self, self.get_answers)
+    #     return zip_file
 
     def __str__(self):
         return self.title
@@ -58,6 +62,11 @@ class Answers(models.Model):
     upDate = models.DateTimeField(auto_now_add=True)
     HW = models.FileField(upload_to=generate_file_url)
 
+    def get_files(self):
+        files_list = []
+        for ans in self.objects.all():
+            files_list.append(ans.HW)
+        return files_list
     # def get_absolute_url(self):
     #     return reverse('', kwargs={
     #         'pk': self.pk

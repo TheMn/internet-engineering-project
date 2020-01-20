@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}عنوان تمرین{% endblock %}
+{% block title %}{{ this_assignment.title }}{% endblock %}
 {% block extra_head %}
 <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
 <link rel="stylesheet" href="{% static 'css/table.css' %}">
@@ -10,20 +10,39 @@
 {% endblock %}
 {% block content %}
 
-<section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_3.jpg' %});">
+<section class="hero-wrap hero-wrap-2" style="background-image: url({{ this_assignment.course.thumbnail.url }});">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
                 <h1 style="font-family: Vazir-Bold" class="mb-2 bread">{{ this_assignment.title }}</h1>
-                <p style="font-family: Vazir-Medium" class="breadcrumbs"><span class="mr-2"><a href="index.html">صفحه نخست <i
-                        class="ion-ios-arrow-back"></i></a></span> <span class="mr-2"><a
-                        href="index.html">کلاس های من <i class="ion-ios-arrow-back"></i></a></span> <span>عنوان درس<i
-                        class="ion-ios-arrow-back"></i></a></span> <span>تمرین<i
-                        class="ion-ios-arrow-back"></i></span></p>
+                <p style="font-family: Vazir-Medium" class="breadcrumbs">
+
+                    <span class="mr-2">
+                    صفحه نخست
+                    <i class="ion-ios-arrow-back"></i>
+                    </span>
+
+                    <span class="mr-2">
+                        کلاس های من
+                    <i class="ion-ios-arrow-back"></i>
+                    </span>
+
+                    <span>
+                        {{ this_assignment.course.title }}
+                    <i class="ion-ios-arrow-back"></i>
+                    </span>
+
+                    <span>
+                        {{ this_assignment.title }}
+                    <i class="ion-ios-arrow-back"></i>
+                    </span>
+
+                </p>
             </div>
             <div class="row col-12">
-                <p style=" margin-left: 0; border-radius:50%; box-shadow: 0 10px 10px 0 rgba(255, 0, 0, .50), 0 10px 15px 0 rgba(255, 102, 102, .15)"
+                <p style=" margin-left: 0; border-radius:50%;
+                box-shadow: 0 10px 10px 0 rgba(255, 0, 0, .50), 0 10px 15px 0 rgba(255, 102, 102, .15)"
                    class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium" href="#"
                                                         class="btn btn-danger">حذف تمرین<span
                         class="icon-delete"></span></a>
@@ -31,7 +50,8 @@
 
                     <!-- Button trigger modal -->
                 </p>
-                <p style=" margin-left: 10px; border-radius:50%; box-shadow: 0 10px 10px 0 rgba(255, 204, 153, .50), 0 10px 15px 0 rgba(255, 204, 0, .15)"
+                <p style=" margin-left: 10px; border-radius:50%;
+                box-shadow: 0 10px 10px 0 rgba(255, 204, 153, .50), 0 10px 15px 0 rgba(255, 204, 0, .15)"
                    class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium" href="#"
                                                         class="btn btn-secondary">ویرایش تمرین<span
                         class="icon-edit"></span></a>
@@ -46,15 +66,19 @@
         <nav class="side-navigation" role="navigation">
             <ul class="menu">
                 <li class="menu-item" style="margin-top: 5%">
-                    <a onclick="openCity(event, 'tamrin')" id="defaultOpen" href="#" style="font-family: Vazir-Medium">صورت
-                        تمرین</a>
+                    <a onclick="openCity(event, 'tamrin')" id="defaultOpen" href="#" style="font-family: Vazir-Medium">
+                        صورت
+                        تمرین
+                    </a>
                 </li><!-- /.menu-item -->
 
                 {% if user.is_authenticated %}
                 {% if user.profile.role.is_teacher %}
                 <li class="menu-item">
-                    <a onclick="openCity(event, 'studentlist')" style="font-family: Vazir-Medium" href="#">کلیه ارسال
-                        ها</a>
+                    <a onclick="openCity(event, 'studentlist')" style="font-family: Vazir-Medium" href="#">
+                        کلیه ارسال
+                        ها
+                    </a>
                 </li><!-- /.menu-item -->
                 {% endif %}
                 {% if user.profile.role.is_student %}
@@ -70,12 +94,6 @@
             </ul><!-- /.menu -->
 
 
-            <!--            <div class="tab">-->
-            <!--                <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>-->
-            <!--                <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>-->
-            <!--                <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>-->
-            <!--            </div>-->
-
         </nav><!-- #site-navigation -->
     </aside><!-- #secondary -->
     <div class="container-fluid" style="overflow-x: auto">
@@ -84,7 +102,8 @@
                 <div class="container-fluid">
                     <div class="row" style="margin-top: 2%">
                         <h3 class="col-sm-7"
-                            style="margin-top:10px; margin-right: 10px; font-family: Vazir-Bold; font-size: 18px">
+                            style="margin-top:10px; margin-right: 10px; font-family: Vazir-Bold;
+                            font-size: 18px">
                             مهلت ارسال:
                             {{ this_assignment.deadline|date:"M,j - H:i" }}
                         </h3>
@@ -118,7 +137,7 @@
 
                         <div>
                             <p class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium"
-                                                                    href="#"
+                                                                    href="{{ this_assignment.download_all.url }}"
                                                                     class="btn btn-primary">دریافت همه<span
                                     class="icon-download"></span></a>
                             </p>
@@ -143,8 +162,12 @@
                         <td>{{ ans.student.first_name }}</td>
                         <td>{{ ans.student.id }}</td>
                         <td>{{ ans.upDate }}</td>
-                        <td><a class="icon-download" style="margin-right: 5%; margin-left: 5%"><a
-                                href="{{ ans.HW.url }}">دریافت</a></a></td>
+                        <td><a class="icon-download"
+                               style="margin-right: 5%;
+                               margin-left: 5%;"
+                               href="{{ ans.HW.url }}">
+                            دریافت
+                        </a></td>
                     </tr>
                     {% endfor %}
                 </table>

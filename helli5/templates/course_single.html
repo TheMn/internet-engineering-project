@@ -124,7 +124,7 @@
                             آموزان کلاس فلان</h3>
 
                         <p class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium"
-                                                                href="#"
+                                                                href="/courses/{{ this_course.id }}/download_excel"
                                                                 class="btn btn-primary">خروجی اکسل<span
                                 class="icon-exit_to_app"></span></a>
                         </p>
@@ -145,90 +145,15 @@
                         <th>شماره دانش آموزی</th>
                         <th>شماره همراه</th>
                     </tr>
+                    {% for std in this_course.students.all %}
                     <tr>
-                        <td>1</td>
-                        <td>علیزاده</td>
-                        <td>سمیه</td>
-                        <td>951482512</td>
-                        <td>1234567890</td>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ std.last_name }}</td>
+                        <td>{{ std.first_name }}</td>
+                        <td>{{ std.id }}</td>
+                        <td>{{ std.profile.phone }}</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>علیزاده</td>
-                        <td>سمیه</td>
-                        <td>951482512</td>
-                        <td>1234567890</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>علیزاده</td>
-                        <td>سمیه</td>
-                        <td>951482512</td>
-                        <td>1234567890</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>علیزاده</td>
-                        <td>سمیه</td>
-                        <td>951482512</td>
-                        <td>1234567890</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>علیزاده</td>
-                        <td>سمیه</td>
-                        <td>951482512</td>
-                        <td>1234567890</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>علیزاده</td>
-                        <td>سمیه</td>
-                        <td>951482512</td>
-                        <td>1234567890</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>علیزاده</td>
-                        <td>سمیه</td>
-                        <td>951482512</td>
-                        <td>1234567890</td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>علیزاده</td>
-                        <td>سمیه</td>
-                        <td>951482512</td>
-                        <td>1234567890</td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td>علیزاده</td>
-                        <td>سمیه</td>
-                        <td>951482512</td>
-                        <td>1234567890</td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td>علیزاده</td>
-                        <td>سمیه</td>
-                        <td>951482512</td>
-                        <td>1234567890</td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td>علیزاده</td>
-                        <td>سمیه</td>
-                        <td>951482512</td>
-                        <td>1234567890</td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td>علیزاده</td>
-                        <td>سمیه</td>
-                        <td>951482512</td>
-                        <td>1234567890</td>
-                    </tr>
+                    {% endfor %}
                 </table>
             </div>
 

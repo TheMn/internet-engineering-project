@@ -1,6 +1,32 @@
 from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import *
+from .utils import create_zip
+
+import csv
+from django.http import HttpResponse
+from django.contrib.auth.models import User
+
+
+# def download_zip(request, assignment_id):
+#     this_assignment = Homework.objects.get(id=assignment_id)
+#     files = []
+#     answers = Answers.objects.all()
+#     for ans in answers:
+#         if assignment_id == ans.homework.id:
+#             files.append(ans.HW.url)
+#             print("********** ", ans.HW.url)
+#     print(create_zip(this_assignment, files))
+
+def download_excel(request, course_id):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="students.csv"'
+    writer = csv.writer(response)
+    writer.writerow(['Username', 'First name', 'Last name', 'Email address'])
+    users = User.objects.all().values_list('username', 'first_name', 'last_name', 'email')
+    for user in users:
+        writer.writerow(user)
+    return response
 
 
 def courses(request):
