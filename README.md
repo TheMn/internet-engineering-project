@@ -49,7 +49,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 This project is a high school website which gives the school boards and teachers
-the opportunity to inform students, upload homework and etc.
+the opportunity to inform students, upload homework for each class and etc.
  
 
 
@@ -68,7 +68,7 @@ the opportunity to inform students, upload homework and etc.
 ## Getting started
 
 ### Prerequisites
-in order to run this project you need to install few packages which its listed below
+in order to run this project you need to install few packages which its listed below :
 
 
 1)python 3.7
@@ -86,7 +86,7 @@ $ pip3 install Django
 ```
 4)django pillow package
 
-* pillow is an image library which let you store images in database
+* pillow is an image library which let you store images in database.
 ```
 $ sudo apt install python3-pil
 ```
@@ -122,7 +122,7 @@ See the [Network graph](https://github.com/TheMn/internet-engineering-project/ne
 * we've used sqlite3 as our db manager which is the django default database.
 * below is an Er Diagram of our models and their relations.
  
-![Image of Er](http://bayanbox.ir/view/8823936539620629848/db-er.jpg)
+![Image of Er](http://bayanbox.ir/view/2273747120306663418/Highschool-Website-3.jpg)
 
 
 
