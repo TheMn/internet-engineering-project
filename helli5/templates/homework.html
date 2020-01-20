@@ -111,13 +111,12 @@
                         </p>
                     </div>
                     <!-- partial:index.partial.html -->
-                    <div style="font-family: Vazir-Medium" class="countdown" data-date="21-1-2020" data-time="15:25">
+                    <div style="font-family: Vazir-Medium" class="countdown" data-date="20-1-2020" data-time="16:28 ">
                         <div id="sss" class="sec"><span class="num"></span><span class="word"></span>
                         </div>
                         <div id="mmm" class="min"><span class="num"></span><span class="word"></span>
                         </div>
-                        <div id="hhh" class="hour"><span class="num"></span><span
-                                class="word"></span></div>
+                        <div id="hhh" class="hour"><span class="num"></span><span class="word"></span></div>
                         <div id="ddd" class="day"><span class="num"></span><span class="word"></span>
                         </div>
                     </div>
@@ -253,14 +252,15 @@
                             تمرین فلان</h3>
                     </div>
                     <hr>
-                    <div style="text-align: right; font-family: Vazir-Medium" class="w-100 p-3 alert alert-danger">
+                    <div id="notification" style="text-align: right; font-family: Vazir-Medium" class="w-100 p-3 alert alert-danger">
                         <strong>تذکر</strong> مهلت ارسال این پروژه به اتمام رسیده است.
                     </div>
-                    <div class="container-fluid">
-                        <div style="font-family: Vazir-Medium" class="row mt-2 pt-2 justify-content-center">
-                            <div class="col-md-10 mx-5 ">
-                                <label class="row" style="margin-right: 1%" for="image">بارگزاری فایل</label>
-                                <input class="form-control-file" type="file" name="image">
+                    <div id="uploadfile" class="container-fluid">
+                        <div style="text-align: right; font-family: Vazir-Medium" class="mt-2 pt-2 justify-content-center">
+                            <label  style="margin-right: 1%" for="image">بارگزاری فایل</label>
+                            <div class="row mx-5 ">
+                                <button class="col-2  btn btn-primary" style="display: inline-block">ارسال</button>
+                                <input class="col-8 form-control-file" type="file" name="image" style="display: inline-block">
                             </div>
                         </div>
                     </div>
@@ -543,8 +543,13 @@
                 $(".countdown").innerHTML = "<div style=\"text-align: right; font-family: Vazir-Medium\" class=\"w-100 p-3 alert alert-danger\">\n" +
                     "                        <strong>تذکر</strong> مهلت ارسال این پروژه به اتمام رسیده است.\n" +
                     "                    </div>";
+                document.getElementById('uploadfile').style.display = "none";
+                document.getElementById('notification').style.display = "block";
             } else {
                 requestAnimationFrame(updateTime);
+
+                document.getElementById('uploadfile').style.display = "block";
+                document.getElementById('notification').style.display = "none";
 
                 $(_config.target + ' .day .num').innerHTML = addZero(days);
                 $(_config.target + ' .hour .num').innerHTML = addZero(hours);
