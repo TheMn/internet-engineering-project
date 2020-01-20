@@ -43,6 +43,10 @@ def courses(request):
     return render(request, 'courses.html', {})
 
 
+def add_homework(request):
+    return render(request, 'add_homework.html', {})
+
+
 def error503(request):
     return render(request, 'error503.html', {})
 

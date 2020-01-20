@@ -1,0 +1,11 @@
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+.countdown {
+  display: flex;
+}
+.countdown .day, .countdown .hour, .countdown .min, .countdown .sec {
+  padding: 1vw;
+  text-align: center;
+}
