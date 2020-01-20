@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} افزودن تمرین {% endblock %}
+{% block extra_head %}
+
+{% endblock %}
+
+{% block content %}
+<form action="" style="font-family: Vazir-Medium" dir="rtl">
+    <div class="container col-md-8 offset-md-2 div-border py-2 mt-5"
+         style="background: #FAFAFA; border-bottom-left-radius: 20px; border-top-right-radius: 20px; margin-bottom: 20px">
+        <div class="row justify-content-center">
+            <h3 style="font-family: Vazir-Bold; color: #DEA44B">افزودن تمرین جدید</h3>
+        </div>
+
+        <div class="row mt-3 pt-2 justify-content-center">
+            <div class="col-md-10 mx-5">
+                <label class="row" style="margin-right: 1%" for="title">عنوان</label>
+                <input style="border-bottom-left-radius: 20px; border-top-right-radius: 20px" class="form-control"
+                       type="text" placeholder="عنوان تمرین را وارد نمایید" name="title">
+            </div>
+        </div>
+
+        <div class="row mt-2 pt-2 justify-content-center">
+            <div class="col-md-10 mx-5 ">
+                <label class="row" style="margin-right: 1%" for="description">توضیحات</label>
+                <textarea
+                        style="width: 100%; padding-right: 10px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; min-height: 150px"
+                        placeholder="توضیحات پست را وارد نمایید" required></textarea>
+            </div>
+        </div>
+
+
+        <div class="row mt-2 pt-2 justify-content-center">
+            <div class="col-md-10 mx-5 ">
+                <label class="row" style="margin-right: 1%" for="image">بارگزاری فایل</label>
+                <input class="form-control-file" type="file" name="image">
+            </div>
+        </div>
+
+        <div class="form-group row" style="margin-top: 2%">
+            <label class="row" style="margin-right: 9%" for="image">زمان تحویل</label>
+            <div class="col-md-12 mx-5">
+                <input style="display:inline;margin-left: 5%; border-top-right-radius: 20px; border-bottom-left-radius: 20px"
+                       class="col-md-5 form-control" type="date" value="2020-01-01" id="-date-input">
+                <input style="display:inline; margin-left: 13%; border-top-right-radius: 20px; border-bottom-left-radius: 20px"
+                       class="col-md-4 form-control" type="time" value="23:59" id="-time-input">
+            </div>
+        </div>
+
+        <div class="row my-2 pt-4 justify-content-center">
+            <div class="col-md-10 mx-5" style="margin-bottom: 5%">
+                <input type="submit" class="btn btn-primary col-md-12 " name="save" value="ساخت کلاس">
+            </div>
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}
+{% block extra_js %}
+<script>
+var textarea = document.querySelector('textarea');
+
+textarea.addEventListener('keydown', autosize);
+
+function autosize(){
+  var el = this;
+  el.style.width = 100%;
+  setTimeout(function(){
+    el.style.cssText = 'height:auto; padding:0';
+    // for box-sizing other than "content-box" use:
+    // el.style.cssText = '-moz-box-sizing:content-box';
+    el.style.cssText = 'height:' + el.scrollHeight + 'px';
+  },0);
+}
+</script>
+{% endblock %}

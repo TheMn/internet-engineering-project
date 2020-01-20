@@ -4,9 +4,11 @@
 {% block title %}{{ this_assignment.title }}{% endblock %}
 {% block extra_head %}
 <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+<link rel="stylesheet" href="{% static 'css/sidebar2.css' %}">
 <link rel="stylesheet" href="{% static 'css/table.css' %}">
 <link rel="stylesheet" href="{% static 'css/upload.css' %}">
 <link rel="stylesheet" href="{% static 'css/question_box.css' %}">
+<link rel="stylesheet" href="{% static 'css/countdown.css' %}">
 {% endblock %}
 {% block content %}
 
@@ -40,29 +42,45 @@
 
                 </p>
             </div>
-            <div class="row col-12">
-                <p style=" margin-left: 0; border-radius:50%;
-                box-shadow: 0 10px 10px 0 rgba(255, 0, 0, .50), 0 10px 15px 0 rgba(255, 102, 102, .15)"
-                   class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium" href="#"
-                                                        class="btn btn-danger">حذف تمرین<span
+            <div class="row col-lg-12">
+                <p style="border-radius:50%; box-shadow: 0 10px 10px 0 rgba(255, 0, 0, .50), 0 10px 15px 0 rgba(255, 102, 102, .15)"
+                   style="padding: 5px"><a style="font-family: Vazir-Medium; font-size: 14px" href="#"
+                                           class="btn btn-danger" data-toggle="modal"
+                                           data-target="#exampleModal">حذف تمرین<span
                         class="icon-delete"></span></a>
-                    <!-- Button trigger modal -->
-
-                    <!-- Button trigger modal -->
                 </p>
-                <p style=" margin-left: 10px; border-radius:50%;
-                box-shadow: 0 10px 10px 0 rgba(255, 204, 153, .50), 0 10px 15px 0 rgba(255, 204, 0, .15)"
-                   class="mb-0" style="padding: 5px"><a style="font-family: Vazir-Medium" href="#"
-                                                        class="btn btn-secondary">ویرایش تمرین<span
+                <p style=" margin-left: 10px; border-radius:50%; box-shadow: 0 10px 10px 0 rgba(255, 204, 153, .50), 0 10px 15px 0 rgba(255, 204, 0, .15)"
+                   style="padding: 5px"><a style="font-family: Vazir-Medium; font-size: 14px" href="#"
+                                           class="btn btn-secondary">ویرایش تمرین<span
                         class="icon-edit"></span></a>
                 </p>
             </div>
+            <!-- Button trigger modal -->
+            <div dir="rtl" class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 style="font-family: Vazir-Bold" class="modal-title"
+                                id="exampleModalLabel">اخطار برای حذف تمرین</h5>
+                        </div>
+                        <div style="text-align: right; font-family: Vazir-Medium" class="modal-body">
+                            آیا از حذف کردن این تمرین اطمینان دارید؟
+                        </div>
+                        <div style="font-family: Vazir-Medium" class="modal-footer">
+                            <button type="button" class="btn " data-dismiss="modal">ببند</button>
+                            <button type="button" class="btn btn-danger">حذف کن</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Button trigger modal -->
         </div>
     </div>
 </section>
 
 <div class="content-area" dir="rtl">
-    <aside class="sidebar-area" role="complementary">
+    <aside class="sidebar-area x1x" role="complementary">
         <nav class="side-navigation" role="navigation">
             <ul class="menu">
                 <li class="menu-item" style="margin-top: 5%">
@@ -96,6 +114,20 @@
 
         </nav><!-- #site-navigation -->
     </aside><!-- #secondary -->
+    <span id="sidebar2" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    <div id="mySidenav" class="sidenav"><!-- /.menu2 -->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+        <a onclick="openCity(event, 'tamrin'), closeNav()" href="#" style="font-size: 18px; font-family: Vazir-Medium">صورت
+            تمرین</a>
+        <a onclick="openCity(event, 'studentlist'), closeNav()" href="#"
+           style="font-size: 18px; font-family: Vazir-Medium">کلیه ارسال ها</a>
+        <a onclick="openCity(event, 'lastsend'), closeNav()" href="#"
+           style="font-size: 18px; font-family: Vazir-Medium">آخرین ارسال</a>
+        <a onclick="openCity(event, 'question'), closeNav()" href="#"
+           style="font-size: 18px; font-family: Vazir-Medium">پرسش و پاسخ</a>
+    </div><!-- /.menu2 -->
+
     <div class="container-fluid" style="overflow-x: auto">
         <div class="row">
             <div id="tamrin" class="tabcontent col-lg-10">
@@ -118,8 +150,19 @@
                                 class="icon-upload"></span></a>
                         </p>
                     </div>
+                    <!-- partial:index.partial.html -->
+                    <div style="font-family: Vazir-Medium" class="countdown" data-date="20-1-2020" data-time="16:28 ">
+                        <div id="sss" class="sec"><span class="num"></span><span class="word"></span>
+                        </div>
+                        <div id="mmm" class="min"><span class="num"></span><span class="word"></span>
+                        </div>
+                        <div id="hhh" class="hour"><span class="num"></span><span class="word"></span></div>
+                        <div id="ddd" class="day"><span class="num"></span><span class="word"></span>
+                        </div>
+                    </div>
+                    <!-- partial -->
                 </div>
-                <hr>
+                <hr style="margin-top: -1%">
                 <div style="font-family: Vazir-Medium; margin-bottom: 10px">
                     <p style="margin-left: 2%; margin-right: 2%">
                         {{ this_assignment.text }}
@@ -182,21 +225,15 @@
                             تمرین فلان</h3>
                     </div>
                     <hr>
-                    <div style="text-align: right; font-family: Vazir-Medium" class="w-100 p-3 alert alert-danger">
+                    <div id="notification" style="text-align: right; font-family: Vazir-Medium" class="w-100 p-3 alert alert-danger">
                         <strong>تذکر</strong> مهلت ارسال این پروژه به اتمام رسیده است.
                     </div>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="upload col-md-10">
-                                <div class="upload-box">
-                                    <i class="fa fa-cloud-upload fa-4x"></i>
-                                    <div class="edit">
-                                        <span style="font-family: Vazir-Medium">فایل را کشیده و یا انتخاب کنید</span>
-                                        <button style="border-top-right-radius:20px; border-bottom-left-radius: 20px; font-family: Vazir-Medium"
-                                                class="button primary">انتخاب فایل
-                                        </button>
-                                    </div>
-                                </div>
+                    <div id="uploadfile" class="container-fluid">
+                        <div style="text-align: right; font-family: Vazir-Medium" class="mt-2 pt-2 justify-content-center">
+                            <label  style="margin-right: 1%" for="image">بارگزاری فایل</label>
+                            <div class="row mx-5 ">
+                                <button class="col-2  btn btn-primary" style="display: inline-block">ارسال</button>
+                                <input class="col-8 form-control-file" type="file" name="image" style="display: inline-block">
                             </div>
                         </div>
                     </div>
@@ -326,31 +363,28 @@
                             style="display: inline; padding: 5px"><a style="font-family: Vazir-Medium"
                                                                      href="#" class="hov2"><span
                                 class="icon-delete hov2" data-toggle="modal" data-target="#exampleModal"></span>حذف</a>
-                            <!-- Button trigger modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 style="font-family: Vazir-Bold" class="modal-title"
-                                                id="exampleModalLabel">اخطار برای حذف سوال</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div style="font-family: Vazir-Medium" class="modal-body">
-                                            آیا پیام شما حذف شود ؟
-                                        </div>
-                                        <div style="font-family: Vazir-Medium" class="modal-footer">
-                                            <button type="button" class="btn " data-dismiss="modal">ببند</button>
-                                            <button type="button" class="btn btn-danger">حذف کن</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Button trigger modal -->
                         </h6>
                     </div>
+                    <!-- Button trigger modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 style="font-family: Vazir-Bold" class="modal-title"
+                                        id="exampleModalLabel">اخطار برای حذف سوال</h5>
+                                </div>
+                                <div style="font-family: Vazir-Medium" class="modal-body">
+                                    آیا پیام شما حذف شود ؟
+                                </div>
+                                <div style="font-family: Vazir-Medium" class="modal-footer">
+                                    <button type="button" class="btn " data-dismiss="modal">ببند</button>
+                                    <button type="button" class="btn btn-danger">حذف کن</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Button trigger modal -->
                 </div>
             </div>
         </div>
@@ -413,5 +447,101 @@
 
     }
 
+</script>
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
+<script>
+    const $ = elem => document.querySelector(elem);
+
+    const countdown = function (_config) {
+        const tarDate = $(_config.target).getAttribute('data-date').split('-');
+        const day = parseInt(tarDate[0]);
+        const month = parseInt(tarDate[1]);
+        const year = parseInt(tarDate[2]);
+        let tarTime = $(_config.target).getAttribute('data-time');
+        let tarhour, tarmin;
+
+        if (tarTime != null) {
+            tarTime = tarTime.split(':');
+            tarhour = parseInt(tarTime[0]);
+            tarmin = parseInt(tarTime[1]);
+        }
+
+        let dateNow = new Date();
+
+        // Set the date we're counting down to
+        const countDownDate = new Date(year, month - 1, day, tarhour, tarmin, 0, 0).getTime();
+
+        $(_config.target + ' .day .word').innerHTML = _config.dayWord;
+        $(_config.target + ' .hour .word').innerHTML = _config.hourWord;
+        $(_config.target + ' .min .word').innerHTML = _config.minWord;
+        $(_config.target + ' .sec .word').innerHTML = _config.secWord;
+
+        const updateTime = () => {
+            // Get todays date and time
+            const now = new Date().getTime();
+
+            // Find the distance between now an the count down date
+            const distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // If the count down is over, write some text
+
+            if (days == 0) {
+                document.getElementById('ddd').style.color = "#FF0000";
+                document.getElementById('hhh').style.color = "#FF0000";
+                document.getElementById('mmm').style.color = "#FF0000";
+                document.getElementById('sss').style.color = "#FF0000";
+            } else {
+                document.getElementById('ddd').style.color = "#3FA42E";
+                document.getElementById('hhh').style.color = "#3FA42E";
+                document.getElementById('mmm').style.color = "#3FA42E";
+                document.getElementById('sss').style.color = "#3FA42E";
+            }
+
+
+            if (distance < 0) {
+                $(".countdown").innerHTML = "<div style=\"text-align: right; font-family: Vazir-Medium\" class=\"w-100 p-3 alert alert-danger\">\n" +
+                    "                        <strong>تذکر</strong> مهلت ارسال این پروژه به اتمام رسیده است.\n" +
+                    "                    </div>";
+                document.getElementById('uploadfile').style.display = "none";
+                document.getElementById('notification').style.display = "block";
+            } else {
+                requestAnimationFrame(updateTime);
+
+                document.getElementById('uploadfile').style.display = "block";
+                document.getElementById('notification').style.display = "none";
+
+                $(_config.target + ' .day .num').innerHTML = addZero(days);
+                $(_config.target + ' .hour .num').innerHTML = addZero(hours);
+                $(_config.target + ' .min .num').innerHTML = addZero(minutes);
+                $(_config.target + ' .sec .num').innerHTML = addZero(seconds);
+            }
+        }
+
+        updateTime();
+    }
+
+    const addZero = (x) => (x < 10 && x >= 0) ? "0" + x : x;
+
+    const mylittlething_countdown = new countdown({
+        target: '.countdown',
+        dayWord: ' روز',
+        hourWord: ' ساعت',
+        minWord: ' دقیقه',
+        secWord: ' ثانیه'
+    });
 </script>
 {% endblock %}

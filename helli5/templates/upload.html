@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - File Uploaded</title>
+  <link rel="stylesheet" href="./upload.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6" style="margin:10% auto">
+      <form class="form-inline">
+        <div class="form-group" >
+          <input type="text" class="form-control" id="displayFiles" style="margin-right: 15px"/>
+          <label style="display:inline" for="files"> <span id="selectFile" class="btn btn-primary" style="margin-right: 15px">Select File</span></label>
+
+
+          <input type="file" id="files" name="files" style="visibility: hidden; position: absolute;" multiple="multiple"/>
+        </div>
+<!--          <span class="label" style="display:block !important;text-align:left;" id="fileCount"></span> -->
+        <div class="form-group" style="display:block;text-align:center;">
+         <button type="button" class="btn btn-primary" id="load" data-loading-text="<i class='fa fa-spinner fa-spin '></i>  Uploading...">Upload Files</button>
+        </div>
+      </form>
+      <div id="fileList" class="well">
+
+      </div>
+    </div>
+  </div>
+</div>
+<script  src="./upload.js"></script>
+
+</body>
+</html>
