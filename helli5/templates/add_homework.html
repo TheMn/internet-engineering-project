@@ -38,15 +38,15 @@
             </div>
         </div>
 
-
-        <!--        <div class="row mt-2 pt-2 justify-content-center">-->
-        <!--            <div class="col-md-10 mx-5 ">-->
-        <!--                <label class="row" style="margin-right: 1%" for="description">توضیحات</label>-->
-        <!--                <textarea style="border-bottom-left-radius: 20px; border-top-right-radius: 20px" class="form-control" style="min-height: 150px"-->
-        <!--                          placeholder="توضیحات پست را وارد نمایید" required></textarea>-->
-        <!--            </div>-->
-        <!--        </div>-->
-
+        <div class="form-group row" style="margin-top: 2%">
+            <label class="row" style="margin-right: 9%" for="image">زمان تحویل</label>
+            <div class="col-md-12 mx-5">
+                <input style="display:inline;margin-left: 5%; border-top-right-radius: 20px; border-bottom-left-radius: 20px"
+                       class="col-md-5 form-control" type="date" value="2020-01-01" id="-date-input">
+                <input style="display:inline; margin-left: 13%; border-top-right-radius: 20px; border-bottom-left-radius: 20px"
+                       class="col-md-4 form-control" type="time" value="23:59" id="-time-input">
+            </div>
+        </div>
 
         <div class="row my-2 pt-4 justify-content-center">
             <div class="col-md-10 mx-5" style="margin-bottom: 5%">
@@ -57,7 +57,6 @@
 
 </form>
 {% endblock %}
-
 {% block extra_js %}
-<!--<script src="./countdown.js"></script>-->
+
 {% endblock %}
