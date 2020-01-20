@@ -24,9 +24,9 @@
         <div class="row mt-2 pt-2 justify-content-center">
             <div class="col-md-10 mx-5 ">
                 <label class="row" style="margin-right: 1%" for="description">توضیحات</label>
-                <textarea style="border-bottom-left-radius: 20px; border-top-right-radius: 20px"
-                          class="form-control" style="min-height: 150px"
-                          placeholder="توضیحات پست را وارد نمایید" required></textarea>
+                <textarea
+                        style="width: 100%; padding-right: 10px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; min-height: 150px"
+                        placeholder="توضیحات پست را وارد نمایید" required></textarea>
             </div>
         </div>
 
@@ -56,7 +56,23 @@
     </div>
 
 </form>
+
 {% endblock %}
 {% block extra_js %}
+<script>
+var textarea = document.querySelector('textarea');
 
+textarea.addEventListener('keydown', autosize);
+
+function autosize(){
+  var el = this;
+  el.style.width = 100%;
+  setTimeout(function(){
+    el.style.cssText = 'height:auto; padding:0';
+    // for box-sizing other than "content-box" use:
+    // el.style.cssText = '-moz-box-sizing:content-box';
+    el.style.cssText = 'height:' + el.scrollHeight + 'px';
+  },0);
+}
+</script>
 {% endblock %}

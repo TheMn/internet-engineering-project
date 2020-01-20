@@ -319,7 +319,8 @@ input {
     .x1x {
         display: none;
     }
-    #sidebar2{
+
+    #sidebar2 {
         display: block;
     }
 
@@ -333,10 +334,12 @@ input {
     .user_response {
         display: none;
     }
+
     .x1x {
         display: block;
     }
-    #sidebar2{
+
+    #sidebar2 {
         display: none;
     }
 }
@@ -345,6 +348,7 @@ button,
 select {
     text-transform: none;
 }
+
 
 button,
 [type="button"],
