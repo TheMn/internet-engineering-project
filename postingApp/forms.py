@@ -11,11 +11,14 @@ class PageForm(forms.ModelForm):
         fields = ('text',)
 
 
-# class CommentForm(forms.ModelForm):
-#     content = forms.Textarea(attrs={
-#         'class': 'form-control'
-#     })
-#
-#     class Meta:
-#         model = Comment
-#         fields = ('content',)
+class CommentForm(forms.ModelForm):
+    text = forms.CharField(widget=forms.Textarea(attrs={
+        'class': 'form-control',
+        'placeholder': 'پیام',
+        'id': 'message',
+        'rows' : '4'
+    }))
+
+    class Meta:
+        model = Comment
+        fields = ('text',)

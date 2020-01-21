@@ -4,7 +4,7 @@
 {% block title %}{{ this_post.title }}{% endblock %}
 
 {% block content %}
-<section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_2.jpg' %});">
+<section class="hero-wrap hero-wrap-2" style="background-image: url({{ this_post.img.url }});">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -15,6 +15,18 @@
                         class="ion-ios-arrow-back"></i></a></span> <span>{{ this_post.title }}<i
                         class="ion-ios-arrow-back"></i></span></p>
             </div>
+               <div class="row col-4">
+                <p style="margin-right: auto; margin-left: auto; border-radius:50%; box-shadow: 0 10px 10px 0 rgba(255, 204, 153, .80), 0 10px 15px 0 rgba(255, 204, 0, .15)"
+                   class="mb-0" style="margin-: 10px"><a href="{% url 'blog_update' slug=this_post.slug %}"style="font-family: Vazir-Medium"
+                                                         class="btn btn-secondary">Update<span
+                            class="icon-plus"></span></a></p>
+                    <p style="margin-right: auto; margin-left: auto; border-radius:50%; box-shadow: 0 10px 10px 0 rgba(255, 204, 153, .80), 0 10px 15px 0 rgba(255, 204, 0, .15)"
+                   class="mb-0" style="margin-: 10px"><a style="font-family: Vazir-Medium" href="{% url 'blog_delete' slug=this_post.slug %}"
+                                                         class="btn btn-secondary">Delete
+                    <span
+                            class="icon-plus"></span></a></p>
+            </div>
+
         </div>
     </div>
 </section>
@@ -50,15 +62,14 @@
 
                 <div style="direction: rtl" class="pt-5 mt-5">
                     <h3 style="font-family: Vazir-Bold" class="mb-5 h4 font-weight-bold">
-                        ({{ this_post.comment_count }})
+                        ({{ this_post.get_comments.count }})
                         نظرات</h3>
                     <ul class="comment-list">
 
                         {% for comment in this_post.get_comments %}
-
-                        <li class="comment">
+<li class="comment">
                             <div class="vcard bio" style="float: right">
-                                <img src="{% static 'images/teacher-1.jpg' %}" alt="Image placeholder">
+                                <img src="{{ comment.author.user.profile.img.url }}" alt="Image placeholder">
                             </div>
                             <div class="comment-body">
                                 <h3 style="font-family: Vazir-Bold; margin-right: 2%">{{ comment.author }}</h3>
@@ -70,6 +81,7 @@
                                 <!--                                <p style="font-family: Vazir-Medium"><a href="#" class="reply">پاسخ</a></p>-->
                             </div>
                         </li>
+
                         {% endfor %}
 
                         <!--                        <li class="comment">-->
@@ -109,10 +121,9 @@
                     </ul>
                     <!-- END comment-list -->
                     {% if user.is_authenticated %}
-
                     <div class="comment-form-wrap pt-5">
                         <h3 style="font-family: Vazir-Bold" class="mb-5 h4 font-weight-bold">نظر ثبت کنید</h3>
-                        <form action="#" class="p-5 bg-light"
+                        <form method="POST" action="." class="p-5 bg-light"
                               style="border-top-right-radius: 20px; border-bottom-left-radius: 20px">
                             <div class="form-group">
                                 <input style="font-family: Vazir-Medium; border-top-right-radius: 20px; border-bottom-left-radius: 20px"
@@ -150,12 +161,12 @@
 
             <div style="text-align: right" class="col-lg-4 sidebar ftco-animate">
                 <div dir="rtl" class="sidebar-box" style="width: 100%">
-                    <form action="#" class="search-form"
+                    <form action="{% url 'search' %}" class="search-form"
                           style="border-top-right-radius: 20px; border-bottom-left-radius: 20px">
                         <div class="form-group">
                             <span class="icon icon-search"></span>
                             <input style="border-top-right-radius: 20px; border-bottom-left-radius: 20px; font-family: Vazir-Medium"
-                                   type="text" class="form-control"
+                                   type="text" name="q" class="form-control"
                                    placeholder="عنوانی را جستجو کنید">
                         </div>
                     </form>
@@ -194,20 +205,10 @@
                 <div class="sidebar-box ftco-animate">
                     <h3 style="font-family: Vazir-Bold">تگ ها</h3>
                     <ul class="tagcloud m-0 p-0">
+                        {% for cat in categories %}
                         <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
-                           class="tag-cloud-link">تگ 1</a>
-                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
-                           class="tag-cloud-link">تگ 2</a>
-                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
-                           class="tag-cloud-link">تگ 3</a>
-                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
-                           class="tag-cloud-link">تگ 4</a>
-                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
-                           class="tag-cloud-link">تک 5</a>
-                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
-                           class="tag-cloud-link">تگ 6</a>
-                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
-                           class="tag-cloud-link">تگ شماره های دیگر</a>
+                           class="tag-cloud-link">{{cat.title}}</a>
+                        {% endfor %}
                     </ul>
                 </div>
                 <div class="sidebar-box ftco-animate" style="direction: ltr">

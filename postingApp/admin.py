@@ -2,8 +2,13 @@ from django.contrib import admin
 
 from .models import *
 
+
+class AdminPosting(admin.ModelAdmin):
+    exclude = ('slug',)
+
+
 # Register your models here.
-admin.site.register(PostStuff)
+admin.site.register(PostStuff, AdminPosting)
 admin.site.register(Comment)
 admin.site.register(Profile)
 admin.site.register(Attachment)
