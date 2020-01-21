@@ -66,7 +66,7 @@ def blog_single(request, slug):
             form.instance.post = post
             form.save()
             return redirect(reverse("blog_single", kwargs={
-                'slug': post.pk
+                'slug': post.slug
             }))
     context = {
         'comment_form': form,
@@ -113,11 +113,19 @@ def add_post(request):
     form = PageForm
     if request.method == 'POST':
         form = PageForm(request.POST, request.FILES)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.username = request.user.profile
-            post.save()
-            form = PageForm
+        print('***********')
+        # 'title',
+        # 'text',
+        # 'description',
+        # 'img',
+        # 'featured',
+        post = form.save(commit=False)
+        post.username = request.user.profile
+        post.title = request.POST['title']
+        post.description = request.POST['description']
+        print('~~~~~~~~~~>', post)
+        post.save()
+        form = PageForm
     return render(request, 'add_post.html', {'form': form, })
 
 

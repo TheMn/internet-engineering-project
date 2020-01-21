@@ -15,13 +15,15 @@
                         class="ion-ios-arrow-back"></i></a></span> <span>{{ this_post.title }}<i
                         class="ion-ios-arrow-back"></i></span></p>
             </div>
-               <div class="row col-4">
+            <div class="row col-4">
                 <p style="margin-right: auto; margin-left: auto; border-radius:50%; box-shadow: 0 10px 10px 0 rgba(255, 204, 153, .80), 0 10px 15px 0 rgba(255, 204, 0, .15)"
-                   class="mb-0" style="margin-: 10px"><a href="{% url 'blog_update' slug=this_post.slug %}"style="font-family: Vazir-Medium"
+                   class="mb-0" style="margin-: 10px"><a href="{% url 'blog_update' slug=this_post.slug %}"
+                                                         style="font-family: Vazir-Medium"
                                                          class="btn btn-secondary">Update<span
-                            class="icon-plus"></span></a></p>
-                    <p style="margin-right: auto; margin-left: auto; border-radius:50%; box-shadow: 0 10px 10px 0 rgba(255, 204, 153, .80), 0 10px 15px 0 rgba(255, 204, 0, .15)"
-                   class="mb-0" style="margin-: 10px"><a style="font-family: Vazir-Medium" href="{% url 'blog_delete' slug=this_post.slug %}"
+                        class="icon-plus"></span></a></p>
+                <p style="margin-right: auto; margin-left: auto; border-radius:50%; box-shadow: 0 10px 10px 0 rgba(255, 204, 153, .80), 0 10px 15px 0 rgba(255, 204, 0, .15)"
+                   class="mb-0" style="margin-: 10px"><a style="font-family: Vazir-Medium"
+                                                         href="{% url 'blog_delete' slug=this_post.slug %}"
                                                          class="btn btn-secondary">Delete
                     <span
                             class="icon-plus"></span></a></p>
@@ -41,7 +43,7 @@
                         <span style="text-align: right; font-family: Vazir-Medium"><span
                                 style="font-family: Vazir-Medium">نویسنده:</span>{{ this_post.username }}</span>
                         <span style="text-align: left; font-family: Vazir-Medium"><span
-                                style="font-family: Vazir-Medium">تاریخ:</span>{{ this_post.date|date:"Y m d" }}</span>
+                                style="font-family: Vazir-Medium">تاریخ:</span>{{ this_post.date|date:"M,j - H:i" }}</span>
                     </div>
                 </div>
                 <br>
@@ -67,13 +69,14 @@
                     <ul class="comment-list">
 
                         {% for comment in this_post.get_comments %}
-<li class="comment">
+                        <li class="comment">
                             <div class="vcard bio" style="float: right">
                                 <img src="{{ comment.author.user.profile.img.url }}" alt="Image placeholder">
                             </div>
                             <div class="comment-body">
                                 <h3 style="font-family: Vazir-Bold; margin-right: 2%">{{ comment.author }}</h3>
-                                <div style="font-family: Vazir-Medium; text-align: right; margin-right: 2%" class="meta mb-2">{{ comment.cm_date|date:"Y m d" }}
+                                <div style="font-family: Vazir-Medium; text-align: right; margin-right: 2%"
+                                     class="meta mb-2">{{ comment.cm_date|date:"M,j - H:i" }}
                                 </div>
                                 <p style="font-family: Vazir-Medium">
                                     {{ comment.text }}
@@ -123,32 +126,19 @@
                     {% if user.is_authenticated %}
                     <div class="comment-form-wrap pt-5">
                         <h3 style="font-family: Vazir-Bold" class="mb-5 h4 font-weight-bold">نظر ثبت کنید</h3>
-                        <form method="POST" action="." class="p-5 bg-light"
+                        <form method="POST" action="{{ this_post.get_absolute_url }}" class="p-5 bg-light"
                               style="border-top-right-radius: 20px; border-bottom-left-radius: 20px">
-                            <div class="form-group">
-                                <input style="font-family: Vazir-Medium; border-top-right-radius: 20px; border-bottom-left-radius: 20px"
-                                       type="text" class="form-control" id="name"
-                                       placeholder="نام *">
-                            </div>
-                            <div class="form-group">
-                                <input style="font-family: Vazir-Medium; border-top-right-radius: 20px; border-bottom-left-radius: 20px"
-                                       type="email" class="form-control" id="email"
-                                       placeholder="رایانامه *">
-                            </div>
-                            <div class="form-group">
-                                <input style="font-family: Vazir-Medium; border-top-right-radius: 20px; border-bottom-left-radius: 20px"
-                                       type="url" class="form-control" id="website"
-                                       placeholder="تارنما">
-                            </div>
+                            {% csrf_token %}
 
                             <div class="form-group">
                                 <textarea
-                                        style="font-family: Vazir-Medium; border-top-right-radius: 20px; border-bottom-left-radius: 20px"
-                                        name="" id="message" cols="30" rows="10"
+                                        style="font-family: Vazir-Medium; border-top-right-radius: 20px;
+                                        border-bottom-left-radius: 20px"
+                                        name="text" id="message" cols="30" rows="10"
                                         class="form-control" placeholder="پیام"></textarea>
                             </div>
                             <div class="form-group">
-                                <input style="font-family: Vazir-Medium; " type="submit" value="ارسال نظر"
+                                <input style="font-family: Vazir-Medium; " type="submit" name="submit" value="ارسال نظر"
                                        class="btn py-3 px-4 btn-primary">
                             </div>
 

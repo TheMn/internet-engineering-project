@@ -5,7 +5,8 @@
 <link rel="stylesheet" href="{% static 'css/tag.css' %}">
 {% endblock %}
 {% block content %}
-<form action="" style="font-family: Vazir-Medium" dir="rtl">
+<form id="add-post" method="post" action="{% url 'add_post' %}" style="font-family: Vazir-Medium" dir="rtl">
+    {% csrf_token %}
 
     <div class="container col-md-8 offset-md-2 div-border py-2 mt-5"
          style="background: #FAFAFA; border-bottom-left-radius: 20px; border-top-right-radius: 20px; margin-bottom: 20px">
@@ -21,11 +22,11 @@
             </div>
         </div>
 
-         <div class="row mt-3 pt-2 justify-content-center">
+        <div class="row mt-3 pt-2 justify-content-center">
             <div class="col-md-10 mx-5">
                 <label class="row" style="margin-right: 1%" for="title">متا دیسکریپشن</label>
                 <input style="border-bottom-left-radius: 20px; border-top-right-radius: 20px" class="form-control"
-                       type="text" placeholder="توضیحات متا را وارد نمایید" name="title">
+                       type="text" placeholder="توضیحات متا را وارد نمایید" name="description">
             </div>
         </div>
 
@@ -33,28 +34,30 @@
         <div class="row mt-2 pt-2 justify-content-center">
             <div class="col-md-10 mx-5 ">
                 <label class="row" style="margin-right: 1%" for="image">بارگزاری تصویر</label>
-                <input class="form-control-file" type="file" name="image">
+                <input class="form-control-file" type="file" name="img">
             </div>
         </div>
 
 
-        <div class="row mt-2 pt-2 justify-content-center">
-            <div class="col-md-10 mx-5 ">
-                <label class="row" style="margin-right: 1%" for="tag">تگ</label>
-                <!--                <input style="border-bottom-left-radius: 20px; border-top-right-radius: 20px" class="form-control" type="text" placeholder="تگ را وارد نمایید" name="tag">-->
-                <div class="box">
-                    <input type="text" class="transform-me" placeholder="تگ های خود را وارد نمایید" value="المپیاد,">
-                </div>
-                <P style="margin-top: -4%; font-size: 14px">با فشردن Enter تگ ها را از هم جدا نمایید و با کلیک کردن بر روی تگ ها، آن ها را حذف کنید</P>
-            </div>
-        </div>
+<!--        <div class="row mt-2 pt-2 justify-content-center">-->
+<!--            <div class="col-md-10 mx-5 ">-->
+<!--                <label class="row" style="margin-right: 1%" for="tag">تگ</label>-->
+<!--                &lt;!&ndash;                <input style="border-bottom-left-radius: 20px; border-top-right-radius: 20px" class="form-control" type="text" placeholder="تگ را وارد نمایید" name="tag">&ndash;&gt;-->
+<!--                <div class="box">-->
+<!--                    <input type="text" class="transform-me" placeholder="تگ های خود را وارد نمایید" value="المپیاد,">-->
+<!--                </div>-->
+<!--                <P style="margin-top: -4%; font-size: 14px">با فشردن Enter تگ ها را از هم جدا نمایید و با کلیک کردن بر-->
+<!--                    روی تگ ها، آن ها را حذف کنید</P>-->
+<!--            </div>-->
+<!--        </div>-->
 
 
         <div class="row mt-2 pt-2 justify-content-center">
             <div class="col-md-10 mx-5 ">
                 <label class="row" style="margin-right: 1%" for="description">توضیحات</label>
                 <textarea style="border-bottom-left-radius: 20px; border-top-right-radius: 20px"
-                          class="form-control" style="min-height: 150px"
+                          class="form-control djrichtextfield" style="min-height: 150px"
+                          name="description"
                           placeholder="توضیحات پست را وارد نمایید" required></textarea>
             </div>
         </div>
@@ -62,7 +65,7 @@
 
         <div class="row my-2 pt-4 justify-content-center">
             <div class="col-md-10 mx-5" style="margin-bottom: 5%">
-                <input type="submit" class="btn btn-primary col-md-12 " name="save" value="ارسال پست جدید">
+                <input type="submit" class="btn btn-primary col-md-12 " name="submit" value="ارسال پست جدید">
             </div>
         </div>
     </div>

@@ -3,11 +3,12 @@ from djrichtextfield.models import RichTextField
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save, pre_save
-from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from .utils import unique_slug_generator
+from loginApp.models import Subscriber
+from django.core.mail import send_mail
 from courseApp.models import Homework
 
 User = get_user_model()
@@ -93,6 +94,17 @@ class PostStuff(models.Model):
 
     def comment_count(self):
         return Comment.objects.filter(post=self).count()
+
+
+# @receiver(post_save, sender=PostStuff)
+# def send_mail_to_subscribers(sender, instance, **kwargs):
+#     send_mail(
+#         instance.title,
+#         instance.text,
+#         'allamehelli5@ac.ir',
+#         [s.email for s in Subscriber.objects.all()],
+#         fail_silently=False,
+#     )
 
 
 def pre_save_post_receiver(sender, instance, *args, **kwargs):

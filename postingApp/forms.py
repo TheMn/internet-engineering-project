@@ -4,11 +4,22 @@ from .models import PostStuff, Comment
 
 
 class PageForm(forms.ModelForm):
+    title = forms.CharField(max_length=100)
     text = RichTextField(field_settings='advanced')
+    description = forms.CharField(max_length=160)
+    # img = forms.ImageField()
+    # categories
+    featured = forms.BooleanField()
 
     class Meta:
         model = PostStuff
-        fields = ('text',)
+        fields = (
+            'title',
+            'text',
+            'description',
+            # 'img',
+            'featured',
+        )
 
 
 class CommentForm(forms.ModelForm):
@@ -16,7 +27,7 @@ class CommentForm(forms.ModelForm):
         'class': 'form-control',
         'placeholder': 'پیام',
         'id': 'message',
-        'rows' : '4'
+        'rows': '4'
     }))
 
     class Meta:
