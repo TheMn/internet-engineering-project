@@ -7,15 +7,16 @@ from loginApp.models import Subscriber
 
 
 def index(request):
-    if request.method == "POST":
-        if request.POST.get('submit') == 'عضویت':
-            try:
-                email = request.POST["email"]
-                new_subscriber = Subscriber()
-                new_subscriber.email = email
-                new_subscriber.save()
-            except Exception:
-                pass
+    # TODO: uncomment subscribe form
+    # if request.method == "POST":
+    #     if request.POST.get('submit') == 'عضویت':
+    #         try:
+    #             email = request.POST["email"]
+    #             new_subscriber = Subscriber()
+    #             new_subscriber.email = email
+    #             new_subscriber.save()
+    #         except Exception:
+    #             pass
     latest = PostStuff.objects.order_by('-date')[0:3]
     context = {
         'latest_posts': latest

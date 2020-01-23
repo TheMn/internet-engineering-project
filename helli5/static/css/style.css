@@ -11774,6 +11774,12 @@ h1, h2, h3, h4, h5,
     z-index: 0;
 }
 
+/* we have added this to make slides scrollable */
+.owl-carousel .owl-stage, .owl-carousel.owl-drag .owl-item {
+    -ms-touch-action: auto;
+    touch-action: auto;
+}
+
 @media (max-width: 1199.98px) {
     .owl-carousel.home-slider .slider-item {
         background-position: center center !important;

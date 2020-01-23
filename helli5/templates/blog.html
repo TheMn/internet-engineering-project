@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %} بلاگ {% endblock %}
+
 {% block content %}
 
 
@@ -52,7 +53,7 @@
                             <div class="text bg-white p-4" style="border-bottom-left-radius: 20px">
                                 <h3 style="font-family: Vazir-Bold" class="heading"><a href="#">{{ fpost.title }}</a>
                                 </h3>
-                                <p style="font-family: Vazir-Medium"> {{ fpost.text|safe }} </p>
+                                <p style="font-family: Vazir-Medium"> {{ fpost.description }} </p>
                                 <div style="direction: rtl" class="d-flex align-items-center mt-4">
                                     <p class="ml-auto mb-0">
                                         <a style="font-family: Vazir-Medium" style="margin-right: 10px" href="#"
@@ -151,40 +152,41 @@
                         {% endfor %}
                     </ul>
                 </div>
-                <div class="sidebar-box ftco-animate" style="direction: ltr">
-                    <h3 style="font-family: Vazir-Bold">دسته بندی</h3>
-                    <ul class="categories">
-                        <div class="row">
-                            <div style="text-align: left" class="col-lg-4 ">
-                                <span>(6)</span>
-                            </div>
-                            <div class="col-lg-8 ">
-                                <li><a style="font-family: Vazir-Medium" href="#">دسته اول </a></li>
-                            </div>
-                        </div>
-                        <hr>
+<!--                TODO: make independent template for side-bar -->
+<!--                <div class="sidebar-box ftco-animate" style="direction: ltr">-->
+<!--                    <h3 style="font-family: Vazir-Bold">دسته بندی</h3>-->
+<!--                    <ul class="categories">-->
+<!--                        <div class="row">-->
+<!--                            <div style="text-align: left" class="col-lg-4 ">-->
+<!--                                <span>(6)</span>-->
+<!--                            </div>-->
+<!--                            <div class="col-lg-8 ">-->
+<!--                                <li><a style="font-family: Vazir-Medium" href="#">دسته اول </a></li>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <hr>-->
 
-                        <div class="row">
-                            <div style="text-align: left" class="col-lg-4 ">
-                                <span>(8)</span>
-                            </div>
-                            <div class="col-lg-8 ">
-                                <li><a style="font-family: Vazir-Medium" href="#">دسته دوم </a></li>
-                            </div>
-                        </div>
-                        <hr>
+<!--                        <div class="row">-->
+<!--                            <div style="text-align: left" class="col-lg-4 ">-->
+<!--                                <span>(8)</span>-->
+<!--                            </div>-->
+<!--                            <div class="col-lg-8 ">-->
+<!--                                <li><a style="font-family: Vazir-Medium" href="#">دسته دوم </a></li>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <hr>-->
 
-                        <div class="row">
-                            <div style="text-align: left" class="col-lg-4 ">
-                                <span>(5)</span>
-                            </div>
-                            <div class="col-lg-8 ">
-                                <li><a style="font-family: Vazir-Medium" href="#">دسته سوم </a></li>
-                            </div>
-                        </div>
-                        <hr>
-                    </ul>
-                </div>
+<!--                        <div class="row">-->
+<!--                            <div style="text-align: left" class="col-lg-4 ">-->
+<!--                                <span>(5)</span>-->
+<!--                            </div>-->
+<!--                            <div class="col-lg-8 ">-->
+<!--                                <li><a style="font-family: Vazir-Medium" href="#">دسته سوم </a></li>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <hr>-->
+<!--                    </ul>-->
+<!--                </div>-->
             </div>
 
         </div><!-- END COL -->
