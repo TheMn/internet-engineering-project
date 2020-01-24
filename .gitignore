@@ -11,3 +11,10 @@ courseApp/migrations/
 
 uploads/
 .idea/
+__pycache__/
+courseApp/__pycache__/
+honorsApp/__pycache__/
+loginApp/__pycache__/
+loginApp/migrations/
+media/thumbnails/
+staticfiles/
