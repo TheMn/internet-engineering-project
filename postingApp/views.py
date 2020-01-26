@@ -17,9 +17,15 @@ from django.db.models import Count, Q
 #
 #     return months
 
+# def posts_by_cat(request, id):
+#     cat = get_object_or_404(Category, id=id)
+#     for mpost in cat.get_posts():
+#         print(mpost.title)
+
+
 def search(request):
     queryset = PostStuff.objects.all()
-    query = request.GET.get('q')
+    query = request.GET.get('search')
     if query:
         queryset = queryset.filter(Q(title__icontains=query) |
                                    Q(text__icontains=query)
