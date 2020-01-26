@@ -74,23 +74,25 @@
         <div class="row grid isotope">
 
             {% for honor_card in all_honors %}
-            <div class="element-item col-md-6 col-lg-4 {{ honor_card.get_class }}" style="width: 100%">
+            <div class="element-item col-md-6 col-lg-4 {{ honor_card.get_class }}" style="width: 100%;">
                 <div dir="rtl"
-                     style="margin-right:5px;margin-top: 10px;margin-left: 5px;margin-bottom: 10px; height:150px;
+                     style="margin-right:5px;margin-top: 10px;margin-left: 5px;margin-bottom: 10px; height:200px;
                      border-radius: 0px 20px 0px 20px;
                      box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1), 0 5px 15px 0 rgba(0, 0, 0, 0.1);"
                      class="row">
 
                     <a href="" class="col-4 block-20 d-flex align-items-end"
-                       style="border-radius: 0px  20px 0px 0px; height:150px;
+                       style="border-radius: 0px  20px 0px 0px; height:unset;
                        background-image: url({{ honor_card.avatar.url }});">
                     </a>
-                    <div style="border-radius: 0px 0px 0px 20px; height:150px" class="col-8 text bg-white p-4">
-                        <h3 style="font-family: Vazir-Bold; font-size: 22px" class="heading">
-                            <a style="color: #2A4324">{{ honor_card.name }}</a>
+                    <div style="border-radius: 0px 0px 0px 20px; height:unset;position: relative;" class="col-8 text bg-white p-4">
+                        <h3 style="font-family: Vazir-Bold; font-size: 18px" class="heading">
+                            <a style="color: #2A4324;">{{ honor_card.name }}</a>
                         </h3>
-                        <p style="font-family: Vazir-Medium">{{ honor_card.title }}</p>
-                        <div style="direction: rtl" class="d-flex align-items-center mt-4">
+                        <p style="font-family: Vazir-Medium; margin-bottom: -5px">{{ honor_card.title }}</p>
+                        <p style="font-family: Vazir-Medium; margin-bottom: -5px ">{{ honor_card.title_2 }}</p>
+                        <p style="font-family: Vazir-Medium;">{{ honor_card.title_3 }}</p>
+                        <div style="direction: rtl;position: absolute; left: 15px; bottom: 10px;" class="d-flex align-items-center mt-4">
                             <p style="font-family: Vazir-Medium" class="ml-auto mb-0">
                                 <a style="font-family: Vazir-Medium;
                                 color: #74A29E" href="#" class="mr-2">{{ honor_card.period }}</a>

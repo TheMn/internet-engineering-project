@@ -36,7 +36,7 @@ urlpatterns = [
 
   url(r'^حساب-ها/', include('loginApp.urls')),
   url(r'^نوشته-ها/', include('postingApp.urls')),
-  url(r'^honors/', include('honorsApp.urls')),
+  url(r'^افتخارات/', include('honorsApp.urls')),
   # url(r'^courses/', include('courseApp.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

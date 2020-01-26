@@ -13,9 +13,12 @@ def period_choices():
 class Honors(models.Model):
     name = models.CharField(max_length=50)
     title = models.CharField(max_length=150, blank=True)
+    title_2 = models.CharField(max_length=150, blank=True)
+    title_3 = models.CharField(max_length=150, blank=True)
     avatar = models.ImageField(upload_to="honors")
     categories = models.ManyToManyField(Category, limit_choices_to={'is_honored': True})
     period = models.CharField(max_length=50, choices=period_choices())
+    is_top = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -24,3 +27,6 @@ class Honors(models.Model):
     def get_class(self):
         category = " ".join([cat.title for cat in self.categories.all()])
         return " ".join([self.period, category])
+
+
+
