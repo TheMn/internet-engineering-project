@@ -10,15 +10,17 @@
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
-                <h1 style="font-family: Vazir-Bold" class="mb-2 bread">بلاگ</h1>
-                <p style="font-family: Vazir-Medium" class="breadcrumbs"><span class="mr-2"><a href="index.html">صفحه اصلی <i
-                        class="ion-ios-arrow-back"></i></a></span> <span>بلاگ <i
+                <h1 style="font-family: Vazir-Bold" class="mb-2 bread">نوشته ها</h1>
+                <p style="font-family: Vazir-Medium" class="breadcrumbs">
+                    <span class="mr-2"><a href="{% url 'index' %}">صفحه نخست <i
+                        class="ion-ios-arrow-back"></i></a></span> <span>نوشته ها <i
                         class="ion-ios-arrow-back"></i></span></p>
             </div>
 
             {% if user.is_authenticated and not user.profile.role.is_student %}
             <div class="row col-12">
-                <p style="margin-right: auto; margin-left: auto; border-radius:50%; box-shadow: 0 10px 10px 0 rgba(255, 204, 153, .80), 0 10px 15px 0 rgba(255, 204, 0, .15)"
+                <p style="margin-right: auto; margin-left: auto; border-radius:50%;
+                 box-shadow: 0 10px 10px 0 rgba(255, 204, 153, .80), 0 10px 15px 0 rgba(255, 204, 0, .15)"
                    class="mb-0" style="margin-: 10px"><a style="font-family: Vazir-Medium" href="{% url 'add_post' %}"
                                                          class="btn btn-secondary">نوشته ی
                     جدید<span

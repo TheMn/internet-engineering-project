@@ -9,9 +9,10 @@
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
-                <h1 style="font-family: Vazir-Bold" class="mb-2 bread">بلاگ</h1>
-                <p style="font-family: Vazir-Medium" class="breadcrumbs"><span class="mr-2"><a href="index.html">صفحه نخست <i
-                        class="ion-ios-arrow-back"></i></a></span> <span class="mr-2"><a href="index.html">بلاگ <i
+                <h1 style="font-family: Vazir-Bold" class="mb-2 bread">{{ this_post.title }}</h1>
+                <p style="font-family: Vazir-Medium" class="breadcrumbs">
+                    <span class="mr-2"><a href="{% url 'index' %}">صفحه نخست <i
+                        class="ion-ios-arrow-back"></i></a></span> <span class="mr-2"><a href="{% url 'blog' %}">نوشته ها <i
                         class="ion-ios-arrow-back"></i></a></span> <span>{{ this_post.title }}<i
                         class="ion-ios-arrow-back"></i></span></p>
             </div>
@@ -36,22 +37,21 @@
 <section class="ftco-section" style="direction: rtl">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 ftco-animate">
-                <h2 style="font-family: Vazir-Bold" class="mb-3">{{ this_post.title }}</h2>
-                <div dir="rtl" style="text-align: right" class="container">
-                    <div class="row">
-                        <span style="text-align: right; font-family: Vazir-Medium"><span
-                                style="font-family: Vazir-Medium">نویسنده:</span>{{ this_post.username }}</span>
-                        <span style="text-align: left; font-family: Vazir-Medium"><span
-                                style="font-family: Vazir-Medium">تاریخ:</span>{{ this_post.date|date:"M,j - H:i" }}</span>
-                    </div>
-                </div>
-                <br>
+            <div id="blog_single_content" class="col-lg-8 ftco-animate">
+<!--                <br>-->
                 {{ this_post.text|safe }}
 
                 <!--                <img style="border-bottom-left-radius: 20px; border-top-right-radius: 20px; box-shadow: 0 8px 10px 0 rgba(0, 0, 0, .12), 0 10px 15px 0 rgba(0, 0, 0, .10);"-->
                 <!--                         src="" alt="" class="img-fluid">-->
-                <hr style="margin-top: 5%; margin-bottom: -4%">
+                <div dir="rtl" style="text-align: right; margin-top: 5%" class="container">
+                    <div class="row">
+                        <span style="text-align: right; font-family: Vazir-Medium"><span
+                                style="font-family: Vazir-Medium">نوشته شده توسط:</span>{{ this_post.username.user.last_name }}</span>
+                        <span style="text-align: left; font-family: Vazir-Medium"><span
+                                style="font-family: Vazir-Medium">تاریخ:</span>{{ this_post.date|date:"M,j - H:i" }}</span>
+                    </div>
+                </div>
+                                <hr style="margin-top: 0%; margin-bottom: -5%">
 
                 <div style="text-align: right" class="tag-widget post-tag-container mb-5 mt-5">
                     <div class="tagcloud">
