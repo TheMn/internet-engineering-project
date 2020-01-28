@@ -48,10 +48,14 @@
             <ul class="navbar-nav ml-auto">
                 <!--                TODO: Uncomment this buttons after completing directed pages-->
 
+                <li class="nav-item"><a href="{% url 'blog' %}" style="font-family: Vazir-Medium" class="nav-link">
+                    نوشته ها
+                </a></li>
                 <li class="nav-item"><a href="{% url 'about' %}" style="font-family: Vazir-Medium" class="nav-link">درباره
                     ما</a></li>
                 <li class="nav-item"><a href="{% url 'contact' %}" style="font-family: Vazir-Medium" class="nav-link">ارتباط
                     با ما</a></li>
+
 
                 {% if user.is_authenticated %}
                 <li style="margin-top: auto; margin-bottom: auto;
