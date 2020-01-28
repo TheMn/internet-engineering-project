@@ -40,9 +40,12 @@
 
                     <div class="col-sm-12 col-md-6 ftco-animate">
                         <div class="blog-entry" dir="ltr"
-                             style="border-bottom-left-radius:20px; border-top-right-radius:20px; box-shadow: 0 8px 10px 0 rgba(0, 0, 0, .12), 0 10px 15px 0 rgba(0, 0, 0, .10)">
-                            <a href="{{ fpost.img.url }}" class="block-20 d-flex align-items-end"
-                               style="background-image: url({{ fpost.img.url }});border-top-right-radius: 20px">
+                             style="border-bottom-left-radius:20px;
+                             border-top-right-radius:20px;
+                             box-shadow: 0 8px 10px 0 rgba(0, 0, 0, .12), 0 10px 15px 0 rgba(0, 0, 0, .10)">
+                            <a href="{{ fpost.get_absolute_url }}" class="block-20 d-flex align-items-end"
+                               style="background-image: url({{ fpost.img.url }});
+                               border-top-right-radius: 20px">
                                 <div class="meta-date text-center p-2"
                                      style="border-top-right-radius: 20px; background: #2A4324">
                                     <span style="font-family: Vazir-Medium" class="day">{{ fpost.date|date:"d" }}</span>
@@ -117,7 +120,8 @@
                     <h3 style="font-family: Vazir-Bold">مطالب مهم</h3>
                     {% for fpost in featured_posts %}
                     <div class="block-21 mb-4 d-flex"
-                         style="background: #FAFAFA; border-bottom-left-radius: 20px; border-top-right-radius: 20px;">
+                         style="background: #FAFAFA; border-bottom-left-radius: 20px;
+                         border-top-right-radius: 20px;">
                         <!--                        <a class="blog-img mr-4" style="background-image: url({{ fpost.img.url }});"></a>-->
                         <div class="text col-12">
                             <h3 class="heading"
