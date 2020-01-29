@@ -1,6 +1,7 @@
 // quick search regex
 var qsRegex;
 var buttonFilter;
+var buttonFilter2;
 
 // init Isotope
 var $grid = $('.grid').isotope({
@@ -10,7 +11,8 @@ var $grid = $('.grid').isotope({
     var $this = $(this);
     var searchResult = qsRegex ? $this.text().match( qsRegex ) : true;
     var buttonResult = buttonFilter ? $this.is( buttonFilter ) : true;
-    return searchResult && buttonResult;
+    var buttonResult2 = buttonFilter2 ? $this.is( buttonFilter2 ) : true;
+    return searchResult && buttonResult2 && buttonResult ;
   }
 });
 
@@ -29,7 +31,7 @@ $('.filters-select2').on( 'change', function() {
   // get filter value from option value
   // var filterValue = this.value;
   // use filterFn if matches value
-  buttonFilter = this.value;
+  buttonFilter2 = this.value;
   //$grid.isotope({ filter: filterValue });
   $grid.isotope();
 });
