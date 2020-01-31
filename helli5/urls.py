@@ -33,7 +33,7 @@ urlpatterns = [
 
   # path('error503/', views.error503, name='error503'),
   # path('djrichtextfield/', include('djrichtextfield.urls')),
-  path(r'^tinymce/', include('tinymce.urls')),
+  url(r'^tinymce/', include('tinymce.urls')),
 
   url(r'^حساب-ها/', include('loginApp.urls')),
   url(r'^نوشته-ها/', include('postingApp.urls')),

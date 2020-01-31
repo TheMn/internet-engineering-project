@@ -6,7 +6,8 @@ from .utils import unique_slug_generator
 from loginApp.models import Subscriber, Profile
 from django.core.mail import send_mail
 from tinymce import models as tinymce_models
-
+from colorfield.fields import ColorField
+from jalali_date import datetime2jalali, date2jalali
 
 
 class Category(models.Model):
@@ -34,7 +35,7 @@ class PostStuff(models.Model):
     text = tinymce_models.HTMLField()
     description = models.CharField(max_length=150, blank=True)
     img = models.ImageField(upload_to="thumbnails")
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(auto_now_add=False)
     comment_count = models.IntegerField(default=0)
     categories = models.ManyToManyField(Category)
     featured = models.BooleanField(default=True)
@@ -94,3 +95,23 @@ class Comment(models.Model):
     author = models.ForeignKey(Profile, on_delete=models.CASCADE)
     text = models.TextField(max_length=400)
     cm_date = models.DateTimeField(auto_now_add=True)
+
+
+class Event(models.Model):
+    text = tinymce_models.HTMLField()
+    date = models.DateField(auto_now_add=False)
+    color = ColorField(default='#FF0000')
+
+    @property
+    def day_of_week(self):
+        switcher = {
+            '0': "شنبه",
+            '1': "یکشنبه",
+            '2': "دوشنبه",
+            '3': "سه شنبه",
+            '4': "چهارشنبه",
+            '5': "پنجشنبه",
+            '6': "جمعه",
+        }
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", date2jalali(self.date))
+        return switcher[date2jalali(self.date).strftime('%w')]

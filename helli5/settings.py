@@ -20,9 +20,9 @@ SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 SECRET_KEY = '=yp)45*4+9-2mtl28v^cmv&#k4!#c_*9ncf#2q1pm4qp+f4w)4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['www.allamehelli5.ir', 'allamehelli5.ir', '37.152.189.163']
+ALLOWED_HOSTS = ['www.allamehelli5.ir', 'allamehelli5.ir', '37.152.189.163', '127.0.0.1']
 
 # Application definition
 
@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'honorsApp',
     'courseApp',
     'tinymce',
+    'jalali_date',
+    'colorfield',
+
+
 ]
 
 MIDDLEWARE = [

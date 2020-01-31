@@ -3,6 +3,7 @@ from django.http import HttpResponse
 import datetime
 from django.shortcuts import render
 from postingApp.models import PostStuff
+from postingApp.models import Event
 from loginApp.models import Subscriber
 
 
@@ -17,9 +18,11 @@ def index(request):
     #             new_subscriber.save()
     #         except Exception:
     #             pass
+    events = Event.objects.order_by('-date')[0:6]
     latest = PostStuff.objects.order_by('-date')[0:3]
     context = {
-        'latest_posts': latest
+        'latest_posts': latest,
+        'latest_events': events,
     }
     return render(request, 'index.html', context)
 
