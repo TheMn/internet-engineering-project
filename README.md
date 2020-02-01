@@ -90,18 +90,17 @@ $ pip3 install Django
 ```
 $ sudo apt install python3-pil
 ```
-5)django-richtextfield
+5)richtextfield
 ```
 $ pip install django-tinymce
 ```
 
-6)django-jalali-date
-$ pip install django-jalali-date  
+6)jalali date  
 ```
-$ pip install django-tinymce
+$ pip install django-jalali-date
 ```
 
-7)django-colorfield
+7)color field
 ```
 $ pip install django-colorfield
 ```

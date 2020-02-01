@@ -58,6 +58,7 @@
     <!--                </div>-->
     <!--            </div>-->
     <div class="card" style="background: {{ev.color}}">
+        <div class="overlay"></div>
         <div class="card-header text-white" style="text-align: center">{{ev.day_of_week}}</div>
         <div class="card-body text-white">
             <p style="text-align: center">  تاریخ:{{ ev.date|to_jalali:'%m/%d' }}</p>
@@ -105,9 +106,9 @@
                                 <a style="font-family: Vazir-Medium" style="margin-right: 10px" href="#"
                                    class="mr-2">{{ fpost.username.user.last_name }}<span class="icon-person"
                                                                                          style="color: #B3B3B3"></span></a>
-                                <a style="font-family: Vazir-Medium" href="#" class="meta-chat">{{
-                                    fpost.comment_count }}<span
-                                            class="icon-chat"></span></a>
+                                <a style="font-family: Vazir-Medium" href="#" class="meta-chat">
+                                    {{ fpost.comment_count }}
+                                    <span class="icon-chat"></span></a>
                             </p>
                             <p style="font-family: Vazir-Medium" class="mb-0"><a
                                     href="{{ fpost.get_absolute_url }}"
