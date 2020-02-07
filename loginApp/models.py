@@ -11,6 +11,8 @@ class Profile(models.Model):
     img = models.ImageField(upload_to='profilePic', default="/profilePic/default.png")
     phone = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
+    job_title = models.CharField(max_length=50, default='دانش آموز')
+    description = models.TextField(max_length=400)
 
     def __str__(self):
         return self.user.username

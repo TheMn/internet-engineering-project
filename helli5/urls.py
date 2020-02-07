@@ -30,10 +30,11 @@ urlpatterns = [
   path('admin/', admin.site.urls),
   path('ارتباط-با-ما/', views.contact, name='contact'),
   path('درباره-ما/', views.about, name='about'),
+  path('teachers/', views.teachers, name='teachers'),
 
   # path('error503/', views.error503, name='error503'),
   # path('djrichtextfield/', include('djrichtextfield.urls')),
-  path(r'^tinymce/', include('tinymce.urls')),
+  url(r'^tinymce/', include('tinymce.urls')),
 
   url(r'^حساب-ها/', include('loginApp.urls')),
   url(r'^نوشته-ها/', include('postingApp.urls')),

@@ -32,6 +32,10 @@ def about(request):
     return render(request, 'about.html', {})
 
 
+def teachers(request):
+    return render(request, 'teachers.html', {})
+
+
 # def error503(request):
 #     return render(request, 'error503.html', {})
 
