@@ -8,7 +8,6 @@ from django.core.mail import send_mail
 from tinymce import models as tinymce_models
 
 
-
 class Category(models.Model):
     title = models.CharField(max_length=20)
     is_honored = models.BooleanField(default=False)

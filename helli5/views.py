@@ -3,6 +3,7 @@ from django.http import HttpResponse
 import datetime
 from django.shortcuts import render
 from postingApp.models import PostStuff
+from loginApp.models import Profile
 from loginApp.models import Subscriber
 
 
@@ -33,7 +34,11 @@ def about(request):
 
 
 def teachers(request):
-    return render(request, 'teachers.html', {})
+    profiles = Profile.objects.all()
+    context = {
+        'profiles': profiles,
+    }
+    return render(request, 'teachers.html', context)
 
 
 # def error503(request):

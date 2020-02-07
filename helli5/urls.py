@@ -30,7 +30,7 @@ urlpatterns = [
   path('admin/', admin.site.urls),
   path('ارتباط-با-ما/', views.contact, name='contact'),
   path('درباره-ما/', views.about, name='about'),
-  path('teachers/', views.teachers, name='teachers'),
+  path('دبیران/', views.teachers, name='teachers'),
 
   # path('error503/', views.error503, name='error503'),
   # path('djrichtextfield/', include('djrichtextfield.urls')),
