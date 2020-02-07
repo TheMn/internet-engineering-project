@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} پژوهشی {% endblock %}
+{% block meta_description %}
+    صفحه ی پژوهشی و سمینارهای علوم و فنون دبیرستان پسرانه علامه حلی ۵ تهران دوره دوم سمپاد
+{% endblock %}
+
+{% block content %}
+    <section class="hero-wrap hero-wrap-2"
+             style="background-image: url({% static '/images/سمینار-علوم-فنون-علامه-حلی-۵.JPG' %});">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <h1 style="font-family: Vazir-Bold" class="mb-2 bread">پژوهشی</h1>
+                    <p style="font-family: Vazir-Medium" class="breadcrumbs"><span class="mr-2"><a
+                            href="{% url 'index' %}">صفحه نخست <i
+                            class="ion-ios-arrow-back"></i></a></span> <span>پژوهشی<i
+                            class="ion-ios-arrow-back"></i></span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <p>test content</p>
+    <br>
+    <hr>
+    <p>it is TODO page :D</p>
+{% endblock %}
