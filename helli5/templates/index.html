@@ -3,177 +3,273 @@
 {% load jalali_tags %}
 
 {% block content %}
-<section class="home-slider owl-carousel">
-    <div class="slider-item" style="background-image:url({% static '/images/صف-صبحگاه-سال-تحصیلی-جدید.JPG' %});">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row no-gutters slider-text align-items-center justify-content-center"
-                 data-scrollax-parent="true">
-                <div class="col-md-8 text-center ftco-animate">
-                    <h1 style="font-family:Vazir-Bold; text-align: center" class="mb-4">آغاز سال تحصیلی ۹۹-۱۳۹۸</h1>
-                    <!--                    <p style="font-family:Vazir-Medium; text-align: center"><a href="#"-->
-                    <!--                                                                               class="btn btn-secondary px-4 py-3 mt-3">بیشتر-->
-                    <!--                        بخوانید</a></p>-->
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="slider-item" style="background-image:url({% static 'images/سمینار-علوم-فنون-علامه-حلی-۵.JPG' %});">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row no-gutters slider-text align-items-center justify-content-center"
-                 data-scrollax-parent="true">
-                <div class="col-md-8 text-center ftco-animate">
-                    <h1 style="font-family:Vazir-Bold; text-align: center" class="mb-4">سمینار علوم و فنون حلی ۵</h1>
-                    <!--                    <p style="font-family:Vazir-Medium; text-align: center"><a href="#"-->
-                    <!--                                                                               class="btn btn-secondary px-4 py-3 mt-3">بیشتر-->
-                    <!--                        بخوانید</a></p>-->
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--TODO: Add this section:-->
-
-{% if latest_events %}
-<div class="row">
-
-    <p class="col-12" style="text-align: center"> برنامه های هفته آتی</p>
-    <br>
-</div>
-<div class="card-group">
-    {% for ev in latest_events %}
-    <!--            <div style="background: {{ ev.color }}" class="float-left col-lg-2 col-md-6 col-sm-12 d-flex services align-self-stretch pb-4 px-4 ftco-animate">-->
-    <!--                <div class="media block-6 d-block text-center">-->
-    <!--                    <div class="icon d-flex justify-content-center align-items-center">-->
-    <!--                        <span>{{ ev.day_of_week }}</span>-->
-    <!--                    </div>-->
-    <!--                    <div class="media-body p-2 mt-3">-->
-    <!--                        <h3 style="font-family:Vazir-Bold; text-align: center" class="heading">{{ ev.date|to_jalali:'%m/%d' }}</h3>-->
-    <!--                        <p style="font-family:Vazir-Medium; text-align: center">-->
-    <!--                        {{ ev.text|safe }}-->
-    <!--                        </p>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <div class="card" style="background: {{ev.color}}">
-        <div class="card-header text-white" style="text-align: center">{{ev.day_of_week}}</div>
-        <div class="card-body text-white">
-            <p style="text-align: center">  تاریخ:{{ ev.date|to_jalali:'%m/%d' }}</p>
-            {{ev.text|safe}}
-        </div>
-    </div>
-    {% endfor %}
-</div>
-{% endif %}
-
-<section class="ftco-section bg-light">
-    <div class="container">
-        <div class="row justify-content-center mb-5 pb-2">
-            <div class="col-md-8 text-center heading-section ftco-animate">
-                <h2 style="color:#9d6d4d; font-family:Vazir-Bold; text-align: center" class="mb-4">نوشته ها</h2>
-                <p style="font-family:Vazir-Medium; text-align: center">
-                    آخرین نوشته های منتشر شده
-                </p>
-            </div>
-        </div>
-        <div class="row" dir="rtl">
-
-            {% for fpost in latest_posts %}
-            <div class="col-md-6 col-lg-4 ftco-animate">
-                <div class="blog-entry" dir="ltr"
-                     style="border-bottom-left-radius:20px;
-                             border-top-right-radius:20px;
-                             box-shadow: 0 8px 10px 0 rgba(0, 0, 0, .12), 0 10px 15px 0 rgba(0, 0, 0, .10)">
-                    <a href="{{ fpost.get_absolute_url }}" class="block-20 d-flex align-items-end"
-                       style="background-image: url({{ fpost.img.url }});
-                               border-top-right-radius: 20px">
-                        <div class="meta-date text-center p-2"
-                             style="border-top-right-radius: 20px; background: #2A4324">
-                            <span style="font-family: Vazir-Medium" class="day">{{ fpost.date|date:"d" }}</span>
-                            <span style="font-family: Vazir-Medium" class="mos">{{ fpost.date|date:"n" }}</span>
-                            <span style="font-family: Vazir-Medium" class="yr">{{ fpost.date|date:"Y" }}</span>
-                        </div>
-                    </a>
-                    <div class="text bg-white p-4" style="border-bottom-left-radius: 20px">
-                        <h3 style="font-family: Vazir-Bold" class="heading"><a href="#">{{ fpost.title }}</a>
-                        </h3>
-                        <p style="font-family: Vazir-Medium"> {{ fpost.description }} </p>
-                        <div style="direction: rtl" class="d-flex align-items-center mt-4">
-                            <p class="ml-auto mb-0">
-                                <a style="font-family: Vazir-Medium" style="margin-right: 10px" href="#"
-                                   class="mr-2">{{ fpost.username.user.last_name }}<span class="icon-person"
-                                                                                         style="color: #B3B3B3"></span></a>
-                                <a style="font-family: Vazir-Medium" href="#" class="meta-chat">{{
-                                    fpost.comment_count }}<span
-                                            class="icon-chat"></span></a>
-                            </p>
-                            <p style="font-family: Vazir-Medium" class="mb-0"><a
-                                    href="{{ fpost.get_absolute_url }}"
-                                    class="btn btn-secondary" style="font-size: 12px">بیشتر
-                                بخوانید <span
-                                        class="ion-ios-arrow-round-back"></span></a></p>
-                        </div>
+    <section class="home-slider owl-carousel">
+        <div class="slider-item" style="background-image:url({% static '/images/صف-صبحگاه-سال-تحصیلی-جدید.JPG' %});">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row no-gutters slider-text align-items-center justify-content-center"
+                     data-scrollax-parent="true">
+                    <div class="col-md-8 text-center ftco-animate">
+                        <h1 style="font-family:Vazir-Bold; text-align: center" class="mb-4">آغاز سال تحصیلی ۹۹-۱۳۹۸</h1>
+                        <!--                    <p style="font-family:Vazir-Medium; text-align: center"><a href="#"-->
+                        <!--                                                                               class="btn btn-secondary px-4 py-3 mt-3">بیشتر-->
+                        <!--                        بخوانید</a></p>-->
                     </div>
                 </div>
-                <!--                <div style="border-radius: 0px 20px 0px 20px;-->
-                <!--                box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1), 0 5px 15px 0 rgba(0, 0, 0, 0.1);"-->
-                <!--                     class="blog-entry" dir="ltr">-->
-                <!--                    <a href="{{ fpost.img.url }}" class="block-20 d-flex align-items-end"-->
-                <!--                       style="border-radius: 0px  20px 0px 0px; background-image: url({{ fpost.img.url }});">-->
-                <!--                        <div style="border-radius: 0px  20px 0px 0px; background: #2A4324"-->
-                <!--                             class="meta-date text-center p-2">-->
-                <!--                            <span style="font-family: Vazir-Medium" class="self">{{ fpost.date|date:"d" }}</span>-->
-                <!--                            <span style="font-family: Vazir-Medium" class="mos">{{ fpost.date|date:"m" }}</span>-->
-                <!--                            <span style="font-family: Vazir-Medium" class="yr">{{ fpost.date|date:"y" }}</span>-->
-                <!--                        </div>-->
-                <!--                    </a>-->
-                <!--                    <div style="border-radius: 0px 0px 0px 20px" class="text bg-white p-4">-->
-                <!--                        <h3 style="font-family: Vazir-Medium" class="heading">-->
-                <!--                            <a href="/">{{ fpost.title }}</a></h3>-->
-                <!--                        <p style="font-family: Vazir-Medium">{{ fpost.description }}</p>-->
-                <!--                        <div style="direction: rtl" class="d-flex align-items-center mt-4">-->
-                <!--                            <p style="font-family: Vazir-Medium" class="ml-auto mb-0">-->
-                <!--                                <a style="font-family: Vazir-Medium" style="margin-right: 10px" href="#"-->
-                <!--                                   class="meta-chat"><span class="icon-chat"></span>{{ fpost.comment_count }}</a>-->
-                <!--                                <a style="font-family: Vazir-Medium; color: #74A29E" href="#" class="mr-2">-->
-                <!--                                    {{ fpost.username }}</a>-->
-                <!--                            <p style="font-family: Vazir-Medium" class="mb-0"><a href="{{ fpost.get_absolute_url }}"-->
-                <!--                                                                                 class="btn btn-secondary">بیشتر-->
-                <!--                                بخوانید <span-->
-                <!--                                        class="ion-ios-arrow-round-back"></span></a></p>-->
-                <!--                            </p>-->
-                <!--                        </div>-->
-                <!--                    </div>-->
-                <!--                </div>-->
             </div>
-            {% endfor %}
         </div>
-</section>
 
-{% include 'school_history.html' %}
+        <div class="slider-item" style="background-image:url({% static 'images/سمینار-علوم-فنون-علامه-حلی-۵.JPG' %});">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row no-gutters slider-text align-items-center justify-content-center"
+                     data-scrollax-parent="true">
+                    <div class="col-md-8 text-center ftco-animate">
+                        <h1 style="font-family:Vazir-Bold; text-align: center" class="mb-4">سمینار علوم و فنون حلی
+                            ۵</h1>
+                        <!--                    <p style="font-family:Vazir-Medium; text-align: center"><a href="#"-->
+                        <!--                                                                               class="btn btn-secondary px-4 py-3 mt-3">بیشتر-->
+                        <!--                        بخوانید</a></p>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--TODO: Add this section:-->
+
+   <div class="d-flex" id="accordion">
+  <div class="card col-lg-4">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Collapsible Group Item #1
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="card col-lg-4">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Collapsible Group Item #2
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="card col-lg-4">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Collapsible Group Item #3
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+</div>
+
+{#    <div class="col-lg-12">#}
+{#        <h1 class="page-header text-right" style="direction: rtl; text-align: center">#}
+{#            تقویم اجرایی مدرسه <br>#}
+{#        </h1>#}
+{#    </div>#}
+{#    <div class="row">#}
+{#    <div class="col-lg-12">#}
+{#        <h1 class="page-header text-right" style="direction: rtl;">#}
+{#            تقویم فارسی با قابلیت اضافه کردن رویداد <br>#}
+{#            <small class="text-muted">jquery event calendar</small>#}
+{#        </h1>#}
+{#      </div>#}
+{#    </div>#}
+{#    <div class="row">#}
+{#      <div class="col-md-12">#}
+{#        <div class="calendar hidden-print">#}
+{#          <header>#}
+{#            <h2 class="month"></h2>#}
+{#            <a class="btn-prev"><</a>#}
+{#            <a class="btn-next">></a>#}
+{#          </header>#}
+{#          <table class="calendar-table">#}
+{#            <thead class="event-days">#}
+{#              <tr>#}
+{#                  <tr>#}
+{#                    <td style="font-size: 1px">شنبه</td>#}
+{#                    <td style="font-size: 1px">یکشنبه</td>#}
+{#                    <td style="font-size: 1px">دوشنبه</td>#}
+{#                    <td style="font-size: 1px">سه شنبه</td>#}
+{#                    <td style="font-size: 1px">چهار شنبه</td>#}
+{#                    <td style="font-size: 1px">پنجشنبه</td>#}
+{#                    <td style="font-size: 1px">جمعه</td>#}
+{#                    <td>یکشنبه</td>#}
+{#                    <td>دوشنبه</td>#}
+{#                    <td>سه شنبه</td>#}
+{#                    <td>چهار شنبه</td>#}
+{#                    <td>پنجشنبه</td>#}
+{#                    <td>جمعه</td>#}
+{#                </tr>#}
+{#              </tr>#}
+{#            </thead>#}
+{#            <tbody class="event-calendar">#}
+{#              <tr class="1"></tr>#}
+{#              <tr class="2"></tr>#}
+{#              <tr class="3"></tr>#}
+{#              <tr class="4"></tr>#}
+{#              <tr class="5"></tr>#}
+{#              <tr class="6"></tr>#}
+{#            </tbody>#}
+{#          </table>#}
+{#          <div class="list">#}
+{#            <div class="day-event" date-day="3" date-month="2" date-year="1396">#}
+{#                <h2 class="title">لورم ایپسوم پدیده ای آشنا</h2>#}
+{#                <p>#}
+{#                  لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا از نظر گرافیکی نشانگر چگونگی نوع و اندازه فونت و ظاهر متن باشد. معمولا طراحان گرافیک برای صفحه‌آرایی، نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و قلم‌ها و اندازه‌بندی‌ها چگونه در نظر گرفته شده‌است. از آنجایی که طراحان عموما نویسنده متن نیستند و وظیفه رعایت حق تکثیر متون را ندارند و در همان حال کار آنها به نوعی وابسته به متن می‌باشد آنها با استفاده از محتویات ساختگی، صفحه گرافیکی خود را صفحه‌آرایی می‌کنند تا مرحله طراحی و صفحه‌بندی را به پایان برند.#}
+{#                </p>#}
+{#            </div>#}
+{#            <div class="day-event" date-day="11" date-month="2" date-year="1396">#}
+{#                <h2 class="title">لورم ایپسوم پدیده ای آشنا</h2>#}
+{#                <p>#}
+{#                  لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا از نظر گرافیکی نشانگر چگونگی نوع و اندازه فونت و ظاهر متن باشد. معمولا طراحان گرافیک برای صفحه‌آرا با استفاده از محتویات ساختگی، صفحه گرافیکی خود را صفحه‌آرایی می‌کنند تا مرحله طراحی و صفحه‌بندی را به پایان برند.#}
+{#                </p>#}
+{#                <button class="btn btn-danger">کلیک کنید</button>#}
+{#            </div>#}
+{#            <div class="day-event" date-day="23" date-month="11" date-year="1398">#}
+{#                <h2 class="title">لورم ایپسوم پدیده ای آشنا</h2>#}
+{#                <label class="label label-primary">تقویم فارسی</label>#}
+{#                <p>#}
+{#                  لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا از نظر گرافیکی نشانگر چگونگی نوع و اندازه فونت و ظاهر متن باشد. معمولا طراحان گرافیک برای صفحه‌آرایی، نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و قلم‌ها و اندازه‌بندی‌ها چگونه در نظر گرفته شده‌است. از آنجایی که طراحان عموما نویسنده متن نیستند و وظیفه رعایت حق تکثیر متون را ندارند و در همان حال کار آنها به نوعی وابسته به متن می‌باشد آنها با استفاده از محتویات ساختگی، صفحه گرافیکی خود را صفحه‌آرایی می‌کنند تا مرحله طراحی و صفحه‌بندی را به پایان برند.#}
+{#                </p>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
 
 
-<!--TODO: uncomment this part: -->
-<!--<section class="ftco-intro" style="background-image: url({% static 'images/کتابخانه-دبیرستان-علامه-حلی۵.jpg' %});"-->
-<!--         data-stellar-background-ratio="0.5">-->
-<!--    <div class="overlay" style="width: 100%; height: 100%"></div>-->
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-<!--            <div dir="ltr" class="col-md-3 d-flex align-items-center">-->
-<!--                <p class="mb-0"><a style="font-family:Vazir-Medium" href="#" class="btn btn-secondary px-4 py-3">همین-->
-<!--                    حالا شروع کن</a></p>-->
-<!--            </div>-->
-<!--            <div class="col-md-9">-->
-<!--                <h2 style="color:#dea44a; font-family:Vazir-Bold">عنوانی برای این متن انتخاب کنید</h2>-->
-<!--                <p style="font-family:Vazir-Medium" class="mb-0">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت-->
-<!--                    چاپ و با استفاده از طراحان گرافیک-->
-<!--                    است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی-->
-<!--                    مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. </p>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
+
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-2">
+                <div class="col-md-8 text-center heading-section ftco-animate">
+                    <h2 style="color:#9d6d4d; font-family:Vazir-Bold; text-align: center" class="mb-4">نوشته ها</h2>
+                    <p style="font-family:Vazir-Medium; text-align: center">
+                        آخرین نوشته های منتشر شده
+                    </p>
+                </div>
+            </div>
+            <div class="row" dir="rtl">
+            <div class="col-lg-9 d-flex" dir="rtl">
+                {% for fpost in latest_posts %}
+                    <div class="col-md-6 col-lg-4 ftco-animate">
+                        <div class="blog-entry" dir="ltr"
+                             style="border-bottom-left-radius:20px;
+                             border-top-right-radius:20px;
+                             box-shadow: 0 8px 10px 0 rgba(0, 0, 0, .12), 0 10px 15px 0 rgba(0, 0, 0, .10)">
+                            <a href="{{ fpost.get_absolute_url }}" class="block-20 d-flex align-items-end"
+                               style="background-image: url({{ fpost.img.url }});
+                                       border-top-right-radius: 20px">
+                                <div class="meta-date text-center p-2"
+                                     style="border-top-right-radius: 20px; background: #2A4324">
+                                    <span style="font-family: Vazir-Medium" class="day">{{ fpost.date|date:"d" }}</span>
+                                    <span style="font-family: Vazir-Medium" class="mos">{{ fpost.date|date:"n" }}</span>
+                                    <span style="font-family: Vazir-Medium" class="yr">{{ fpost.date|date:"Y" }}</span>
+                                </div>
+                            </a>
+                            <div class="text bg-white p-4" style="border-bottom-left-radius: 20px">
+                                <h3 style="font-family: Vazir-Bold" class="heading"><a href="#">{{ fpost.title }}</a>
+                                </h3>
+                                <p style="font-family: Vazir-Medium"> {{ fpost.description }} </p>
+                                <div style="direction: rtl" class="d-flex align-items-center mt-4">
+                                    <p class="ml-auto mb-0">
+                                        <a style="font-family: Vazir-Medium" style="margin-right: 10px" href="#"
+                                           class="mr-2">{{ fpost.username.user.last_name }}<span class="icon-person"
+                                                                                                 style="color: #B3B3B3"></span></a>
+                                        <a style="font-family: Vazir-Medium" href="#" class="meta-chat">
+                                            {{ fpost.comment_count }}<span
+                                                class="icon-chat"></span></a>
+                                    </p>
+                                    <p style="font-family: Vazir-Medium" class="mb-0"><a
+                                            href="{{ fpost.get_absolute_url }}"
+                                            class="btn btn-secondary" style="font-size: 12px">بیشتر
+                                        بخوانید <span
+                                                class="ion-ios-arrow-round-back"></span></a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--                <div style="border-radius: 0px 20px 0px 20px;-->
+                        <!--                box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1), 0 5px 15px 0 rgba(0, 0, 0, 0.1);"-->
+                        <!--                     class="blog-entry" dir="ltr">-->
+                        <!--                    <a href="{{ fpost.img.url }}" class="block-20 d-flex align-items-end"-->
+                        <!--                       style="border-radius: 0px  20px 0px 0px; background-image: url({{ fpost.img.url }});">-->
+                        <!--                        <div style="border-radius: 0px  20px 0px 0px; background: #2A4324"-->
+                        <!--                             class="meta-date text-center p-2">-->
+                        <!--                            <span style="font-family: Vazir-Medium" class="self">{{ fpost.date|date:"d" }}</span>-->
+                        <!--                            <span style="font-family: Vazir-Medium" class="mos">{{ fpost.date|date:"m" }}</span>-->
+                        <!--                            <span style="font-family: Vazir-Medium" class="yr">{{ fpost.date|date:"y" }}</span>-->
+                        <!--                        </div>-->
+                        <!--                    </a>-->
+                        <!--                    <div style="border-radius: 0px 0px 0px 20px" class="text bg-white p-4">-->
+                        <!--                        <h3 style="font-family: Vazir-Medium" class="heading">-->
+                        <!--                            <a href="/">{{ fpost.title }}</a></h3>-->
+                        <!--                        <p style="font-family: Vazir-Medium">{{ fpost.description }}</p>-->
+                        <!--                        <div style="direction: rtl" class="d-flex align-items-center mt-4">-->
+                        <!--                            <p style="font-family: Vazir-Medium" class="ml-auto mb-0">-->
+                        <!--                                <a style="font-family: Vazir-Medium" style="margin-right: 10px" href="#"-->
+                        <!--                                   class="meta-chat"><span class="icon-chat"></span>{{ fpost.comment_count }}</a>-->
+                        <!--                                <a style="font-family: Vazir-Medium; color: #74A29E" href="#" class="mr-2">-->
+                        <!--                                    {{ fpost.username }}</a>-->
+                        <!--                            <p style="font-family: Vazir-Medium" class="mb-0"><a href="{{ fpost.get_absolute_url }}"-->
+                        <!--                                                                                 class="btn btn-secondary">بیشتر-->
+                        <!--                                بخوانید <span-->
+                        <!--                                        class="ion-ios-arrow-round-back"></span></a></p>-->
+                        <!--                            </p>-->
+                        <!--                        </div>-->
+                        <!--                    </div>-->
+                        <!--                </div>-->
+                    </div>
+                {% endfor %}
+            </div>
+            <div class=""></div>
+            </div>
+        </div>
+    </section>
+
+    {% include 'school_history.html' %}
+
+
+    <!--TODO: uncomment this part: -->
+    <!--<section class="ftco-intro" style="background-image: url({% static 'images/کتابخانه-دبیرستان-علامه-حلی۵.jpg' %});"-->
+    <!--         data-stellar-background-ratio="0.5">-->
+    <!--    <div class="overlay" style="width: 100%; height: 100%"></div>-->
+    <!--    <div class="container">-->
+    <!--        <div class="row">-->
+    <!--            <div dir="ltr" class="col-md-3 d-flex align-items-center">-->
+    <!--                <p class="mb-0"><a style="font-family:Vazir-Medium" href="#" class="btn btn-secondary px-4 py-3">همین-->
+    <!--                    حالا شروع کن</a></p>-->
+    <!--            </div>-->
+    <!--            <div class="col-md-9">-->
+    <!--                <h2 style="color:#dea44a; font-family:Vazir-Bold">عنوانی برای این متن انتخاب کنید</h2>-->
+    <!--                <p style="font-family:Vazir-Medium" class="mb-0">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت-->
+    <!--                    چاپ و با استفاده از طراحان گرافیک-->
+    <!--                    است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی-->
+    <!--                    مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. </p>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</section>-->
 
 {% endblock %}
