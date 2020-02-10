@@ -3,66 +3,69 @@
 
 {% block title %} دبیران {% endblock %}
 {% block meta_description %}
-    معلمان با تجربه ی سمپاد که در دبیرستان پسرانه ی علامه حلی ۵ تهران دوره دوم تدریس می کنند
+معلمان با تجربه ی سمپاد که در دبیرستان پسرانه ی علامه حلی ۵ تهران دوره دوم تدریس می کنند
 {% endblock %}
 
 {% block content %}
-    <section class="hero-wrap hero-wrap-2"
-             style="background-image: url({% static '/images/جلسه-دبیران-دبیرستان-علامه-حلی-۵-تهران.jpg' %});">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row no-gutters slider-text align-items-center justify-content-center">
-                <div class="col-md-9 ftco-animate text-center">
-                    <h1 style="font-family: Vazir-Bold" class="mb-2 bread">دبیران</h1>
-                    <p style="font-family: Vazir-Medium" class="breadcrumbs"><span class="mr-2"><a
-                            href="{% url 'index' %}">صفحه نخست <i
-                            class="ion-ios-arrow-back"></i></a></span> <span>دبیران<i
-                            class="ion-ios-arrow-back"></i></span></p>
+<section class="hero-wrap hero-wrap-2"
+         style="background-image: url({% static '/images/جلسه-دبیران-دبیرستان-علامه-حلی-۵-تهران.jpg' %});">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 style="font-family: Vazir-Bold" class="mb-2 bread">دبیران</h1>
+                <p style="font-family: Vazir-Medium" class="breadcrumbs"><span class="mr-2"><a
+                        href="{% url 'index' %}">صفحه نخست <i
+                        class="ion-ios-arrow-back"></i></a></span> <span>دبیران<i
+                        class="ion-ios-arrow-back"></i></span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% for group_name, group_teachers in groups.items %}
+<section class="ftco-section pt-3 pb-0 bg-white">
+    <div class="container">
+        <h2 class="text-dark"
+            style="font-family: Vazir-Medium;
+                    text-align: center">گروه {{ group_name }}</h2>
+        <div class="row" style="direction: rtl">
+            {% for prf in group_teachers %}
+            {% if prf.role.is_teacher %}
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="staff bg-light"
+                     style="border-top-right-radius: 20px; border-bottom-left-radius: 20px;
+                         box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1), 0 5px 15px 0 rgba(0, 0, 0, 0.1);">
+                    <div class="img-wrap d-flex align-items-stretch">
+                        <div class="img align-self-stretch"
+                             style="background-image: url({% static '/images/عکس-پیشفرض-کاربران-وبسایت-علامه-حلی-۵.png' %});"></div>
+                    </div>
+                    <div class="text pt-3 text-center bg-light">
+                        <h3 style="font-family: Vazir-Medium;
+                                    text-align: center">{{ prf.user.first_name }} {{ prf.user.last_name }}</h3>
+                        <span class="position mb-2"
+                              style="font-family: Vazir-Medium;
+                                    text-align: center">{{ prf.job_title }}</span>
+                        <div class="faded">
+                            <p style="font-family: Vazir-Medium;
+                                    text-align: center">{{ prf.description }}</p>
+<!--                            TODO: add teacher emails or sth else-->
+                            <!--                            <ul class="ftco-social text-center">-->
+                            <!--                                <li class="ftco-animate"><a href="#"><span class="icon-"></span></a>-->
+                            <!--                                </li>-->
+                            <!--                            </ul>-->
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+            {% endif %}
+            {% endfor %}
 
-    <section class="ftco-section ftco-no-pb">
-        <div class="container">
-            <div class="row">
-                {% for prf in profiles %}
-                    {% if prf.role.is_teacher %}
-                        <div class="col-md-6 col-lg-3 ftco-animate">
-                            <div class="staff bg-light"
-                                 style="border-top-right-radius: 20px; border-bottom-left-radius: 20px;
-                         box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1), 0 5px 15px 0 rgba(0, 0, 0, 0.1);">
-                                <div class="img-wrap d-flex align-items-stretch">
-                                    <div class="img align-self-stretch"
-                                         style="background-image: url({% static '/images/عکس-پیشفرض-کاربران-وبسایت-علامه-حلی-۵.png' %});"></div>
-                                </div>
-                                <div class="text pt-3 text-center bg-light">
-                                    <h3 style="font-family: Vazir-Medium;
-                                    text-align: center">{{ prf.user.first_name }} {{ prf.user.last_name }}</h3>
-                                    <span class="position mb-2"
-                                          style="font-family: Vazir-Medium;
-                                    text-align: center">{{ prf.job_title }}</span>
-                                    <div class="faded">
-                                        <p style="font-family: Vazir-Medium;
-                                    text-align: center">{{ prf.description }}</p>
-                                        <ul class="ftco-social text-center">
-                                            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a>
-                                            </li>
-                                            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a>
-                                            </li>
-                                            <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a>
-                                            </li>
-                                            <li class="ftco-animate"><a href="#"><span
-                                                    class="icon-instagram"></span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-
-            </div>
         </div>
-    </section>
+    </div>
+    {% if not forloop.last %}
+    <hr class="pt-0">
+    {% endif %}
+</section>
+{% endfor %}
 {% endblock %}

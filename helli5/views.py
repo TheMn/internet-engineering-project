@@ -34,14 +34,26 @@ def about(request):
 
 
 def teachers(request):
-    profiles = Profile.objects.all()
+    math_teachers = Profile.objects.filter(group='math')
+    phys_teachers = Profile.objects.filter(group='phys')
+    chem_teachers = Profile.objects.filter(group='chem')
+    bio_teachers = Profile.objects.filter(group='bio')
+    comp_teachers = Profile.objects.filter(group='comp')
+    eng_teachers = Profile.objects.filter(group='eng')
+    far_teachers = Profile.objects.filter(group='far')
+    groups = {
+        'ریاضی': math_teachers,
+        'زیست': bio_teachers,
+        'فیزیک': phys_teachers,
+        'شیمی': chem_teachers,
+        'کامپیوتر': comp_teachers,
+        'زبان': eng_teachers,
+        'فارسی': far_teachers,
+    }
     context = {
-        'profiles': profiles,
+        'groups': groups
     }
     return render(request, 'teachers.html', context)
 
-
 # def error503(request):
 #     return render(request, 'error503.html', {})
-
-
