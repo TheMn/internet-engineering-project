@@ -2,6 +2,8 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from tinymce import models as tinymce_models
+
 
 User = get_user_model()
 
@@ -12,7 +14,8 @@ class Profile(models.Model):
     phone = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
     job_title = models.CharField(max_length=50, default='دانش آموز')
-    description = models.TextField(max_length=400)
+    description = tinymce_models.HTMLField()
+
     CHOICE = [
         ('math', 'ریاضی'),
         ('phys', 'فیزیک'),
