@@ -64,6 +64,11 @@ class PostStuff(models.Model):
         return Comment.objects.filter(post=self).count()
 
 
+class Event(models.Model):
+    text = models.CharField(max_length=64, blank=False)
+    date = models.DateField(auto_now_add=False)
+
+
 # @receiver(post_save, sender=PostStuff)
 # def send_mail_to_subscribers(sender, instance, **kwargs):
 #     send_mail(

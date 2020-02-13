@@ -10,6 +10,7 @@ class AdminPosting(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(PostStuff, AdminPosting)
 admin.site.register(Comment)
+admin.site.register(Event)
 
 admin.site.register(Attachment)
 
