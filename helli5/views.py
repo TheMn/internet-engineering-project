@@ -5,6 +5,7 @@ from django.shortcuts import render
 from postingApp.models import PostStuff
 from loginApp.models import Profile
 from postingApp.models import Event
+from django.db.models import Q
 from loginApp.models import Subscriber
 
 
@@ -20,20 +21,22 @@ def index(request):
     #         except Exception:
     #             pass
     latest = PostStuff.objects.order_by('-date')[0:3]
-    events = Event.objects.order_by('-date')[0:6]
+    events = Event.objects.filter(~Q(order=-1)).order_by('order')
+    top_events = Event.objects.filter(order=-1)
     context = {
         'latest_posts': latest,
         'events': events,
+        'top_events': top_events,
     }
     return render(request, 'index.html', context)
 
 
-def footer(request):
-    events = Event.objects.order_by('-date')[0:6]
-    context = {
-        'events': events,
-    }
-    return render(request, 'footer.html', context)
+# def footer(request):
+#     events = Event.objects.order_by('-date')[0:6]
+#     context = {
+#         'events': events,
+#     }
+#     return render(request, 'footer.html', context)
 
 
 def contact(request):

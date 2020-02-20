@@ -3,11 +3,11 @@
     <div class="container">
 
 
-        <p style="color: #232323">
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-            All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a
-                style="color: #232323"
-                href="https://colorlib.com" target="_blank">Colorlib</a>
+{#        <p style="color: #232323">#}
+{#            Copyright &copy;<script>document.write(new Date().getFullYear());</script>#}
+{#            All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a#}
+{#                style="color: #232323"#}
+{#                href="https://colorlib.com" target="_blank">Colorlib</a>#}
         <div class="row mb-1">
 
             <div class="col-md-6 col-lg-3">
@@ -54,44 +54,26 @@
                     </ul>
                 </div>
             </div>
-    {% if events %}
-         <div class="col-md-6 col-lg-3">
+
+            <div class="col-md-6 col-lg-3">
                 <div class="ftco-footer-widget mb-5">
-                    <h2 style="font-family: Vazir-Bold" class="ftco-heading-2">رویداد ها</h2>
-                    <div class="block-23 mb-3">
-                        <ul>
-                            {% for ev in events %}
-                            <li><span class="ion-ios-arrow-round-back mr-2" style="line-height:2em"></span><span style="font-family: Vazir-Medium"
-                                                                                class="text">{{ ev.text }}</span>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
+                    <h2 style="font-family: Vazir-Bold" class="ftco-heading-2">عضویت در خبرنامه</h2>
+                    <form action="{% url 'index' %}" method="POST" class="subscribe-form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="email" name="email" id="email"
+                                   style="font-family: Vazir-Medium; border-top-right-radius: 20px"
+                                   class="form-control mb-2 text-center"
+                                   placeholder="رایانامه خود را وارد نمایید">
+                            <input style="font-family: Vazir-Medium; border-bottom-left-radius: 20px"
+                                   type="submit"
+                                   name="submit"
+                                   value="عضویت"
+                                   class="form-control submit px-3">
+                        </div>
+                    </form>
                 </div>
             </div>
-    {% endif %}
-
-
-
-{#            <div class="col-md-6 col-lg-3">#}
-{#                <div class="ftco-footer-widget mb-5">#}
-{#                    <h2 style="font-family: Vazir-Bold" class="ftco-heading-2">عضویت در خبرنامه</h2>#}
-{#                    <form action="{% url 'index' %}" method="POST" class="subscribe-form">#}
-{#                        {% csrf_token %}#}
-{#                        <div class="form-group">#}
-{#                            <input type="email" name="email" id="email"#}
-{#                                   style="font-family: Vazir-Medium; border-top-right-radius: 20px"#}
-{#                                   class="form-control mb-2 text-center"#}
-{#                                   placeholder="رایانامه خود را وارد نمایید">#}
-{#                            <input style="font-family: Vazir-Medium; border-bottom-left-radius: 20px"#}
-{#                                   type="submit"#}
-{#                                   name="submit"#}
-{#                                   value="عضویت"#}
-{#                                   class="form-control submit px-3">#}
-{#                        </div>#}
-{#                    </form>#}
-{#                </div>#}
-{#            </div>#}
 
             <div class="col-md-6 col-lg-3">
                 <div class="ftco-footer-widget mb-5">

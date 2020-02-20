@@ -66,7 +66,8 @@ class PostStuff(models.Model):
 
 class Event(models.Model):
     text = models.CharField(max_length=64, blank=False)
-    date = models.DateField(auto_now_add=False)
+    day = models.CharField(max_length=64, blank=True)
+    order = models.IntegerField(blank=False, default=-1)
 
 
 # @receiver(post_save, sender=PostStuff)
