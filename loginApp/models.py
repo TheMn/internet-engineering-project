@@ -26,7 +26,7 @@ class Profile(models.Model):
         ('far', 'فارسی'),
         ('other', 'سایر'),
     ]
-    group = models.CharField(max_length=4, choices=CHOICE, blank=True)
+    group = models.CharField(max_length=5, choices=CHOICE, blank=True)
 
     def __str__(self):
         return self.user.username
