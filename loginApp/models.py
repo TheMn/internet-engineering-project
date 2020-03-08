@@ -24,6 +24,7 @@ class Profile(models.Model):
         ('comp', 'کامپیوتر'),
         ('eng', 'زبان'),
         ('far', 'فارسی'),
+        ('other', 'سایر'),
     ]
     group = models.CharField(max_length=4, choices=CHOICE, blank=True)
 
