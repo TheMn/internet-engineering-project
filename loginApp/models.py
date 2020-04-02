@@ -19,6 +19,11 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
+    class Meta:
+        permissions = (
+            ("send_sms", "send_sms"),
+        )
+
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
