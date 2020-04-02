@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'loginApp',
     'honorsApp',
     'courseApp',
+    'crispy_forms',
     'tinymce',
 ]
 
@@ -134,3 +135,6 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 TINYMCE_SPELLCHECKER = True
 TINYMCE_COMPRESSOR = True
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+

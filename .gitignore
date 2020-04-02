@@ -8,6 +8,7 @@ postingApp/migrations/0010_auto_20191220_1323.py
 postingApp/migrations/
 honorsApp/migrations/
 courseApp/migrations/
+smsApp/migrations/
 
 uploads/
 .idea/
