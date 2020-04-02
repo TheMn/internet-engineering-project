@@ -18,3 +18,4 @@ loginApp/__pycache__/
 loginApp/migrations/
 media/thumbnails/
 staticfiles/
+venv/
