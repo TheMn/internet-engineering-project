@@ -25,4 +25,4 @@ def sms(request):
             'sms_form': smsForm,
         }
         return render(request, 'sms.html', context)
-    return redirect('ورود/')
+    return HttpResponse('Unauthorized', status=401)
