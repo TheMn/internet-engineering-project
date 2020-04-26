@@ -23,11 +23,13 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
+from postingApp.feeds import LatestPostsFeed
 
 urlpatterns = [
 
   path('', views.index, name='index'),
   path('admin/', admin.site.urls),
+  path('feed/rss', LatestPostsFeed(), name='posts_feed'),
   path('ارتباط-با-ما/', views.contact, name='contact'),
   path('درباره-ما/', views.about, name='about'),
   path('دبیران/', views.teachers, name='teachers'),

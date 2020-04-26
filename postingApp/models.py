@@ -38,6 +38,9 @@ class PostStuff(models.Model):
     categories = models.ManyToManyField(Category)
     featured = models.BooleanField(default=True)
 
+    class Meta:
+        ordering = ["-date"]
+
     def __str__(self):
         return self.title
 
