@@ -20,7 +20,7 @@ SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 SECRET_KEY = '=yp)45*4+9-2mtl28v^cmv&#k4!#c_*9ncf#2q1pm4qp+f4w)4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['www.allamehelli5.ir', 'allamehelli5.ir', '37.152.189.163', '127.0.0.1']
 
@@ -118,6 +118,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+SITE_URL = 'www.allamehelli5.ir'
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = [

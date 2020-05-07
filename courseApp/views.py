@@ -1,4 +1,5 @@
 import os
+from helli5 import settings
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -78,14 +79,14 @@ def upload_report(request):
                 report = report.first()
                 for file in files:
                     student_id = file.name.split('.')[0]
-                    hashname = hashlib.md5(student_id.encode('utf-8')).hexdigest() + '.pdf'
+                    hashname = hashlib.md5(student_id.encode('utf-8')).hexdigest() + '.' + file.name.split('.')[0]
                     student_report = StudentReports()
                     student_report.report = report
                     student_report.student = student_id
-                    student_report.report_url = '//127.0.0.1:8000/media/reports/' + directory + '/' + hashname
+                    student_report.report_url = '//' + settings.SITE_URL + '/' + settings.MEDIA_URL + directory + '/'\
+                                                + hashname
                     student_report.save()
-                    path = 'C:\\Users\\helli5-admin\\PycharmProjects\\internet-engineering-project\\media\\reports\\' + \
-                           directory
+                    path = settings.MEDIA_ROOT + '\\reports\\' + directory
                     if not os.path.isdir(path):
                         os.makedirs(path)
                     with open(path + '\\' + hashname, 'wb+') as destination:
@@ -103,6 +104,7 @@ def upload_report(request):
 def student_reports(request):
     user = request.user
     if user.is_authenticated:
+
         if user.profile.job_title == 'دانش آموز':
             report_students = StudentReports.objects.filter(student=user.username).all()
             reports = []
