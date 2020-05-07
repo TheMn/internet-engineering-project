@@ -83,11 +83,12 @@ def upload_report(request):
                     student_report = StudentReports()
                     student_report.report = report
                     student_report.student = student_id
-                    student_report.report_url = '//' + settings.SITE_URL  + settings.MEDIA_URL + directory.split(' ')[0] + '/'\
-                                                + hashname
+                    student_report.report_url = '//' + settings.SITE_URL + settings.MEDIA_URL + directory.split(' ')[
+                        0] + '/' + hashname
                     student_report.save()
                     path = settings.MEDIA_ROOT + '\\reports\\' + directory.split(' ')[0]
                     if not os.path.isdir(path):
+                        print('lks;dfk;lsdfk')
                         os.makedirs(path)
                     with open(path + '\\' + hashname, 'wb+') as destination:
                         for chunk in file.chunks():
