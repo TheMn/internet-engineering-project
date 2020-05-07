@@ -87,9 +87,9 @@ def upload_report(request):
                         0] + '/' + hashname
                     student_report.save()
                     path = settings.MEDIA_ROOT + '\\reports\\' + directory.split(' ')[0]
-                    print('lks;dfk;lsdfk')
-                    if not os.path.isdir(path):
-                        os.makedirs(path)
+                    # print('lks;dfk;lsdfk')
+                    # if not os.path.isdir(path):
+                    os.makedirs(path)
                     with open(path + '\\' + hashname, 'wb+') as destination:
                         for chunk in file.chunks():
                             destination.write(chunk)
