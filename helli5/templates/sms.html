@@ -52,10 +52,22 @@
             {% csrf_token %}
             <div class="row">
                 <div class="col-6">
-                    {{ sms_form.field_10|as_crispy_field }}
+                    {{ sms_form.field_10_student|as_crispy_field }}
                 </div>
                 <div class="col-6">
-                    {{ sms_form.field_11|as_crispy_field }}
+                    {{ sms_form.field_11_student|as_crispy_field }}
+                </div>
+                <div class="col-6">
+                    {{ sms_form.field_10_mom|as_crispy_field }}
+                </div>
+                <div class="col-6">
+                    {{ sms_form.field_11_mom|as_crispy_field }}
+                </div>
+                 <div class="col-6">
+                    {{ sms_form.field_10_dad|as_crispy_field }}
+                </div>
+                <div class="col-6">
+                    {{ sms_form.field_11_dad|as_crispy_field }}
                 </div>
             </div>
             {{ sms_form.text|as_crispy_field }}
