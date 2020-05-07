@@ -83,10 +83,10 @@ def upload_report(request):
                     student_report = StudentReports()
                     student_report.report = report
                     student_report.student = student_id
-                    student_report.report_url = '//' + settings.SITE_URL + settings.MEDIA_URL + directory.split(' ')[
-                        0] + '/' + hashname
+                    student_report.report_url = '//' + settings.SITE_URL + settings.MEDIA_URL + str(
+                        report.id) + '/' + hashname
                     student_report.save()
-                    path = settings.MEDIA_ROOT + '/reports/' + report.id
+                    path = settings.MEDIA_ROOT + '/reports/' + str(report.id)
                     if not os.path.isdir(path):
                         print('lks;dfk;lsdfk')
                         os.makedirs(path)
