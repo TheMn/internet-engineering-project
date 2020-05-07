@@ -6,3 +6,5 @@ from .models import *
 admin.site.register(Homework)
 admin.site.register(Answers)
 admin.site.register(Course)
+admin.site.register(Reports)
+admin.site.register(StudentReports)
