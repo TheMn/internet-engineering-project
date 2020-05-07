@@ -79,7 +79,7 @@ def upload_report(request):
                 report = report.first()
                 for file in files:
                     student_id = file.name.split('.')[0]
-                    hashname = hashlib.md5(student_id.encode('utf-8')).hexdigest() + '.' + file.name.split('.')[0]
+                    hashname = hashlib.md5(student_id.encode('utf-8')).hexdigest() + '.' + file.name.split('.')[1]
                     student_report = StudentReports()
                     student_report.report = report
                     student_report.student = student_id
