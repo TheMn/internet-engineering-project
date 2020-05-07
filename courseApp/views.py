@@ -83,7 +83,7 @@ def upload_report(request):
                     student_report = StudentReports()
                     student_report.report = report
                     student_report.student = student_id
-                    student_report.report_url = '//' + settings.SITE_URL + settings.MEDIA_URL + '/media/' + str(
+                    student_report.report_url = '//' + settings.SITE_URL + settings.MEDIA_URL + 'reports/' + str(
                         report.id) + '/' + hashname
                     student_report.save()
                     path = settings.MEDIA_ROOT + '/reports/' + str(report.id)
