@@ -90,7 +90,7 @@ def upload_report(request):
                     if not os.path.isdir(path):
                         print('lks;dfk;lsdfk')
                         os.makedirs(path)
-                    with open(path + '\\' + hashname, 'wb+') as destination:
+                    with open(path + '/' + hashname, 'wb+') as destination:
                         for chunk in file.chunks():
                             destination.write(chunk)
                 return redirect(upload_report)
