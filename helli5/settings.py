@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'loginApp',
     'honorsApp',
     'courseApp',
+    'crispy_forms',
     'tinymce',
 ]
 
@@ -117,6 +118,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+SITE_URL = 'www.allamehelli5.ir'
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = [
@@ -134,3 +136,6 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 TINYMCE_SPELLCHECKER = True
 TINYMCE_COMPRESSOR = True
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+

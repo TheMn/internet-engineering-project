@@ -92,7 +92,12 @@ $ sudo apt install python3-pil
 ```
 5)django-richtextfield
 ```
-$ pip install django-richtextfield
+$ pip3 install django-richtextfield
+```
+
+5)crispy forms
+```
+$ pip3 install django-crispy-forms
 ```
 
 <!-- Running the Project Locally -->

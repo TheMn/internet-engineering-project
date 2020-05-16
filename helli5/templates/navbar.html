@@ -60,12 +60,19 @@
                     با ما</a></li>
 
 
-                {% if user.is_authenticated %}
+                {% if perms.add_report %}
                 <li style="margin-top: auto; margin-bottom: auto;
-                padding: 5px"><a href="#"
+                padding: 5px"><a href="{% url 'report' %}"
                                  style="font-family: Vazir-Medium;
-                                 color: #DEA44A" class="nav-link">کلاس ها</a></li>
+                                 color: #DEA44A" class="nav-link">بارگذاری کارنامه </a></li>
                 {% endif %}
+
+            {% ifequal user.profile.job_title  'دانش آموز' %}
+                <li style="margin-top: auto; margin-bottom: auto;
+                padding: 5px"><a href="{% url 'studentReports'%}"
+                                 style="font-family: Vazir-Medium;
+                                 color: #DEA44A" class="nav-link">کارنامه ها</a></li>
+                {% endifequal %}
 
                 {% if not user.is_authenticated %}
                 <li class="nav-item user_response"><a href="{% url 'login' %}" style="font-family: Vazir-Medium"

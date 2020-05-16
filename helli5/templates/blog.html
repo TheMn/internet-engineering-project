@@ -56,14 +56,14 @@
                                 </div>
                             </a>
                             <div class="text bg-white p-4" style="border-bottom-left-radius: 20px">
-                                <h3 style="font-family: Vazir-Bold" class="heading"><a href="#">{{ fpost.title }}</a>
+                                <h3 style="font-family: Vazir-Bold" class="heading"><a href="{{ fpost.get_absolute_url }}">{{ fpost.title }}</a>
                                 </h3>
                                 <p style="font-family: Vazir-Medium"> {{ fpost.description }} </p>
                                 <div style="direction: rtl" class="d-flex align-items-center mt-4">
                                     <p class="ml-auto mb-0">
-                                        <a style="font-family: Vazir-Medium" style="margin-right: 10px" href="#"
+                                        <a style="font-family: Vazir-Medium" style="margin-right: 10px"
                                            class="mr-2">{{ fpost.username.user.last_name }}<span class="icon-person" style="color: #B3B3B3"></span></a>
-                                        <a style="font-family: Vazir-Medium" href="#" class="meta-chat">{{ fpost.comment_count }}<span
+                                        <a style="font-family: Vazir-Medium" class="meta-chat">{{ fpost.comment_count }}<span
                                                 class="icon-chat"></span></a>
                                     </p>
                                     <p style="font-family: Vazir-Medium" class="mb-0"><a
@@ -135,13 +135,11 @@
                             <div class="meta container" style="margin-bottom: 2%">
                                 <div class="row" style="margin-right: 10px; margin-top: 5px; margin-top: -5px">
                                     <div style="margin-left: 10px"><span class="icon-calendar"></span><a
-                                            style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium"
-                                            href="#">{{ fpost.date|date:"Y m d" }}</a></div>
+                                            style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium">{{ fpost.date|date:"Y m d" }}</a></div>
                                 </div>
                                 <div class="row" style="margin-right: 10px; margin-top: 5px; margin-top: -5px">
                                     <div><span class="icon-person"></span><a
-                                            style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium"
-                                            href="#">{{ fpost.username.user.last_name }}</a></div>
+                                            style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium">{{ fpost.username.user.last_name }}</a></div>
                                 </div>
                             </div>
                         </div>
@@ -153,7 +151,7 @@
                     <h3 style="font-family: Vazir-Bold">تگ ها</h3>
                     <ul class="tagcloud m-0 p-0">
                        {% for cat in categories %}
-                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
+                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;"
                            class="tag-cloud-link">{{cat.title}}</a>
                         {% endfor %}
                     </ul>

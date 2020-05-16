@@ -56,7 +56,7 @@
                 <div style="text-align: right" class="tag-widget post-tag-container mb-5 mt-5">
                     <div class="tagcloud">
                         {% for cat in this_post.categories.all %}
-                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
+                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;"
                            class="tag-cloud-link">{{ cat.title }}</a>
                         {% endfor %}
                     </div>
@@ -178,13 +178,11 @@
                             <div class="meta container" style="margin-bottom: 2%">
                                 <div class="row" style="margin-right: 10px; margin-top: 5px; margin-top: -5px">
                                     <div style="margin-left: 10px"><span class="icon-calendar"></span><a
-                                            style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium"
-                                            href="#">{{ fpost.date|date:"Y m d" }}</a></div>
+                                            style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium">{{ fpost.date|date:"Y m d" }}</a></div>
                                 </div>
                                 <div class="row" style="margin-right: 10px; margin-top: 5px; margin-top: -5px">
                                     <div><span class="icon-person"></span><a
-                                            style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium"
-                                            href="#">{{ fpost.username }}</a></div>
+                                            style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium">{{ fpost.username.user.last_name }}</a></div>
                                 </div>
                             </div>
                         </div>
@@ -196,7 +194,7 @@
                     <h3 style="font-family: Vazir-Bold">تگ ها</h3>
                     <ul class="tagcloud m-0 p-0">
                         {% for cat in categories %}
-                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;" href="#"
+                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;"
                            class="tag-cloud-link">{{cat.title}}</a>
                         {% endfor %}
                     </ul>
