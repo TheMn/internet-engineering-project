@@ -83,3 +83,19 @@ class Question(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Reports(models.Model):
+    title = models.CharField(max_length=30, blank=False)
+
+
+class StudentReports(models.Model):
+    student = models.CharField(max_length=8, blank=False)
+    report_url = models.CharField(max_length=128, blank=False)
+    report = models.ForeignKey(Reports, on_delete=models.CASCADE)
+
+    class Meta:
+        permissions = (
+            ("add_reports", "can add reports"),
+        )
+

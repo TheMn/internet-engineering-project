@@ -48,29 +48,14 @@
     <div class="col-md-12 p-4 p-md-5 order-md-last bg-light"
          style="border-top-right-radius: 20px">
 
-        <form method="post" action="{% url 'sms' %}">
+        <form method="post" enctype="multipart/form-data" action="{% url 'report' %}">
             {% csrf_token %}
             <div class="row">
                 <div class="col-6">
-                    {{ sms_form.field_10_student|as_crispy_field }}
-                </div>
-                <div class="col-6">
-                    {{ sms_form.field_11_student|as_crispy_field }}
-                </div>
-                <div class="col-6">
-                    {{ sms_form.field_10_mom|as_crispy_field }}
-                </div>
-                <div class="col-6">
-                    {{ sms_form.field_11_mom|as_crispy_field }}
-                </div>
-                 <div class="col-6">
-                    {{ sms_form.field_10_dad|as_crispy_field }}
-                </div>
-                <div class="col-6">
-                    {{ sms_form.field_11_dad|as_crispy_field }}
+                    {{ report.report_title }}
                 </div>
             </div>
-            {{ sms_form.text|as_crispy_field }}
+            {{ report.files }}
             <button type="submit">ارسال</button>
         </form>
     </div>

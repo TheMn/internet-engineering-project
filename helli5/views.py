@@ -55,6 +55,8 @@ def teachers(request):
     comp_teachers = Profile.objects.filter(group='comp')
     eng_teachers = Profile.objects.filter(group='eng')
     far_teachers = Profile.objects.filter(group='far')
+    other_teachers = Profile.objects.filter(group='other')
+
     groups = {
         'ریاضی': math_teachers,
         'زیست': bio_teachers,
@@ -63,6 +65,7 @@ def teachers(request):
         'کامپیوتر': comp_teachers,
         'زبان': eng_teachers,
         'فارسی': far_teachers,
+        'سایر': other_teachers,
     }
     context = {
         'groups': groups

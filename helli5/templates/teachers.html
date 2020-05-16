@@ -28,7 +28,13 @@
     <div class="container">
         <h2 class="text-dark"
             style="font-family: Vazir-Medium;
-                    text-align: center">گروه {{ group_name }}</h2>
+                    text-align: center">
+            {% if group_name == "سایر" %}
+                سایر گروه ها
+            {% else %}
+            گروه {{ group_name }}
+            {% endif %}
+        </h2>
         <div class="row" style="direction: rtl">
             {% for prf in group_teachers %}
             {% if prf.role.is_teacher %}
