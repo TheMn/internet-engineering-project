@@ -30,8 +30,8 @@ class Profile(models.Model):
         ('other', 'سایر'),
     ]
     group = models.CharField(max_length=8, choices=CHOICE, blank=True)
-    mom_number = models.CharField(max_length=30, blank=True)
-    dad_number = models.CharField(max_length=30, blank=True)
+    mom_number = models.CharField(max_length=30, blank=True, null=True)
+    dad_number = models.CharField(max_length=30, blank=True, null=True)
 
     def __str__(self):
         return self.user.username
