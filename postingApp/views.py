@@ -30,10 +30,10 @@ def search(request):
         queryset = queryset.filter(Q(title__icontains=query) |
                                    Q(text__icontains=query)
                                    ).distinct()
-        context = {
-            'queryset': queryset
-        }
-        return render(request, 'search_results.html', context)
+    context = {
+        'queryset': queryset
+    }
+    return render(request, 'search_results.html', context)
 
 
 def blog(request):
