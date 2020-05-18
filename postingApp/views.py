@@ -135,5 +135,5 @@ def add_post(request):
     return render(request, 'add_post.html', {'form': form, })
 
 
-def add_post_teacher(request):
-    return render(request, 'add_post_teacher.html', {})
+# def add_post_teacher(request):
+#     return render(request, 'add_post_teacher.html', {})

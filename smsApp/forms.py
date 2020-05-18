@@ -4,10 +4,10 @@ from loginApp.models import User, Profile
 
 class smsForm(forms.ModelForm):
     field_10_student = forms.MultipleChoiceField(required=False, label='دانش آموزان پایه دهم')
-    field_10_mom = forms.MultipleChoiceField(required=False, label='یمادر دانش آموزان پایه دهم')
+    field_10_mom = forms.MultipleChoiceField(required=False, label='مادر دانش آموزان پایه دهم')
     field_10_dad = forms.MultipleChoiceField(required=False, label='پدر دانش آموزان پایه دهم')
     field_11_student = forms.MultipleChoiceField(required=False, label='دانش آموزان پایه یازدهم')
-    field_11_mom = forms.MultipleChoiceField(required=False, label='یمادر دانش آموزان پایه یاردهم')
+    field_11_mom = forms.MultipleChoiceField(required=False, label='مادر دانش آموزان پایه یاردهم')
     field_11_dad = forms.MultipleChoiceField(required=False, label='پدر دانش آموزان پایه یازدهم')
     text = forms.CharField(widget=forms.Textarea(attrs={
         'class': 'form-control',
@@ -31,13 +31,13 @@ class smsForm(forms.ModelForm):
         self.fields['field_10_student'] = forms.MultipleChoiceField(required=False, choices=choice_10_student,
                                                                     label='دانش آموزان پایه دهم')
         self.fields['field_10_mom'] = forms.MultipleChoiceField(required=False, choices=choice_10_mom,
-                                                                label='یمادر دانش آموزان پایه دهم')
+                                                                label='مادر دانش آموزان پایه دهم')
         self.fields['field_10_dad'] = forms.MultipleChoiceField(required=False, choices=choice_10_dad,
-                                                                label='پدر دانش آموزان پایه دهمم')
+                                                                label='پدر دانش آموزان پایه دهم')
         self.fields['field_11_student'] = forms.MultipleChoiceField(required=False, choices=choice_11_student,
                                                                     label='دانش آموزان پایه یازدهم')
         self.fields['field_11_mom'] = forms.MultipleChoiceField(required=False, choices=choice_11_mom,
-                                                                label='یمادر دانش آموزان پایه یاردهمم')
+                                                                label='مادر دانش آموزان پایه یاردهم')
         self.fields['field_11_dad'] = forms.MultipleChoiceField(required=False, choices=choice_11_dad,
                                                                 label='پدر دانش آموزان پایه یازدهم')
 
