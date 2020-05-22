@@ -2,34 +2,31 @@
 {% load static %}
 {% block title %}کارنامه{% endblock %}
 {% block content %}
-<section class="hero-wrap hero-wrap-2" style="background-image: url({% static '/images/کارنامه.jpg' %});">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-            <div class="col-md-9 ftco-animate text-center">
-                <h1 style="font-family: Vazir-Bold" class="mb-2 bread">کارنامه ها</h1>
-                <p style="font-family: Vazir-Medium" class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}">صفحه نخست <i
-                        class="ion-ios-arrow-back"></i></a></span> <span>کارنامه ها<i
-                        class="ion-ios-arrow-back"></i></span></p>
+    <section class="hero-wrap hero-wrap-2" style="background-image: url({% static '/images/کارنامه.jpg' %});">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <h1 style="font-family: Vazir-Bold" class="mb-2 bread">کارنامه ها</h1>
+                    <p style="font-family: Vazir-Medium" class="breadcrumbs"><span class="mr-2"><a
+                            href="{% url 'index' %}">صفحه نخست <i
+                            class="ion-ios-arrow-back"></i></a></span> <span>کارنامه ها<i
+                            class="ion-ios-arrow-back"></i></span></p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section dir="rtl" class="ftco-section ftco-no-pt ftc-no-pb">
-    <div class="container">
-        <div class="" style="min-height: 200px">
+    <section class="container col-md-8 offset-md-2 div-border py-2 mt-5"
+             style="background: #FAFAFA; border-bottom-left-radius: 20px;
+     border-top-right-radius: 20px; margin-bottom: 20px">
+        <p style="text-align: center; font-family: Vazir-Medium">کارنامه های شما</p>
+        <div class="list-group">
             {% for report in reports %}
-                <p>
-                <a href="{{ report.link }}" download="x.pdf">{{ report.name }}</a>
-                </p>
-
+                <a href="{{ report.link }}" class="list-group-item"
+                   style="text-align: center; font-family: Vazir-Medium"
+                   download="x.pdf">{{ report.name }}</a>
             {% endfor %}
         </div>
-    </div>
-</section>
-
-
-
-
+    </section>
 {% endblock %}
