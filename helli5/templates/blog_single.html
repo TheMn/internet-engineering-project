@@ -2,6 +2,27 @@
 {% load static %}
 
 {% block title %}{{ this_post.title }}{% endblock %}
+{% block extra_head %}
+
+    <style>.h_iframe-aparat_embed_frame {
+        position: relative;
+    }
+
+    .h_iframe-aparat_embed_frame .ratio {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .h_iframe-aparat_embed_frame iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    </style>
+{% endblock %}
 
 {% block content %}
     <section class="hero-wrap hero-wrap-2" style="background-image: url({{ this_post.img.url }});">
