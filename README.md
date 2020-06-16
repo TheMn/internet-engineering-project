@@ -68,6 +68,10 @@ the opportunity to inform students, upload homework and etc.
 ## Getting started
 
 ### Prerequisites
+prerequisites packages install with below command
+```
+$ sudo pip3 install -r requirements.txt 
+```
 in order to run this project you need to install few packages which its listed below
 
 
@@ -79,25 +83,11 @@ $ sudo apt-get install python3.7
 2)pip
 ```
 $ sudo apt install python3-pip
-```
-3)Django
-```
-$ pip3 install Django
-```
-4)django pillow package
 
-* pillow is an image library which let you store images in database
 ```
-$ sudo apt install python3-pil
+prerequisites packages install with below command
 ```
-5)django-richtextfield
-```
-$ pip3 install django-richtextfield
-```
-
-5)crispy forms
-```
-$ pip3 install django-crispy-forms
+$ sudo pip3 install -r requirements.txt 
 ```
 
 <!-- Running the Project Locally -->

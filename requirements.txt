@@ -1,0 +1,7 @@
+asgiref==3.2.7
+Django==3.0.7
+django-crispy-forms==1.9.1
+django-richtextfield==1.6
+django-tinymce==2.8.0
+kavenegar==1.1.2
+sqlparse==0.3.1
