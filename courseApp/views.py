@@ -115,6 +115,14 @@ def student_reports(request):
                     "link": report_student.report_url
                 }
                 reports.append(report)
+            count = len(Reports.objects.all())
+            if len(reports) < count:
+                report = {
+                    "name": 'بنا بر یکی از دلایل زیر، چهارشنبه ۴ تیرماه یکی از اولیاتون جهت دریافت کارنامه به مدرسه '
+                            'مراجعه کنند‌: ' + "\n" + 'وجود درس مردودی یا عدم تسویه حساب مالی یا درخواست مشاور',
+                    "link": '#'
+                }
+                reports.append(report)
             context = {
                 'reports': reports,
             }

@@ -23,9 +23,9 @@
         <p style="text-align: center; font-family: Vazir-Medium">کارنامه های شما</p>
         <div class="list-group">
             {% for report in reports %}
-                <a href="{{ report.link }}" class="list-group-item"
-                   style="text-align: center; font-family: Vazir-Medium"
-                   download="x.pdf">{{ report.name }}</a>
+                <a href="{{ report.link }}"  class="list-group-item"
+                   style="text-align: center; font-family: Vazir-Medium ; direction: rtl"
+                   >{{ report.name|linebreaksbr }}</a>
             {% endfor %}
         </div>
     </section>
