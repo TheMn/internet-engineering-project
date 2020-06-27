@@ -70,7 +70,6 @@ def upload_report(request):
     if request.user.has_perm('add_report'):
         if request.method == "POST":
             form = reportForm(request.POST, request.FILES)
-            print(form.errors)
             if form.is_valid():
                 files = request.FILES.getlist('files')
                 directory = form.cleaned_data['report_title']
