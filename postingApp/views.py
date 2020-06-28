@@ -21,6 +21,15 @@ from django.db.models import Count, Q
 #     cat = get_object_or_404(Category, id=id)
 #     for mpost in cat.get_posts():
 #         print(mpost.title)
+def modir(request):
+    q = PostStuff.objects.all()
+    tag = request.GET.get('tag')
+    if tag:
+        q = q.filter(Q(categories__title__contains=tag)).distinct()
+    context = {
+        'queryset': q
+    }
+    return render(request, 'search_results.html', context)
 
 
 def search(request):
@@ -133,7 +142,6 @@ def add_post(request):
         post.save()
         form = PageForm
     return render(request, 'add_post.html', {'form': form, })
-
 
 # def add_post_teacher(request):
 #     return render(request, 'add_post_teacher.html', {})

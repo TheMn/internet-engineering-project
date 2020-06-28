@@ -10,12 +10,12 @@
                                 style="color: #fefefe; margin-top: auto; margin-bottom: auto; margin-left: -3px"></span>
                         </div>
                         {% if not user.is_authenticated %}
-                        <a href="{% url 'login' %}" style="color:white;font-family: Vazir-Medium"><span
-                                style="font-family: Vazir-Medium" class="id_user"> ورود</span></a>
-                        <!--TODO: Add profile page if needed-->
+                            <a href="{% url 'login' %}" style="color:white;font-family: Vazir-Medium"><span
+                                    style="font-family: Vazir-Medium" class="id_user"> پنل کاربری</span></a>
+                            <!--TODO: Add profile page if needed-->
                         {% else %}
-                        <a href="{% url 'logout' %}" style="color:white;font-family: Vazir-Medium"><span
-                                style="font-family: Vazir-Medium" class="id_user">{{ user.username }}  [خروج]</span></a>
+                            <a href="{% url 'logout' %}" style="color:white;font-family: Vazir-Medium"><span
+                                    style="font-family: Vazir-Medium" class="id_user">{{ user.username }}  [خروج]</span></a>
                         {% endif %}
                     </div>
 
@@ -44,9 +44,37 @@
             <span class="oi oi-menu"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="ftco-nav">
+        <span class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <!--                TODO: Uncomment this buttons after completing directed pages-->
+
+                <li class="nav-item"><a href="#" style="font-family: Vazir-Medium" class="nav-link">
+                    مدیریت
+                </a></li>
+
+                <li class="nav-item dropdown" style="font-family: Vazir-Medium">
+                    <a id="moavenat" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                      معاونت ها
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="moavenat">
+                      <a class="dropdown-item" href="#">آموزشی</a>
+                        <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">المپیاد</a>
+                        <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">پژوهشی</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">اداری و مالی</a>
+                    </div>
+                </li>
+
+{#                <li class="nav-item" data-toggle="collapse" data-target="#moavenat-ha"><p#}
+{#                        style="font-family: Vazir-Medium; cursor: pointer" class="nav-link">معاونت ها</p></li>#}
+{#                <div id="moavenat-ha" class="list-group list-group-flush collapse" style="font-family: Vazir-Medium">#}
+{#                    <li class="nav-item"><a class="nav-link">آموزشی</a></li>#}
+{#                    <li><a class="nav-link">پژوهشی</a></li>#}
+{#                    <li><a class="nav-link">المپیاد</a></li>#}
+{#                    <li><a class="nav-link">اداری و مالی</a></li>#}
+{#                </div>#}
 
                 <li class="nav-item"><a href="{% url 'teachers' %}" style="font-family: Vazir-Medium" class="nav-link">
                     دبیران
@@ -60,29 +88,30 @@
                     با ما</a></li>
 
 
+
                 {% if perms.add_report %}
-                <li style="margin-top: auto; margin-bottom: auto;
+                    <li style="margin-top: auto; margin-bottom: auto;
                 padding: 5px"><a href="{% url 'report' %}"
                                  style="font-family: Vazir-Medium;
                                  color: #DEA44A" class="nav-link">بارگذاری کارنامه </a></li>
                 {% endif %}
 
-            {% ifequal user.profile.job_title  'دانش آموز' %}
-                <li style="margin-top: auto; margin-bottom: auto;
-                padding: 5px"><a href="{% url 'studentReports'%}"
+                {% ifequal user.profile.job_title  'دانش آموز' %}
+                    <li style="margin-top: auto; margin-bottom: auto;
+                padding: 5px"><a href="{% url 'studentReports' %}"
                                  style="font-family: Vazir-Medium;
                                  color: #DEA44A" class="nav-link">کارنامه ها</a></li>
                 {% endifequal %}
 
                 {% if not user.is_authenticated %}
-                <li class="nav-item user_response"><a href="{% url 'login' %}" style="font-family: Vazir-Medium"
-                                                      class="nav-link">ورود</a></li>
+                    <li class="nav-item user_response"><a href="{% url 'login' %}" style="font-family: Vazir-Medium"
+                                                          class="nav-link">پنل کاربری</a></li>
                 {% else %}
-                <li class="nav-item user_response"><a href="{% url 'login' %}" style="font-family: Vazir-Medium"
-                                                      class="nav-link">{{ user.username }} [خروج]</a></li>
+                    <li class="nav-item user_response"><a href="{% url 'login' %}" style="font-family: Vazir-Medium"
+                                                          class="nav-link">{{ user.username }} [خروج]</a></li>
                 {% endif %}
 
             </ul>
-        </div>
+    </div>
     </div>
 </nav>
