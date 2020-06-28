@@ -47,34 +47,26 @@
         <span class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
 
-                <li class="nav-item"><a href="#" style="font-family: Vazir-Medium" class="nav-link">
+                <li class="nav-item"><a href="{% url 'blog' tag='مدیریت' %}" style="font-family: Vazir-Medium"
+                                        class="nav-link">
                     مدیریت
                 </a></li>
-
-                <li class="nav-item dropdown" style="font-family: Vazir-Medium">
-                    <a id="moavenat" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                      معاونت ها
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="moavenat">
-                      <a class="dropdown-item" href="#">آموزشی</a>
-                        <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">المپیاد</a>
-                        <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">پژوهشی</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">اداری و مالی</a>
-                    </div>
-                </li>
-
-{#                <li class="nav-item" data-toggle="collapse" data-target="#moavenat-ha"><p#}
-{#                        style="font-family: Vazir-Medium; cursor: pointer" class="nav-link">معاونت ها</p></li>#}
-{#                <div id="moavenat-ha" class="list-group list-group-flush collapse" style="font-family: Vazir-Medium">#}
-{#                    <li class="nav-item"><a class="nav-link">آموزشی</a></li>#}
-{#                    <li><a class="nav-link">پژوهشی</a></li>#}
-{#                    <li><a class="nav-link">المپیاد</a></li>#}
-{#                    <li><a class="nav-link">اداری و مالی</a></li>#}
-{#                </div>#}
+{#                TODO: uncomment these ~~~~>  #}
+{#                <li class="nav-item dropdown" style="font-family: Vazir-Medium">#}
+{#                    <a id="moavenat" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"#}
+{#                       aria-haspopup="true" aria-expanded="false">#}
+{#                      معاونت ها#}
+{#                    </a>#}
+{#                    <div class="dropdown-menu" aria-labelledby="moavenat">#}
+{#                      <a class="dropdown-item" href="#">آموزشی</a>#}
+{#                        <div class="dropdown-divider"></div>#}
+{#                      <a class="dropdown-item" href="#">المپیاد</a>#}
+{#                        <div class="dropdown-divider"></div>#}
+{#                      <a class="dropdown-item" href="#">پژوهشی</a>#}
+{#                      <div class="dropdown-divider"></div>#}
+{#                      <a class="dropdown-item" href="#">اداری و مالی</a>#}
+{#                    </div>#}
+{#                </li>#}
 
                 <li class="nav-item"><a href="{% url 'teachers' %}" style="font-family: Vazir-Medium" class="nav-link">
                     دبیران
