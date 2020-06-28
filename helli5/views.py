@@ -2,11 +2,10 @@ from django.template import loader
 from django.http import HttpResponse
 import datetime
 from django.shortcuts import render
-from postingApp.models import PostStuff
-from loginApp.models import Profile
-from postingApp.models import Event
+from postingApp.models import PostStuff, Event
+from loginApp.models import Profile, Subscriber, Contact
 from django.db.models import Q
-from loginApp.models import Subscriber
+from loginApp.forms import ContactForm
 
 
 def index(request):
@@ -40,7 +39,31 @@ def index(request):
 
 
 def contact(request):
-    return render(request, 'contact.html', {})
+    status = 0
+    if request.method == 'POST':
+        if request.POST.get('form-key') == 'ارتباط-با-ما':
+            status = -1
+            print('befarmaaaaa')
+            contact_form = ContactForm(request.POST)
+            if contact_form.is_valid():
+                try:
+                    print('khune khodeteeeee')
+                    contact_obj = Contact(
+                        name=contact_form.cleaned_data['name'],
+                        email=contact_form.cleaned_data['email'],
+                        subject=contact_form.cleaned_data['subject'],
+                        body=contact_form.cleaned_data['body'])
+                    contact_obj.save()
+                    status = 1
+                except:
+                    print('vaaaah :/')
+                    pass
+
+    context = {
+        'contact_form': ContactForm(),
+        'status': status
+    }
+    return render(request, 'contact.html', context)
 
 
 def about(request):

@@ -4,3 +4,4 @@ from loginApp.models import *
 admin.site.register(Subscriber)
 admin.site.register(Profile)
 admin.site.register(Role)
+admin.site.register(Contact)
