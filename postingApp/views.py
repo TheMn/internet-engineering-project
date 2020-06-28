@@ -21,15 +21,6 @@ from django.db.models import Count, Q
 #     cat = get_object_or_404(Category, id=id)
 #     for mpost in cat.get_posts():
 #         print(mpost.title)
-def modir(request):
-    q = PostStuff.objects.all()
-    tag = request.GET.get('tag')
-    if tag:
-        q = q.filter(Q(categories__title__contains=tag)).distinct()
-    context = {
-        'queryset': q
-    }
-    return render(request, 'search_results.html', context)
 
 
 def search(request):
@@ -45,11 +36,25 @@ def search(request):
     return render(request, 'search_results.html', context)
 
 
-def blog(request):
-    # archive_count = get_archive_count()
-    # print(archive_count)
+# def modir(request):
+#     q = PostStuff.objects.all()
+#     tag = request.GET.get('tag')
+#     if tag:
+#         q = q.filter(Q(categories__title__exact =tag)).distinct()
+#     context = {
+#         'queryset': q
+#     }
+#     return render(request, 'search_results.html', context)
+
+
+def blog(request, tag=None):
     categories = Category.objects.all()
-    post_list = PostStuff.objects.all()
+
+    if tag:
+        post_list = PostStuff.objects.filter(Q(categories__title__exact=tag)).distinct()
+    else:
+        post_list = PostStuff.objects.all()
+
     paginator = Paginator(post_list, 6)
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
@@ -59,14 +64,16 @@ def blog(request):
         paginated_queryset = paginator.page(1)
     except EmptyPage:
         paginated_queryset = paginator.page(paginator.num_pages)
+
     featured_posts = PostStuff.objects.filter(featured=True)[:5]
+
     context = {
         'queryset': paginated_queryset,
         'page_request_var': page_request_var,
         'featured_posts': featured_posts,
-        'categories': categories
-        # 'archive_count': archive_count,
+        'categories': categories,
     }
+
     return render(request, 'blog.html', context)
 
 
