@@ -5,195 +5,206 @@
 {% block content %}
 
 
-<section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/راهرو-دبیرستان-علامه-حلی۵.jpg' %});">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-            <div class="col-md-9 ftco-animate text-center">
-                <h1 style="font-family: Vazir-Bold" class="mb-2 bread">نوشته ها</h1>
-                <p style="font-family: Vazir-Medium" class="breadcrumbs">
+    <section class="hero-wrap hero-wrap-2"
+             style="background-image: url({% static 'images/راهرو-دبیرستان-علامه-حلی۵.jpg' %});">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <h1 style="font-family: Vazir-Bold" class="mb-2 bread">نوشته ها</h1>
+                    <p style="font-family: Vazir-Medium" class="breadcrumbs">
                     <span class="mr-2"><a href="{% url 'index' %}">صفحه نخست <i
-                        class="ion-ios-arrow-back"></i></a></span> <span>نوشته ها <i
-                        class="ion-ios-arrow-back"></i></span></p>
+                            class="ion-ios-arrow-back"></i></a></span> <span>نوشته ها <i
+                            class="ion-ios-arrow-back"></i></span></p>
+                </div>
+
+                {#            {% if user.is_authenticated and not user.profile.role.is_student %}#}
+                {#            <div class="row col-12">#}
+                {#                <p style="margin-right: auto; margin-left: auto; border-radius:50%;#}
+                {#                 box-shadow: 0 10px 10px 0 rgba(255, 204, 153, .80), 0 10px 15px 0 rgba(255, 204, 0, .15)"#}
+                {#                   class="mb-0" style="margin-: 10px"><a style="font-family: Vazir-Medium" href="{% url 'add_post' %}"#}
+                {#                                                         class="btn btn-secondary">نوشته ی#}
+                {#                    جدید<span#}
+                {#                            class="icon-plus"></span></a></p>#}
+                {#            </div>#}
+                {#            {% endif %}#}
             </div>
-
-{#            {% if user.is_authenticated and not user.profile.role.is_student %}#}
-{#            <div class="row col-12">#}
-{#                <p style="margin-right: auto; margin-left: auto; border-radius:50%;#}
-{#                 box-shadow: 0 10px 10px 0 rgba(255, 204, 153, .80), 0 10px 15px 0 rgba(255, 204, 0, .15)"#}
-{#                   class="mb-0" style="margin-: 10px"><a style="font-family: Vazir-Medium" href="{% url 'add_post' %}"#}
-{#                                                         class="btn btn-secondary">نوشته ی#}
-{#                    جدید<span#}
-{#                            class="icon-plus"></span></a></p>#}
-{#            </div>#}
-{#            {% endif %}#}
         </div>
-    </div>
-</section>
+    </section>
 
 
-<section class="ftco-section" style="direction: rtl">
+    <section class="ftco-section" style="direction: rtl">
 
-    <div class="container">
-        <div class="row">
-            <div style="text-align: right" class="col-lg-8 ftco-animate">
-                <div class="row">
-                    {% for fpost in queryset %}
+        <div class="container">
+            <div class="row">
+                <div style="text-align: right" class="col-lg-8 ftco-animate">
+                    <div class="row">
+                        {% for fpost in queryset %}
 
-                    <div class="col-sm-12 col-md-6 ftco-animate">
-                        <div class="blog-entry" dir="ltr"
-                             style="border-bottom-left-radius:20px;
+                            <div class="col-sm-12 col-md-6 ftco-animate">
+                                <div class="blog-entry" dir="ltr"
+                                     style="border-bottom-left-radius:20px;
                              border-top-right-radius:20px;
                              box-shadow: 0 8px 10px 0 rgba(0, 0, 0, .12), 0 10px 15px 0 rgba(0, 0, 0, .10)">
-                            <a href="{{ fpost.get_absolute_url }}" class="block-20 d-flex align-items-end"
-                               style="background-image: url({{ fpost.img.url }});
-                               border-top-right-radius: 20px">
-                                <div class="meta-date text-center p-2"
-                                     style="border-top-right-radius: 20px; background: #2A4324">
-                                    <span style="font-family: Vazir-Medium" class="day">{{ fpost.date|date:"d" }}</span>
-                                    <span style="font-family: Vazir-Medium" class="mos">{{ fpost.date|date:"n" }}</span>
-                                    <span style="font-family: Vazir-Medium" class="yr">{{ fpost.date|date:"Y" }}</span>
-                                </div>
-                            </a>
-                            <div class="text bg-white p-4" style="border-bottom-left-radius: 20px">
-                                <h3 style="font-family: Vazir-Bold" class="heading"><a href="{{ fpost.get_absolute_url }}">{{ fpost.title }}</a>
-                                </h3>
-                                <p style="font-family: Vazir-Medium"> {{ fpost.description }} </p>
-                                <div style="direction: rtl" class="d-flex align-items-center mt-4">
-                                    <p class="ml-auto mb-0">
-                                        <a style="font-family: Vazir-Medium" style="margin-right: 10px"
-                                           class="mr-2">{{ fpost.username.user.last_name }}<span class="icon-person" style="color: #B3B3B3"></span></a>
-                                        <a style="font-family: Vazir-Medium" class="meta-chat">{{ fpost.comment_count }}<span
-                                                class="icon-chat"></span></a>
-                                    </p>
-                                    <p style="font-family: Vazir-Medium" class="mb-0"><a
-                                            href="{{ fpost.get_absolute_url }}"
-                                            class="btn btn-secondary" style="font-size: 12px">بیشتر
-                                        بخوانید <span
-                                                class="ion-ios-arrow-round-back"></span></a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-
-                </div>
-
-
-                <div class="row no-gutters my-5" dir="ltr">
-                    <div class="col text-center">
-                        <div class="block-27">
-                            <ul>
-                                {% if queryset.has_previous %}
-                                <li><a href="?{{ page_request_var }}={{ queryset.previous_page_number }}">
-                                    <i class="ion-ios-arrow-back"></i></a></li>
-                                {% endif %}
-
-                                <li class="active"><a href="?{{ page_request_var }}={{ queryset.number }}">
-                                    {{ queryset.number }}</a></li>
-
-                                {% if queryset.has_next %}
-                                <li><a href="?{{ page_request_var }}={{ queryset.next_page_number }}">
-                                    <i class="ion-ios-arrow-forward"></i></a></li>
-                                {% endif %}
-
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div style="text-align: right" class="col-lg-4 sidebar ftco-animate">
-                <div dir="rtl" class="sidebar-box" style="width: 100%">
-                    <form action="{% url 'search' %}" class="search-form"
-                          style="border-top-right-radius: 20px; border-bottom-left-radius: 20px">
-                        <div class="form-group">
-                            <span class="icon icon-search"></span>
-                            <input style="border-top-right-radius: 20px; border-bottom-left-radius: 20px; font-family: Vazir-Medium"
-                                   type="text" name="search" class="form-control"
-                                   placeholder="عنوانی را جستجو کنید">
-                        </div>
-                    </form>
-                </div>
-
-                <div class="sidebar-box ftco-animate">
-                    <h3 style="font-family: Vazir-Bold">مطالب مهم</h3>
-                    {% for fpost in featured_posts %}
-                    <div class="block-21 mb-4 d-flex"
-                         style="background: #FAFAFA; border-bottom-left-radius: 20px;
-                         border-top-right-radius: 20px;">
-                        <!--                        <a class="blog-img mr-4" style="background-image: url({{ fpost.img.url }});"></a>-->
-                        <div class="text col-12">
-                            <h3 class="heading"
-                                style="font-family: Vazir-Bold; margin-left: 5%; margin-right: 5%; margin-top: 5%"><a
-                                    href="{{ fpost.get_absolute_url }}" style="color: #1b1e21">
-                                {{ fpost.title }}
-                            </a></h3>
-                            <hr>
-                            <div class="meta container" style="margin-bottom: 2%">
-                                <div class="row" style="margin-right: 10px; margin-top: 5px; margin-top: -5px">
-                                    <div style="margin-left: 10px"><span class="icon-calendar"></span><a
-                                            style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium">{{ fpost.date|date:"Y m d" }}</a></div>
-                                </div>
-                                <div class="row" style="margin-right: 10px; margin-top: 5px; margin-top: -5px">
-                                    <div><span class="icon-person"></span><a
-                                            style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium">{{ fpost.username.user.last_name }}</a></div>
+                                    <a href="{{ fpost.get_absolute_url }}" class="block-20 d-flex align-items-end"
+                                       style="background-image: url({{ fpost.img.url }});
+                                               border-top-right-radius: 20px">
+                                        <div class="meta-date text-center p-2"
+                                             style="border-top-right-radius: 20px; background: #2A4324">
+                                            <span style="font-family: Vazir-Medium"
+                                                  class="day">{{ fpost.date|date:"d" }}</span>
+                                            <span style="font-family: Vazir-Medium"
+                                                  class="mos">{{ fpost.date|date:"n" }}</span>
+                                            <span style="font-family: Vazir-Medium"
+                                                  class="yr">{{ fpost.date|date:"Y" }}</span>
+                                        </div>
+                                    </a>
+                                    <div class="text bg-white p-4" style="border-bottom-left-radius: 20px">
+                                        <h3 style="font-family: Vazir-Bold" class="heading"><a
+                                                href="{{ fpost.get_absolute_url }}">{{ fpost.title }}</a>
+                                        </h3>
+                                        <p style="font-family: Vazir-Medium"> {{ fpost.description }} </p>
+                                        <div style="direction: rtl" class="d-flex align-items-center mt-4">
+                                            <p class="ml-auto mb-0">
+                                                <a style="font-family: Vazir-Medium" style="margin-right: 10px"
+                                                   class="mr-2">{{ fpost.username.user.last_name }}<span
+                                                        class="icon-person" style="color: #B3B3B3"></span></a>
+                                                <a style="font-family: Vazir-Medium"
+                                                   class="meta-chat">{{ fpost.comment_count }}<span
+                                                        class="icon-chat"></span></a>
+                                            </p>
+                                            <p style="font-family: Vazir-Medium" class="mb-0"><a
+                                                    href="{{ fpost.get_absolute_url }}"
+                                                    class="btn btn-secondary" style="font-size: 12px">بیشتر
+                                                بخوانید <span
+                                                        class="ion-ios-arrow-round-back"></span></a></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                    <br>
-                </div>
-                <div class="sidebar-box ftco-animate">
-                    <h3 style="font-family: Vazir-Bold">تگ ها</h3>
-                    <ul class="tagcloud m-0 p-0">
-                       {% for cat in categories %}
-                        <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;"
-                           class="tag-cloud-link">{{cat.title}}</a>
                         {% endfor %}
-                    </ul>
+
+                    </div>
+
+
+                    <div class="row no-gutters my-5" dir="ltr">
+                        <div class="col text-center">
+                            <div class="block-27">
+                                <ul>
+                                    {% if queryset.has_previous %}
+                                        <li><a href="?{{ page_request_var }}={{ queryset.previous_page_number }}">
+                                            <i class="ion-ios-arrow-back"></i></a></li>
+                                    {% endif %}
+
+                                    <li class="active"><a href="?{{ page_request_var }}={{ queryset.number }}">
+                                        {{ queryset.number }}</a></li>
+
+                                    {% if queryset.has_next %}
+                                        <li><a href="?{{ page_request_var }}={{ queryset.next_page_number }}">
+                                            <i class="ion-ios-arrow-forward"></i></a></li>
+                                    {% endif %}
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-<!--                TODO: make independent template for side-bar -->
-<!--                <div class="sidebar-box ftco-animate" style="direction: ltr">-->
-<!--                    <h3 style="font-family: Vazir-Bold">دسته بندی</h3>-->
-<!--                    <ul class="categories">-->
-<!--                        <div class="row">-->
-<!--                            <div style="text-align: left" class="col-lg-4 ">-->
-<!--                                <span>(6)</span>-->
-<!--                            </div>-->
-<!--                            <div class="col-lg-8 ">-->
-<!--                                <li><a style="font-family: Vazir-Medium" href="#">دسته اول </a></li>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <hr>-->
 
-<!--                        <div class="row">-->
-<!--                            <div style="text-align: left" class="col-lg-4 ">-->
-<!--                                <span>(8)</span>-->
-<!--                            </div>-->
-<!--                            <div class="col-lg-8 ">-->
-<!--                                <li><a style="font-family: Vazir-Medium" href="#">دسته دوم </a></li>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <hr>-->
 
-<!--                        <div class="row">-->
-<!--                            <div style="text-align: left" class="col-lg-4 ">-->
-<!--                                <span>(5)</span>-->
-<!--                            </div>-->
-<!--                            <div class="col-lg-8 ">-->
-<!--                                <li><a style="font-family: Vazir-Medium" href="#">دسته سوم </a></li>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <hr>-->
-<!--                    </ul>-->
-<!--                </div>-->
-            </div>
+                <div style="text-align: right" class="col-lg-4 sidebar ftco-animate">
+                    <div dir="rtl" class="sidebar-box" style="width: 100%">
+                        <form action="{% url 'search' %}" class="search-form"
+                              style="border-top-right-radius: 20px; border-bottom-left-radius: 20px">
+                            <div class="form-group">
+                                <span class="icon icon-search"></span>
+                                <input style="border-top-right-radius: 20px; border-bottom-left-radius: 20px; font-family: Vazir-Medium"
+                                       type="text" name="search" class="form-control"
+                                       placeholder="عنوانی را جستجو کنید">
+                            </div>
+                        </form>
+                    </div>
 
-        </div><!-- END COL -->
-    </div>
-</section>
+                    <div class="sidebar-box ftco-animate">
+                        <h3 style="font-family: Vazir-Bold">مطالب مهم</h3>
+                        {% for fpost in featured_posts %}
+                            <div class="block-21 mb-4 d-flex"
+                                 style="background: #FAFAFA; border-bottom-left-radius: 20px;
+                         border-top-right-radius: 20px;">
+                                <!--                        <a class="blog-img mr-4" style="background-image: url({{ fpost.img.url }});"></a>-->
+                                <div class="text col-12">
+                                    <h3 class="heading"
+                                        style="font-family: Vazir-Bold; margin-left: 5%; margin-right: 5%; margin-top: 5%">
+                                        <a
+                                                href="{{ fpost.get_absolute_url }}" style="color: #1b1e21">
+                                            {{ fpost.title }}
+                                        </a></h3>
+                                    <hr>
+                                    <div class="meta container" style="margin-bottom: 2%">
+                                        <div class="row" style="margin-right: 10px; margin-top: 5px; margin-top: -5px">
+                                            <div style="margin-left: 10px"><span class="icon-calendar"></span><a
+                                                    style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium">{{ fpost.date|date:"Y m d" }}</a>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-right: 10px; margin-top: 5px; margin-top: -5px">
+                                            <div><span class="icon-person"></span><a
+                                                    style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium">{{ fpost.username.user.last_name }}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <br>
+                    </div>
+                    <div class="sidebar-box ftco-animate">
+                        <h3 style="font-family: Vazir-Bold">تگ ها</h3>
+                        <ul class="tagcloud m-0 p-0">
+                            {% for cat in categories %}
+                                <a href="{% url 'blog' tag=cat.title %}"
+                                        style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;"
+                                   class="tag-cloud-link">{{ cat.title }}</a>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <!--                TODO: make independent template for side-bar -->
+                    <!--                <div class="sidebar-box ftco-animate" style="direction: ltr">-->
+                    <!--                    <h3 style="font-family: Vazir-Bold">دسته بندی</h3>-->
+                    <!--                    <ul class="categories">-->
+                    <!--                        <div class="row">-->
+                    <!--                            <div style="text-align: left" class="col-lg-4 ">-->
+                    <!--                                <span>(6)</span>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="col-lg-8 ">-->
+                    <!--                                <li><a style="font-family: Vazir-Medium" href="#">دسته اول </a></li>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                        <hr>-->
+
+                    <!--                        <div class="row">-->
+                    <!--                            <div style="text-align: left" class="col-lg-4 ">-->
+                    <!--                                <span>(8)</span>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="col-lg-8 ">-->
+                    <!--                                <li><a style="font-family: Vazir-Medium" href="#">دسته دوم </a></li>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                        <hr>-->
+
+                    <!--                        <div class="row">-->
+                    <!--                            <div style="text-align: left" class="col-lg-4 ">-->
+                    <!--                                <span>(5)</span>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="col-lg-8 ">-->
+                    <!--                                <li><a style="font-family: Vazir-Medium" href="#">دسته سوم </a></li>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                        <hr>-->
+                    <!--                    </ul>-->
+                    <!--                </div>-->
+                </div>
+
+            </div><!-- END COL -->
+        </div>
+    </section>
 {% endblock %}

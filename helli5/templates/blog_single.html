@@ -66,7 +66,8 @@
                     <div style="text-align: right" class="tag-widget post-tag-container mb-5 mt-5">
                         <div class="tagcloud">
                             {% for cat in this_post.categories.all %}
-                                <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;"
+                                <a href="{% url 'blog' tag=cat.title %}"
+                                        style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;"
                                    class="tag-cloud-link">{{ cat.title }}</a>
                             {% endfor %}
                         </div>
@@ -84,7 +85,7 @@
                                         <img src="{{ comment.author.user.profile.img.url }}" alt="Image placeholder">
                                     </div>
                                     <div class="comment-body">
-                                        <h3 style="font-family: Vazir-Bold; margin-right: 2%">{{ comment.author }}</h3>
+                                        <h3 style="font-family: Vazir-Bold; margin-right: 2%">{{ comment.author.user.last_name }}</h3>
                                         <div style="font-family: Vazir-Medium; text-align: right; margin-right: 2%"
                                              class="meta mb-2">{{ comment.cm_date|date:"M,j - H:i" }}
                                         </div>
@@ -208,7 +209,8 @@
                         <h3 style="font-family: Vazir-Bold">تگ ها</h3>
                         <ul class="tagcloud m-0 p-0">
                             {% for cat in categories %}
-                                <a style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;"
+                                <a href="{% url 'blog' tag=cat.title %}"
+                                        style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;"
                                    class="tag-cloud-link">{{ cat.title }}</a>
                             {% endfor %}
                         </ul>
