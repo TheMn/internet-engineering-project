@@ -4,4 +4,11 @@ from loginApp.models import *
 admin.site.register(Subscriber)
 admin.site.register(Profile)
 admin.site.register(Role)
-admin.site.register(Contact)
+
+class ContactAdmin(admin.ModelAdmin):
+    ordering = ['seen']
+    # list_display_links = ['plate']
+    list_display = ('date', 'subject', 'name', 'email', 'seen')
+    list_filter = ('seen', 'date')
+
+admin.site.register(Contact, ContactAdmin)

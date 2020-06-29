@@ -79,3 +79,5 @@ class Contact(models.Model):
     email = models.EmailField(max_length=50, blank=False)
     subject = models.CharField(max_length=50, blank=True)
     body = models.TextField(max_length=500, blank=False)
+    seen = models.BooleanField(default=False, blank=True)
+    date = models.DateTimeField(auto_now_add=True)
