@@ -72,6 +72,7 @@ def blog(request, tag=None):
         'page_request_var': page_request_var,
         'featured_posts': featured_posts,
         'categories': categories,
+        'tagged_blog': tag if tag else 'None'
     }
 
     return render(request, 'blog.html', context)

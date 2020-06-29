@@ -11,7 +11,14 @@
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">
                 <div class="col-md-9 ftco-animate text-center">
-                    <h1 style="font-family: Vazir-Bold" class="mb-2 bread">نوشته ها</h1>
+                    <h1 style="font-family: Vazir-Bold" class="mb-2 bread">نوشته ها
+                        {% if tagged_blog != 'None' %}
+                            <strong>(
+                                {{ tagged_blog }}
+                                )</strong>
+                        {% endif %}
+
+                    </h1>
                     <p style="font-family: Vazir-Medium" class="breadcrumbs">
                     <span class="mr-2"><a href="{% url 'index' %}">صفحه نخست <i
                             class="ion-ios-arrow-back"></i></a></span> <span>نوشته ها <i
@@ -162,7 +169,7 @@
                         <ul class="tagcloud m-0 p-0">
                             {% for cat in categories %}
                                 <a href="{% url 'blog' tag=cat.title %}"
-                                        style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;"
+                                   style="font-family: Vazir-Medium; border-radius: 0 10px 0 10px;"
                                    class="tag-cloud-link">{{ cat.title }}</a>
                             {% endfor %}
                         </ul>
