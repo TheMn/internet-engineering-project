@@ -4,7 +4,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from tinymce import models as tinymce_models
 
-
 User = get_user_model()
 
 
@@ -73,6 +72,7 @@ class Subscriber(models.Model):
 
     def __str__(self):
         return self.email
+
 
 class Contact(models.Model):
     name = models.CharField(max_length=50, blank=True)
