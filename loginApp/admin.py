@@ -12,7 +12,6 @@ admin.site.register(Subscriber)
 @admin.register(Role)
 class RoleAdmin(admin.ModelAdmin):
     list_display = ('person', 'role_s_')
-    search_fields = ('person', 'role_s_')
 
     def role_s_(self, role_object):
         roles = []
@@ -39,7 +38,6 @@ class RoleAdmin(admin.ModelAdmin):
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'job_title', 'grade', 'group',)
     list_filter = ('grade', 'group',)
-    search_fields = ('user',)
 
 
 @admin.register(Contact)

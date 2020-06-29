@@ -96,6 +96,9 @@ class Attachment(models.Model):
     post = models.ForeignKey(PostStuff, on_delete=models.CASCADE)
     attach = models.FileField(upload_to='uploads/%Y/%m/%d/')
 
+    def __str__(self):
+        return self.post.title
+
 
 class Comment(models.Model):
     post = models.ForeignKey(PostStuff, related_name='comments', on_delete=models.CASCADE)

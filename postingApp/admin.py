@@ -3,15 +3,43 @@ from django.contrib import admin
 from .models import *
 
 
-class AdminPosting(admin.ModelAdmin):
+class PostStuffAdmin(admin.ModelAdmin):
     exclude = ('slug',)
+    list_display = ('title', 'username', 'date', 'featured')
+    search_fields = ('title',)
+    list_filter = ('featured',)
+
+
+admin.site.register(PostStuff, PostStuffAdmin)
 
 
 # Register your models here.
-admin.site.register(PostStuff, AdminPosting)
-admin.site.register(Comment)
-admin.site.register(Event)
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('cm_date', 'author', 'post')
+    list_filter = ('cm_date',)
+
+
+@admin.register(Event)
+class EventAdmin(admin.ModelAdmin):
+    ordering = ['order']
+    list_display = ('order', 'text', 'day',)
+    list_editable = ('text', 'day',)
+    list_filter = ('day',)
+    search_fields = ('text',)
+
+
+# admin.site.register(Comment)
+# admin.site.register(Event)
 
 admin.site.register(Attachment)
 
-admin.site.register(Category)
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('title', 'is_honored')
+    list_editable = ('is_honored',)
+    list_filter = ('is_honored',)
+    search_fields = ('title',)
+# admin.site.register(Category)
