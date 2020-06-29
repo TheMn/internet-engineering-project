@@ -4,6 +4,12 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import authenticate
 
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=50, required=False)
+    email = forms.EmailField(max_length=50, required=True)
+    subject = forms.CharField(max_length=50, required=False)
+    body = forms.CharField(widget=forms.Textarea, required=True)
+
 
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=False, help_text='Optional.', label=u'نام')
