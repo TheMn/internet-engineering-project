@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from django.utils.text import slugify
 from django.urls import reverse
 from .utils import create_zip
+
 # from honorsApp.models import period_choices
 
 User = get_user_model()
@@ -88,6 +89,9 @@ class Question(models.Model):
 class Reports(models.Model):
     title = models.CharField(max_length=30, blank=False)
 
+    def __str__(self):
+        return self.title
+
 
 class StudentReports(models.Model):
     student = models.CharField(max_length=8, blank=False)
@@ -98,4 +102,3 @@ class StudentReports(models.Model):
         permissions = (
             ("add_reports", "can add reports"),
         )
-
