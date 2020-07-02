@@ -37,7 +37,6 @@
         </h2>
         <div class="row" style="direction: rtl">
             {% for prf in group_teachers %}
-            {% if prf.role.is_teacher %}
             <div class="col-md-6 col-lg-3 ftco-animate">
                 <div class="staff bg-light"
                      style="border-top-right-radius: 20px; border-bottom-left-radius: 20px;
@@ -64,7 +63,6 @@
                     </div>
                 </div>
             </div>
-            {% endif %}
             {% endfor %}
 
         </div>
