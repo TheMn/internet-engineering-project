@@ -5,51 +5,39 @@
     <section class="home-slider owl-carousel">
 
         <!-- this is an item of slider -->
-        <div class="slider-item"
-             style="background-image:url({% static '/images/صف-صبحگاه-سال-تحصیلی-جدید.JPG' %});">
-            <div class="overlay"></div>
-            <div class="container">
-                <div class="row no-gutters slider-text align-items-center justify-content-center"
-                     data-scrollax-parent="true">
-                    <div class="col-md-8 text-center ftco-animate">
-                        <h1 style="font-family:Vazir-Bold; text-align: center" class="mb-4">آغاز سال تحصیلی
-                            ۹۹-۱۳۹۸</h1>
-                        <h3 style="font-family:Vazir-Bold; text-align: center; color: white" class="mb-4">
-                            توضیحات مرتبط کسشر
-                        </h3>
-                        <p style="font-family:Vazir-Medium; text-align: center;"><a
-                                style=" background: rgba(0,0,0,0.5)"
-                                href="#"
-                                class="btn btn-secondary px-4 py-3 mt-3">بیشتر
-                            بخوانید</a></p>
-                        <!--                    <p style="font-family:Vazir-Medium; text-align: center"><a href="#"-->
-                        <!--                                                                               class="btn btn-secondary px-4 py-3 mt-3">بیشتر-->
-                        <!--                        بخوانید</a></p>-->
-                    </div>
-                </div>
-            </div>
-        </div>
         {% for slider_item in slider_contents %}
             <div class="slider-item"
-                 style="background-image:url({{ slider_item.get_img_url }});">
+                 style="background-image:url(
+                         {% if slider_item.img %}
+                             {{ slider_item.img.url }}
+                         {% else %}
+                             {% static '/images/صف-صبحگاه-سال-تحصیلی-جدید.JPG' %}
+                         {% endif %}
+                         );">
                 <div class="overlay"></div>
                 <div class="container">
                     <div class="row no-gutters slider-text align-items-center justify-content-center"
                          data-scrollax-parent="true">
                         <div class="col-md-8 text-center ftco-animate">
                             <h1 style="font-family:Vazir-Bold; text-align: center" class="mb-4">
-                                {{ slider_item.get_title }}
+                                {{ slider_item.title }}
                             </h1>
-                            <h3 style="font-family:Vazir-Bold; text-align: center; color: white" class="mb-4">
-                                {{ slider_item.get_description }}
-                            </h3>
+
+                            {% if slider_item.description %}
+                                <h3 style="font-family:Vazir-Bold; text-align: center; color: white" class="mb-4">
+                                    {{ slider_item.description }}
+                                </h3>
+                            {% endif %}
+
+                            {% if slider_item.post %}
                             <p style="font-family:Vazir-Medium; text-align: center;"><a
                                     style=" background: rgba(0,0,0,0.5)"
-                                    href="{{ slider_item.get_post_url }}"
+                                    href="{{ slider_item.post.get_absolute_url }}"
                                     class="btn btn-secondary px-4 py-3 mt-3">
                                 بیشتر
                                 بخوانید
                             </a></p>
+                            {% endif %}
                             <!--                    <p style="font-family:Vazir-Medium; text-align: center"><a href="#"-->
                             <!--                                                                               class="btn btn-secondary px-4 py-3 mt-3">بیشتر-->
                             <!--                        بخوانید</a></p>-->

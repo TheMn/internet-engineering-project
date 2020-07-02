@@ -3,8 +3,6 @@ from django.db import models
 from django.db.models.signals import post_save, pre_save
 from django.urls import reverse
 from loginApp.models import Subscriber, Profile
-from django.core.mail import send_mail
-from tinymce import models as tinymce_models
 from postingApp.models import PostStuff
 
 
@@ -16,32 +14,28 @@ class SliderContent(models.Model):
     visible = models.BooleanField(default=True)
     date = models.DateTimeField(auto_now_add=True)
 
+    def save(self, *args, **kwargs):
+        # اگر تیتر نداشت از تیتر پست بگیر
+        if not self.title:
+            if self.post:
+                self.title = self.post.title
+            else:
+                self.title = 'دبیرستان علامه حلی ۵'
+                self.visible = False
+        # اگر توضیحات نداشت از پست بگیر
+        if not self.description:
+            if self.post:
+                self.description = self.post.description
+            else:
+                self.description = 'وبسایت دبیرستان پسرانه ی تیزهوشان دوره دوم علامه حلی ۵ تهران (سمپاد)'
+        # اگر عکس نداشت از پست بگیر
+        if not self.img:
+            if self.post:
+                self.img = self.post.img
+        super(SliderContent, self).save(*args, **kwargs)
+
     def __str__(self):
-        return self.get_title()
+        return self.title
 
-    def get_post_url(self):
-        return self.post.get_absolute_url() if self.post else None
-
-    def get_title(self):
-        if self.title:
-            return self.title
-        elif self.post:
-            return self.post.title
-        else:
-            return None
-
-    def get_description(self):
-        if self.description:
-            return self.description
-        elif self.post:
-            return self.post.description
-        else:
-            return None
-
-    def get_img_url(self):
-        if self.img:
-            return self.img.url
-        elif self.post:
-            return self.post.img.url
-        else:
-            return None
+    class Meta:
+        unique_together = ("title", "description", "post")
