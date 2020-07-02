@@ -101,7 +101,7 @@ def upload_report(request):
     return render(request, 'report.html', context)
 
 
-@has_perm('view_report')
+@has_perm('see_reports')
 def student_reports(request):
     user = request.user
 
