@@ -90,7 +90,7 @@
                     {#                                 color: #DEA44A" class="nav-link">بارگذاری کارنامه </a></li>#}
                 {% endif %}
 
-                {% if perms.see_reports %}
+                {% if perms.courseApp.see_reports%}
 
                     <li class="nav-item"><a href="{% url 'studentReports' %}"
                                             style="font-family: Vazir-Medium; color: #DEA44A"
