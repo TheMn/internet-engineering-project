@@ -26,8 +26,6 @@ class SliderContent(models.Model):
         if not self.description:
             if self.post:
                 self.description = self.post.description
-            else:
-                self.description = 'وبسایت دبیرستان پسرانه ی تیزهوشان دوره دوم علامه حلی ۵ تهران (سمپاد)'
         # اگر عکس نداشت از پست بگیر
         if not self.img:
             if self.post:
