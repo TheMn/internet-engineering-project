@@ -67,7 +67,7 @@ def homework(request, course_id, assignment_id):
     return render(request, 'homework.html', context)
 
 
-@has_perm('add_report')
+@has_perm('courseApp.add_report')
 def upload_report(request):
     if request.method == "POST":
         form = reportForm(request.POST, request.FILES)
