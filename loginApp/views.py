@@ -3,9 +3,10 @@ from django.contrib.auth import login as auth_login
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
 from .forms import SignUpForm, LoginForm
-
+from helli5.decorators import unauth_user
 
 @csrf_protect
+@unauth_user
 def login(request):
     login_form, signup_form = None, None
     if request.method == "POST":

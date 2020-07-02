@@ -14,6 +14,7 @@ import hashlib
 import csv
 from django.http import HttpResponse
 from django.contrib.auth.models import User
+from helli5.decorators import has_perm
 
 
 # def download_zip(request, assignment_id):
@@ -66,65 +67,61 @@ def homework(request, course_id, assignment_id):
     return render(request, 'homework.html', context)
 
 
+@has_perm('add_report')
 def upload_report(request):
-    if request.user.has_perm('add_report'):
-        if request.method == "POST":
-            form = reportForm(request.POST, request.FILES)
-            if form.is_valid():
-                files = request.FILES.getlist('files')
-                directory = form.cleaned_data['report_title']
+    if request.method == "POST":
+        form = reportForm(request.POST, request.FILES)
+        if form.is_valid():
+            files = request.FILES.getlist('files')
+            directory = form.cleaned_data['report_title']
 
-                report = Reports.objects.filter(title=directory)
-                report = report.first()
-                for file in files:
-                    student_id = file.name.split('.')[0]
-                    hashname = hashlib.md5(student_id.encode('utf-8')).hexdigest() + '.' + file.name.split('.')[1]
-                    student_report = StudentReports()
-                    student_report.report = report
-                    student_report.student = student_id
-                    student_report.report_url = '//' + settings.SITE_URL + settings.MEDIA_URL + 'reports/' + str(
-                        report.id) + '/' + hashname
-                    student_report.save()
-                    path = settings.MEDIA_ROOT + '/reports/' + str(report.id)
-                    if not os.path.isdir(path):
-                        # print('lks;dfk;lsdfk')
-                        os.makedirs(path)
-                    with open(path + '/' + hashname, 'wb+') as destination:
-                        for chunk in file.chunks():
-                            destination.write(chunk)
-                return redirect(upload_report)
-            return HttpResponse(503)
-        context = {
-            'report': reportForm,
-        }
-        return render(request, 'report.html', context)
-    return HttpResponse('Unauthorized', status=401)
+            report = Reports.objects.filter(title=directory)
+            report = report.first()
+            for file in files:
+                student_id = file.name.split('.')[0]
+                hashname = hashlib.md5(student_id.encode('utf-8')).hexdigest() + '.' + file.name.split('.')[1]
+                student_report = StudentReports()
+                student_report.report = report
+                student_report.student = student_id
+                student_report.report_url = '//' + settings.SITE_URL + settings.MEDIA_URL + 'reports/' + str(
+                    report.id) + '/' + hashname
+                student_report.save()
+                path = settings.MEDIA_ROOT + '/reports/' + str(report.id)
+                if not os.path.isdir(path):
+                    # print('lks;dfk;lsdfk')
+                    os.makedirs(path)
+                with open(path + '/' + hashname, 'wb+') as destination:
+                    for chunk in file.chunks():
+                        destination.write(chunk)
+            return redirect(upload_report)
+        return HttpResponse(503)
+    context = {
+        'report': reportForm,
+    }
+    return render(request, 'report.html', context)
 
 
+@has_perm('view_report')
 def student_reports(request):
     user = request.user
-    if user.is_authenticated:
 
-        if user.profile.job_title == 'دانش آموز':
-            report_students = StudentReports.objects.filter(student=user.username).all()
-            reports = []
-            for report_student in report_students:
-                report = {
-                    "name": report_student.report.title,
-                    "link": report_student.report_url
-                }
-                reports.append(report)
-            count = len(Reports.objects.all())
-            if len(reports) < count:
-                report = {
-                    "name": 'بنا بر یکی از دلایل زیر، چهارشنبه ۴ تیرماه یکی از اولیاتون جهت دریافت کارنامه به مدرسه '
-                            'مراجعه کنند‌: ' + "\n" + 'وجود درس مردودی یا عدم تسویه حساب مالی یا درخواست مشاور',
-                    "link": '#'
-                }
-                reports.append(report)
-            context = {
-                'reports': reports,
-            }
-            return render(request, 'reports_page.html', context)
-    else:
-        return redirect('login')
+    report_students = StudentReports.objects.filter(student=user.username).all()
+    reports = []
+    for report_student in report_students:
+        report = {
+            "name": report_student.report.title,
+            "link": report_student.report_url
+        }
+        reports.append(report)
+    count = len(Reports.objects.all())
+    if len(reports) < count:
+        report = {
+            "name": 'بنا بر یکی از دلایل زیر، چهارشنبه ۴ تیرماه یکی از اولیاتون جهت دریافت کارنامه به مدرسه '
+                    'مراجعه کنند‌: ' + "\n" + 'وجود درس مردودی یا عدم تسویه حساب مالی یا درخواست مشاور',
+            "link": '#'
+        }
+    reports.append(report)
+    context = {
+        'reports': reports,
+    }
+    return render(request, 'reports_page.html', context)

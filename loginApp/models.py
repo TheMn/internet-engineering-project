@@ -52,19 +52,6 @@ def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
 
-class Role(models.Model):
-    person = models.OneToOneField(Profile, on_delete=models.CASCADE)
-    is_teacher = models.BooleanField(default=False)
-    is_student = models.BooleanField(default=False)
-    is_consulter = models.BooleanField(default=False)
-    is_moavenP = models.BooleanField(default=False)
-    is_moavenO = models.BooleanField(default=False)
-    is_moavenE = models.BooleanField(default=False)
-    is_parent = models.BooleanField(default=False)
-    is_principle = models.BooleanField(default=False)
-
-    def __str__(self):
-        return '{}'.format(self.is_student)
 
 
 class Subscriber(models.Model):

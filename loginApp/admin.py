@@ -9,7 +9,6 @@ admin.site.register(Subscriber)
 # admin.site.register(Role)
 
 
-@admin.register(Role)
 class RoleAdmin(admin.ModelAdmin):
     list_display = ('person', 'role_s_')
 

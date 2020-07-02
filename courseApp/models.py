@@ -101,4 +101,5 @@ class StudentReports(models.Model):
     class Meta:
         permissions = (
             ("add_reports", "can add reports"),
+            ("see_reports", "see_reports")
         )
