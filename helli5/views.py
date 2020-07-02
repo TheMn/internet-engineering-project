@@ -6,6 +6,7 @@ from postingApp.models import PostStuff, Event
 from loginApp.models import Profile, Subscriber, Contact
 from django.db.models import Q
 from loginApp.forms import ContactForm
+from dynamicApp.models import SliderContent
 
 
 def index(request):
@@ -19,6 +20,7 @@ def index(request):
     #             new_subscriber.save()
     #         except Exception:
     #             pass
+    slider_contents = SliderContent.objects.filter(Q(visible=True)).order_by('-date')[0:6]
     latest = PostStuff.objects.order_by('-date')[0:3]
     events = Event.objects.filter(~Q(order=-1)).order_by('order')
     top_events = Event.objects.filter(order=-1)
@@ -26,6 +28,7 @@ def index(request):
         'latest_posts': latest,
         'events': events,
         'top_events': top_events,
+        'slider_contents': slider_contents
     }
     return render(request, 'index.html', context)
 

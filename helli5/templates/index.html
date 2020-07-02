@@ -3,36 +3,50 @@
 
 {% block content %}
     <section class="home-slider owl-carousel">
-        <div class="slider-item" style="background-image:url({% static '/images/صف-صبحگاه-سال-تحصیلی-جدید.JPG' %});">
-            <div class="overlay"></div>
-            <div class="container">
-                <div class="row no-gutters slider-text align-items-center justify-content-center"
-                     data-scrollax-parent="true">
-                    <div class="col-md-8 text-center ftco-animate">
-                        <h1 style="font-family:Vazir-Bold; text-align: center" class="mb-4">آغاز سال تحصیلی ۹۹-۱۳۹۸</h1>
-                        <!--                    <p style="font-family:Vazir-Medium; text-align: center"><a href="#"-->
-                        <!--                                                                               class="btn btn-secondary px-4 py-3 mt-3">بیشتر-->
-                        <!--                        بخوانید</a></p>-->
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="slider-item" style="background-image:url({% static 'images/سمینار-علوم-فنون-علامه-حلی-۵.JPG' %});">
-            <div class="overlay"></div>
-            <div class="container">
-                <div class="row no-gutters slider-text align-items-center justify-content-center"
-                     data-scrollax-parent="true">
-                    <div class="col-md-8 text-center ftco-animate">
-                        <h1 style="font-family:Vazir-Bold; text-align: center" class="mb-4">سمینار علوم و فنون حلی
-                            ۵</h1>
-                        <!--                    <p style="font-family:Vazir-Medium; text-align: center"><a href="#"-->
-                        <!--                                                                               class="btn btn-secondary px-4 py-3 mt-3">بیشتر-->
-                        <!--                        بخوانید</a></p>-->
+        <!-- this is an item of slider -->
+        {% for slider_item in slider_contents %}
+            <div class="slider-item"
+                 style="background-image:url(
+                         {% if slider_item.img %}
+                             {{ slider_item.img.url }}
+                         {% else %}
+                             {% static '/images/صف-صبحگاه-سال-تحصیلی-جدید.JPG' %}
+                         {% endif %}
+                         );">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row no-gutters slider-text align-items-center justify-content-center"
+                         data-scrollax-parent="true">
+                        <div class="col-md-8 text-center ftco-animate">
+                            <h1 style="font-family:Vazir-Bold; text-align: center" class="mb-4">
+                                {{ slider_item.title }}
+                            </h1>
+
+                            {% if slider_item.description %}
+                                <h3 style="font-family:Vazir-Bold; text-align: center; color: white" class="mb-4">
+                                    {{ slider_item.description }}
+                                </h3>
+                            {% endif %}
+
+                            {% if slider_item.post %}
+                            <p style="font-family:Vazir-Medium; text-align: center;"><a
+                                    style=" background: rgba(0,0,0,0.5)"
+                                    href="{{ slider_item.post.get_absolute_url }}"
+                                    class="btn btn-secondary px-4 py-3 mt-3">
+                                بیشتر
+                                بخوانید
+                            </a></p>
+                            {% endif %}
+                            <!--                    <p style="font-family:Vazir-Medium; text-align: center"><a href="#"-->
+                            <!--                                                                               class="btn btn-secondary px-4 py-3 mt-3">بیشتر-->
+                            <!--                        بخوانید</a></p>-->
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        {% endfor %}
+
     </section>
     <!--TODO: Add this section:-->
     <!--<section class="ftco-services ftco-no-pb">-->
@@ -105,34 +119,36 @@
             <div class="row content">
                 <div class="col-sm-3 sidenav" dir="rtl">
                     {% if events %}
-                            <div class="ftco-footer-widget mb-5">
-                                <h2 style="color:#9d6d4d; font-family:Vazir-Bold; text-align: center" class="ftco-heading-2">رویداد ها</h2>
-                                <div class="block-23 mb-3">
-                                    <ul>
-                                        {% for ev in top_events %}
-                                            <li><span class="ion-ios-arrow-round-back mr-2"
-                                                      style="line-height:2em; color: black; padding-right: 2rem;"></span><span
-                                                    style="font-family: Vazir-Medium;color: black;"
-                                                    class="text">{{ ev.text }}</span>
-                                            </li>
-                                        {% endfor %}
-                                        {% for ev in events %}
-                                            {% ifchanged ev.order %}
+                        <div class="ftco-footer-widget mb-5">
+                            <h2 style="color:#9d6d4d; font-family:Vazir-Bold; text-align: center"
+                                class="ftco-heading-2">رویداد ها</h2>
+                            <div class="block-23 mb-3">
+                                <ul>
+                                    {% for ev in top_events %}
+                                        <li><span class="ion-ios-arrow-round-back mr-2"
+                                                  style="line-height:2em; color: black; padding-right: 2rem;"></span><span
+                                                style="font-family: Vazir-Medium;color: black;"
+                                                class="text">{{ ev.text }}</span>
+                                        </li>
+                                    {% endfor %}
+                                    {% for ev in events %}
+                                        {% ifchanged ev.order %}
                                             <li>
-                                            <span class="ion-ios-time" style="line-height:2em;color: black"></span></span><span
+                                                <span class="ion-ios-time"
+                                                      style="line-height:2em;color: black"></span></span><span
                                                     style="font-family: Vazir-Bold;color: black;"
                                                     class="text">{{ ev.day }}</span>
                                             </li>
-                                             {% endifchanged %}
-                                            <li><span class="ion-ios-arrow-round-back mr-2"
-                                                      style="line-height:2em; color: black; padding-right: 2rem;"></span><span
-                                                    style="font-family: Vazir-Medium;color: black;"
-                                                    class="text">{{ ev.text }}</span>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
+                                        {% endifchanged %}
+                                        <li><span class="ion-ios-arrow-round-back mr-2"
+                                                  style="line-height:2em; color: black; padding-right: 2rem;"></span><span
+                                                style="font-family: Vazir-Medium;color: black;"
+                                                class="text">{{ ev.text }}</span>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
                             </div>
+                        </div>
                     {% endif %}
                 </div>
 
@@ -173,7 +189,17 @@
                                             <h3 style="font-family: Vazir-Bold" class="heading"><a
                                                     href="{{ fpost.get_absolute_url }}">{{ fpost.title }}</a>
                                             </h3>
-                                            <p style="font-family: Vazir-Medium"> {{ fpost.description }} </p>
+
+                                            <p style="text-align: right;font-family: Vazir-Medium"
+                                               title="{{ fpost.description }}">
+                                                {% if fpost.description|length > 30 %}
+                                                    ...{{ fpost.description|slice:27 }}
+                                                {% else %}
+                                                    {{ fpost.description }}
+                                                {% endif %}
+                                            </p>
+
+
                                             <div style="direction: rtl" class="d-flex align-items-center mt-4">
                                                 <p class="ml-auto mb-0">
                                                     <a style="font-family: Vazir-Medium" style="margin-right: 10px"
