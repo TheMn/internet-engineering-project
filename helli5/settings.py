@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'postingApp',
     'loginApp',
     'honorsApp',
+    'dynamicApp',
     'courseApp',
     'crispy_forms',
     'tinymce',
