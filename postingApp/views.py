@@ -91,8 +91,10 @@ def blog_single(request, slug):
             return redirect(reverse("blog_single", kwargs={
                 'slug': post.slug
             }))
+    title = post.title + ' | وبسایت دبیرستان دوره دوم علامه حلی ۵ تهران'
     context = {
         'comment_form': form,
+        'title':title,
         'featured_posts': featured_posts,
         'this_post': post,
         'categories': categories
