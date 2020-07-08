@@ -6,6 +6,7 @@ from .utils import unique_slug_generator
 from loginApp.models import Subscriber, Profile
 from django.core.mail import send_mail
 from tinymce import models as tinymce_models
+from django_jalali.db import models as jmodels
 
 
 class Category(models.Model):
@@ -33,7 +34,7 @@ class PostStuff(models.Model):
     text = tinymce_models.HTMLField()
     description = models.CharField(max_length=150, blank=True)
     img = models.ImageField(upload_to="thumbnails")
-    date = models.DateTimeField(auto_now_add=True)
+    date = jmodels.jDateTimeField(auto_now_add=True)
     comment_count = models.IntegerField(default=0)
     categories = models.ManyToManyField(Category)
     featured = models.BooleanField(default=True)
@@ -104,4 +105,4 @@ class Comment(models.Model):
     post = models.ForeignKey(PostStuff, related_name='comments', on_delete=models.CASCADE)
     author = models.ForeignKey(Profile, on_delete=models.CASCADE)
     text = models.TextField(max_length=400)
-    cm_date = models.DateTimeField(auto_now_add=True)
+    cm_date = jmodels.jDateTimeField(auto_now_add=True)

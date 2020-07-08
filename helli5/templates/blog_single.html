@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load jformat %}
 {% block title %}{{ this_post.title }}{% endblock %}
 {% block extra_head %}
 
@@ -58,7 +58,7 @@
                         <span style="text-align: right; font-family: Vazir-Medium"><span
                                 style="font-family: Vazir-Medium">نوشته شده توسط:</span>{{ this_post.username.user.last_name }}</span>
                             <span style="text-align: left; font-family: Vazir-Medium"><span
-                                    style="font-family: Vazir-Medium">تاریخ:</span>{{ this_post.date|date:"M,j - H:i" }}</span>
+                                    style="font-family: Vazir-Medium">تاریخ:</span>{{ this_post.date|jformat:"%d %B - %H:%M" }}</span>
                         </div>
                     </div>
                     <hr style="margin-top: 0%; margin-bottom: -5%">
@@ -87,7 +87,7 @@
                                     <div class="comment-body">
                                         <h3 style="font-family: Vazir-Bold; margin-right: 2%">{{ comment.author.user.last_name }}</h3>
                                         <div style="font-family: Vazir-Medium; text-align: right; margin-right: 2%"
-                                             class="meta mb-2">{{ comment.cm_date|date:"M,j - H:i" }}
+                                             class="meta mb-2">{{ comment.cm_date|jformat:"%d %B - %H:%M" }}
                                         </div>
                                         <p style="font-family: Vazir-Medium">
                                             {{ comment.text }}

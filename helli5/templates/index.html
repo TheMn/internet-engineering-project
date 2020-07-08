@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load jformat %}
 
 {% block content %}
     <section class="home-slider owl-carousel">
@@ -180,7 +181,7 @@
                                                 <span style="font-family: Vazir-Medium"
                                                       class="day">{{ fpost.date|date:"d" }}</span>
                                                 <span style="font-family: Vazir-Medium"
-                                                      class="mos">{{ fpost.date|date:"n" }}</span>
+                                                      class="mos">{{ fpost.date|jformat:"%B" }}</span>
                                                 <span style="font-family: Vazir-Medium"
                                                       class="yr">{{ fpost.date|date:"Y" }}</span>
                                             </div>
