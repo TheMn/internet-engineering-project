@@ -24,21 +24,50 @@
                        style="text-align: left; margin-top: 0.5%; color: white;
                        font-family: Vazir-Thin; margin-bottom: -1%"
                        id="date_place" style="padding-left: 5%">
-                        {% now " Y"%}
+                        {% now " Y" %}
                     </p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+<!-- ----------------------------------------header(logo)--------------------------------------------- -->
+<br>
+<div class="container">
+    <div class="row" style="cursor: pointer"
+         onclick="window.location='{% url 'index' %}';">
+        <div class="col-md-3 text-center">
+            <img title="سازمان ملی پرورش استعدادهای درخشان (سمپاد)"
+                 src="{% static 'images/لوگو-سمپاد.png' %}"
+                 alt="لوگوی سمپاد سازمان ملی پرورش استعدادهای درخشان"
+                 style="height: 100px;">
+        </div>
+        <div class="col-md-6 text-center" style="margin: auto">
+            <img title="دبیرستان متوسطه دوم علامه حلی پنج"
+                 src="{% static 'images/سربرگ-دبیرستان-علامه-حلی-۵-دوره-دوم.png' %}"
+                 alt="سربرگ دبیرستان متوسطه دوم علامه حلی پنج"
+                 style="width: 85%">
+            {#            <br>#}
+            {#            <h1 class="text-center" style="font-family: Vazir-Bold;">#}
+            {#                دبیرستان علامه حلی ۵#}
+            {#            </h1>#}
+        </div>
+        <div class="col-md-3 text-center">
+            <img title="دبیرستان متوسطه دوم علامه حلی پنچ"
+                 src="{% static 'images/لوگو-دبیرستان-علامه-حلی-۵-دوره-دوم.png' %}"
+                 alt="دبیرستان دوره دوم علامه حلی ۵ تهران"
+                 style="height: 100px; width: 100px">
+        </div>
+    </div>
+</div>
+<!-- ----------------------------------------end of logo--------------------------------------------- -->
+<br>
 <nav style="direction: rtl" class="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light"
      id="ftco-navbar">
     <div class="container d-flex align-items-center">
-        <a class="navbar-brand" id="helli-logo" href="{% url 'index' %}" style="font-family:Vazir-Bold">
-            دبیرستان دوره
-            دوم علامه حلی ۵
-            تهران</a>
+        <a title="دبیرستان دوره دوم علامه حلی ۵ تهران" class="navbar-brand" id="helli-logo" href="{% url 'index' %}"
+           style="font-family:Vazir-Bold">
+            صفحه اصلی </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,7 +120,7 @@
                     {#                                 color: #DEA44A" class="nav-link">بارگذاری کارنامه </a></li>#}
                 {% endif %}
 
-                {% if perms.courseApp.see_reports%}
+                {% if perms.courseApp.see_reports %}
 
                     <li class="nav-item"><a href="{% url 'studentReports' %}"
                                             style="font-family: Vazir-Medium; color: #DEA44A"

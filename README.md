@@ -28,7 +28,7 @@
 [![Issues][issues-shield]][issues-url]
 [![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg?style=flat-square)](https://www.python.org/downloads/release/python-360/)
 
-![Helli5](http://bayanbox.ir/preview/3435310080500137853/Logo1.jpg)
+![Helli5](http://bayanbox.ir/preview/3500780877665903653/helli5-logo.jpg)
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
