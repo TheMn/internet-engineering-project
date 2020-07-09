@@ -55,7 +55,7 @@ def blog(request, tag=None):
     else:
         post_list = PostStuff.objects.all()
 
-    paginator = Paginator(post_list, 6)
+    paginator = Paginator(post_list, 20)
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
     try:

@@ -21,7 +21,7 @@ def index(request):
     #         except Exception:
     #             pass
     slider_contents = SliderContent.objects.filter(Q(visible=True)).order_by('-date')[0:6]
-    latest = PostStuff.objects.order_by('-date')[0:3]
+    latest = PostStuff.objects.order_by('-date')[0:6]
     events = Event.objects.filter(~Q(order=-1)).order_by('order')
     top_events = Event.objects.filter(order=-1)
     context = {
@@ -46,11 +46,9 @@ def contact(request):
     if request.method == 'POST':
         if request.POST.get('form-key') == 'ارتباط-با-ما':
             status = -1
-            print('befarmaaaaa')
             contact_form = ContactForm(request.POST)
             if contact_form.is_valid():
                 try:
-                    print('khune khodeteeeee')
                     contact_obj = Contact(
                         name=contact_form.cleaned_data['name'],
                         email=contact_form.cleaned_data['email'],
@@ -59,7 +57,6 @@ def contact(request):
                     contact_obj.save()
                     status = 1
                 except:
-                    print('vaaaah :/')
                     pass
 
     context = {

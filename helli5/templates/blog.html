@@ -1,9 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %} بلاگ | وبسایت دبیرستان دوره دوم علامه حلی ۵ تهران {% endblock %}
-
 {% block content %}
-
 
     <section class="hero-wrap hero-wrap-2"
              style="background-image: url({% static 'images/راهرو-دبیرستان-علامه-حلی۵.jpg' %});">
@@ -45,54 +43,30 @@
         <div class="container">
             <div class="row">
                 <div style="text-align: right" class="col-lg-8 ftco-animate">
-                    <div class="row">
+{#                    <h4>برای دسترسی به محتوای هر نوشته، روی ردیف آن کلیک کنید</h4>#}
+                    <table class="table table-hover">
+
+                        <thead>
+                        <tr>
+                            <th scope="col">تاریخ</th>
+                            <th scope="col">نویسنده</th>
+                            <th scope="col">عنوان</th>
+                            <th scope="col">توضیحات</th>
+                        </tr>
+                        </thead>
+                        <tbody>
                         {% for fpost in queryset %}
 
-                            <div class="col-sm-12 col-md-6 ftco-animate">
-                                <div class="blog-entry" dir="ltr"
-                                     style="border-bottom-left-radius:20px;
-                             border-top-right-radius:20px;
-                             box-shadow: 0 8px 10px 0 rgba(0, 0, 0, .12), 0 10px 15px 0 rgba(0, 0, 0, .10)">
-                                    <a href="{{ fpost.get_absolute_url }}" class="block-20 d-flex align-items-end"
-                                       style="background-image: url({{ fpost.img.url }});
-                                               border-top-right-radius: 20px">
-                                        <div class="meta-date text-center p-2"
-                                             style="border-top-right-radius: 20px; background: #2A4324">
-                                            <span style="font-family: Vazir-Medium"
-                                                  class="day">{{ fpost.date|date:"d" }}</span>
-                                            <span style="font-family: Vazir-Medium"
-                                                  class="mos">{{ fpost.date|date:"n" }}</span>
-                                            <span style="font-family: Vazir-Medium"
-                                                  class="yr">{{ fpost.date|date:"Y" }}</span>
-                                        </div>
-                                    </a>
-                                    <div class="text bg-white p-4" style="border-bottom-left-radius: 20px">
-                                        <h3 style="font-family: Vazir-Bold" class="heading"><a
-                                                href="{{ fpost.get_absolute_url }}">{{ fpost.title }}</a>
-                                        </h3>
-                                        <p style="font-family: Vazir-Medium"> {{ fpost.description }} </p>
-                                        <div style="direction: rtl" class="d-flex align-items-center mt-4">
-                                            <p class="ml-auto mb-0">
-                                                <a style="font-family: Vazir-Medium" style="margin-right: 10px"
-                                                   class="mr-2">{{ fpost.username.user.last_name }}<span
-                                                        class="icon-person" style="color: #B3B3B3"></span></a>
-                                                <a style="font-family: Vazir-Medium"
-                                                   class="meta-chat">{{ fpost.comment_count }}<span
-                                                        class="icon-chat"></span></a>
-                                            </p>
-                                            <p style="font-family: Vazir-Medium" class="mb-0"><a
-                                                    href="{{ fpost.get_absolute_url }}"
-                                                    class="btn btn-secondary" style="font-size: 12px">بیشتر
-                                                بخوانید <span
-                                                        class="ion-ios-arrow-round-back"></span></a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <tr style="cursor: pointer"
+                                        onclick="window.location='{{ fpost.get_absolute_url }}';">
+                                <th scope="row">{{ fpost.date|date:"Y/m/d" }}</th>
+                                <td>{{ fpost.username.user.last_name }}</td>
+                                <td>{{ fpost.title }}</td>
+                                <td>{{ fpost.description }}</td>
+                            </tr>
                         {% endfor %}
-
-                    </div>
-
+                        </tbody>
+                    </table>
 
                     <div class="row no-gutters my-5" dir="ltr">
                         <div class="col text-center">
@@ -150,7 +124,7 @@
                                     <div class="meta container" style="margin-bottom: 2%">
                                         <div class="row" style="margin-right: 10px; margin-top: 5px; margin-top: -5px">
                                             <div style="margin-left: 10px"><span class="icon-calendar"></span><a
-                                                    style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium">{{ fpost.date|date:"Y m d" }}</a>
+                                                    style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium">{{ fpost.date|date:"Y/m/d" }}</a>
                                             </div>
                                         </div>
                                         <div class="row" style="margin-right: 10px; margin-top: 5px; margin-top: -5px">

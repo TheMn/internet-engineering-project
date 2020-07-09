@@ -31,13 +31,13 @@
                             {% endif %}
 
                             {% if slider_item.post %}
-                            <p style="font-family:Vazir-Medium; text-align: center;"><a
-                                    style=" background: rgba(0,0,0,0.5)"
-                                    href="{{ slider_item.post.get_absolute_url }}"
-                                    class="btn btn-secondary px-4 py-3 mt-3">
-                                بیشتر
-                                بخوانید
-                            </a></p>
+                                <p style="font-family:Vazir-Medium; text-align: center;"><a
+                                        style=" background: rgba(0,0,0,0.5)"
+                                        href="{{ slider_item.post.get_absolute_url }}"
+                                        class="btn btn-secondary px-4 py-3 mt-3">
+                                    بیشتر
+                                    بخوانید
+                                </a></p>
                             {% endif %}
                             <!--                    <p style="font-family:Vazir-Medium; text-align: center"><a href="#"-->
                             <!--                                                                               class="btn btn-secondary px-4 py-3 mt-3">بیشتر-->
@@ -187,17 +187,21 @@
                                             </div>
                                         </a>
                                         <div class="text bg-white p-4" style="border-bottom-left-radius: 20px">
-                                            <h3 style="font-family: Vazir-Bold" class="heading"><a
-                                                    href="{{ fpost.get_absolute_url }}">{{ fpost.title }}</a>
+                                            <h3 style="direction: rtl; font-family: Vazir-Bold; overflow: hidden; white-space: nowrap"
+                                                class="heading"><a
+                                                    href="{{ fpost.get_absolute_url }}" title="{{ fpost.title }}">
+                                                {{ fpost.title }}
+                                            </a>
                                             </h3>
 
-                                            <p style="text-align: right;font-family: Vazir-Medium"
+                                            <p style="direction: rtl; width: 100%; overflow: hidden; white-space: nowrap;
+                                            font-family: Vazir-Medium;"
                                                title="{{ fpost.description }}">
-                                                {% if fpost.description|length > 30 %}
-                                                    ...{{ fpost.description|slice:27 }}
-                                                {% else %}
-                                                    {{ fpost.description }}
-                                                {% endif %}
+                                                {#                                                {% if fpost.description|length > 30 %}#}
+                                                {{ fpost.description }}
+                                                {#                                                {% else %}#}
+                                                {#                                                    {{ fpost.description }}#}
+                                                {#                                                {% endif %}#}
                                             </p>
 
 
@@ -221,6 +225,12 @@
                                 </div>
                             {% endfor %}
                         </div>
+                        <p style="font-family:Vazir-Medium; text-align: center;"><a
+                                style=" background: rgba(0,0,0,0.4)"
+                                href="{{ slider_item.post.get_absolute_url }}"
+                                class="btn btn-secondary px-4 py-3 mt-3">
+                            آرشیو کامل نوشته ها
+                        </a></p>
                     </div>
                 </div>
             </div>
