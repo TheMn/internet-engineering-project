@@ -4,6 +4,16 @@ from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
 from .forms import SignUpForm, LoginForm
 from helli5.decorators import unauth_user
+from django.contrib.auth.decorators import login_required
+
+
+@login_required(login_url='login')
+def profile(request):
+    context = {
+
+    }
+    return render(request, 'profile.html', context)
+
 
 @csrf_protect
 @unauth_user
