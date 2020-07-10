@@ -1,10 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>hi {{ user.last_name }}</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} پنل کاربری | وبسایت دبیرستان دوره دوم علامه حلی ۵ تهران {% endblock %}
+{% block content %}
+    <section class="hero-wrap hero-wrap-2"
+             style="background-image: url({% static '/images/کتابخانه-دبیرستان-علامه-حلی۵.jpg' %});">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <h1 style="font-family: Vazir-Bold" class="mb-2 bread">پنل کاربری {{ user.profile.job_title }}
+                        ({{ user.first_name }} {{ user.last_name }})</h1>
+                </div>
+            </div>
+        </div>
+    </section>
 
-</body>
-</html>
+    <section style="margin-bottom: 5%; margin-top: 5%" class="ftco-section ftco-no-pt ftco-no-pb contact-section">
+        <div class="container">
+            <div class="row d-flex align-items-stretch no-gutters"
+                 style="box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1), 0 5px 15px 0 rgba(0, 0, 0, 0.1);
+                    border-top-right-radius: 20px;
+                    border-bottom-left-radius: 20px;">
+                <div class="col-md-3 order-md-last bg-light"
+                     style="border-top-right-radius: 20px;">
+                    <img class="card-img-top" src="{{ user.profile.img.url }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{ user.first_name }} {{ user.last_name }}</h5>
+                        <p class="card-text text-center">({{ user.username }})</p>
+                    </div>
+                    <ul class="list-group list-group-flush text-center">
+                        <li class="list-group-item">{% if user.profile.grade == '10' %}پایه
+                            دهم{% elif user.profile.grade == '11' %}پایه یازدهم{% elif user.profile.grade == '12' %}پایه
+                            دوازدهم{% else %}کاربر ویژه{% endif %}</li>
+{#                        <li class="list-group-item">{{ user.profile.group }}</li>#}
+                        <li class="list-group-item">{{ user.profile.phone }}</li>
+                    </ul>
+                    <div class="card-body text-right" dir="rtl">
+                        <ul>
+                            <li><a href="{% url 'studentReports' %}" class="card-link">کارنامه ها</a></li>
+                            <li><a href="{% url 'logout' %}" class="card-link">خروج</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-9 text-center p-5">
+                    <a href="http://amuzesh.allamehelli5.ir" class="btn btn-secondary">ورود به سامانه ی آموزش آنلاین</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+

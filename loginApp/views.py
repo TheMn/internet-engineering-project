@@ -27,7 +27,7 @@ def login(request):
                 user = login_form.login(request)
                 if user:
                     auth_login(request, user)
-                    return redirect('index')
+                    return redirect('profile')
 
         elif request.POST.get('submit') == 'ثبت نام':
             signup_form = SignUpForm(request.POST)
