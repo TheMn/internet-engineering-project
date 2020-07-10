@@ -2,8 +2,27 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
-from .forms import SignUpForm, LoginForm
+from .forms import SignUpForm, LoginForm, PreRegistrationFrom
 from helli5.decorators import unauth_user
+from django.contrib import messages
+
+
+@csrf_protect
+@unauth_user
+def pre_registration(request):
+    if request.method == 'POST':
+        form = PreRegistrationFrom(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request,
+                             'مشخصات وارد شده در سامانه ثبت شد، برای پیگیری مراحل بعدی لازم است به صورت حضوری به مدرسه مراجعه کنید')
+        else:
+            messages.warning(request, 'متاسفانه اطلاعات وارد شده معتبر نبوده و در سامانه ثبت نشد')
+    context = {
+        'pre_registration_form': PreRegistrationFrom()
+    }
+    return render(request, 'pre_registeration.html', context)
+
 
 @csrf_protect
 @unauth_user

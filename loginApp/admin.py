@@ -8,29 +8,11 @@ admin.site.register(Subscriber)
 # admin.site.register(Profile)
 # admin.site.register(Role)
 
-
-class RoleAdmin(admin.ModelAdmin):
-    list_display = ('person', 'role_s_')
-
-    def role_s_(self, role_object):
-        roles = []
-        if role_object.is_teacher:
-            roles.append('معلم')
-        if role_object.is_student:
-            roles.append('دانش آموز')
-        if role_object.is_consulter:
-            roles.append('مشاور')
-        if role_object.is_moavenP:
-            roles.append('معاون پژوهشی')
-        if role_object.is_moavenO:
-            roles.append('معاون المپیاد')
-        if role_object.is_moavenE:
-            roles.append('معاون آموزشی')
-        if role_object.is_parent:
-            roles.append('ولی')
-        if role_object.is_principle:
-            roles.append('مدیر')
-        return ', '.join(roles)
+@admin.register(PreRegisteredStudent)
+class PreRegistrationAdmin(admin.ModelAdmin):
+    list_display = ('student_first_name', 'student_last_name', 'father_first_name', 'ss')
+    list_filter = ('field_of_study',)
+    search_fields = ('student_first_name', 'student_last_name')
 
 
 @admin.register(Profile)

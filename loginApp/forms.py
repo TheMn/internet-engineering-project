@@ -1,8 +1,22 @@
 from django import forms
+from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import authenticate
+from .models import PreRegisteredStudent
+
+
+class PreRegistrationFrom(ModelForm):
+    class Meta:
+        model = PreRegisteredStudent
+        fields = '__all__'
+        labels = {
+            "student_first_name": "نام",
+            "student_last_name": "نام خانوادگی",
+        }
+        # required = '__all__'
+
 
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=50, required=False)

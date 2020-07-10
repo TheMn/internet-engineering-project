@@ -5,6 +5,7 @@ from loginApp import views
 
 urlpatterns = [
     url(r'ورود/', views.login, name='login'),
+    url(r'پیش-ثبت-نام/', views.pre_registration, name='pre_registration'),
     # by default login will redirect user to /accounts/profile
     url(r'خروج/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
 ]
