@@ -11,10 +11,10 @@ class PreRegistrationFrom(ModelForm):
     class Meta:
         model = PreRegisteredStudent
         fields = '__all__'
-        labels = {
-            "student_first_name": "نام",
-            "student_last_name": "نام خانوادگی",
-        }
+        # labels = {
+        #     "student_first_name": "نام",
+        #     "student_last_name": "نام خانوادگی",
+        # }
         # required = '__all__'
 
 

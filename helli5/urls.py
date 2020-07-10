@@ -24,6 +24,7 @@ from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 from postingApp.feeds import LatestPostsFeed
+from loginApp.views import pre_registration
 
 urlpatterns = [
 
@@ -33,6 +34,7 @@ urlpatterns = [
   path('ارتباط-با-ما/', views.contact, name='contact'),
   path('درباره-ما/', views.about, name='about'),
   path('دبیران/', views.teachers, name='teachers'),
+  path('پیش-ثبت-نام/', pre_registration, name='pre_registration'),
 
   # path('error503/', views.error503, name='error503'),
   # path('djrichtextfield/', include('djrichtextfield.urls')),

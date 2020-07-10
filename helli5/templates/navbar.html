@@ -77,6 +77,13 @@
         <span class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
 
+            {% if not user.is_authenticated %}
+                <li class="nav-item"><a href="{% url 'pre_registration' %}"
+                                        style="font-family: Vazir-Medium" class="nav-link"><strong>
+                  پیش ثبت نام پایه دهم
+                </strong></a></li>
+            {% endif %}
+
                 <li class="nav-item"><a href="{% url 'blog' tag='مدیریت' %}" style="font-family: Vazir-Medium"
                                         class="nav-link">
                     مدیریت
