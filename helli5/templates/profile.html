@@ -20,7 +20,8 @@
             <div class="row d-flex align-items-stretch no-gutters"
                  style="box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1), 0 5px 15px 0 rgba(0, 0, 0, 0.1);
                     border-top-right-radius: 20px;
-                    border-bottom-left-radius: 20px;">
+                    border-bottom-left-radius: 20px;
+font-family: Vazir-Medium">
                 <div class="col-md-3 order-md-last bg-light"
                      style="border-top-right-radius: 20px;">
                     <img class="card-img-top" src="{{ user.profile.img.url }}" alt="Card image cap">
@@ -32,18 +33,59 @@
                         <li class="list-group-item">{% if user.profile.grade == '10' %}پایه
                             دهم{% elif user.profile.grade == '11' %}پایه یازدهم{% elif user.profile.grade == '12' %}پایه
                             دوازدهم{% else %}کاربر ویژه{% endif %}</li>
-{#                        <li class="list-group-item">{{ user.profile.group }}</li>#}
+                        {#                        <li class="list-group-item">{{ user.profile.group }}</li>#}
                         <li class="list-group-item">{{ user.profile.phone }}</li>
                     </ul>
                     <div class="card-body text-right" dir="rtl">
                         <ul>
-                            <li><a href="{% url 'studentReports' %}" class="card-link">کارنامه ها</a></li>
+                            {% if perms.courseApp.see_reports %}
+                                <li><a href="{% url 'studentReports' %}" class="card-link">کارنامه ها</a></li>
+                            {% endif %}
                             <li><a href="{% url 'logout' %}" class="card-link">خروج</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-9 text-center p-5">
-                    <a href="http://amuzesh.allamehelli5.ir" class="btn btn-secondary">ورود به سامانه ی آموزش آنلاین</a>
+
+                    <table class="table table-hover">
+                        <thead><strong>لینک های دسترسی به سامانه های آموزش آنلاین</strong></thead>
+                        <tbody>
+                        <tr class="table-warning" style="cursor: pointer" ;
+                            onclick="window.location='https://online.allamehelli5.ir/h10r/';">
+                            <td>کلاس های آنلاین دهم ریاضی</td>
+                        </tr>
+                        <tr class="table-warning" style="cursor: pointer" ;
+                            onclick="window.location='https://online.allamehelli5.ir/h10t/';">
+                            <td>کلاس های آنلاین دهم تجربی</td>
+                        </tr>
+                        <tr class="table-info" style="cursor: pointer" ;
+                            onclick="window.location='https://online.allamehelli5.ir/h11r/';">
+                            <td>کلاس های آنلاین یازدهم ریاضی</td>
+                        </tr>
+                        <tr class="table-info" style="cursor: pointer" ;
+                            onclick="window.location='https://online.allamehelli5.ir/h11t/';">
+                            <td>کلاس های آنلاین یازدهم تجربی</td>
+                        </tr>
+                        <tr class="table-secondary" style="cursor: pointer" ;
+                            onclick="window.location='https://online.allamehelli5.ir/h12r/';">
+                            <td>کلاس های آنلاین دوازدهم ریاضی</td>
+                        </tr>
+                        <tr class="table-secondary" style="cursor: pointer" ;
+                            onclick="window.location='https://online.allamehelli5.ir/h12t/';">
+                            <td>کلاس های آنلاین دوازدهم تجربی</td>
+                        </tr>
+                        <tr class="table-danger" style="cursor: pointer" ;
+                            onclick="window.location='https://online.allamehelli5.ir/webinars/';">
+                            <td>کلاس عمومی ۱ (وبینار ها)</td>
+                        </tr>
+                        <tr class="table-danger" style="cursor: pointer" ;
+                            onclick="window.location='https://online.allamehelli5.ir/hfc/';">
+                            <td>کلاس عمومی ۲ (آزاد)</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
         </div>
