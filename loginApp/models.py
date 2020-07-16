@@ -11,12 +11,13 @@ class PreRegisteredStudent(models.Model):
     #     مشخصات فردی
     student_first_name = models.CharField(max_length=30, verbose_name='نام')
     student_last_name = models.CharField(max_length=30, verbose_name='نام خانوادگی')
+    student_picture = models.ImageField(upload_to='registerPic/', blank=True, verbose_name='عکس پرسنلی دانش آموز',
+                                        help_text='حجم عکس شما نباید بیشتر از ۵۰۰کیلوبایت باشد')
     ss = models.IntegerField(verbose_name='شماره شناسنامه')
     ss_id = models.IntegerField(verbose_name='سریال ۶رقمی شناسنامه')
     ss_numerical = models.IntegerField(verbose_name='سری عددی شناسنامه')
     ss_alphabetical = models.CharField(max_length=5, verbose_name='سری حروفی شناسنامه')
-    father_first_name = models.CharField(max_length=30, verbose_name='نام پدر')
-    export_place = models.CharField(max_length=30, verbose_name='محل صدور')
+    export_place = models.CharField(max_length=30, verbose_name='محل صدور', blank=True)
     melli_code = models.IntegerField(verbose_name='کد ملی')
     birth_date = models.DateTimeField(verbose_name='تاریخ تولد')
     birth_place_state = models.CharField(max_length=30, verbose_name='شهرستان محل تولد')
@@ -39,14 +40,15 @@ class PreRegisteredStudent(models.Model):
             ('خیر', 'خیر')],
         default='خیر')
     #     مشخصات خانوادگی
+    father_first_name = models.CharField(max_length=30, verbose_name='نام پدر')
     father_edu = models.CharField(max_length=30, verbose_name='تحصیلات پدر')
     father_job = models.CharField(max_length=50, verbose_name='شغل پدر')
     father_job_place = models.CharField(max_length=50, verbose_name='محل کار پدر')
-    father_job_phone = models.CharField(max_length=11, verbose_name='تلفن محل کار پدر')
+    father_job_phone = models.CharField(max_length=11, verbose_name='تلفن محل کار پدر', blank=True)
     mother_edu = models.CharField(max_length=30, verbose_name='تحصیلات مادر')
     mother_job = models.CharField(max_length=50, verbose_name='شغل مادر')
     mother_job_place = models.CharField(max_length=50, verbose_name='محل کار مادر')
-    mother_job_phone = models.CharField(max_length=11, verbose_name='تلفن محل کار مادر')
+    mother_job_phone = models.CharField(max_length=11, verbose_name='تلفن محل کار مادر', blank=True)
     home_location = models.TextField(max_length=200, verbose_name='آدرس منزل')
     home_phone = models.CharField(max_length=11, verbose_name='تلفن منزل')
     home_situation = models.CharField(
@@ -58,9 +60,9 @@ class PreRegisteredStudent(models.Model):
             ('سازمانی', 'سازمانی'),
             ('سایر', 'سایر')],
         default='اجاره ای')
-    father_mail = models.EmailField(max_length=50, verbose_name='ایمیل پدر')
+    father_mail = models.EmailField(max_length=50, verbose_name='ایمیل پدر', blank=True)
     father_phone = models.CharField(max_length=11, verbose_name='شماره موبایل پدر')
-    mother_mail = models.EmailField(max_length=50, verbose_name='ایمیل مادر')
+    mother_mail = models.EmailField(max_length=50, verbose_name='ایمیل مادر', blank=True)
     mother_phone = models.CharField(max_length=11, verbose_name='شماره موبایل مادر')
     homemate = models.CharField(
         verbose_name='در خانواده با چه کسانی زندگی می کنید؟',
@@ -115,11 +117,39 @@ class PreRegisteredStudent(models.Model):
             ('ریاضی', 'ریاضی'),
             ('تجربی', 'تجربی')]
     )
+    field_of_olympiad = models.CharField(
+        verbose_name='زمینه ی مورد علاقه در المپیاد های علمی دانش آموزی',
+        max_length=20,
+        choices=[
+            ('ریاضی', 'ریاضی'),
+            ('فیزیک', 'فیزیک'),
+            ('شیمی', 'شیمی'),
+            ('نجوم', 'نجوم'),
+            ('کامپیوتر', 'کامپیوتر'),
+            ('زیست', 'زیست')],
+        blank=True
+    )
+    field_of_pajohesh = models.CharField(
+        verbose_name='زمینه ی مورد علاقه برای فعالیت های پژوهشی',
+        max_length=20,
+        choices=[
+            ('کامپیوتر', 'کامپیوتر'),
+            ('رباتیک', 'رباتیک'),
+            ('زیست', 'زیست'),
+            ('شیمی', 'شیمی'),
+            ('هنر و معماری', 'هنر و معماری')],
+        blank=True
+    )
+    field_of_weakness = models.CharField(
+        verbose_name='اگر در درسی از دروس پایه ضعف خاصی دارید، ذکر کنید',
+        max_length=50,
+        blank=True
+    )
     grade_at_9th = models.FloatField(verbose_name='معدل کل پایه نهم')
     last_year_school_name = models.CharField(max_length=30, verbose_name='نام مدرسه ی قبلی')
     last_year_school_code = models.IntegerField(
         verbose_name='کد مدرسه ی قبلی',
-        help_text='کد و نام مدرسه ی قبلی از روی کارنامه ی رایانه ای ثبت شود')
+        help_text='کد و نام مدرسه ی قبلی از روی کارنامه ی رایانه ای ثبت شود', blank=True)
     # ویژه دانش آموزان ایثارگر و شاهد
     shahed_in_all_schools = models.CharField(
         verbose_name='ویژه ی ثبت نام شاهد',
@@ -128,7 +158,8 @@ class PreRegisteredStudent(models.Model):
             ('فرزند شهید', 'فرزند شهید'),
             ('فرزند مفقود الاثر', 'فرزند مفقود الاثر'),
             ('فرزند جانباز بالای ۷۰درصد', 'فرزند جانباز بالای ۷۰درصد')],
-        help_text='ارائه معرفی نامه از بنیاد شهید شهرستان یا اداره جانبازان ضروری است')
+        help_text='ارائه معرفی نامه از بنیاد شهید شهرستان یا اداره جانبازان ضروری است',
+        blank=True)
     exceptional_student = models.CharField(
         verbose_name='ویژه ی ثبت نام استثنایی',
         max_length=30,
@@ -138,7 +169,11 @@ class PreRegisteredStudent(models.Model):
             ('نابینا', 'نابینا'),
             ('نیمه بینا', 'نیمه بینا'),
             ('معلول جسمی/حرکتی', 'معلول جسمی/حرکتی')],
-        help_text='برای دانش آموزان دارای معلولیت که در مدارس عادی تحصیل می کنند، ارائه ی معرفی نامه از اداره یا مدیریت استثنایی استان ضروریست')
+        help_text='برای دانش آموزان دارای معلولیت که در مدارس عادی تحصیل می کنند، ارائه ی معرفی نامه از اداره یا مدیریت استثنایی استان ضروریست',
+        blank=True)
+    extra_note = models.CharField(
+        verbose_name='اگر ملاحظات خاصی وجود دارد که باید به اطلاع مدرسه و مشاورین برسد، ذکر کنید', blank=True,
+        max_length=100)
     date_added = models.DateTimeField(auto_now_add=True)
 
 

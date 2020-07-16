@@ -30,14 +30,17 @@
                     border-top-right-radius: 20px;
                     border-bottom-left-radius: 20px;">
                 <form class="col-11 m-auto text-center" id="pre_registeration" name="pre_registration"
-                      action="{% url 'pre_registration' %}" method="post">
+                      action="{% url 'pre_registration' %}" method="post"
+                      enctype="multipart/form-data">
                     {% csrf_token %}
                     <input name="form-key" value="پیش-ثبت-نام" hidden>
 
                     {{ pre_registration_form|crispy }}
 
+                    <input class="btn btn-primary m-auto"
+                           type="submit" name="submit" value="ثبت نهایی">
                     <input class="btn btn-secondary m-auto"
-                            type="submit" name="submit" value="ثبت مشخصات">
+                           type="button" name="save" value="ذخیره سازی">
 
                     <br><br>
                 </form>
