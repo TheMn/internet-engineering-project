@@ -5,12 +5,20 @@ from django.views.decorators.csrf import csrf_protect
 from .forms import SignUpForm, LoginForm
 from helli5.decorators import unauth_user
 from django.contrib.auth.decorators import login_required
+from paymentApp.models import Debt
 
 
 @login_required(login_url='login')
 def profile(request):
-    context = {
+    user = request.user
+    try:
+        debt = Debt.objects.get(user=user.id)
+        url = 'https://idpay.ir/allamehelli5?amount=' + str(debt.amount)
+    except:
+        url = None
 
+    context = {
+        "payment_url": url
     }
     return render(request, 'profile.html', context)
 

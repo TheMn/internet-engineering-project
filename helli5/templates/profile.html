@@ -46,7 +46,11 @@ font-family: Vazir-Medium">
                     </div>
                 </div>
                 <div class="col-md-9 text-center p-5">
-
+                    {% if payment_url %}
+                    <p class="btn btn-secondary m-auto" onclick="window.location='{{ payment_url }}'">پرداخت بدهی</p>
+                    <br>
+                    <br>
+                    {% endif %}
                     <table class="table table-hover">
                         <thead><strong>لینک های دسترسی به سامانه های آموزش آنلاین</strong></thead>
                         <tbody>
