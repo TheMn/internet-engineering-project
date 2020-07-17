@@ -95,5 +95,9 @@ def teachers(request):
     }
     return render(request, 'teachers.html', context)
 
+
+def custom_404(request):
+    return render(request, '404.html', status=404)
+
 # def error503(request):
 #     return render(request, 'error503.html', {})

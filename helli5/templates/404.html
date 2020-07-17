@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/html-error.css' %}">
+
+</head>
+<body>
+<section id="not-found">
+
+    <div class="circles">
+        <p id="error_content" style="font-family: Vazir-Bold">۴۰۴<br>
+            <small>صفحه مورد نظر وجود ندارد</small>
+            <br>
+        </p>
+
+        <span class="circle big"></span>
+        <span class="circle med"></span>
+        <span class="circle small"></span>
+    </div>
+
+    <div id="container-floating">
+
+        <div class="nd3 nds" data-toggle="tooltip" data-placement="left">
+            <p class="letter" onclick="window.location='{% url 'contact' %}'"
+            title="ارتباط با ما"><strong>?</strong></p>
+        </div>
+        <div class="nd1 nds" data-toggle="tooltip" data-placement="left">
+            <p class="letter" onclick="window.location='{% url 'index' %}'"
+            title="صفحه ی اصلی سایت"><strong>H</strong></p>
+        </div>
+
+        <div id="floating-button" data-toggle="tooltip" data-placement="left">
+            <p class="plus">+</p>
+        </div>
+
+    </div>
+
+</section>
+</body>
+
+</html>
