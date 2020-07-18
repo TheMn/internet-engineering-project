@@ -19,7 +19,26 @@ class PreRegisteredStudent(models.Model):
     ss_alphabetical = models.CharField(max_length=5, verbose_name='سری حروفی شناسنامه')
     export_place = models.CharField(max_length=30, verbose_name='محل صدور', blank=True)
     melli_code = models.IntegerField(verbose_name='کد ملی')
-    birth_date = models.DateTimeField(verbose_name='تاریخ تولد')
+    birthday_day_choices = [(str(i), str(i)) for i in range(1, 32)]
+    birth_day = models.CharField(verbose_name='روز تولد', max_length=2, choices=birthday_day_choices, default='1')
+    birthday_month_choices = [
+        ('1', 'فروردبن'),
+        ('2', 'اردیبهشت'),
+        ('3', 'خرداد'),
+        ('4', 'تیر'),
+        ('5', 'مرداد'),
+        ('6', 'شهریور'),
+        ('7', 'مهر'),
+        ('8', 'آیان'),
+        ('9', 'آذر'),
+        ('10', 'دی'),
+        ('11', 'یهمن'),
+        ('12', 'اسفند'),
+    ]
+    birth_month = models.CharField(verbose_name='ماه تولد', max_length=2, choices=birthday_month_choices, default='1')
+    birthday_year_choices = [(str(i), str(i)) for i in range(1380, 1389)]
+    birth_year = models.CharField(verbose_name='سال تولد', max_length=4, choices=birthday_year_choices, default=1380)
+    # birth_date = models.DateTimeField(verbose_name='تاریخ تولد')
     birth_place_state = models.CharField(max_length=30, verbose_name='شهرستان محل تولد')
     birth_place_town = models.CharField(max_length=30, verbose_name='استان محل تولد')
     birth_place_city = models.CharField(max_length=30, verbose_name='شهر یا روستای محل تولد')
@@ -43,13 +62,13 @@ class PreRegisteredStudent(models.Model):
     father_first_name = models.CharField(max_length=30, verbose_name='نام پدر')
     father_edu = models.CharField(max_length=30, verbose_name='تحصیلات پدر')
     father_job = models.CharField(max_length=50, verbose_name='شغل پدر')
-    father_job_place = models.CharField(max_length=50, verbose_name='محل کار پدر')
+    father_job_place = models.TextField(max_length=200, verbose_name='محل کار پدر')
     father_job_phone = models.CharField(max_length=11, verbose_name='تلفن محل کار پدر', blank=True)
     mother_edu = models.CharField(max_length=30, verbose_name='تحصیلات مادر')
     mother_job = models.CharField(max_length=50, verbose_name='شغل مادر')
-    mother_job_place = models.CharField(max_length=50, verbose_name='محل کار مادر')
+    mother_job_place = models.TextField(max_length=50, verbose_name='محل کار مادر')
     mother_job_phone = models.CharField(max_length=11, verbose_name='تلفن محل کار مادر', blank=True)
-    home_location = models.TextField(max_length=200, verbose_name='آدرس منزل')
+    home_location = models.TextField(max_length=200,verbose_name='آدرس منزل')
     home_phone = models.CharField(max_length=11, verbose_name='تلفن منزل')
     home_situation = models.CharField(
         verbose_name='وضعیت مسکن خانواده',

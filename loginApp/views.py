@@ -8,7 +8,7 @@ from django.contrib import messages
 
 
 @csrf_protect
-@unauth_user
+# @unauth_user
 def pre_registration(request):
     if request.method == 'POST':
         form = PreRegistrationFrom(request.POST)
