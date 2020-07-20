@@ -13,6 +13,7 @@ def pre_registration(request):
     if request.method == 'POST':
         form = PreRegistrationFrom(request.POST)
         if form.is_valid():
+            # form.cleaned_data['is_valid'] = True;
             form.save()
             messages.success(request,
                              'مشخصات وارد شده در سامانه ثبت شد، برای پیگیری مراحل بعدی لازم است به صورت حضوری به مدرسه مراجعه کنید')

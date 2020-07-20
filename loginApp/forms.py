@@ -18,6 +18,7 @@ class PreRegistrationFrom(ModelForm):
         # required = '__all__'
 
 
+
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=50, required=False)
     email = forms.EmailField(max_length=50, required=True)
