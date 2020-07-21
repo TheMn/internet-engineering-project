@@ -30,14 +30,14 @@
     {% endfor %}
 
     <section style="margin-bottom: 5%; margin-top: 5%" class="ftco-section ftco-no-pt ftco-no-pb contact-section">
-        <div class="container" >
+        <div class="container">
             <div dir="rtl" class="row d-flex align-items-stretch no-gutters bg-light"
                  style="box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1), 0 5px 15px 0 rgba(0, 0, 0, 0.1);
                     border-top-right-radius: 20px;
                     border-bottom-left-radius: 20px;">
                 <form class="col-11 m-auto text-center" id="pre_registeration" name="pre_registration"
                       action="{% url 'pre_registration' %}" method="post"
-                      enctype="multipart/form-data">
+                      enctype="multipart/form-data" id="my_form">
                     {% csrf_token %}
                     <input name="form-key" value="پیش-ثبت-نام" hidden>
                     <div id="first">
@@ -226,19 +226,21 @@
                         <input class="btn btn-secondary m-auto" id="div-4-prev"
                                type="button" name="save" value="مرحله قبل">
                     </div>
-                    <div class="row" id="form-part-5"  style="display: none">
+                    <div class="row" id="form-part-5" style="display: none">
                         <div class="col-lg-12">
                             {{ pre_registration_form.extra_note|as_crispy_field }}
                         </div>
-                        <input class="btn btn-primary m-auto"
-                               type="submit" name="submit" value="ثبت نهایی">
-                        <input class="btn btn-secondary m-auto"
-                               type="button" name="save" value="مرحله نهایی" id="div-5-next">
+                        <button class="btn btn-primary m-auto"
+                                type="submit" name="submit" id="main-save" >ثبت نهایی</button>
+                        <button class="btn btn-secondary m-auto"
+                                type="submit" name="save"  id="save">ذخیره</button>
                         <input class="btn btn-secondary m-auto" id="div-5-prev"
                                type="button" name="save" value="مرحله قبل">
                     </div>
                 </form>
             </div>
+            <div class="container rtl" id="error-container" style="margin-top:10px;">
+                </div>
         </div>
     </section>
 {% endblock %}
