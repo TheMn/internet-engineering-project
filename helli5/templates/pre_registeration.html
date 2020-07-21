@@ -28,7 +28,11 @@
     {% for message in messages %}
         <div class="alert alert-warning text-center"><strong>{{ message }}</strong></div>
     {% endfor %}
-
+    {% if complete_url %}
+        <section class="row center col-lg-6">
+            {{ complete_url }}
+        </section>
+    {% endif %}
     <section style="margin-bottom: 5%; margin-top: 5%" class="ftco-section ftco-no-pt ftco-no-pb contact-section">
         <div class="container">
             <div dir="rtl" class="row d-flex align-items-stretch no-gutters bg-light"
@@ -231,16 +235,18 @@
                             {{ pre_registration_form.extra_note|as_crispy_field }}
                         </div>
                         <button class="btn btn-primary m-auto"
-                                type="submit" name="submit" id="main-save" >ثبت نهایی</button>
+                                type="submit" name="submit" id="main-save" value="final_registration">ثبت نهایی
+                        </button>
                         <button class="btn btn-secondary m-auto"
-                                type="submit" name="save"  id="save">ذخیره</button>
+                                type="submit" name="save" id="save" value="save_registration">ذخیره
+                        </button>
                         <input class="btn btn-secondary m-auto" id="div-5-prev"
                                type="button" name="save" value="مرحله قبل">
                     </div>
                 </form>
             </div>
             <div class="container rtl" id="error-container" style="margin-top:10px;">
-                </div>
+            </div>
         </div>
     </section>
 {% endblock %}

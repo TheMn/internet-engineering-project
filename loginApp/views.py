@@ -5,22 +5,44 @@ from django.views.decorators.csrf import csrf_protect
 from .forms import SignUpForm, LoginForm, PreRegistrationFrom
 from helli5.decorators import unauth_user
 from django.contrib import messages
+from .models import PreRegisteredStudent
+from django.db.utils import IntegrityError
+from django.core.exceptions import ObjectDoesNotExist
 
 
 @csrf_protect
 # @unauth_user
 def pre_registration(request, melli=None):
-    if request.method == 'POST':
+    url = None
+    form = PreRegistrationFrom()
+    if melli is not None:
+        form = PreRegistrationFrom(instance=PreRegisteredStudent.objects.get(melli_code=melli))
+    elif request.method == 'POST':
         form = PreRegistrationFrom(request.POST)
         if form.is_valid():
-            # form.cleaned_data['is_valid'] = True;
-            form.save()
-            messages.success(request,
-                             'مشخصات وارد شده در سامانه ثبت شد، برای پیگیری مراحل بعدی لازم است به صورت حضوری به مدرسه مراجعه کنید')
+            valid = False
+            if request.POST.get('submit') == 'final_registration':
+                valid = True
+            try:
+                PreRegisteredStudent.objects.get(melli_code=form.cleaned_data['melli_code']).delete()
+            except ObjectDoesNotExist:
+                pass
+            finally:
+                obj = form.save(commit=False)
+                obj.is_valid = valid
+                obj.save()
+                if valid:
+                    messages.success(request,
+                                     'مشخصات وارد شده در سامانه ثبت شد، برای پیگیری مراحل بعدی لازم است به صورت حضوری به مدرسه مراجعه کنید')
+                else:
+                    url = "allamehelli5.ir/complete/" + form.cleaned_data['melli_code']
+                    messages.warning(request,
+                                     'اطلاعات شما موقتا در سیستم ثبت گردید،‌ برای تکمبل اطلاعات و ثبت نهایی حتما باید از طریق لینک زیر اقدام فرمایید:')
         else:
             messages.warning(request, 'متاسفانه اطلاعات وارد شده معتبر نبوده و در سامانه ثبت نشد')
     context = {
-        'pre_registration_form': PreRegistrationFrom()
+        'pre_registration_form': form,
+        'complete_url': url
     }
     return render(request, 'pre_registeration.html', context)
 

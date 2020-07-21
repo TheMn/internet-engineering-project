@@ -233,7 +233,7 @@ $(document).ready(function () {
             error("ایمیل پدر نا معتبر است.");
         }
         if (mother_mail.val().length !== 0 && !isEmail(mother_mail.val())) {
-            error("ایمیل پدر نا معتبر است.");
+            error("ایمیل مادر نا معتبر است.");
         }
         if (father_phone.val() === undefined || home_phone.val().length !== 11) {
             error("شماره موبایل پدر نا معتبر است.");
