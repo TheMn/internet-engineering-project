@@ -11,7 +11,7 @@ admin.site.register(Subscriber)
 @admin.register(PreRegisteredStudent)
 class PreRegistrationAdmin(admin.ModelAdmin):
     list_display = ('melli_code', 'student_first_name', 'student_last_name', 'father_first_name')
-    list_filter = ('field_of_study',)
+    list_filter = ('field_of_study', 'is_valid')
     search_fields = ('student_first_name', 'student_last_name', 'melli_code')
 
 

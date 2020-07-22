@@ -14,243 +14,267 @@
         <div class="overlay"></div>
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">
-                <div class="col-md-9 ftco-animate text-center">
+                <div dir="rtl" class="col-md-9 ftco-animate text-center">
                     <h1 style="font-family: Vazir-Bold" class="mb-2 bread">پیش ثبت نام دانش آموزان پایه دهم</h1>
-                    <p style="font-family: Vazir-Medium" class="breadcrumbs"><span class="mr-2"><a
-                            href="{% url 'index' %}">صفحه نخست <i
-                            class="ion-ios-arrow-back"></i></a></span> <span>پیش ثبت نام حلی ۵<i
-                            class="ion-ios-arrow-back"></i></span></p>
+                    <p style="font-family: Vazir-Medium" class="breadcrumbs">
+                    <span class="mr-2"><a href="{% url 'index' %}">صفحه نخست <i
+                            class="ion-ios-arrow-back"></i></a></span> <span>پیش ثبت نام پایه دهم</span></p>
                 </div>
             </div>
         </div>
     </section>
 
     {% for message in messages %}
-        <div dir="rtl" class="alert alert-warning text-center"><strong>{{ message }}</strong></div>
+        <div dir="rtl" class="alert alert-warning text-center" style="font-family: Vazir-Bold">
+            <strong>{{ message }}</strong></div>
     {% endfor %}
     {% if complete_url %}
         <section dir="rtl" class="col-lg-12 text-center">
             <input type="text" value="{{ complete_url }}" id="url_to_copy">
             <button class="btn-dark" onclick="copy_to_clipboard()">کپی</button>
+            <br><br>
         </section>
     {% endif %}
-    <section style="margin-bottom: 5%; margin-top: 5%" class="ftco-section ftco-no-pt ftco-no-pb contact-section">
-        <div class="container">
-            <div dir="rtl" class="row d-flex align-items-stretch no-gutters bg-light"
-                 style="box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1), 0 5px 15px 0 rgba(0, 0, 0, 0.1);
+    {% if not messages %}
+        <div dir="rtl" style="background: rgba(0,0,0,0.75); color: white; border-radius: 0 20px 0 20px;
+                    font-family: Vazir-Bold">
+            <p class="m-3">در پر کردن فرم پیش ثبت نام به موارد زیر توجه داشته باشید:<br>
+                - دکمه ی "ذخیره" در واقع ثبت موقت اطلاعات شماست و تا موقعی که "ثبت نهایی" انجام ندهید، ثبت
+                نام تکمیل نشده است.<br>
+                - برای ثبت نهایی لازم است فیلدهای ستاره دار (اجباری) را پر کرده باشید ولی برای ذخیره ی موقت،
+                تنها کدملی کافیست.<br>
+                - ثبت نهایی در وبسایت مدرسه به منزله ی پایان مراحل ثبت نام نیست و برای تکمیل مدارک لازم است
+                در بازه ی مشخص شده، در محل دبیرستان حضور داشته باشید.<br>
+                - در صورت بروز هر گونه مشکل از طریق صفحه ی "ارتباط با ما" ایراد را مطرح کنید.</p>
+        </div>
+        <section style="margin-bottom: 5%; margin-top: 5%" class="ftco-section ftco-no-pt ftco-no-pb contact-section">
+            <div class="container">
+                <div dir="rtl" class="row d-flex align-items-stretch no-gutters bg-light"
+                     style="box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1), 0 5px 15px 0 rgba(0, 0, 0, 0.1);
                     border-top-right-radius: 20px;
                     border-bottom-left-radius: 20px;
                     font-family: Vazir-Medium">
-                <form class="col-11 m-auto text-center" id="pre_registeration" name="pre_registration"
-                      action="{% url 'pre_registration' %}" method="post"
-                      enctype="multipart/form-data" id="my_form">
-                    {% csrf_token %}
-                    <br>
-                    <input name="form-key" value="پیش-ثبت-نام" hidden>
-                    <div id="first">
+                    <form class="col-11 m-auto text-center" id="pre_registeration" name="pre_registration"
+                          action="{% url 'pre_registration' %}" method="post"
+                          enctype="multipart/form-data" id="my_form">
+                        {% csrf_token %}
+                        <br>
+                        <input name="form-key" value="پیش-ثبت-نام" hidden>
+                        <div id="first">
 
-                    </div>
-                    <div class="row" id="form-part-1">
-                        <div class="col-md-4 col-sm-6">
-                            {{ pre_registration_form.student_first_name|as_crispy_field }}
                         </div>
-                        <div class="col-md-4 col-sm-6">
-                            {{ pre_registration_form.student_last_name|as_crispy_field }}
-                        </div>
-                        <div class="col-md-4">
-                            {{ pre_registration_form.father_first_name|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-6" style="align-items: center">
-                            {{ pre_registration_form.student_picture|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-2 col-sm-4">
-                            {{ pre_registration_form.birth_day|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-2 col-sm-4">
-                            {{ pre_registration_form.birth_month|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-2 col-sm-4">
-                            {{ pre_registration_form.birth_year|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-5">
-                            {{ pre_registration_form.ss|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            {{ pre_registration_form.ss_id|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-2 col-md-3 col-sm-6">
-                            {{ pre_registration_form.ss_alphabetical|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-2 col-md-3 col-sm-6">
-                            {{ pre_registration_form.ss_numerical|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-6">
-                            {{ pre_registration_form.export_place|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-6">
-                            {{ pre_registration_form.melli_code|as_crispy_field }}
-                        </div>
-                        <div class="col-md-4">
-                            {{ pre_registration_form.birth_place_state|as_crispy_field }}
-                        </div>
-                        <div class="col-md-4">
-                            {{ pre_registration_form.birth_place_town|as_crispy_field }}
-                        </div>
-                        <div class="col-md-4">
-                            {{ pre_registration_form.birth_place_city|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-6">
-                            {{ pre_registration_form.religion|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-6">
-                            {{ pre_registration_form.nationality|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-6">
-                            {{ pre_registration_form.physical_situation|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-6">
-                            {{ pre_registration_form.left_handed|as_crispy_field }}
-                        </div>
-                        <input class="btn btn-secondary m-auto" id="div-1-next"
-                               type="button" name="save" value="< مرحله بعد">
-                    </div>
-                    <div class="row" id="form-part-2" style="display: none">
+                        <div class="row" id="form-part-1">
+                            <div class="col-md-4 col-sm-6">
+                                {{ pre_registration_form.student_first_name|as_crispy_field }}
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                {{ pre_registration_form.student_last_name|as_crispy_field }}
+                            </div>
+                            <div class="col-md-4">
+                                {{ pre_registration_form.father_first_name|as_crispy_field }}
+                            </div>
+                            <div class="col-lg-6" style="align-items: center">
+                                {{ pre_registration_form.student_picture|as_crispy_field }}
+                            </div>
+                            <div class="col-lg-2 col-sm-4">
+                                {{ pre_registration_form.birth_day|as_crispy_field }}
+                            </div>
+                            <div class="col-lg-2 col-sm-4">
+                                {{ pre_registration_form.birth_month|as_crispy_field }}
+                            </div>
+                            <div class="col-lg-2 col-sm-4">
+                                {{ pre_registration_form.birth_year|as_crispy_field }}
+                            </div>
+                            <div class="col-lg-5">
+                                {{ pre_registration_form.ss|as_crispy_field }}
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                {{ pre_registration_form.ss_id|as_crispy_field }}
+                            </div>
+                            <div class="col-lg-2 col-md-3 col-sm-6">
+                                {{ pre_registration_form.ss_alphabetical|as_crispy_field }}
+                            </div>
+                            <div class="col-lg-2 col-md-3 col-sm-6">
+                                {{ pre_registration_form.ss_numerical|as_crispy_field }}
+                            </div>
+                            <div class="col-lg-6">
+                                {{ pre_registration_form.export_place|as_crispy_field }}
+                            </div>
+                            <div class="col-lg-6">
+                                {{ pre_registration_form.melli_code|as_crispy_field }}
+                            </div>
+                            <div class="col-md-4">
+                                {{ pre_registration_form.birth_place_state|as_crispy_field }}
+                            </div>
+                            <div class="col-md-4">
+                                {{ pre_registration_form.birth_place_town|as_crispy_field }}
+                            </div>
+                            <div class="col-md-4">
+                                {{ pre_registration_form.birth_place_city|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-6">
+                                {{ pre_registration_form.religion|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-6">
+                                {{ pre_registration_form.nationality|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-6">
+                                {{ pre_registration_form.physical_situation|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-6">
+                                {{ pre_registration_form.left_handed|as_crispy_field }}
+                            </div>
+                            <input class="btn btn-secondary m-auto" id="div-1-next"
+                                   type="button" name="save" value="مرحله بعد >">
+                            <div class="col-sm-12">۱/۵</div>
 
-                        <div class="col-sm-4">
-                            {{ pre_registration_form.father_edu|as_crispy_field }}
                         </div>
-                        <div class="col-sm-4">
-                            {{ pre_registration_form.father_job|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-4">
-                            {{ pre_registration_form.father_job_phone|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-12">
-                            {{ pre_registration_form.father_job_place|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-6">
-                            {{ pre_registration_form.father_mail|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-6">
-                            {{ pre_registration_form.father_phone|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-4">
-                            {{ pre_registration_form.mother_edu|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-4">
-                            {{ pre_registration_form.mother_job|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-4">
-                            {{ pre_registration_form.mother_job_phone|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-12">
-                            {{ pre_registration_form.mother_job_place|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-6">
-                            {{ pre_registration_form.mother_mail|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-6">
-                            {{ pre_registration_form.mother_phone|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-12">
-                            {{ pre_registration_form.home_location|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-6">
-                            {{ pre_registration_form.home_phone|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-6">
-                            {{ pre_registration_form.home_situation|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-12">
-                            {{ pre_registration_form.homemate|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-12">
-                            {{ pre_registration_form.student_own_place|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-6">
-                            {{ pre_registration_form.this_child_counter|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-6">
-                            {{ pre_registration_form.family_members_counter|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-12">
-                            {{ pre_registration_form.student_have_reading_room|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-6">
-                            {{ pre_registration_form.student_mail|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-6">
-                            {{ pre_registration_form.student_phone|as_crispy_field }}
-                        </div>
-                        <input class="btn btn-secondary m-auto" id="div-2-next"
-                               type="button" name="save" value="< مرحله بعد">
-                        <input class="btn btn-secondary m-auto" id="div-2-prev"
-                               type="button" name="save" value="مرحله قبل >">
+                        <div class="row" id="form-part-2" style="display: none">
 
-                    </div>
-                    <div class="row" id="form-part-3" style="display: none">
-                        <div class="col-lg-6">
-                            {{ pre_registration_form.field_of_study|as_crispy_field }}
-                        </div>
-                        <div class="col-md-6">
-                            {{ pre_registration_form.field_of_olympiad|as_crispy_field }}
-                        </div>
-                        <div class="col-md-6">
-                            {{ pre_registration_form.field_of_pajohesh|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-6">
-                            {{ pre_registration_form.last_year_edu|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-4">
-                            {{ pre_registration_form.grade_at_9th|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-4">
-                            {{ pre_registration_form.last_year_school_name|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-4">
-                            {{ pre_registration_form.last_year_school_code|as_crispy_field }}
-                        </div>
-                        <div class="col-sm-12">
-                            {{ pre_registration_form.field_of_weakness|as_crispy_field }}
-                        </div>
-                        <input class="btn btn-secondary m-auto" id="div-3-next"
-                               type="button" name="save" value="< مرحله بعد">
-                        <input class="btn btn-secondary m-auto" id="div-3-prev"
-                               type="button" name="save" value="مرحله قبل >">
-                    </div>
-                    <div class="row" id="form-part-4" style="display: none">
-                        <div class="col-lg-6">
-                            {{ pre_registration_form.shahed_in_all_schools|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-6">
-                            {{ pre_registration_form.exceptional_student|as_crispy_field }}
-                        </div>
-                        <input class="btn btn-secondary m-auto" id="div-4-next"
-                               type="button" name="save" value="< مرحله بعد">
-                        <input class="btn btn-secondary m-auto" id="div-4-prev"
-                               type="button" name="save" value="مرحله قبل >">
-                    </div>
-                    <div class="row" id="form-part-5" style="display: none">
-                        <div class="col-lg-12">
-                            {{ pre_registration_form.extra_note|as_crispy_field }}
-                        </div>
-                        <button class="btn btn-outline-success m-auto"
-                                type="submit" name="submit" id="main-save" value="final_registration">ثبت نهایی
-                        </button>
-                        <button class="btn btn-outline-secondary m-auto"
-                                type="submit" name="save" id="save" value="save_registration">ذخیره
-                        </button>
-                        <input class="btn btn-secondary m-auto" id="div-5-prev"
-                               type="button" name="save" value="مرحله قبل >">
-                    </div>
-                    <br>
-                </form>
+                            <div class="col-sm-4">
+                                {{ pre_registration_form.father_edu|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-4">
+                                {{ pre_registration_form.father_job|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-4">
+                                {{ pre_registration_form.father_job_phone|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-12">
+                                {{ pre_registration_form.father_job_place|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-6">
+                                {{ pre_registration_form.father_mail|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-6">
+                                {{ pre_registration_form.father_phone|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-4">
+                                {{ pre_registration_form.mother_edu|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-4">
+                                {{ pre_registration_form.mother_job|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-4">
+                                {{ pre_registration_form.mother_job_phone|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-12">
+                                {{ pre_registration_form.mother_job_place|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-6">
+                                {{ pre_registration_form.mother_mail|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-6">
+                                {{ pre_registration_form.mother_phone|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-12">
+                                {{ pre_registration_form.home_location|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-6">
+                                {{ pre_registration_form.home_phone|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-6">
+                                {{ pre_registration_form.home_situation|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-12">
+                                {{ pre_registration_form.homemate|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-12">
+                                {{ pre_registration_form.student_own_place|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-6">
+                                {{ pre_registration_form.this_child_counter|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-6">
+                                {{ pre_registration_form.family_members_counter|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-12">
+                                {{ pre_registration_form.student_have_reading_room|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-6">
+                                {{ pre_registration_form.student_mail|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-6">
+                                {{ pre_registration_form.student_phone|as_crispy_field }}
+                            </div>
+                            <input class="btn btn-secondary m-auto" id="div-2-prev"
+                                   type="button" name="save" value="< مرحله قبل">
+                            <input class="btn btn-secondary m-auto" id="div-2-next"
+                                   type="button" name="save" value="مرحله بعد >">
+                            <div class="col-sm-12">۲/۵</div>
 
+                        </div>
+                        <div class="row" id="form-part-3" style="display: none">
+                            <div class="col-lg-6">
+                                {{ pre_registration_form.field_of_study|as_crispy_field }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ pre_registration_form.field_of_olympiad|as_crispy_field }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ pre_registration_form.field_of_pajohesh|as_crispy_field }}
+                            </div>
+                            <div class="col-lg-6">
+                                {{ pre_registration_form.last_year_edu|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-4">
+                                {{ pre_registration_form.grade_at_9th|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-4">
+                                {{ pre_registration_form.last_year_school_name|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-4">
+                                {{ pre_registration_form.last_year_school_code|as_crispy_field }}
+                            </div>
+                            <div class="col-sm-12">
+                                {{ pre_registration_form.field_of_weakness|as_crispy_field }}
+                            </div>
+                            <input class="btn btn-secondary m-auto" id="div-3-prev"
+                                   type="button" name="save" value="< مرحله قبل">
+                            <input class="btn btn-secondary m-auto" id="div-3-next"
+                                   type="button" name="save" value="مرحله بعد >">
+                            <div class="col-sm-12">۳/۵</div>
+
+                        </div>
+                        <div class="row" id="form-part-4" style="display: none">
+                            <div class="col-lg-6">
+                                {{ pre_registration_form.shahed_in_all_schools|as_crispy_field }}
+                            </div>
+                            <div class="col-lg-6">
+                                {{ pre_registration_form.exceptional_student|as_crispy_field }}
+                            </div>
+                            <input class="btn btn-secondary m-auto" id="div-4-prev"
+                                   type="button" name="save" value="< مرحله قبل">
+                            <input class="btn btn-secondary m-auto" id="div-4-next"
+                                   type="button" name="save" value="مرحله بعد >">
+                            <div class="col-sm-12">۴/۵</div>
+
+                        </div>
+                        <div class="row" id="form-part-5" style="display: none">
+                            <div class="col-lg-12">
+                                {{ pre_registration_form.extra_note|as_crispy_field }}
+                            </div>
+                            <input class="btn btn-secondary m-auto" id="div-5-prev"
+                                   type="button" name="save" value="< مرحله قبل">
+                            <button class="btn btn-outline-secondary m-auto"
+                                    type="submit" name="save" id="save" value="save_registration">ذخیره
+                            </button>
+                            <button class="btn btn-outline-success m-auto"
+                                    type="submit" name="submit" id="main-save" value="final_registration">ثبت نهایی
+                            </button>
+                            <div class="col-sm-12">۵/۵</div>
+
+                        </div>
+                        <br>
+                    </form>
+
+                </div>
+                <div class="container rtl" id="error-container" style="margin-top:10px;">
+                </div>
             </div>
-            <div class="container rtl" id="error-container" style="margin-top:10px;">
-            </div>
-        </div>
-    </section>
+        </section>
+    {% endif %}
+
 {% endblock %}
 
 {% block extra_js %}
