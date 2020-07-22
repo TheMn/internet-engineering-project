@@ -11,7 +11,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 
 @csrf_protect
-# @unauth_user
+@unauth_user
 def pre_registration(request, melli=None):
     url = None
     form = PreRegistrationFrom()
@@ -35,7 +35,7 @@ def pre_registration(request, melli=None):
                     messages.success(request,
                                      'مشخصات وارد شده در سامانه ثبت شد، برای پیگیری مراحل بعدی لازم است به صورت حضوری به مدرسه مراجعه کنید')
                 else:
-                    url = "allamehelli5.ir/complete/" + form.cleaned_data['melli_code']
+                    url = "http://allamehelli5.ir/complete/" + form.cleaned_data['melli_code']
                     messages.warning(request,
                                      'اطلاعات شما موقتا در سیستم ثبت گردید،‌ برای تکمبل اطلاعات و ثبت نهایی حتما باید از طریق لینک زیر اقدام فرمایید:')
         else:

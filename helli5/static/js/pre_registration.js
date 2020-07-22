@@ -1,3 +1,18 @@
+function copy_to_clipboard() {
+  /* Get the text field */
+  var copyText = document.getElementById("url_to_copy");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+  /* Alert the copied text */
+  alert("از طریق آدرس کپی شده می توانید اطلاعات خود را ویرایش کنید");
+}
+
 $(document).ready(function () {
     console.log('salam');
     $('#div-1-next').click(function () {

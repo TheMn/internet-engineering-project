@@ -25,17 +25,17 @@ class PreRegisteredStudent(models.Model):
                                  choices=birthday_day_choices,
                                  default='1')
     birthday_month_choices = [
-        ('1', 'فروردبن'),
+        ('1', 'فروردین'),
         ('2', 'اردیبهشت'),
         ('3', 'خرداد'),
         ('4', 'تیر'),
         ('5', 'مرداد'),
         ('6', 'شهریور'),
         ('7', 'مهر'),
-        ('8', 'آیان'),
+        ('8', 'آبان'),
         ('9', 'آذر'),
         ('10', 'دی'),
-        ('11', 'یهمن'),
+        ('11', 'بهمن'),
         ('12', 'اسفند'),
     ]
     birth_month = models.CharField(blank=True, null=True, verbose_name='ماه تولد', max_length=2,

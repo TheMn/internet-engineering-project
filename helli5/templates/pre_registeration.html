@@ -29,20 +29,23 @@
         <div dir="rtl" class="alert alert-warning text-center"><strong>{{ message }}</strong></div>
     {% endfor %}
     {% if complete_url %}
-        <section dir="rtl" class="col-lg-12">
-            <p style="text-align: center">{{ complete_url }}</p>
+        <section dir="rtl" class="col-lg-12 text-center">
+            <input type="text" value="{{ complete_url }}" id="url_to_copy">
+            <button class="btn-dark" onclick="copy_to_clipboard()">کپی</button>
         </section>
     {% endif %}
     <section style="margin-bottom: 5%; margin-top: 5%" class="ftco-section ftco-no-pt ftco-no-pb contact-section">
         <div class="container">
-            <div dir="rtl" class="row d-flex align-items-stretch no-gutters bg-tertiary"
+            <div dir="rtl" class="row d-flex align-items-stretch no-gutters bg-light"
                  style="box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1), 0 5px 15px 0 rgba(0, 0, 0, 0.1);
                     border-top-right-radius: 20px;
-                    border-bottom-left-radius: 20px;">
+                    border-bottom-left-radius: 20px;
+                    font-family: Vazir-Medium">
                 <form class="col-11 m-auto text-center" id="pre_registeration" name="pre_registration"
                       action="{% url 'pre_registration' %}" method="post"
                       enctype="multipart/form-data" id="my_form">
                     {% csrf_token %}
+                    <br>
                     <input name="form-key" value="پیش-ثبت-نام" hidden>
                     <div id="first">
 
@@ -109,7 +112,7 @@
                             {{ pre_registration_form.left_handed|as_crispy_field }}
                         </div>
                         <input class="btn btn-secondary m-auto" id="div-1-next"
-                               type="button" name="save" value="مرحله بعد">
+                               type="button" name="save" value="< مرحله بعد">
                     </div>
                     <div class="row" id="form-part-2" style="display: none">
 
@@ -180,9 +183,9 @@
                             {{ pre_registration_form.student_phone|as_crispy_field }}
                         </div>
                         <input class="btn btn-secondary m-auto" id="div-2-next"
-                               type="button" name="save" value="مرحله بعد">
+                               type="button" name="save" value="< مرحله بعد">
                         <input class="btn btn-secondary m-auto" id="div-2-prev"
-                               type="button" name="save" value="مرحله قبل">
+                               type="button" name="save" value="مرحله قبل >">
 
                     </div>
                     <div class="row" id="form-part-3" style="display: none">
@@ -211,9 +214,9 @@
                             {{ pre_registration_form.field_of_weakness|as_crispy_field }}
                         </div>
                         <input class="btn btn-secondary m-auto" id="div-3-next"
-                               type="button" name="save" value="مرحله بعد">
+                               type="button" name="save" value="< مرحله بعد">
                         <input class="btn btn-secondary m-auto" id="div-3-prev"
-                               type="button" name="save" value="مرحله قبل">
+                               type="button" name="save" value="مرحله قبل >">
                     </div>
                     <div class="row" id="form-part-4" style="display: none">
                         <div class="col-lg-6">
@@ -223,24 +226,26 @@
                             {{ pre_registration_form.exceptional_student|as_crispy_field }}
                         </div>
                         <input class="btn btn-secondary m-auto" id="div-4-next"
-                               type="button" name="save" value="مرحله بعد">
+                               type="button" name="save" value="< مرحله بعد">
                         <input class="btn btn-secondary m-auto" id="div-4-prev"
-                               type="button" name="save" value="مرحله قبل">
+                               type="button" name="save" value="مرحله قبل >">
                     </div>
                     <div class="row" id="form-part-5" style="display: none">
                         <div class="col-lg-12">
                             {{ pre_registration_form.extra_note|as_crispy_field }}
                         </div>
-                        <button class="btn btn-primary m-auto"
+                        <button class="btn btn-outline-success m-auto"
                                 type="submit" name="submit" id="main-save" value="final_registration">ثبت نهایی
                         </button>
-                        <button class="btn btn-secondary m-auto"
+                        <button class="btn btn-outline-secondary m-auto"
                                 type="submit" name="save" id="save" value="save_registration">ذخیره
                         </button>
                         <input class="btn btn-secondary m-auto" id="div-5-prev"
-                               type="button" name="save" value="مرحله قبل">
+                               type="button" name="save" value="مرحله قبل >">
                     </div>
+                    <br>
                 </form>
+
             </div>
             <div class="container rtl" id="error-container" style="margin-top:10px;">
             </div>
