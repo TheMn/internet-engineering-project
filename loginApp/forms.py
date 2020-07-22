@@ -11,12 +11,18 @@ class PreRegistrationFrom(ModelForm):
     class Meta:
         model = PreRegisteredStudent
         fields = '__all__'
+        widgets = {
+            'father_job_place': forms.Textarea(attrs={'rows': 2}),
+            'mother_job_place': forms.Textarea(attrs={'rows': 2}),
+            'home_location': forms.Textarea(attrs={'rows': 2}),
+            'extra_note': forms.Textarea(attrs={'rows': 2})
+            # 'student_picture': forms.FileInput
+        }
         # labels = {
         #     "student_first_name": "نام",
         #     "student_last_name": "نام خانوادگی",
         # }
         # required = '__all__'
-
 
 
 class ContactForm(forms.Form):

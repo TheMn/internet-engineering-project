@@ -214,11 +214,8 @@ $(document).ready(function () {
         if (father_job_place.val() === undefined || father_job_place.val().length === 0) {
             error("محل کار  پدر نا معتبر است.");
         }
-        if (father_job.val() === undefined || father_job.val().length === 0) {
-            error("شغل پدر نا معتبر است.");
-        }
         if (mother_edu.val() === undefined || mother_edu.val().length === 0) {
-            error("شغل پدر نا معتبر است.");
+            error("تحصیلات مادر نا معتبر است.");
         }
         if (mother_job.val() === undefined || mother_job.val().length === 0) {
             error("شغل مادر نا معتبر است.");

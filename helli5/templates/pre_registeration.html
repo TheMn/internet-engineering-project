@@ -26,16 +26,16 @@
     </section>
 
     {% for message in messages %}
-        <div class="alert alert-warning text-center"><strong>{{ message }}</strong></div>
+        <div dir="rtl" class="alert alert-warning text-center"><strong>{{ message }}</strong></div>
     {% endfor %}
     {% if complete_url %}
-        <section class="row center col-lg-6">
-            {{ complete_url }}
+        <section dir="rtl" class="col-lg-12">
+            <p style="text-align: center">{{ complete_url }}</p>
         </section>
     {% endif %}
     <section style="margin-bottom: 5%; margin-top: 5%" class="ftco-section ftco-no-pt ftco-no-pb contact-section">
         <div class="container">
-            <div dir="rtl" class="row d-flex align-items-stretch no-gutters bg-light"
+            <div dir="rtl" class="row d-flex align-items-stretch no-gutters bg-tertiary"
                  style="box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1), 0 5px 15px 0 rgba(0, 0, 0, 0.1);
                     border-top-right-radius: 20px;
                     border-bottom-left-radius: 20px;">
@@ -48,26 +48,38 @@
 
                     </div>
                     <div class="row" id="form-part-1">
-                        <div class="col-lg-6">
+                        <div class="col-md-4 col-sm-6">
                             {{ pre_registration_form.student_first_name|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-md-4 col-sm-6">
                             {{ pre_registration_form.student_last_name|as_crispy_field }}
                         </div>
-                        <div class="col-lg-12" style="align-items: center">
+                        <div class="col-md-4">
+                            {{ pre_registration_form.father_first_name|as_crispy_field }}
+                        </div>
+                        <div class="col-lg-6" style="align-items: center">
                             {{ pre_registration_form.student_picture|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-2 col-sm-4">
+                            {{ pre_registration_form.birth_day|as_crispy_field }}
+                        </div>
+                        <div class="col-lg-2 col-sm-4">
+                            {{ pre_registration_form.birth_month|as_crispy_field }}
+                        </div>
+                        <div class="col-lg-2 col-sm-4">
+                            {{ pre_registration_form.birth_year|as_crispy_field }}
+                        </div>
+                        <div class="col-lg-5">
                             {{ pre_registration_form.ss|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-3 col-md-6">
                             {{ pre_registration_form.ss_id|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
-                            {{ pre_registration_form.ss_numerical|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-2 col-md-3 col-sm-6">
                             {{ pre_registration_form.ss_alphabetical|as_crispy_field }}
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-6">
+                            {{ pre_registration_form.ss_numerical|as_crispy_field }}
                         </div>
                         <div class="col-lg-6">
                             {{ pre_registration_form.export_place|as_crispy_field }}
@@ -75,143 +87,128 @@
                         <div class="col-lg-6">
                             {{ pre_registration_form.melli_code|as_crispy_field }}
                         </div>
-                        <div class="col-lg-2">
-                            {{ pre_registration_form.birth_day|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-2">
-                            {{ pre_registration_form.birth_month|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-2">
-                            {{ pre_registration_form.birth_year|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-6">
+                        <div class="col-md-4">
                             {{ pre_registration_form.birth_place_state|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-md-4">
                             {{ pre_registration_form.birth_place_town|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-md-4">
                             {{ pre_registration_form.birth_place_city|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-6">
                             {{ pre_registration_form.religion|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-6">
                             {{ pre_registration_form.nationality|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-6">
                             {{ pre_registration_form.physical_situation|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-6">
                             {{ pre_registration_form.left_handed|as_crispy_field }}
                         </div>
                         <input class="btn btn-secondary m-auto" id="div-1-next"
                                type="button" name="save" value="مرحله بعد">
                     </div>
                     <div class="row" id="form-part-2" style="display: none">
-                        <div class="col-lg-6">
-                            {{ pre_registration_form.father_first_name|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-6">
+
+                        <div class="col-sm-4">
                             {{ pre_registration_form.father_edu|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-4">
                             {{ pre_registration_form.father_job|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-4">
                             {{ pre_registration_form.father_job_phone|as_crispy_field }}
                         </div>
-                        <div class="col-lg-12">
+                        <div class="col-sm-12">
                             {{ pre_registration_form.father_job_place|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
-                            {{ pre_registration_form.mother_edu|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-6">
-                            {{ pre_registration_form.mother_job|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-6">
-                            {{ pre_registration_form.mother_job_phone|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-12">
-                            {{ pre_registration_form.mother_job_place|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-12">
-                            {{ pre_registration_form.home_location|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-6">
-                            {{ pre_registration_form.home_phone|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-6">
-                            {{ pre_registration_form.home_situation|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-6">
                             {{ pre_registration_form.father_mail|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-6">
                             {{ pre_registration_form.father_phone|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-4">
+                            {{ pre_registration_form.mother_edu|as_crispy_field }}
+                        </div>
+                        <div class="col-sm-4">
+                            {{ pre_registration_form.mother_job|as_crispy_field }}
+                        </div>
+                        <div class="col-sm-4">
+                            {{ pre_registration_form.mother_job_phone|as_crispy_field }}
+                        </div>
+                        <div class="col-sm-12">
+                            {{ pre_registration_form.mother_job_place|as_crispy_field }}
+                        </div>
+                        <div class="col-sm-6">
                             {{ pre_registration_form.mother_mail|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-6">
                             {{ pre_registration_form.mother_phone|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-12">
+                            {{ pre_registration_form.home_location|as_crispy_field }}
+                        </div>
+                        <div class="col-sm-6">
+                            {{ pre_registration_form.home_phone|as_crispy_field }}
+                        </div>
+                        <div class="col-sm-6">
+                            {{ pre_registration_form.home_situation|as_crispy_field }}
+                        </div>
+                        <div class="col-sm-12">
                             {{ pre_registration_form.homemate|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-12">
                             {{ pre_registration_form.student_own_place|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-6">
                             {{ pre_registration_form.this_child_counter|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-6">
                             {{ pre_registration_form.family_members_counter|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-12">
                             {{ pre_registration_form.student_have_reading_room|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-6">
                             {{ pre_registration_form.student_mail|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-6">
                             {{ pre_registration_form.student_phone|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-6">
-
                         </div>
                         <input class="btn btn-secondary m-auto" id="div-2-next"
                                type="button" name="save" value="مرحله بعد">
                         <input class="btn btn-secondary m-auto" id="div-2-prev"
                                type="button" name="save" value="مرحله قبل">
 
-
                     </div>
                     <div class="row" id="form-part-3" style="display: none">
                         <div class="col-lg-6">
-                            {{ pre_registration_form.last_year_edu|as_crispy_field }}
-                        </div>
-                        <div class="col-lg-6">
                             {{ pre_registration_form.field_of_study|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-md-6">
                             {{ pre_registration_form.field_of_olympiad|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-md-6">
                             {{ pre_registration_form.field_of_pajohesh|as_crispy_field }}
                         </div>
                         <div class="col-lg-6">
-                            {{ pre_registration_form.field_of_weakness|as_crispy_field }}
+                            {{ pre_registration_form.last_year_edu|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-4">
                             {{ pre_registration_form.grade_at_9th|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-4">
                             {{ pre_registration_form.last_year_school_name|as_crispy_field }}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-4">
                             {{ pre_registration_form.last_year_school_code|as_crispy_field }}
+                        </div>
+                        <div class="col-sm-12">
+                            {{ pre_registration_form.field_of_weakness|as_crispy_field }}
                         </div>
                         <input class="btn btn-secondary m-auto" id="div-3-next"
                                type="button" name="save" value="مرحله بعد">

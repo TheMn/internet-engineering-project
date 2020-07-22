@@ -9,17 +9,17 @@ User = get_user_model()
 
 class PreRegisteredStudent(models.Model):
     #     مشخصات فردی
-    student_first_name = models.CharField(blank=True, null=True, max_length=30, verbose_name='نام', )
-    student_last_name = models.CharField(blank=True, null=True, max_length=30, verbose_name='نام خانوادگی')
+    student_first_name = models.CharField(blank=True, null=True, max_length=30, verbose_name='نام*', )
+    student_last_name = models.CharField(blank=True, null=True, max_length=30, verbose_name='نام خانوادگی*')
     student_picture = models.ImageField(blank=True, null=True, upload_to='registerPic/',
                                         verbose_name='عکس پرسنلی دانش آموز',
                                         help_text='حجم عکس شما نباید بیشتر از ۵۰۰کیلوبایت باشد')
-    ss = models.CharField(max_length=10, blank=True, null=True, verbose_name='شماره شناسنامه')
-    ss_id = models.CharField(max_length=6, blank=True, null=True, verbose_name='سریال ۶رقمی شناسنامه')
-    ss_numerical = models.CharField(max_length=2, blank=True, null=True, verbose_name='سری عددی شناسنامه')
-    ss_alphabetical = models.CharField(blank=True, null=True, max_length=5, verbose_name='سری حروفی شناسنامه')
+    ss = models.CharField(max_length=10, blank=True, null=True, verbose_name='شماره شناسنامه*')
+    ss_id = models.CharField(max_length=6, blank=True, null=True, verbose_name='سریال ۶رقمی ش.*')
+    ss_numerical = models.CharField(max_length=2, blank=True, null=True, verbose_name='سری عددی ش.*')
+    ss_alphabetical = models.CharField(blank=True, null=True, max_length=5, verbose_name='سری حروفی ش.*')
     export_place = models.CharField(blank=True, null=True, max_length=30, verbose_name='محل صدور')
-    melli_code = models.CharField(max_length=10, blank=True, null=True, verbose_name='کد ملی')
+    melli_code = models.CharField(max_length=10, blank=True, null=True, verbose_name='کد ملی*')
     birthday_day_choices = [(str(i), str(i)) for i in range(1, 32)]
     birth_day = models.CharField(blank=True, null=True, verbose_name='روز تولد', max_length=2,
                                  choices=birthday_day_choices,
@@ -46,11 +46,11 @@ class PreRegisteredStudent(models.Model):
                                   choices=birthday_year_choices,
                                   default=1380)
     # birth_date = models.DateTimeField(verbose_name='تاریخ تولد')
-    birth_place_state = models.CharField(blank=True, null=True, max_length=30, verbose_name='شهرستان محل تولد')
-    birth_place_town = models.CharField(blank=True, null=True, max_length=30, verbose_name='استان محل تولد')
-    birth_place_city = models.CharField(blank=True, null=True, max_length=30, verbose_name='شهر یا روستای محل تولد')
-    religion = models.CharField(blank=True, null=True, max_length=30, verbose_name='دین')
-    nationality = models.CharField(blank=True, null=True, max_length=30, verbose_name='ملیت')
+    birth_place_state = models.CharField(blank=True, null=True, max_length=30, verbose_name='شهرستان محل تولد*')
+    birth_place_town = models.CharField(blank=True, null=True, max_length=30, verbose_name='استان محل تولد*')
+    birth_place_city = models.CharField(blank=True, null=True, max_length=30, verbose_name='شهر یا روستای محل تولد*')
+    religion = models.CharField(blank=True, null=True, max_length=30, verbose_name='دین*')
+    nationality = models.CharField(blank=True, null=True, max_length=30, verbose_name='ملیت*')
     physical_situation = models.CharField(blank=True, null=True,
                                           verbose_name='وضعیت جسمانی',
                                           max_length=30,
@@ -66,19 +66,19 @@ class PreRegisteredStudent(models.Model):
                                        ('خیر', 'خیر')],
                                    default='خیر')
     #     مشخصات خانوادگی
-    father_first_name = models.CharField(blank=True, null=True, max_length=30, verbose_name='نام پدر')
-    father_edu = models.CharField(blank=True, null=True, max_length=30, verbose_name='تحصیلات پدر')
-    father_job = models.CharField(blank=True, null=True, max_length=50, verbose_name='شغل پدر')
-    father_job_place = models.TextField(blank=True, null=True, max_length=200, verbose_name='محل کار پدر')
+    father_first_name = models.CharField(blank=True, null=True, max_length=30, verbose_name='نام پدر*')
+    father_edu = models.CharField(blank=True, null=True, max_length=30, verbose_name='تحصیلات پدر*')
+    father_job = models.CharField(blank=True, null=True, max_length=50, verbose_name='شغل پدر*')
+    father_job_place = models.TextField(blank=True, null=True, max_length=200, verbose_name='آدرس محل کار پدر*')
     father_job_phone = models.CharField(max_length=11, verbose_name='تلفن محل کار پدر', blank=True, null=True,
                                         help_text="مثال: ۰۲۱۸۸۳۲۹۱۸۲")
-    mother_edu = models.CharField(blank=True, null=True, max_length=30, verbose_name='تحصیلات مادر')
-    mother_job = models.CharField(blank=True, null=True, max_length=50, verbose_name='شغل مادر')
-    mother_job_place = models.TextField(blank=True, null=True, max_length=50, verbose_name='محل کار مادر')
+    mother_edu = models.CharField(blank=True, null=True, max_length=30, verbose_name='تحصیلات مادر*')
+    mother_job = models.CharField(blank=True, null=True, max_length=50, verbose_name='شغل مادر*')
+    mother_job_place = models.TextField(blank=True, null=True, max_length=50, verbose_name='آدرس محل کار مادر')
     mother_job_phone = models.CharField(blank=True, null=True, max_length=11, verbose_name='تلفن محل کار مادر',
                                         help_text="مثال: ۰۲۱۸۸۳۲۹۱۸۲")
-    home_location = models.TextField(blank=True, null=True, max_length=200, verbose_name='آدرس منزل')
-    home_phone = models.CharField(blank=True, null=True, max_length=11, verbose_name='تلفن منزل',
+    home_location = models.TextField(blank=True, null=True, max_length=200, verbose_name='آدرس منزل*')
+    home_phone = models.CharField(blank=True, null=True, max_length=11, verbose_name='تلفن منزل*',
                                   help_text="مثال: ۰۲۱۸۸۳۲۹۱۸۲")
     home_situation = models.CharField(blank=True, null=True,
                                       verbose_name='وضعیت مسکن خانواده',
@@ -90,10 +90,10 @@ class PreRegisteredStudent(models.Model):
                                           ('سایر', 'سایر')],
                                       default='اجاره ای')
     father_mail = models.EmailField(max_length=50, verbose_name='ایمیل پدر', blank=True, null=True)
-    father_phone = models.CharField(blank=True, null=True, max_length=11, verbose_name='شماره موبایل پدر',
+    father_phone = models.CharField(blank=True, null=True, max_length=11, verbose_name='شماره موبایل پدر*',
                                     help_text="مثال: ۰۹۱۲۳۴۵۶۷۸۹")
     mother_mail = models.EmailField(blank=True, null=True, max_length=50, verbose_name='ایمیل مادر')
-    mother_phone = models.CharField(blank=True, null=True, max_length=11, verbose_name='شماره موبایل مادر',
+    mother_phone = models.CharField(blank=True, null=True, max_length=11, verbose_name='شماره موبایل مادر*',
                                     help_text="مثال: ۰۹۱۲۳۴۵۶۷۸۹")
     homemate = models.CharField(blank=True, null=True,
                                 verbose_name='در خانواده با چه کسانی زندگی می کنید؟',
@@ -115,16 +115,16 @@ class PreRegisteredStudent(models.Model):
                                              ('مسکن اجاره ای', 'مسکن اجاره ای'),
                                              ('منزل بستگان', 'منزل بستگان'),
                                          ])
-    this_child_counter = models.IntegerField(blank=True, null=True, verbose_name='دانش آموز چندمین فرزند خانواده است؟')
-    family_members_counter = models.IntegerField(blank=True, null=True, verbose_name='تعداد افراد خانواده')
+    this_child_counter = models.IntegerField(blank=True, null=True, verbose_name='چندمین فرزند خانواده هستید؟*')
+    family_members_counter = models.IntegerField(blank=True, null=True, verbose_name='تعداد اعضای خانواده*')
     student_have_reading_room = models.BooleanField(blank=True, null=True,
                                                     verbose_name='دانش آموز اتاق مستقل برای مطالعه دارد؟',
                                                     choices=[
                                                         (True, 'بلی'),
                                                         (False, 'خیر')],
                                                     )
-    student_mail = models.EmailField(blank=True, null=True, max_length=50, verbose_name='ایمیل دانش آموز')
-    student_phone = models.CharField(blank=True, null=True, max_length=11, verbose_name='شماره موبایل دانش آموز',
+    student_mail = models.EmailField(blank=True, null=True, max_length=50, verbose_name='ایمیل دانش آموز*')
+    student_phone = models.CharField(blank=True, null=True, max_length=11, verbose_name='شماره موبایل دانش آموز*',
                                      help_text="مثال: ۰۹۱۲۳۴۵۶۷۸۹")
     #     وضعیت سال تحصیلی قبل
     last_year_edu = models.CharField(blank=True, null=True,
@@ -148,14 +148,14 @@ class PreRegisteredStudent(models.Model):
                                      default='سال گذشته در پایه نهم تحصیل می کردم'
                                      )
     field_of_study = models.CharField(blank=True, null=True,
-                                      verbose_name='رشته ی تحصیلی مورد علاقه',
+                                      verbose_name='رشته ی تحصیلی مورد علاقه*',
                                       max_length=20,
                                       choices=[
                                           ('ریاضی', 'ریاضی'),
                                           ('تجربی', 'تجربی')]
                                       )
     field_of_olympiad = models.CharField(blank=True, null=True,
-                                         verbose_name='زمینه ی مورد علاقه در المپیاد های علمی دانش آموزی',
+                                         verbose_name='زمینه ی مورد علاقه در المپیاد های علمی',
                                          max_length=20,
                                          choices=[
                                              ('ریاضی', 'ریاضی'),
@@ -179,11 +179,11 @@ class PreRegisteredStudent(models.Model):
                                          verbose_name='اگر در درسی از دروس پایه ضعف خاصی دارید، ذکر کنید',
                                          max_length=50
                                          )
-    grade_at_9th = models.FloatField(blank=True, null=True, verbose_name='معدل کل پایه نهم')
-    last_year_school_name = models.CharField(blank=True, null=True, max_length=30, verbose_name='نام مدرسه ی قبلی')
-    last_year_school_code = models.CharField(max_length=10, blank=True, null=True,
-                                             verbose_name='کد مدرسه ی قبلی',
+    grade_at_9th = models.FloatField(blank=True, null=True, verbose_name='معدل کل پایه نهم*')
+    last_year_school_name = models.CharField(blank=True, null=True, max_length=30, verbose_name='نام مدرسه ی قبلی*',
                                              help_text='کد و نام مدرسه ی قبلی از روی کارنامه ی رایانه ای ثبت شود')
+    last_year_school_code = models.CharField(max_length=10, blank=True, null=True,
+                                             verbose_name='کد مدرسه ی قبلی')
     # ویژه دانش آموزان ایثارگر و شاهد
     shahed_in_all_schools = models.CharField(blank=True, null=True,
                                              verbose_name='ویژه ی ثبت نام شاهد',
@@ -192,7 +192,7 @@ class PreRegisteredStudent(models.Model):
                                                  ('فرزند شهید', 'فرزند شهید'),
                                                  ('فرزند مفقود الاثر', 'فرزند مفقود الاثر'),
                                                  ('فرزند جانباز بالای ۷۰درصد', 'فرزند جانباز بالای ۷۰درصد')],
-                                             help_text='ارائه معرفی نامه از بنیاد شهید شهرستان یا اداره جانبازان ضروری است',
+                                             help_text='ارائه معرفی نامه از بنیاد شهید شهرستان یا اداره جانبازان ضروریست',
                                              )
     exceptional_student = models.CharField(
         verbose_name='ویژه ی ثبت نام استثنایی',
@@ -203,7 +203,7 @@ class PreRegisteredStudent(models.Model):
             ('نابینا', 'نابینا'),
             ('نیمه بینا', 'نیمه بینا'),
             ('معلول جسمی/حرکتی', 'معلول جسمی/حرکتی')],
-        help_text='برای دانش آموزان دارای معلولیت که در مدارس عادی تحصیل می کنند، ارائه ی معرفی نامه از اداره یا مدیریت استثنایی استان ضروریست',
+        help_text='ارائه معرفی نامه از اداره یا مدیریت استثنایی استان ضروریست',
         blank=True, null=True)
     extra_note = models.TextField(
         verbose_name='اگر ملاحظات خاصی وجود دارد که باید به اطلاع مدرسه و مشاورین برسد، ذکر کنید', blank=True,
