@@ -24,6 +24,7 @@ from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 from postingApp.feeds import LatestPostsFeed
+from loginApp.views import pre_registration
 
 urlpatterns = [
 
@@ -34,6 +35,8 @@ urlpatterns = [
   path('درباره-ما/', views.about, name='about'),
   path('دبیران/', views.teachers, name='teachers'),
 
+  path('پیش-ثبت-نام/', pre_registration, name='pre_registration'),
+  path('complete/<melli>', pre_registration, name='compelete_form'),
   # path('error503/', views.error503, name='error503'),
   # path('djrichtextfield/', include('djrichtextfield.urls')),
   url(r'^tinymce/', include('tinymce.urls')),
