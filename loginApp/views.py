@@ -27,7 +27,6 @@ def profile(request):
     return render(request, 'profile.html', context)
 
 
-
 @csrf_protect
 @unauth_user
 def pre_registration(request, melli=None):

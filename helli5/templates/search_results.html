@@ -2,16 +2,22 @@
 {% load static %}
 
 {% block content %}
-<div class="container col-md-8 offset-md-2 div-border py-2 mt-5"
-     style="background: #FAFAFA; border-bottom-left-radius: 20px;
+    <div dir="rtl" class="container col-md-8 div-border py-2 mt-5"
+         style="background: #FAFAFA; border-bottom-left-radius: 20px;
      border-top-right-radius: 20px; margin-bottom: 20px">
-    <p style="text-align: center; font-family: Vazir-Medium">لیست پست هایی که عبارت مورد نظر در آنها یافت شده است</p>
-    <div class="list-group">
-        {% for post in queryset %}
-        <a href="{{ post.get_absolute_url }}" class="list-group-item"
-        style="text-align: center">{{ post.title }}</a>
+        {% if queryset %}
+            <p style="text-align: center; font-family: Vazir-Medium">لیست پست هایی که عبارت مورد نظر در آنها یافت شده
+                است</p>
+            <div class="list-group">
+                {% for post in queryset %}
+                    <a href="{{ post.get_absolute_url }}" class="list-group-item"
+                       style="text-align: center">{{ post.title }}</a>
 
-        {% endfor %}
+                {% endfor %}
+            </div>
+        {% else %}
+            <p style="text-align: center; font-family: Vazir-Medium">هیچ پستی شامل عبارت مورد نظر شما نیست!</p>
+
+        {% endif %}
     </div>
-</div>
 {% endblock %}
