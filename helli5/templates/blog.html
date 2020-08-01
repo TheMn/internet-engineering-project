@@ -9,7 +9,7 @@
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">
                 <div class="col-md-9 ftco-animate text-center">
-                    <h1 style="font-family: Vazir-Bold" class="mb-2 bread">نوشته ها
+                    <h1 style="font-family: Vazir-Bold" class="mb-2 bread">آرشیو مطالب
                         {% if tagged_blog != 'None' %}
                             <strong>(
                                 {{ tagged_blog }}
@@ -19,7 +19,7 @@
                     </h1>
                     <p style="font-family: Vazir-Medium" class="breadcrumbs">
                     <span class="mr-2"><a href="{% url 'index' %}">صفحه نخست <i
-                            class="ion-ios-arrow-back"></i></a></span> <span>نوشته ها <i
+                            class="ion-ios-arrow-back"></i></a></span> <span>آرشیو مطالب <i
                             class="ion-ios-arrow-back"></i></span></p>
                 </div>
 
@@ -43,53 +43,54 @@
         <div class="container">
             <div class="row">
                 <div style="text-align: right" class="col-lg-8 ftco-animate">
-{#                    <h4>برای دسترسی به محتوای هر نوشته، روی ردیف آن کلیک کنید</h4>#}
-                    <table class="table table-hover">
+                    {#                    <h4>برای دسترسی به محتوای هر نوشته، روی ردیف آن کلیک کنید</h4>#}
+                    {% if queryset %}
+                        <table class="table table-hover">
 
-                        <thead>
-                        <tr>
-                            <th scope="col">تاریخ</th>
-                            <th scope="col">نویسنده</th>
-                            <th scope="col">عنوان</th>
-                            <th scope="col">توضیحات</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for fpost in queryset %}
-
-                            <tr style="cursor: pointer"
-                                        onclick="window.location='{{ fpost.get_absolute_url }}';">
-                                <th scope="row">{{ fpost.date|date:"Y/m/d" }}</th>
-                                <td>{{ fpost.username.user.last_name }}</td>
-                                <td>{{ fpost.title }}</td>
-                                <td>{{ fpost.description }}</td>
+                            <thead>
+                            <tr>
+                                <th scope="col">تاریخ</th>
+                                <th scope="col">نویسنده</th>
+                                <th scope="col">عنوان</th>
+                                <th scope="col">توضیحات</th>
                             </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                            {% for fpost in queryset %}
 
-                    <div class="row no-gutters my-5" dir="ltr">
-                        <div class="col text-center">
-                            <div class="block-27">
-                                <ul>
-                                    {% if queryset.has_previous %}
-                                        <li><a href="?{{ page_request_var }}={{ queryset.previous_page_number }}">
-                                            <i class="ion-ios-arrow-back"></i></a></li>
-                                    {% endif %}
+                                <tr style="cursor: pointer"
+                                    onclick="window.location='{{ fpost.get_absolute_url }}';">
+                                    <th scope="row">{{ fpost.date|date:"Y/m/d" }}</th>
+                                    <td>{{ fpost.username.user.last_name }}</td>
+                                    <td>{{ fpost.title }}</td>
+                                    <td>{{ fpost.description }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
 
-                                    <li class="active"><a href="?{{ page_request_var }}={{ queryset.number }}">
-                                        {{ queryset.number }}</a></li>
+                        <div class="row no-gutters my-5" dir="ltr">
+                            <div class="col text-center">
+                                <div class="block-27">
+                                    <ul>
+                                        {% if queryset.has_previous %}
+                                            <li><a href="?{{ page_request_var }}={{ queryset.previous_page_number }}">
+                                                <i class="ion-ios-arrow-back"></i></a></li>
+                                        {% endif %}
 
-                                    {% if queryset.has_next %}
-                                        <li><a href="?{{ page_request_var }}={{ queryset.next_page_number }}">
-                                            <i class="ion-ios-arrow-forward"></i></a></li>
-                                    {% endif %}
+                                        <li class="active"><a href="?{{ page_request_var }}={{ queryset.number }}">
+                                            {{ queryset.number }}</a></li>
 
-                                </ul>
+                                        {% if queryset.has_next %}
+                                            <li><a href="?{{ page_request_var }}={{ queryset.next_page_number }}">
+                                                <i class="ion-ios-arrow-forward"></i></a></li>
+                                        {% endif %}
+
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
+                    {% endif %}
                 </div>
 
 

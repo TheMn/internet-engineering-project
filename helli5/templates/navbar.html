@@ -85,35 +85,37 @@
                 </strong></a></li>
             {% endif %}
 
+                <li class="nav-item"><a href="{% url 'about' %}" style="font-family: Vazir-Medium" class="nav-link">درباره
+                    ما</a></li>
+
+                <li class="nav-item"><a href="{% url 'teachers' %}" style="font-family: Vazir-Medium" class="nav-link">
+                    دبیران
+                </a></li>
+
+                <li class="nav-item"><a href="{% url 'blog' %}" style="font-family: Vazir-Medium" class="nav-link">
+                    آرشیو مطالب
+                </a></li>
                 <li class="nav-item"><a href="{% url 'blog' tag='مدیریت' %}" style="font-family: Vazir-Medium"
                                         class="nav-link">
                     مدیریت
                 </a></li>
 {#                TODO: uncomment these ~~~~>  #}
-{#                <li class="nav-item dropdown" style="font-family: Vazir-Medium">#}
-{#                    <a id="moavenat" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"#}
-{#                       aria-haspopup="true" aria-expanded="false">#}
-{#                      معاونت ها#}
-{#                    </a>#}
-{#                    <div class="dropdown-menu" aria-labelledby="moavenat">#}
-{#                      <a class="dropdown-item" href="#">آموزشی</a>#}
-{#                        <div class="dropdown-divider"></div>#}
-{#                      <a class="dropdown-item" href="#">المپیاد</a>#}
-{#                        <div class="dropdown-divider"></div>#}
-{#                      <a class="dropdown-item" href="#">پژوهشی</a>#}
+                <li class="nav-item dropdown" style="font-family: Vazir-Medium">
+                    <a id="moavenat" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                      معاونت ها
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="moavenat">
+                      <a class="dropdown-item" href="{% url 'blog' tag='آموزشی' %}">آموزشی</a>
+                        <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="{% url 'blog' tag='المپیاد' %}">المپیاد</a>
+                        <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="{% url 'blog' tag='پژوهشی' %}">پژوهشی</a>
 {#                      <div class="dropdown-divider"></div>#}
 {#                      <a class="dropdown-item" href="#">اداری و مالی</a>#}
-{#                    </div>#}
-{#                </li>#}
+                    </div>
+                </li>
 
-                <li class="nav-item"><a href="{% url 'teachers' %}" style="font-family: Vazir-Medium" class="nav-link">
-                    دبیران
-                </a></li>
-                <li class="nav-item"><a href="{% url 'blog' %}" style="font-family: Vazir-Medium" class="nav-link">
-                    نوشته ها
-                </a></li>
-                <li class="nav-item"><a href="{% url 'about' %}" style="font-family: Vazir-Medium" class="nav-link">درباره
-                    ما</a></li>
                 <li class="nav-item"><a href="{% url 'contact' %}" style="font-family: Vazir-Medium" class="nav-link">ارتباط
                     با ما</a></li>
 
