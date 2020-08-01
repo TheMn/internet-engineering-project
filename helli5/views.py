@@ -101,7 +101,7 @@ def custom_400(request, exception):
 
 
 def custom_403(request, exception):
-    return render(request, '403.html', status=403)
+    return render(request, '401.html', status=403)
 
 
 def custom_404(request, exception):

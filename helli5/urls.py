@@ -25,6 +25,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from postingApp.feeds import LatestPostsFeed
 from loginApp.views import pre_registration
+from loginApp.views import export_pre_registrations
 
 handler400 = views.custom_400
 handler403 = views.custom_403
@@ -34,6 +35,8 @@ handler500 = views.custom_500
 urlpatterns = [
 
                   path('', views.index, name='index'),
+                  path('export-pres/', export_pre_registrations, name='export-pres'),
+
                   path('admin/', admin.site.urls),
                   path('feed/rss', LatestPostsFeed(), name='posts_feed'),
                   path('ارتباط-با-ما/', views.contact, name='contact'),
