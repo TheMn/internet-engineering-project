@@ -14,7 +14,6 @@ class SendSms:
                 'message': text,
             }
             response = api.sms_send(params)
-            print(response)
         except APIException as e:
             print(e)
 
