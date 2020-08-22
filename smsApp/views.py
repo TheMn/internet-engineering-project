@@ -23,7 +23,6 @@ def sms(request):
                               form.cleaned_data['field_11_mom'] + form.cleaned_data['field_11_dad'] +
                               form.cleaned_data['teacher'])
             text = form.cleaned_data['text']
-            print(text, phones)
             SendSms.send_bulk(text, phones)
         return HttpResponse(200)
     context = {
