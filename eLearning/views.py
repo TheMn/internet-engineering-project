@@ -103,7 +103,7 @@ def check_classes(request):
 
 
 def generate_date_query_param(start_time, end_time):
-    date = datetime.date.today()
+    date = datetime.date.today()  # - datetime.timedelta(days=1)  # TODO: reset this
     year = date.year
     month = date.month
     day = date.day
