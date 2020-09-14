@@ -43,16 +43,17 @@ urlpatterns = [
                   path('درباره-ما/', views.about, name='about'),
                   path('دبیران/', views.teachers, name='teachers'),
 
-  path('پیش-ثبت-نام/', pre_registration, name='pre_registration'),
-  path('complete/<melli>', pre_registration, name='compelete_form'),
-  # path('error503/', views.error503, name='error503'),
-  # path('djrichtextfield/', include('djrichtextfield.urls')),
-  url(r'^tinymce/', include('tinymce.urls')),
+                  path('پیش-ثبت-نام/', pre_registration, name='pre_registration'),
+                  path('complete/<melli>', pre_registration, name='compelete_form'),
+                  # path('error503/', views.error503, name='error503'),
+                  # path('djrichtextfield/', include('djrichtextfield.urls')),
+                  url(r'^tinymce/', include('tinymce.urls')),
 
                   url(r'^حساب-ها/', include('loginApp.urls')),
                   url(r'^نوشته-ها/', include('postingApp.urls')),
                   url(r'^افتخارات/', include('honorsApp.urls')),
                   url(r'panel/', include('smsApp.urls')),
                   url(r'^courses/', include('courseApp.urls')),
+                  url(r'^eLearning/', include('eLearning.urls')),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

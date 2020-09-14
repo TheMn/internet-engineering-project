@@ -10,6 +10,7 @@ honorsApp/migrations/
 courseApp/migrations/
 paymentApp/migrations/
 smsApp/migrations/
+eLearning/migrations/
 
 uploads/
 .idea/

@@ -245,6 +245,7 @@ class Profile(models.Model):
     class Meta:
         permissions = (
             ("send_sms", "send_sms"),
+            ('check_classes', 'check_classes')
         )
 
 
