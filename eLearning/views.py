@@ -74,6 +74,7 @@ def check_classes(request):
                 response = response.content
                 students.update(xmltodict.parse(response))
             elif cls == '12':
+                all_students = User.objects.filter(username__regex='98d*').all()
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '121') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
