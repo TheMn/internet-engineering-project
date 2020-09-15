@@ -65,7 +65,7 @@
                     <tr class="{% if value.check == False %}table-danger{% endif %}"
                         style="cursor: pointer" ;
                         onclick="window.location='';">
-                        <td>{{ key }}</td>
+                        <td>{{ value.id }}</td>
                         <td>{{ value.name }}</td>
                         <td dir="ltr">{% if value.check == False %}-{% else %}
                             {{ value.out|timeuntil:value.in }}{% endif %}</td>
