@@ -48,17 +48,31 @@
             </div>
             <br>
             {#            {{ response }}#}
-            <table class="table table-hover col-8 m-auto">
+            <table class="table table-hover  m-auto">
                 <thead><strong>لیست حضور و غیاب آنلاین زنگ {{ request.GET.zang }} کلاسهای {{ request.GET.class }}
-                    ام</strong></thead>
+                    ام</strong>
+                <th>کد دانش آموزی</th>
+                <th>نام و نام خانوادگی</th>
+                <th>مدت زمان حضور</th>
+                <th>وضعیت</th>
+                <th>موبایل مادر</th>
+                <th>موبایل دانش آموز</th>
+                </thead>
                 <tbody>
-{#                {{ response }}#}
+                {#                {{ response }}#}
+                <br>
                 {% for key, value in response.items %}
-                    <tr class="{% if value.check == False %}table-danger{% else %}table-info{% endif %}"
+                    <tr class="{% if value.check == False %}table-danger{% endif %}"
                         style="cursor: pointer" ;
                         onclick="window.location='';">
+                        <td>{{ value.id }}</td>
                         <td>{{ value.name }}</td>
-                        <td>{% if value.check == False %}غایب{% else %}حاضر{% endif %}</td>
+                        <td dir="ltr">{% if value.check == False %}-{% else %}
+                            {{ value.out|timeuntil:value.in }}{% endif %}</td>
+                        <td dir="ltr">{% if value.check == False %}غایب{% else %}{{ value.in|date:'H:i' }} -
+                            {{ value.out|date:'H:i' }}{% endif %}</td>
+                        <td>{{ value.mom_phone }}</td>
+                        <td>{{ value.student_phone }}</td>
                     </tr>
                 {% endfor %}
 
