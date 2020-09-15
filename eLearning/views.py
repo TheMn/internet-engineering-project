@@ -50,17 +50,18 @@ def check_classes(request):
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '101') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
                 response = response.content
-                students = xmltodict.parse(response)['results']['report-meeting-attendance']['row']
+                students = xmltodict.parse(response)
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '102') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
                 response = response.content
-                students.update(xmltodict.parse(response)['results']['report-meeting-attendance']['row'])
+                students.update(xmltodict.parse(response))
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '103') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
                 response = response.content
-                students.update(xmltodict.parse(response)['results']['report-meeting-attendance']['row'])
+                students.update(xmltodict.parse(response))
+                print(students)
             elif cls == '11':
                 all_students = User.objects.filter(username__regex='98d*').all()
                 response = requests.get(
@@ -79,16 +80,16 @@ def check_classes(request):
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '121') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
                 response = response.content
-                students = xmltodict.parse(response)['results']['report-meeting-attendance']['row']
+                students = xmltodict.parse(response)
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '122') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
                 response = response.content
-                students.update(xmltodict.parse(response)['results']['report-meeting-attendance']['row'])
+                students.update(xmltodict.parse(response))
 
             checks = {}
             emails = {}
-            for student in students:
+            for student in students['results']['report-meeting-attendance']['row']:
                 date_end = 'todayT' + end_times[zang] + '.'  # to do split with "T" character
                 if 'date-end' in student.keys():
                     date_end = student['date-end']
