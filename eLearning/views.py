@@ -44,56 +44,63 @@ def check_classes(request):
                 'https://online.allamehelli5.ir/api/xml?action=login&login=mahdighanbari@helli5.ir&password=mahdipass')
             breeze = response.cookies.get('BREEZESESSION')
             all_students = []
+            adobe_students = []
             if cls == '10':
+                adobe_students = []
                 all_students = User.objects.filter(username__regex='99d*')
                 response = requests.get(
-                    'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
+                    'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id='adobe_students.append(xmltodict.parse(response)) classes.get(
                         '101') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
                 response = response.content
                 students = xmltodict.parse(response)
+                adobe_students.append(students)
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '102') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
                 response = response.content
-                students.update(xmltodict.parse(response))
+                adobe_students.append(xmltodict.parse(response))
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '103') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
                 response = response.content
-                students.update(xmltodict.parse(response))
-                print(students)
+                adobe_students.append(xmltodict.parse(response))
             elif cls == '11':
+                adobe_students = []
                 all_students = User.objects.filter(username__regex='98d*').all()
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '111') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
                 response = response.content
-                students = xmltodict.parse(response)['results']['report-meeting-attendance']['row']
+                students = xmltodict.parse(response)
+                adobe_students.append(students)
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '112') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
                 response = response.content
-                students.update(xmltodict.parse(response))
+                adobe_students.append(xmltodict.parse(response))
             elif cls == '12':
+                adobe_students = []
                 all_students = User.objects.filter(username__regex='97d*').all()
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '121') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
                 response = response.content
                 students = xmltodict.parse(response)
+                adobe_students.append(students)
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '122') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
                 response = response.content
-                students.update(xmltodict.parse(response))
+                adobe_students.append(xmltodict.parse(response))
 
             checks = {}
             emails = {}
-            for student in students['results']['report-meeting-attendance']['row']:
-                date_end = 'todayT' + end_times[zang] + '.'  # to do split with "T" character
-                if 'date-end' in student.keys():
-                    date_end = student['date-end']
-                emails[student['login']] = {'time_in': student['date-created'], 'time_out': date_end}
+            for adobe_student in adobe_students:
+                for student in adobe_student['results']['report-meeting-attendance']['row']:
+                    date_end = 'todayT' + end_times[zang] + '.'  # to do split with "T" character
+                    if 'date-end' in student.keys():
+                        date_end = student['date-end']
+                    emails[student['login']] = {'time_in': student['date-created'], 'time_out': date_end}
             for student in all_students:
                 if student.email in emails.keys():
                     row = {'check': True,
