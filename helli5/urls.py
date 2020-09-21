@@ -54,6 +54,6 @@ urlpatterns = [
                   url(r'^افتخارات/', include('honorsApp.urls')),
                   url(r'panel/', include('smsApp.urls')),
                   url(r'^courses/', include('courseApp.urls')),
-                  url(r'^eLearning/', include('eLearning.urls')),
+                  url(r'^آموزش-آنلاین/', include('eLearning.urls')),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

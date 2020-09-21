@@ -3,5 +3,6 @@ from django.conf.urls import url
 from eLearning import views
 
 urlpatterns = [
-    url(r'check_classes', views.check_classes, name='check_classes'),
+    path('', views.elearning_stuff, name='elearning_stuff'),
+    url(r'حضورغیاب', views.check_classes, name='check_classes'),
 ]

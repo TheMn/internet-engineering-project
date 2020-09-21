@@ -135,3 +135,7 @@ def generate_date_query_param(start_time, end_time):
     return 'filter-gt-date-created=' + str(year) + '-' + str(month) + '-' + str(
         day) + 'T' + start_time + '&filter-lt-date-created=' + str(year) + '-' + str(month) + '-' + str(
         day) + 'T' + end_time
+
+
+def elearning_stuff(request):
+    return render(request, 'elearning_stuff.html', {})
