@@ -96,11 +96,12 @@ def check_classes(request):
             checks = {}
             emails = {}
             for adobe_student in adobe_students:
-                for student in adobe_student['results']['report-meeting-attendance']['row']:
-                    date_end = 'todayT' + end_times[zang] + '.'  # to do split with "T" character
-                    if 'date-end' in student.keys():
-                        date_end = student['date-end']
-                    emails[student['login']] = {'time_in': student['date-created'], 'time_out': date_end}
+                if adobe_student['results']['report-meeting-attendance'] is not None:
+                    for student in adobe_student['results']['report-meeting-attendance']['row']:
+                        date_end = 'todayT' + end_times[zang] + '.'  # to do split with "T" character
+                        if 'date-end' in student.keys():
+                            date_end = student['date-end']
+                        emails[student['login']] = {'time_in': student['date-created'], 'time_out': date_end}
             for student in all_students:
                 if student.email in emails.keys():
                     row = {'check': True,
