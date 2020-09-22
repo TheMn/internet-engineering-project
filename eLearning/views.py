@@ -6,7 +6,7 @@ import xmltodict
 from loginApp.models import User
 
 
-@has_perm('check_classes')
+@has_perm('loginApp.check_classes')
 def check_classes(request):
     try:
         classes = {
