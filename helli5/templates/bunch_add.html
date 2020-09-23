@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+    {#    <div class="container">#}
+    {#        <div class="row d-flex align-items-stretch no-gutters">#}
+    {#            <div class="col-md-6 p-4 p-md-5 order-md-last bg-light"#}
+    {#                 style="border-top-right-radius: 20px">#}
+    {#                <form action="{% url 'sms' %}" method="post">#}
+    {#                    {% csrf_token %}#}
+    {#                    <div class="form-group">#}
+    {#                        <input style="border-top-right-radius: 20px;#}
+    {#                         border-bottom-left-radius: 20px;#}
+    {#                          text-align:right;#}
+    {#                          font-family: Vazir-Medium" type="text" class="form-control"#}
+    {#                               placeholder="پایه دهم">#}
+    {#                    </div>#}
+    {#                    <div class="form-group">#}
+    {#                        <input style="border-top-right-radius: 20px;#}
+    {#                        border-bottom-left-radius: 20px;#}
+    {#                        text-align:right;#}
+    {#                        font-family: Vazir-Medium"#}
+    {#                               type="text" class="form-control"#}
+    {#                               placeholder="پایه یازدهم">#}
+    {#                    </div>#}
+    {#                    <div class="form-group">#}
+    {#                        <textarea#}
+    {#                                style="border-top-right-radius: 20px;#}
+    {#                                border-bottom-left-radius: 20px;#}
+    {#                                text-align:right;#}
+    {#                                font-family: Vazir-Medium"#}
+    {#                                name="" id="" cols="30" rows="7"#}
+    {#                                class="form-control"#}
+    {#                                placeholder="متن پیام"></textarea>#}
+    {#                    </div>#}
+    {#                    <div class="form-group">#}
+    {#                        <input style="font-family: Vazir-Medium;"#}
+    {#                               type="submit" value="ارسال پیام"#}
+    {#                               class="btn btn-primary py-3 px-5">#}
+    {#                    </div>#}
+    {#                </form>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
+    <div class="col-md-12 p-4 p-md-5 order-md-last bg-light"
+         style="border-top-right-radius: 20px">
+
+        <form method="post" enctype="multipart/form-data" action="{% url 'bunch_add' %}">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-6">
+                    {{ bunch_add.model_type }}
+                </div>
+            </div>
+            {{ bunch_add.file }}
+            <button type="submit">ارسال</button>
+        </form>
+    </div>
+{% endblock %}

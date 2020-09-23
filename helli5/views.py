@@ -1,12 +1,19 @@
-from django.template import loader
-from django.http import HttpResponse
-import datetime
-from django.shortcuts import render
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Group
 from postingApp.models import PostStuff, Event
-from loginApp.models import Profile, Subscriber, Contact
+from loginApp.models import Profile, Contact
 from django.db.models import Q
 from loginApp.forms import ContactForm
 from dynamicApp.models import SliderContent
+import os
+from helli5 import settings
+from django.shortcuts import render, redirect
+from .forms import BunchAddForm
+from django.http import HttpResponse
+import xlrd
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 def index(request):
@@ -110,3 +117,56 @@ def custom_404(request, exception):
 
 def custom_500(request):
     return render(request, '500.html', status=500)
+
+
+def bunch_add_model(request):
+    user = request.user
+    if user.is_authenticated and user.username == 'admin':
+        if request.method == "POST":
+            form = BunchAddForm(request.POST, request.FILES)
+            if form.is_valid():
+                file = request.FILES.getlist('file')[0]
+                model_type = form.cleaned_data['model_type']
+                path = settings.MEDIA_ROOT + '/excels/'
+                if not os.path.isdir(path):
+                    os.makedirs(path)
+                with open(path + '/' + file.name, 'wb+') as destination:
+                    print('hello')
+                    for chunk in file.chunks():
+                        destination.write(chunk)
+                excel_folders = path
+                excel_file_path = excel_folders + file.name
+                loc = (excel_file_path)
+                wb = xlrd.open_workbook(loc)
+                sheet = wb.sheet_by_index(0)
+                rows = sheet.nrows
+                if model_type == 'user':
+                    User = get_user_model()
+                    for i in range(1, rows):
+                        user = User()
+                        user.username = int(sheet.cell_value(i, 0))
+                        user.set_password(sheet.cell_value(i, 1))
+                        user.first_name = sheet.cell_value(i, 2)
+                        user.last_name = sheet.cell_value(i, 3)
+                        user.email = sheet.cell_value(i, 4)
+                        group = Group.objects.get(name=sheet.cell_value(i, 5))
+                        user.save()
+                        user.groups.add(group)
+                        user.save()
+                        profile = user.profile
+                        profile.user = user
+                        profile.job_title = sheet.cell_value(i, 6)
+                        profile.mom_number = int(sheet.cell_value(i, 7))
+                        profile.dad_number = int(sheet.cell_value(i, 8))
+                        profile.phone = int(sheet.cell_value(i, 9))
+                        profile.save()
+            context = {
+                'bunch_add': BunchAddForm,
+            }
+
+            return render(request, 'bunch_add.html', context)
+        context = {
+            'bunch_add': BunchAddForm,
+        }
+        return render(request, 'bunch_add.html', context)
+    return HttpResponse(401)

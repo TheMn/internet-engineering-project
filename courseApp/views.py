@@ -1,20 +1,18 @@
 import os
 from helli5 import settings
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import *
 from .forms import reportForm
-from .utils import create_zip
 import hashlib
-
 import csv
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from helli5.decorators import has_perm
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
 
 
 # def download_zip(request, assignment_id):
