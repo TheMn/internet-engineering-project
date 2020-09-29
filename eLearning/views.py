@@ -101,7 +101,8 @@ def check_classes(request):
                         date_end = 'todayT' + end_times[zang] + '.'  # to do split with "T" character
                         if 'date-end' in student.keys():
                             date_end = student['date-end']
-                        emails[student['login']] = {'time_in': student['date-created'], 'time_out': date_end}
+                        if 'login' in student.keys():
+                            emails[student['login']] = {'time_in': student['date-created'], 'time_out': date_end}
             for student in all_students:
                 if student.email in emails.keys():
                     row = {'check': True,
