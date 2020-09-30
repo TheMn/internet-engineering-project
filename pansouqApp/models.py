@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django_jalali.db import models as jmodels
 import os
+from jalali_date.admin import AdminJalaliDateWidget
 
 User = get_user_model()
 
@@ -39,11 +40,8 @@ class Souq(models.Model):
 
 
 def challenge_upload_path(instance, filename):
-    return os.path.join(
-        instance.creator.username,
-        instance.related_souq,
-        filename
-    )
+    return os.path.join("pansouq-challenges", "%d" % instance.related_souq.id, "%s" % instance.creator.username,
+                        filename)
 
 
 class Challenge(models.Model):
@@ -67,10 +65,10 @@ class Challenge(models.Model):
 class Team(models.Model):
     title = models.CharField(max_length=50, blank=True, null=True, verbose_name='نام تیم')
     related_pansouq = models.ForeignKey(Pansouq, on_delete=models.CASCADE, verbose_name='رقابت مربوطه')
-    score = models.FloatField(verbose_name='امتیاز کل')
+    score = models.FloatField(default=0, verbose_name='امتیاز کل')
 
     class Meta:
-        ordering = ('related_pansouq', 'score', 'title')
+        ordering = ('related_pansouq', '-score', 'title')
 
     def __str__(self):
         return self.title
@@ -98,15 +96,17 @@ class Transaction(models.Model):
     participant = models.ForeignKey(Participant, on_delete=models.CASCADE, verbose_name='شرکت کننده')
     challenge = models.ForeignKey(Challenge, on_delete=models.CASCADE, verbose_name='چالش مربوطه')
     points = models.FloatField(verbose_name='امتیاز کسب شده')
-    alpha_correctness = models.FloatField(verbose_name='نسبت درستی پاسخ')
-    beta_ranking = models.FloatField(verbose_name='درصد جبران گذشته')
-    time_received = models.DateTimeField(auto_now_add=True)
+    alpha_correctness = models.FloatField(verbose_name='نسبت درستی پاسخ',
+                                          help_text='یک ضریب بین ۰ تا ۱ در نمره‌ی کسب شده تاثیر مستقیم خواهد داشت')
+    beta_ranking = models.FloatField(verbose_name='درصد جبران گذشته',
+                                     help_text='تیم‌هایی که در جدول امتیازات پایین تر هستند، فرصت جبران بیشتری دارند')
+    time_received = jmodels.jDateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ('time_received',)
 
     def __str__(self):
-        return self.participant + ': ' + self.challenge + ', ' + str(
+        return str(self.participant) + ': ' + str(self.challenge) + ', ' + str(
             self.points * self.alpha_correctness + self.beta_ranking)
 
     def save(self, *args, **kwargs):

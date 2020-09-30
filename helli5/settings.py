@@ -22,6 +22,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import locale
+
 LANGUAGE_CODE = 'fa-ir'
 # locale.setlocale(locale.LC_ALL, "fa_IR.UTF-8")
 
@@ -60,6 +61,7 @@ INSTALLED_APPS = [
     'jalali_date',
     'paymentApp',
     'eLearning',
+    'pansouqApp',
 ]
 
 MIDDLEWARE = [
@@ -159,4 +161,3 @@ TINYMCE_SPELLCHECKER = True
 TINYMCE_COMPRESSOR = True
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
