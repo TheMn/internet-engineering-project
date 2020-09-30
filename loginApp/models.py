@@ -213,7 +213,6 @@ class PreRegisteredStudent(models.Model):
     is_valid = models.BooleanField(default=False)
 
 
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     img = models.ImageField(upload_to='profilePic', default="/profilePic/default.png")
