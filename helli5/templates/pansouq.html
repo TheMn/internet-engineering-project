@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} پژوهشی | وبسایت دبیرستان دوره دوم علامه حلی ۵ تهران {% endblock %}
+{% block meta_description %}فعالیت های پژوهشی دبیرستان علامه حلی ۵ تهران با توجه به معیارهای آموزش آنلاین در قالب کارسوق
+    های مهارتی و رقابت هایی با نام پن سوق ادامه یافت{% endblock %}
+{% block extra_head %}
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
+    {#TODO: uncomment below section and fix font in all pages#}
+    {#        <link rel="stylesheet" href="{% static 'css/pansouq.css' %}">#}
+{% endblock %}
+{% block content %}
+    <section class="hero-wrap"
+             style="background-image: url({% static '/images/جلسه-دبیران-دبیرستان-علامه-حلی-۵-تهران.jpg' %});">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <br>
+                    <h1 style="font-family: Vazir-Bold; text-shadow: 1px 1px 7px black;"
+                        class="mb-2 bread text-light text-center">{{ pansouq.title }}</h1>
+                    <h2 style="font-family: Vazir-Bold; text-shadow: 1px 1px 7px black;"
+                        class="mb-2 bread text-light text-center">{{ pansouq.description }}</h2>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="container">
+        <div class="row justify-content-center">
+
+            <div class="col-lg-4">
+                <div class="col-12 border border-secondary rounded m-1">
+                    <p class="text-center">آخرین مطالب مرتبط</p>
+                    <hr>
+                    {#                    START OF THAT#}
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 mt-3">
+                                {% for fpost in post_list %}
+                                    <div class="block-21 mb-4 d-flex border border-secondary"
+                                         style="cursor: pointer; background: #FAFAFA; border-bottom-left-radius: 20px; border-top-right-radius: 20px;"
+                                         onclick="window.location='{{ fpost.get_absolute_url }}';">
+                                        <div class="text col-12">
+                                            <h3 class="heading"
+                                                style="font-family: Vazir-Bold; margin-left: 5%; margin-right: 5%; margin-top: 5%">
+                                                {{ fpost.title }}
+                                            </h3>
+                                            <p>{{ fpost.description }}</p>
+                                            <hr>
+                                            <div class="meta container" style="margin-bottom: 2%">
+                                                <div class="row"
+                                                     style="margin-right: 10px; margin-top: 5px; margin-top: -5px">
+                                                    <div style="margin-left: 10px"><span class="icon-calendar"></span><a
+                                                            style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium">{{ fpost.date|date:"Y/m/d" }}</a>
+                                                    </div>
+                                                </div>
+                                                {#                                        <div class="row" style="margin-right: 10px; margin-top: 5px; margin-top: -5px">#}
+                                                {#                                            <div><span class="icon-person"></span><a#}
+                                                {#                                                    style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium">{{ fpost.username.user.last_name }}</a>#}
+                                                {#                                            </div>#}
+                                                {#                                        </div>#}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {#                    END OF THAT#}
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="col-12 text-center border border-secondary rounded m-1">
+                    <input class="form-control-plaintext text-center" type="text" id="points-table-search"
+                           onkeyup="search_table('points-table', 'points-table-search')"
+                           placeholder="جدول امتیازات تیم‌ها"
+                           title="Type in a name">
+
+                    <table dir="rtl" id="points-table" class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">نام تیم</th>
+                            <th scope="col">مجموع</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for team in teams_list %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ team.title }}</td>
+                                <td>{{ team.score }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="col-12  border border-secondary rounded m-1">
+                    <input class="form-control-plaintext text-center" type="text" id="team-table-search"
+                           onkeyup="search_table('team-table', 'team-table-search')"
+                           placeholder="تیم من"
+                           title="Type in a name">
+
+                    <table dir="rtl" id="team-table" class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">اعضای تیم</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for participant in user.participant.team.get_members %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ participant }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="col-12  border border-secondary rounded m-1">
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ item.participant }}</td>
+                        <td>{{ item.total_points }}</td>
+                    </tr>
+
+                    <input class="form-control-plaintext text-center" type="text" id="max-table-search"
+                           onkeyup="search_table('max-table', 'max-table-search')"
+                           placeholder="امتیازآور ترین دانش‌آموزان"
+                           title="Type in a name">
+
+                    <table dir="rtl" id="max-table" class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">نام و نام‌خانوادگی</th>
+                            <th scope="col">امتیاز</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in max_points %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ item.participant }}</td>
+                                <td>{{ item.total_points }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        function search_table(table_id, input_id) {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById(input_id);
+            filter = input.value.toUpperCase();
+            table = document.getElementById(table_id);
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+{% endblock %}

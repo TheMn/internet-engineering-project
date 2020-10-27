@@ -114,3 +114,8 @@ class Transaction(models.Model):
         t.add_score(self.points * self.alpha_correctness + self.beta_ranking)
         t.save()
         super().save(*args, **kwargs)
+
+    @classmethod
+    def get_max_points(cls):
+        return cls.objects.values('participant').order_by('participant').annotate(total_points=models.Sum('points'))
+        # return cls.objects.all().aggregate(total_points=models.Sum('points')).get('total_points')
