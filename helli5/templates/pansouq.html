@@ -9,26 +9,41 @@
     {#        <link rel="stylesheet" href="{% static 'css/pansouq.css' %}">#}
 {% endblock %}
 {% block content %}
-    <section class="hero-wrap"
-             style="background-image: url({% static '/images/جلسه-دبیران-دبیرستان-علامه-حلی-۵-تهران.jpg' %});">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row no-gutters slider-text align-items-center justify-content-center">
-                <div class="col-md-9 ftco-animate text-center">
-                    <br>
-                    <h1 style="font-family: Vazir-Bold; text-shadow: 1px 1px 7px black;"
-                        class="mb-2 bread text-light text-center">{{ pansouq.title }}</h1>
-                    <h2 style="font-family: Vazir-Bold; text-shadow: 1px 1px 7px black;"
-                        class="mb-2 bread text-light text-center">{{ pansouq.description }}</h2>
-                    <br>
-                </div>
-            </div>
-        </div>
+    <section class="hero-wrap hero-wrap-2"
+             style="border-radius: 0 0 50px 50px; background-image: url({% static '/images/سربرگ-پن-سوق-پژوهشی-حلی-۵.png' %});">
+{#        <div class="overlay"></div>#}
     </section>
+    {#    <div style="background-image: url("{% static 'images/سربرگ-پن-سوق-پژوهشی-حلی-۵.jpg' %}")">#}
+    {#    <img src="{% static 'images/سربرگ-پن-سوق-پژوهشی-حلی-۵.jpg' %}" class="img-fluid" width="100%">#}
+
+    {#    <section class="hero-wrap"#}
+    {#             style="background-image: url({% static '/images/سربرگ-پن-سوق-پژوهشی-حلی-۵.jpg' %});">#}
+    {#        <div class="overlay"></div>#}
+    {#        <div class="container">#}
+    {#            <div class="row no-gutters slider-text align-items-center justify-content-center">#}
+    {#                <div class="col-md-9 ftco-animate text-center">#}
+    {#                    <br>#}
+    {#                    <h1 style="font-family: Vazir-Bold; text-shadow: 1px 1px 7px black;"#}
+    {#                        class="mb-2 bread text-light text-center">{{ pansouq.title }}</h1>#}
+    {#                    <h2 style="font-family: Vazir-Bold; text-shadow: 1px 1px 7px black;"#}
+    {#                        class="mb-2 bread text-light text-center">{{ pansouq.description }}</h2>#}
+    {#                    <br>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </section>#}
 
 
     <section class="container">
         <div class="row justify-content-center">
+
+            <div class="col-lg-12">
+                <div dir="rtl" class="col-12 border border-secondary rounded m-1">
+                    <h4 class="text-center">شما ({{ user.first_name|add:' '|add:user.last_name }}) در
+                        چالش {{ user.participant.challenging_in }} شرکت می‌کنید.</h4>
+                    {#                    <hr>#}
+                </div>
+            </div>
 
             <div class="col-lg-4">
                 <div class="col-12 border border-secondary rounded m-1">
@@ -156,6 +171,28 @@
                         {% endfor %}
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    {#    <img src="{% static 'images/ته-برگ-پن-سوق-پژوهشی-حلی-۵.jpg' %}" class="img-fluid" width="100%">#}
+    {#    </div>#}
+    <section class="hero-wrap hero-wrap-2"
+             style="border-radius: 50px 50px 0 0; background-image: url(http://allamehelli5.ir/media/thumbnails/%D9%BE%D9%86%D8%B3%D9%88%D9%82-%D8%AD%D9%84%DB%8C%DB%B5.jpg);">
+{#        <div class="overlay"></div>#}
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <h1 style="font-family: Vazir-Bold" class="mb-2 bread">{{ pansouq.title }}</h1>
+                    <p style="font-family: Vazir-Medium" class="breadcrumbs"><span
+                            class="mr-2">{{ pansouq.description }} <i
+                            class="ion-ios-arrow-back"></i></span></p>
+                    <p style="font-family:Vazir-Medium; text-align: center;"><a
+                            style=" background: rgba(0,0,0,0.5)"
+                            href="http://allamehelli5.ir/%D9%86%D9%88%D8%B4%D8%AA%D9%87-%D9%87%D8%A7/%D8%B1%D9%82%D8%A7%D8%A8%D8%AA%D9%87%D8%A7%DB%8C-%D8%AF%D8%A7%D9%86%D8%B4%D8%A2%D9%85%D9%88%D8%B2%DB%8C-%D9%BE%D9%86%D8%B3%D9%88%D9%82/"
+                            class="btn btn-secondary px-4 py-3 mt-3">
+                        پن‌سوق چیست؟
+                    </a></p>
                 </div>
             </div>
         </div>
