@@ -11,7 +11,7 @@
 {% block content %}
     <section class="hero-wrap hero-wrap-2"
              style="border-radius: 0 0 50px 50px; background-image: url({% static '/images/سربرگ-پن-سوق-پژوهشی-حلی-۵.png' %});">
-{#        <div class="overlay"></div>#}
+        {#        <div class="overlay"></div>#}
     </section>
     {#    <div style="background-image: url("{% static 'images/سربرگ-پن-سوق-پژوهشی-حلی-۵.jpg' %}")">#}
     {#    <img src="{% static 'images/سربرگ-پن-سوق-پژوهشی-حلی-۵.jpg' %}" class="img-fluid" width="100%">#}
@@ -34,14 +34,21 @@
     {#    </section>#}
 
 
-    <section class="container">
+    <section class="container" style="font-family: Vazir-Medium">
         <div class="row justify-content-center">
-
             <div class="col-lg-12">
                 <div dir="rtl" class="col-12 border border-secondary rounded m-1">
-                    <h4 class="text-center">شما ({{ user.first_name|add:' '|add:user.last_name }}) در
-                        چالش {{ user.participant.challenging_in }} شرکت می‌کنید.</h4>
-                    {#                    <hr>#}
+                    {% if user.is_authenticated %}
+
+                        <h5 class="text-center">شما ({{ user.first_name|add:' '|add:user.last_name }}) در
+                            چالش {{ user.participant.challenging_in }} شرکت می‌کنید.</h5>
+                        {#                    <hr>#}
+                    {% else %}
+                        <h5 class="text-center">در صورتی که دانش‌آموز پایه دهم هستید، برای دسترسی کامل به محتوای این
+                            صفحه، ابتدا <a class="btn-outline-info" href="{% url 'login' %}">وارد
+                                سایت شوید.</a></h5>
+                    {% endif %}
+
                 </div>
             </div>
 
@@ -120,23 +127,27 @@
                            onkeyup="search_table('team-table', 'team-table-search')"
                            placeholder="تیم من"
                            title="Type in a name">
-
-                    <table dir="rtl" id="team-table" class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">اعضای تیم</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for participant in user.participant.team.get_members %}
+                    {% if user.is_authenticated %}
+                        <h5 dir="rtl" class="text-center">شما عضو تیم {{ user.participant.team.title }} هستید.</h5>
+                        <table dir="rtl" id="team-table" class="table table-hover">
+                            <thead>
                             <tr>
-                                <th scope="row">{{ forloop.counter }}</th>
-                                <td>{{ participant }}</td>
+                                <th scope="col">#</th>
+                                <th scope="col">اعضای تیم</th>
                             </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                            {% for participant in user.participant.team.get_members %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td>{{ participant }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <h5 class="text-center">شما عضو هیچ تیمی نیستید</h5>
+                    {% endif %}
                 </div>
             </div>
 
@@ -179,7 +190,7 @@
     {#    </div>#}
     <section class="hero-wrap hero-wrap-2"
              style="border-radius: 50px 50px 0 0; background-image: url(http://allamehelli5.ir/media/thumbnails/%D9%BE%D9%86%D8%B3%D9%88%D9%82-%D8%AD%D9%84%DB%8C%DB%B5.jpg);">
-{#        <div class="overlay"></div>#}
+        {#        <div class="overlay"></div>#}
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">
                 <div class="col-md-9 ftco-animate text-center">

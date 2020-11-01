@@ -117,5 +117,5 @@ class Transaction(models.Model):
 
     @classmethod
     def get_max_points(cls):
-        return cls.objects.values('participant').order_by('participant').annotate(total_points=models.Sum('points'))
+        return cls.objects.values('participant').order_by('-total_points').annotate(total_points=models.Sum('points'))
         # return cls.objects.all().aggregate(total_points=models.Sum('points')).get('total_points')
