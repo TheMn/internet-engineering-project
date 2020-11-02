@@ -13,92 +13,113 @@
              style="border-radius: 0 0 50px 50px; background-image: url({% static '/images/سربرگ-پن-سوق-پژوهشی-حلی-۵.png' %});">
         {#        <div class="overlay"></div>#}
     </section>
-    {#    <div style="background-image: url("{% static 'images/سربرگ-پن-سوق-پژوهشی-حلی-۵.jpg' %}")">#}
-    {#    <img src="{% static 'images/سربرگ-پن-سوق-پژوهشی-حلی-۵.jpg' %}" class="img-fluid" width="100%">#}
-
-    {#    <section class="hero-wrap"#}
-    {#             style="background-image: url({% static '/images/سربرگ-پن-سوق-پژوهشی-حلی-۵.jpg' %});">#}
-    {#        <div class="overlay"></div>#}
-    {#        <div class="container">#}
-    {#            <div class="row no-gutters slider-text align-items-center justify-content-center">#}
-    {#                <div class="col-md-9 ftco-animate text-center">#}
-    {#                    <br>#}
-    {#                    <h1 style="font-family: Vazir-Bold; text-shadow: 1px 1px 7px black;"#}
-    {#                        class="mb-2 bread text-light text-center">{{ pansouq.title }}</h1>#}
-    {#                    <h2 style="font-family: Vazir-Bold; text-shadow: 1px 1px 7px black;"#}
-    {#                        class="mb-2 bread text-light text-center">{{ pansouq.description }}</h2>#}
-    {#                    <br>#}
-    {#                </div>#}
-    {#            </div>#}
-    {#        </div>#}
-    {#    </section>#}
-
 
     <section class="container" style="font-family: Vazir-Medium">
         <div class="row justify-content-center">
             <div class="col-lg-12">
                 <div dir="rtl" class="col-12 border border-secondary rounded m-1">
                     {% if user.is_authenticated %}
-
-                        <h5 class="text-center">شما ({{ user.first_name|add:' '|add:user.last_name }}) در
-                            چالش {{ user.participant.challenging_in }} شرکت می‌کنید.</h5>
-                        {#                    <hr>#}
+                        {% if user.participant.challenging_in %}
+                            <h5 class="text-center">شما ({{ user.first_name|add:' '|add:user.last_name }}) در
+                                چالش {{ user.participant.challenging_in }} شرکت می‌کنید.</h5>
+                            {#                    <hr>#}
+                        {% else %}
+                            <h5 class="text-center">در حال حاضر شما در هیچ چالشی شرکت نمی‌کنید</h5>
+                        {% endif %}
                     {% else %}
                         <h5 class="text-center">در صورتی که دانش‌آموز پایه دهم هستید، برای دسترسی کامل به محتوای این
-                            صفحه، ابتدا <a class="btn-outline-info" href="{% url 'login' %}">وارد
+                            صفحه، ابتدا <a class="btn-outline-info"
+                                           href="{% url 'login' %}">وارد
                                 سایت شوید.</a></h5>
                     {% endif %}
-
+                    <div class="row col-9 text-center m-auto">
+                        <table dir="rtl" id="points-table" class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">تاریخ شروع</th>
+                                <th scope="col">تاریخ پایان</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for souq in pansouq.get_souqs %}
+                                <tr>
+                                    <td>{{ souq.title }}</td>
+                                    <td>{{ souq.start_date|date:"Y/m/d" }}</td>
+                                    <td>{{ souq.end_date|date:"Y/m/d" }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
+            {###############################################################################################################}
             <div class="col-lg-4">
-                <div class="col-12 border border-secondary rounded m-1">
+
+                <div class="col-12 text-center border border-secondary rounded m-1">
                     <p class="text-center">آخرین مطالب مرتبط</p>
                     <hr>
-                    {#                    START OF THAT#}
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-12 mt-3">
-                                {% for fpost in post_list %}
-                                    <div class="block-21 mb-4 d-flex border border-secondary"
-                                         style="cursor: pointer; background: #FAFAFA; border-bottom-left-radius: 20px; border-top-right-radius: 20px;"
-                                         onclick="window.location='{{ fpost.get_absolute_url }}';">
-                                        <div class="text col-12">
-                                            <h3 class="heading"
-                                                style="font-family: Vazir-Bold; margin-left: 5%; margin-right: 5%; margin-top: 5%">
-                                                {{ fpost.title }}
-                                            </h3>
-                                            <p>{{ fpost.description }}</p>
-                                            <hr>
-                                            <div class="meta container" style="margin-bottom: 2%">
-                                                <div class="row"
-                                                     style="margin-right: 10px; margin-top: 5px; margin-top: -5px">
-                                                    <div style="margin-left: 10px"><span class="icon-calendar"></span><a
-                                                            style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium">{{ fpost.date|date:"Y/m/d" }}</a>
-                                                    </div>
-                                                </div>
-                                                {#                                        <div class="row" style="margin-right: 10px; margin-top: 5px; margin-top: -5px">#}
-                                                {#                                            <div><span class="icon-person"></span><a#}
-                                                {#                                                    style="margin-right: -5px; color: #1b1e21; font-family: Vazir-Medium">{{ fpost.username.user.last_name }}</a>#}
-                                                {#                                            </div>#}
-                                                {#                                        </div>#}
+                    {% for fpost in post_list %}
+                        {% if forloop.counter0|divisibleby:2 %}
+                            <div class="row justify-content-center border border-secondary m-1 bg-light"
+                                 style="border-bottom-left-radius: 20px; border-top-right-radius: 20px; cursor: pointer;"
+                                 onclick="window.location='{{ fpost.get_absolute_url }}';">
+                                <div class="col-4" style="background-image: url({{ fpost.img.url }});
+                                        background-size: cover;
+                                        border-bottom-left-radius: inherit"></div>
+
+                                <div class="text col-8">
+                                    <strong class="heading">{{ fpost.title }}</strong>
+                                    <p style="width: 100%; overflow: hidden; white-space: nowrap;">{{ fpost.description }}</p>
+                                    <hr>
+                                    <div class="meta container">
+                                        <div class="row">
+                                            <div><span class="icon-calendar"></span><a>{{ fpost.date|date:"Y/m/d" }}</a>
                                             </div>
                                         </div>
                                     </div>
-                                {% endfor %}
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    {#                    END OF THAT#}
+                        {% else %}
+                            <div class="row justify-content-center border border-secondary m-1 bg-light"
+                                 style="border-bottom-right-radius: 20px; border-top-left-radius: 20px; cursor: pointer"
+                                 onclick="window.location='{{ fpost.get_absolute_url }}';">
+
+                                <div class="text col-8">
+                                    <strong class="heading">{{ fpost.title }}</strong>
+                                    <p style="width: 100%; overflow: hidden; white-space: nowrap;">{{ fpost.description }}</p>
+                                    <hr>
+                                    <div class="meta container">
+                                        <div class="row">
+                                            <div><span class="icon-calendar"></span><a>{{ fpost.date|date:"Y/m/d" }}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-4" style="background-image: url({{ fpost.img.url }});
+                                        background-size: cover;
+                                        border-bottom-right-radius: inherit;">
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    <p class="text-center"><a
+                            href="http://allamehelli5.ir/%D9%86%D9%88%D8%B4%D8%AA%D9%87-%D9%87%D8%A7/%D8%B1%D9%82%D8%A7%D8%A8%D8%AA%D9%87%D8%A7%DB%8C-%D8%AF%D8%A7%D9%86%D8%B4%D8%A2%D9%85%D9%88%D8%B2%DB%8C-%D9%BE%D9%86%D8%B3%D9%88%D9%82/"
+                            class="btn btn-outline-danger px-4 py-3 mt-3">
+                        سایر مطالب در دسته‌بندی پژوهشی
+                    </a></p>
                 </div>
             </div>
+            {###############################################################################################################}
             <div class="col-lg-8">
                 <div class="col-12 text-center border border-secondary rounded m-1">
                     <input class="form-control-plaintext text-center" type="text" id="points-table-search"
                            onkeyup="search_table('points-table', 'points-table-search')"
                            placeholder="جدول امتیازات تیم‌ها"
-                           title="Type in a name">
+                           title="برای جستجو کلیک کنید">
 
                     <table dir="rtl" id="points-table" class="table table-hover">
                         <thead>
@@ -126,25 +147,32 @@
                     <input class="form-control-plaintext text-center" type="text" id="team-table-search"
                            onkeyup="search_table('team-table', 'team-table-search')"
                            placeholder="تیم من"
-                           title="Type in a name">
+                           title="برای جستجو کلیک کنید">
                     {% if user.is_authenticated %}
-                        <h5 dir="rtl" class="text-center">شما عضو تیم {{ user.participant.team.title }} هستید.</h5>
-                        <table dir="rtl" id="team-table" class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">اعضای تیم</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for participant in user.participant.team.get_members %}
+                        {% if not user.participant.team %}
+                            <h5 class="text-center">شما عضو هیچ تیمی نیستید</h5>
+                        {% else %}
+                            <h5 dir="rtl" class="text-center">شما عضو تیم {{ user.participant.team.title }} هستید.</h5>
+                            <table dir="rtl" id="team-table" class="table table-hover text-center">
+                                <thead>
                                 <tr>
-                                    <th scope="row">{{ forloop.counter }}</th>
-                                    <td>{{ participant }}</td>
+                                    <th scope="col">#</th>
+                                    <th scope="col">چالش</th>
+                                    <th scope="col">اعضای تیم</th>
                                 </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                {% for participant in user.participant.team.get_members %}
+                                    <tr>
+                                        <th scope="row">{{ forloop.counter }}</th>
+                                        <td>{{ participant.challenging_in }}</td>
+                                        <td>{{ participant }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% endif %}
+
                     {% else %}
                         <h5 class="text-center">شما عضو هیچ تیمی نیستید</h5>
                     {% endif %}
@@ -162,9 +190,9 @@
                     <input class="form-control-plaintext text-center" type="text" id="max-table-search"
                            onkeyup="search_table('max-table', 'max-table-search')"
                            placeholder="امتیازآور ترین دانش‌آموزان"
-                           title="Type in a name">
+                           title="برای جستجو کلیک کنید">
 
-                    <table dir="rtl" id="max-table" class="table table-hover">
+                    <table dir="rtl" id="max-table" class="table table-hover text-center">
                         <thead>
                         <tr>
                             <th scope="col">#</th>

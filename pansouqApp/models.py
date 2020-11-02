@@ -83,7 +83,8 @@ class Team(models.Model):
 class Participant(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='کاربر')
     team = models.ForeignKey(Team, on_delete=models.CASCADE, verbose_name='تیم مربوطه')
-    challenging_in = models.ForeignKey(Challenge, on_delete=models.CASCADE, verbose_name='در حال رقابت')
+    challenging_in = models.ForeignKey(Challenge, on_delete=models.CASCADE, verbose_name='در حال رقابت', null=True,
+                                       blank=True)
 
     class Meta:
         ordering = ('team', 'challenging_in')
