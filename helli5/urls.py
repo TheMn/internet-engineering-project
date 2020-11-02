@@ -44,7 +44,7 @@ urlpatterns = [
     path('دبیران/', views.teachers, name='teachers'),
     path('bunch_add', views.bunch_add_model, name='bunch_add'),
 
-    path('پیش-ثبت-نام/', pre_registration, name='pre_registration'),
+    # path('پیش-ثبت-نام/', pre_registration, name='pre_registration'),
     path('complete/<melli>', pre_registration, name='compelete_form'),
     # path('error503/', views.error503, name='error503'),
     # path('djrichtextfield/', include('djrichtextfield.urls')),
