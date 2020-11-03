@@ -9,6 +9,7 @@
     {#        <link rel="stylesheet" href="{% static 'css/pansouq.css' %}">#}
 {% endblock %}
 {% block content %}
+
     <section class="hero-wrap hero-wrap-2"
              style="border-radius: 0 0 50px 50px; background-image: url({% static '/images/سربرگ-پن-سوق-پژوهشی-حلی-۵.png' %});">
         {#        <div class="overlay"></div>#}
@@ -20,8 +21,11 @@
                 <div dir="rtl" class="col-12 border border-secondary rounded m-1">
                     {% if user.is_authenticated %}
                         {% if user.participant.challenging_in %}
-                            <h5 class="text-center">شما ({{ user.first_name|add:' '|add:user.last_name }}) در
-                                چالش {{ user.participant.challenging_in }} شرکت می‌کنید.</h5>
+                            <h5 class="text-center">
+                                شما ({{ user.first_name|add:' '|add:user.last_name }}) در چالش
+                                <a class="text-danger"
+                                   href="{{ user.participant.challenging_in.file.url }}">{{ user.participant.challenging_in }}</a>
+                                شرکت می‌کنید.</h5>
                             {#                    <hr>#}
                         {% else %}
                             <h5 class="text-center">در حال حاضر شما در هیچ چالشی شرکت نمی‌کنید</h5>
@@ -43,15 +47,53 @@
                             </thead>
                             <tbody>
                             {% for souq in pansouq.get_souqs %}
-                                <tr>
+                                <tr style="cursor: pointer" data-toggle="modal" data-target="#souq{{ souq.id }}">
                                     <td>{{ souq.title }}</td>
                                     <td>{{ souq.start_date|date:"Y/m/d" }}</td>
                                     <td>{{ souq.end_date|date:"Y/m/d" }}</td>
                                 </tr>
+                                <div class="modal fade" id="souq{{ souq.id }}" tabindex="-1">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">
+                                                    لیست چالش‌های
+                                                    {{ pansouq.title }}
+                                                    - {{ souq.title }}
+                                                </h4>
+                                            </div>
+                                            <!-- Modal body -->
+                                            <div class="modal-body m-auto">
+                                                <ul class="list-group">
+                                                    {% for challenge in souq.get_challenges %}
+                                                        <a href="{{ challenge.file.url }}"
+                                                           class="list-group-item list-group-item-action">{{ challenge.title }}
+                                                            (طراح: {{ challenge.creator.get_full_name }})</a>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-info" data-dismiss="modal">بستن
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             {% endfor %}
                             </tbody>
                         </table>
                     </div>
+                    {#                ######################################################################################################3#}
+
+                    {#                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">#}
+                    {#                        Open modal#}
+                    {#                    </button>#}
+
+                    <!-- The Modal -->
+
+                    {#                ######################################################################################################3#}
                 </div>
             </div>
 
@@ -72,7 +114,8 @@
 
                                 <div class="text col-8">
                                     <strong class="heading">{{ fpost.title }}</strong>
-                                    <p dir="rtl" style="width: 100%; overflow: hidden; white-space: nowrap;">{{ fpost.description }}</p>
+                                    <p dir="rtl"
+                                       style="width: 100%; overflow: hidden; white-space: nowrap;">{{ fpost.description }}</p>
                                     <hr>
                                     <div class="meta container">
                                         <div class="row">
@@ -89,7 +132,8 @@
 
                                 <div class="text col-8">
                                     <strong class="heading">{{ fpost.title }}</strong>
-                                    <p dir="rtl" style="width: 100%; overflow: hidden; white-space: nowrap;">{{ fpost.description }}</p>
+                                    <p dir="rtl"
+                                       style="width: 100%; overflow: hidden; white-space: nowrap;">{{ fpost.description }}</p>
                                     <hr>
                                     <div class="meta container">
                                         <div class="row">
@@ -107,7 +151,7 @@
                         {% endif %}
                     {% endfor %}
                     <p class="text-center"><a
-                            href="http://allamehelli5.ir/%D9%86%D9%88%D8%B4%D8%AA%D9%87-%D9%87%D8%A7/%D8%B1%D9%82%D8%A7%D8%A8%D8%AA%D9%87%D8%A7%DB%8C-%D8%AF%D8%A7%D9%86%D8%B4%D8%A2%D9%85%D9%88%D8%B2%DB%8C-%D9%BE%D9%86%D8%B3%D9%88%D9%82/"
+                            href="{% url 'blog' tag='پژوهشی' %}"
                             class="btn btn-outline-danger px-4 py-3 mt-3">
                         سایر مطالب در دسته‌بندی پژوهشی
                     </a></p>
@@ -133,7 +177,25 @@
                         {% for team in teams_list %}
                             <tr>
                                 <th scope="row">{{ forloop.counter }}</th>
-                                <td>{{ team.title }}</td>
+                                <td>
+                                    <div>
+                                        <p class="text-center">
+                                            <a class="text-muted" data-toggle="collapse"
+                                               href="#team{{ team.id }}"
+                                               role="button"
+                                               aria-expanded="false" aria-controls="team{{ team.id }}">
+                                                {{ team.title }}
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="collapse" id="team{{ team.id }}">
+                                        <div class="card card-body">
+                                            {% for member in team.get_members %}
+                                                {{ member.user.last_name }}{% if not forloop.last %} -{% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </td>
                                 <td>{{ team.score }}</td>
                             </tr>
                         {% endfor %}
@@ -156,7 +218,7 @@
                             <table dir="rtl" id="team-table" class="table table-hover text-center">
                                 <thead>
                                 <tr>
-                                    <th scope="col">#</th>
+                                    {#                                    <th scope="col">#</th>#}
                                     <th scope="col">چالش</th>
                                     <th scope="col">اعضای تیم</th>
                                 </tr>
@@ -164,8 +226,9 @@
                                 <tbody>
                                 {% for participant in user.participant.team.get_members %}
                                     <tr>
-                                        <th scope="row">{{ forloop.counter }}</th>
-                                        <td>{{ participant.challenging_in }}</td>
+                                        {#                                        <th scope="row">{{ forloop.counter }}</th>#}
+                                        <td onclick="window.location='{{ participant.challenging_in.file.url }}';"
+                                            style="cursor: pointer">{{ participant.challenging_in }}</td>
                                         <td>{{ participant }}</td>
                                     </tr>
                                 {% endfor %}

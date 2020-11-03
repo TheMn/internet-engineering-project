@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django_jalali.db import models as jmodels
 import os
+from django.core.validators import MaxValueValidator, MinValueValidator
 from jalali_date.admin import AdminJalaliDateWidget
 
 User = get_user_model()
@@ -96,11 +97,23 @@ class Participant(models.Model):
 class Transaction(models.Model):
     participant = models.ForeignKey(Participant, on_delete=models.CASCADE, verbose_name='شرکت کننده')
     challenge = models.ForeignKey(Challenge, on_delete=models.CASCADE, verbose_name='چالش مربوطه')
-    points = models.FloatField(verbose_name='امتیاز کسب شده')
+    points = models.FloatField(verbose_name='امتیاز کسب شده',
+                               validators=[
+                                   MaxValueValidator(100),
+                                   MinValueValidator(-100)
+                               ])
     alpha_correctness = models.FloatField(verbose_name='نسبت درستی پاسخ',
-                                          help_text='یک ضریب بین ۰ تا ۱ در نمره‌ی کسب شده تاثیر مستقیم خواهد داشت')
+                                          help_text='یک ضریب بین ۰ تا ۱ در نمره‌ی کسب شده تاثیر مستقیم خواهد داشت',
+                                          validators=[
+                                              MaxValueValidator(1),
+                                              MinValueValidator(0)
+                                          ])
     beta_ranking = models.FloatField(verbose_name='درصد جبران گذشته',
-                                     help_text='تیم‌هایی که در جدول امتیازات پایین تر هستند، فرصت جبران بیشتری دارند')
+                                     help_text='تیم‌هایی که در جدول امتیازات پایین تر هستند، فرصت جبران بیشتری دارند',
+                                     validators=[
+                                         MaxValueValidator(20),
+                                         MinValueValidator(0)
+                                     ])
     time_received = jmodels.jDateTimeField(auto_now_add=True)
 
     class Meta:
