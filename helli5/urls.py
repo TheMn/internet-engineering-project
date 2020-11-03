@@ -26,6 +26,7 @@ from django.conf.urls.static import static
 from postingApp.feeds import LatestPostsFeed
 from loginApp.views import pre_registration
 from loginApp.views import export_pre_registrations
+from pansouqApp.views import students_list
 
 handler400 = views.custom_400
 handler403 = views.custom_403
@@ -46,6 +47,7 @@ urlpatterns = [
 
     # path('پیش-ثبت-نام/', pre_registration, name='pre_registration'),
     path('complete/<melli>', pre_registration, name='compelete_form'),
+    path('students_list/<challenge_id>/', students_list, name='pansouq_students'),
     # path('error503/', views.error503, name='error503'),
     # path('djrichtextfield/', include('djrichtextfield.urls')),
     url(r'^tinymce/', include('tinymce.urls')),

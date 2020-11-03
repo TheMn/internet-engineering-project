@@ -1,7 +1,16 @@
 from django.shortcuts import render
 from django.db.models import Q
 from postingApp.models import PostStuff
-from .models import Team, Pansouq, Transaction, Participant
+from .models import Team, Pansouq, Transaction, Participant, Challenge
+
+
+def students_list(request, challenge_id):
+    challenge = Challenge.objects.get(id=challenge_id)
+    print(challenge, '************************')
+    context = {
+        "challenge": challenge,
+    }
+    return render(request, 'pansouq_students_list.html', context)
 
 
 def pansouq(request, pansouq_id):

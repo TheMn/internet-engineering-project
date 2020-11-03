@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <title>{{ challenge.title }}</title>
+
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>لیست شرکت کنندگان | {{ challenge.title }}</h1>
+<table>
+    <tr>
+        <th>نام و نام خانوادگی</th>
+        <th>گروه</th>
+    </tr>
+    {% for student in challenge.get_participants %}
+
+    <tr>
+        <td>{{ student.user.get_full_name }}</td>
+        <td>{{ student.team.title }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
