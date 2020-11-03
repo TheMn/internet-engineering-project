@@ -33,7 +33,7 @@ class InlineTransaction(admin.TabularInline):
 @admin.register(Challenge)
 class ChallengeAdmin(admin.ModelAdmin):
     inlines = [InlineTransaction]
-    list_filter = ('related_souq', 'creator')
+    list_filter = ('related_souq',)
     list_display = ('title', 'creator', 'file')
     list_display_links = ('title', 'creator', 'file')
     search_fields = ('title',)

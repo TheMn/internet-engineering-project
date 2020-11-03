@@ -17,12 +17,14 @@
 <h1>لیست شرکت کنندگان | {{ challenge.title }}</h1>
 <table>
     <tr>
+        <th>کد</th>
         <th>نام و نام خانوادگی</th>
         <th>گروه</th>
     </tr>
     {% for student in challenge.get_participants %}
 
     <tr>
+        <td>{{ student.user.username }}</td>
         <td>{{ student.user.get_full_name }}</td>
         <td>{{ student.team.title }}</td>
     </tr>
