@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-      <title>{{ challenge.title }}</title>
+    <title>{{ challenge.title }}</title>
 
     <style>
         table, th, td {
@@ -14,21 +14,25 @@
     </style>
 </head>
 <body>
-<h1>لیست شرکت کنندگان | {{ challenge.title }}</h1>
-<table>
-    <tr>
-        <th>کد</th>
-        <th>نام و نام خانوادگی</th>
-        <th>گروه</th>
-    </tr>
-    {% for student in challenge.get_participants %}
+{% if challenge %}
+    <h1>لیست شرکت کنندگان | {{ challenge.title }}</h1>
+    <table>
+        <tr>
+            <th>کد</th>
+            <th>نام و نام خانوادگی</th>
+            <th>گروه</th>
+        </tr>
+        {% for student in challenge.get_participants %}
 
-    <tr>
-        <td>{{ student.user.username }}</td>
-        <td>{{ student.user.get_full_name }}</td>
-        <td>{{ student.team.title }}</td>
-    </tr>
-    {% endfor %}
-</table>
+            <tr>
+                <td>{{ student.user.username }}</td>
+                <td>{{ student.user.get_full_name }}</td>
+                <td>{{ student.team.title }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>چالش مد نظر موجود نیست</p>
+{% endif %}
 </body>
 </html>

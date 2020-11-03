@@ -5,8 +5,11 @@ from .models import Team, Pansouq, Transaction, Participant, Challenge
 
 
 def students_list(request, challenge_id):
-    challenge = Challenge.objects.get(id=challenge_id)
-    print(challenge, '************************')
+    challenge = None
+    try:
+        challenge = Challenge.objects.get(Q(id=challenge_id))
+    except:
+        pass
     context = {
         "challenge": challenge,
     }
