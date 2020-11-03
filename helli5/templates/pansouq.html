@@ -75,7 +75,8 @@
                                             </div>
                                             <!-- Modal footer -->
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-outline-info" data-dismiss="modal">بستن
+                                                <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                                                    بستن
                                                 </button>
                                             </div>
                                         </div>
@@ -150,11 +151,9 @@
                             </div>
                         {% endif %}
                     {% endfor %}
-                    <p class="text-center"><a
-                            href="{% url 'blog' tag='پژوهشی' %}"
-                            class="btn btn-outline-danger px-4 py-3 mt-3">
-                        سایر مطالب در دسته‌بندی پژوهشی
-                    </a></p>
+                    <hr>
+                    <p class="text-center"><a href="{% url 'blog' tag='پژوهشی' %}" class="btn btn-outline-danger"
+                                              style="font-family: Vazir-bold">سایر مطالب در دسته‌بندی پژوهشی</a></p>
                 </div>
             </div>
             {###############################################################################################################}
@@ -264,7 +263,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for item in max_points %}
+                        {% for item in max_points|slice:"0:5" %}
                             <tr>
                                 <th scope="row">{{ forloop.counter }}</th>
                                 <td>{{ item.participant }}</td>
@@ -273,6 +272,48 @@
                         {% endfor %}
                         </tbody>
                     </table>
+                    <p class="text-center"><a href="" data-toggle="modal" data-target="#max-points"
+                                              class="btn btn-outline-info"
+                                              style="font-family: Vazir-bold">لیست ۲۰ نفر اول</a></p>
+                    <div dir="rtl" class="modal fade" id="max-points" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">
+                                        امتیازآورترین دانش‌آموزان
+                                    </h4>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body m-auto">
+                                    <table dir="rtl" class="table table-hover text-center">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">نام و نام‌خانوادگی</th>
+                                            <th scope="col">امتیاز</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for item in max_points %}
+                                            <tr>
+                                                <th scope="row">{{ forloop.counter }}</th>
+                                                <td>{{ item.participant }}</td>
+                                                <td>{{ item.total_points }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                                        بستن
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
