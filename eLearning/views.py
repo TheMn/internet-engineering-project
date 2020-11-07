@@ -16,7 +16,11 @@ def check_classes(request):
             '111': '27475',
             '112': '27366',
             '121': '27590',
-            '122': '27715'
+            '122': '27715',
+            'zaA': '93411',
+            'zaB': '93463',
+            'zaC': '93515',
+            'webinar': '27838'
 
         }
         start_times = {
@@ -51,47 +55,121 @@ def check_classes(request):
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '101') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
-                response = response.content
-                students = xmltodict.parse(response)
-                adobe_students.append(students)
+                try:
+                    response = response.content
+                    students = xmltodict.parse(response)
+                    adobe_students.append(students)
+                except Exception:
+                    adobe_students = []
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '102') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
-                response = response.content
-                adobe_students.append(xmltodict.parse(response))
+                tmp = adobe_students
+                try:
+                    response = response.content
+                    students = xmltodict.parse(response)
+                    adobe_students.append(students)
+                except Exception:
+                    adobe_students = tmp
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '103') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
-                response = response.content
-                adobe_students.append(xmltodict.parse(response))
+                tmp = adobe_students
+                try:
+                    response = response.content
+                    students = xmltodict.parse(response)
+                    adobe_students.append(students)
+                except Exception:
+                    adobe_students = tmp
             elif cls == '11':
                 adobe_students = []
                 all_students = User.objects.filter(username__regex='98d*').all()
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '111') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
-                response = response.content
-                students = xmltodict.parse(response)
-                adobe_students.append(students)
+                try:
+                    response = response.content
+                    students = xmltodict.parse(response)
+                    adobe_students.append(students)
+                except Exception:
+                    adobe_students = []
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '112') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
-                response = response.content
-                adobe_students.append(xmltodict.parse(response))
+                tmp = adobe_students
+                try:
+                    response = response.content
+                    students = xmltodict.parse(response)
+                    adobe_students.append(students)
+                except Exception:
+                    adobe_students = tmp
             elif cls == '12':
                 adobe_students = []
                 all_students = User.objects.filter(username__regex='97d*').all()
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '121') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
-                response = response.content
-                students = xmltodict.parse(response)
-                adobe_students.append(students)
+                try:
+                    response = response.content
+                    students = xmltodict.parse(response)
+                    adobe_students.append(students)
+                except Exception:
+                    adobe_students = []
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '122') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
-                response = response.content
-                adobe_students.append(xmltodict.parse(response))
+                tmp = adobe_students
+                try:
+                    response = response.content
+                    students = xmltodict.parse(response)
+                    adobe_students.append(students)
+                except Exception:
+                    adobe_students = tmp
+            elif cls == 'zaban':
+                adobe_students = []
+                all_students = User.objects.filter(username__regex='98d*').all()
+                all_students += User.objects.filter(username__regex='99d*').all()
+                response = requests.get(
+                    'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
+                        'zaA') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
+                try:
+                    response = response.content
+                    students = xmltodict.parse(response)
+                    adobe_students.append(students)
+                except Exception:
+                    adobe_students = []
+                response = requests.get(
+                    'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
+                        'zaB') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
+                tmp = adobe_students
+                try:
+                    response = response.content
+                    students = xmltodict.parse(response)
+                    adobe_students.append(students)
+                except Exception:
+                    adobe_students = tmp
+                response = requests.get(
+                    'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
+                        'zaC') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
+                tmp = adobe_students
+                try:
+                    response = response.content
+                    students = xmltodict.parse(response)
+                    adobe_students.append(students)
+                except Exception:
+                    adobe_students = tmp
+            elif cls == 'webinar':
+                adobe_students = []
+                all_students = User.objects.filter(username__regex='9d*').all()
+                response = requests.get(
+                    'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
+                        'webinar') + '&' + generate_date_query_param('08:00:00', '23:00:00') + '&session=' + breeze)
+                try:
+                    response = response.content
+                    students = xmltodict.parse(response)
+                    adobe_students.append(students)
+                except Exception:
+                    adobe_students = []
 
             checks = {}
             emails = {}
