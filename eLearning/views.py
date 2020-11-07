@@ -128,7 +128,7 @@ def check_classes(request):
             elif cls == 'zaban':
                 adobe_students = []
                 all_students = User.objects.filter(username__regex='98d*').all()
-                all_students += User.objects.filter(username__regex='99d*').all()
+                all_students = all_students | User.objects.filter(username__regex='99d*').all()
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         'zaA') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
@@ -176,11 +176,13 @@ def check_classes(request):
             for adobe_student in adobe_students:
                 if adobe_student['results']['report-meeting-attendance'] is not None:
                     for student in adobe_student['results']['report-meeting-attendance']['row']:
-                        date_end = 'todayT' + end_times[zang] + '.'  # to do split with "T" character
-                        if 'date-end' in student.keys():
-                            date_end = student['date-end']
-                        if 'login' in student.keys():
-                            emails[student['login']] = {'time_in': student['date-created'], 'time_out': date_end}
+                        print(type(student))
+                        if isinstance(student, dict):
+                            date_end = 'todayT' + end_times[zang] + '.'  # to do split with "T" character
+                            if 'date-end' in student.keys():
+                                date_end = student['date-end']
+                            if 'login' in student.keys():
+                                emails[student['login']] = {'time_in': student['date-created'], 'time_out': date_end}
             for student in all_students:
                 if student.email in emails.keys():
                     row = {'check': True,
@@ -203,8 +205,8 @@ def check_classes(request):
                 checks[student.email] = row
             context = {'response': checks}
             return render(request, 'pa_page.html', context)
-    except:
-        return render(request, 'pa_page.html', {})
+    except Exception:
+        return render(request, 'pa_page.html', context)
 
 
 def generate_date_query_param(start_time, end_time):
