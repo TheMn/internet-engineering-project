@@ -99,7 +99,169 @@
             </div>
 
             {###############################################################################################################}
-            <div class="col-lg-4">
+
+            {###############################################################################################################}
+            <div class="col-lg-6">
+                <div class="col-12 text-center border border-secondary rounded m-1">
+                    <input class="form-control-plaintext text-center" type="text" id="points-table-search"
+                           onkeyup="search_table('points-table', 'points-table-search')"
+                           placeholder="جدول امتیازات تیم‌ها"
+                           title="برای جستجو کلیک کنید">
+
+                    <table dir="rtl" id="points-table" class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">نام تیم</th>
+                            <th scope="col">مجموع</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for team in teams_list %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>
+                                    <div>
+                                        <p class="text-center">
+                                            <a class="text-muted" data-toggle="collapse"
+                                               href="#team{{ team.id }}"
+                                               role="button"
+                                               aria-expanded="false" aria-controls="team{{ team.id }}">
+                                                {{ team.title }}
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="collapse" id="team{{ team.id }}">
+                                        <div class="card card-body">
+                                            {% for member in team.get_members %}
+                                                {{ member.user.last_name }}{% if not forloop.last %} -{% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{ team.score }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="col-12  border border-secondary rounded m-1">
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ item.participant }}</td>
+                        <td>{{ item.total_points }}</td>
+                    </tr>
+
+                    <input class="form-control-plaintext text-center" type="text" id="max-table-search"
+                           onkeyup="search_table('max-table', 'max-table-search')"
+                           placeholder="امتیازآور ترین دانش‌آموزان"
+                           title="برای جستجو کلیک کنید">
+
+                    <table dir="rtl" id="max-table" class="table table-hover text-center">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">نام و نام‌خانوادگی</th>
+                            <th scope="col">امتیاز</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in max_points|slice:"0:15" %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ item.participant }}</td>
+                                <td>{{ item.total_points }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <p class="text-center"><a href="" data-toggle="modal" data-target="#max-points"
+                                              class="btn btn-outline-info"
+                                              style="font-family: Vazir-bold">مشاهده‌ی لیست کامل</a></p>
+                    <div dir="rtl" class="modal fade" id="max-points" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">
+                                        امتیازآورترین دانش‌آموزان
+                                    </h4>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body m-auto">
+                                    <table dir="rtl" class="table table-hover text-center">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">نام و نام‌خانوادگی</th>
+                                            <th scope="col">امتیاز</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for item in max_points %}
+                                            <tr>
+                                                <th scope="row">{{ forloop.counter }}</th>
+                                                <td>{{ item.participant }}</td>
+                                                <td>{{ item.total_points }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                                        بستن
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="col-12  border border-secondary rounded m-1">
+                    <input class="form-control-plaintext text-center" type="text" id="team-table-search"
+                           onkeyup="search_table('team-table', 'team-table-search')"
+                           placeholder="تیم من"
+                           title="برای جستجو کلیک کنید">
+                    {% if user.is_authenticated %}
+                        {% if not user.participant.team %}
+                            <h5 class="text-center">شما عضو هیچ تیمی نیستید</h5>
+                        {% else %}
+                            <h5 dir="rtl" class="text-center">شما عضو تیم {{ user.participant.team.title }} هستید.</h5>
+                            <table dir="rtl" id="team-table" class="table table-hover text-center">
+                                <thead>
+                                <tr>
+                                    {#                                    <th scope="col">#</th>#}
+                                    <th scope="col">چالش</th>
+                                    <th scope="col">اعضای تیم</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for participant in user.participant.team.get_members %}
+                                    <tr>
+                                        {#                                        <th scope="row">{{ forloop.counter }}</th>#}
+                                        <td onclick="window.location='{{ participant.challenging_in.file.url }}';"
+                                            style="cursor: pointer">{{ participant.challenging_in }}</td>
+                                        <td>{{ participant }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% endif %}
+
+                    {% else %}
+                        <h5 class="text-center">شما عضو هیچ تیمی نیستید</h5>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-lg-5">
 
                 <div class="col-12 text-center border border-secondary rounded m-1">
                     <p class="text-center">آخرین مطالب مرتبط</p>
@@ -156,166 +318,10 @@
                                               style="font-family: Vazir-bold">سایر مطالب در دسته‌بندی پژوهشی</a></p>
                 </div>
             </div>
-            {###############################################################################################################}
-            <div class="col-lg-8">
-                <div class="col-12 text-center border border-secondary rounded m-1">
-                    <input class="form-control-plaintext text-center" type="text" id="points-table-search"
-                           onkeyup="search_table('points-table', 'points-table-search')"
-                           placeholder="جدول امتیازات تیم‌ها"
-                           title="برای جستجو کلیک کنید">
 
-                    <table dir="rtl" id="points-table" class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">نام تیم</th>
-                            <th scope="col">مجموع</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for team in teams_list %}
-                            <tr>
-                                <th scope="row">{{ forloop.counter }}</th>
-                                <td>
-                                    <div>
-                                        <p class="text-center">
-                                            <a class="text-muted" data-toggle="collapse"
-                                               href="#team{{ team.id }}"
-                                               role="button"
-                                               aria-expanded="false" aria-controls="team{{ team.id }}">
-                                                {{ team.title }}
-                                            </a>
-                                        </p>
-                                    </div>
-                                    <div class="collapse" id="team{{ team.id }}">
-                                        <div class="card card-body">
-                                            {% for member in team.get_members %}
-                                                {{ member.user.last_name }}{% if not forloop.last %} -{% endif %}
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>{{ team.score }}</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
 
-            <div class="col-lg-6">
-                <div class="col-12  border border-secondary rounded m-1">
-                    <input class="form-control-plaintext text-center" type="text" id="team-table-search"
-                           onkeyup="search_table('team-table', 'team-table-search')"
-                           placeholder="تیم من"
-                           title="برای جستجو کلیک کنید">
-                    {% if user.is_authenticated %}
-                        {% if not user.participant.team %}
-                            <h5 class="text-center">شما عضو هیچ تیمی نیستید</h5>
-                        {% else %}
-                            <h5 dir="rtl" class="text-center">شما عضو تیم {{ user.participant.team.title }} هستید.</h5>
-                            <table dir="rtl" id="team-table" class="table table-hover text-center">
-                                <thead>
-                                <tr>
-                                    {#                                    <th scope="col">#</th>#}
-                                    <th scope="col">چالش</th>
-                                    <th scope="col">اعضای تیم</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% for participant in user.participant.team.get_members %}
-                                    <tr>
-                                        {#                                        <th scope="row">{{ forloop.counter }}</th>#}
-                                        <td onclick="window.location='{{ participant.challenging_in.file.url }}';"
-                                            style="cursor: pointer">{{ participant.challenging_in }}</td>
-                                        <td>{{ participant }}</td>
-                                    </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
-                        {% endif %}
 
-                    {% else %}
-                        <h5 class="text-center">شما عضو هیچ تیمی نیستید</h5>
-                    {% endif %}
-                </div>
-            </div>
 
-            <div class="col-lg-6">
-                <div class="col-12  border border-secondary rounded m-1">
-                    <tr>
-                        <th scope="row">{{ forloop.counter }}</th>
-                        <td>{{ item.participant }}</td>
-                        <td>{{ item.total_points }}</td>
-                    </tr>
-
-                    <input class="form-control-plaintext text-center" type="text" id="max-table-search"
-                           onkeyup="search_table('max-table', 'max-table-search')"
-                           placeholder="امتیازآور ترین دانش‌آموزان"
-                           title="برای جستجو کلیک کنید">
-
-                    <table dir="rtl" id="max-table" class="table table-hover text-center">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">نام و نام‌خانوادگی</th>
-                            <th scope="col">امتیاز</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for item in max_points|slice:"0:5" %}
-                            <tr>
-                                <th scope="row">{{ forloop.counter }}</th>
-                                <td>{{ item.participant }}</td>
-                                <td>{{ item.total_points }}</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                    <p class="text-center"><a href="" data-toggle="modal" data-target="#max-points"
-                                              class="btn btn-outline-info"
-                                              style="font-family: Vazir-bold">لیست ۲۰ نفر اول</a></p>
-                    <div dir="rtl" class="modal fade" id="max-points" tabindex="-1">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title">
-                                        امتیازآورترین دانش‌آموزان
-                                    </h4>
-                                </div>
-                                <!-- Modal body -->
-                                <div class="modal-body m-auto">
-                                    <table dir="rtl" class="table table-hover text-center">
-                                        <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">نام و نام‌خانوادگی</th>
-                                            <th scope="col">امتیاز</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        {% for item in max_points %}
-                                            <tr>
-                                                <th scope="row">{{ forloop.counter }}</th>
-                                                <td>{{ item.participant }}</td>
-                                                <td>{{ item.total_points }}</td>
-                                            </tr>
-                                        {% endfor %}
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">
-                                        بستن
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
     {#    <img src="{% static 'images/ته-برگ-پن-سوق-پژوهشی-حلی-۵.jpg' %}" class="img-fluid" width="100%">#}
