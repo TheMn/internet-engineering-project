@@ -93,6 +93,9 @@ class Participant(models.Model):
     def __str__(self):
         return self.user.first_name + ' ' + self.user.last_name
 
+    def get_total_earned(self):
+        return Transaction.objects.filter(participant_id=self.id).aggregate(models.Sum('points'))['points__sum']
+
 
 class Transaction(models.Model):
     participant = models.ForeignKey(Participant, on_delete=models.CASCADE, verbose_name='شرکت کننده')

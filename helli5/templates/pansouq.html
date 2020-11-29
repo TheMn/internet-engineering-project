@@ -237,7 +237,7 @@
                             <table dir="rtl" id="team-table" class="table table-hover text-center">
                                 <thead>
                                 <tr>
-                                    {#                                    <th scope="col">#</th>#}
+                                    <th scope="col">امتیاز کسب شده</th>
                                     <th scope="col">چالش</th>
                                     <th scope="col">اعضای تیم</th>
                                 </tr>
@@ -245,7 +245,7 @@
                                 <tbody>
                                 {% for participant in user.participant.team.get_members %}
                                     <tr>
-                                        {#                                        <th scope="row">{{ forloop.counter }}</th>#}
+                                        <th scope="row">{{ participant.get_total_earned }}</th>
                                         <td onclick="window.location='{{ participant.challenging_in.file.url }}';"
                                             style="cursor: pointer">{{ participant.challenging_in }}</td>
                                         <td>{{ participant }}</td>
