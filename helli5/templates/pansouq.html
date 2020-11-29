@@ -165,14 +165,16 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">نام و نام‌خانوادگی</th>
+                            {#                            <th scope="col">تیم</th>#}
                             <th scope="col">امتیاز</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {% for item in max_points|slice:"0:15" %}
+                        {% for item in max_points|slice:"0:10" %}
                             <tr>
                                 <th scope="row">{{ forloop.counter }}</th>
-                                <td>{{ item.participant }}</td>
+                                <td>{{ item.participant }} ({{ item.participant.team.title }})</td>
+                                {#                                <td></td>#}
                                 <td>{{ item.total_points }}</td>
                             </tr>
                         {% endfor %}
@@ -180,7 +182,7 @@
                     </table>
                     <p class="text-center"><a href="" data-toggle="modal" data-target="#max-points"
                                               class="btn btn-outline-info"
-                                              style="font-family: Vazir-bold">مشاهده‌ی لیست کامل</a></p>
+                                              style="font-family: Vazir-bold">لیست ۴۰ نفر اول</a></p>
                     <div dir="rtl" class="modal fade" id="max-points" tabindex="-1">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -204,7 +206,7 @@
                                         {% for item in max_points %}
                                             <tr>
                                                 <th scope="row">{{ forloop.counter }}</th>
-                                                <td>{{ item.participant }}</td>
+                                                <td>{{ item.participant }} ({{ item.participant.team.title }})</td>
                                                 <td>{{ item.total_points }}</td>
                                             </tr>
                                         {% endfor %}
@@ -237,17 +239,17 @@
                             <table dir="rtl" id="team-table" class="table table-hover text-center">
                                 <thead>
                                 <tr>
-                                    <th scope="col">امتیاز کسب شده</th>
-                                    <th scope="col">چالش</th>
+                                    <th scope="col">چالش فعلی</th>
+                                    <th scope="col">مجموع امتیازات کسب شده</th>
                                     <th scope="col">اعضای تیم</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {% for participant in user.participant.team.get_members %}
                                     <tr>
-                                        <th scope="row">{{ participant.get_total_earned }}</th>
                                         <td onclick="window.location='{{ participant.challenging_in.file.url }}';"
                                             style="cursor: pointer">{{ participant.challenging_in }}</td>
+                                        <td scope="row">{{ participant.get_total_earned }}</td>
                                         <td>{{ participant }}</td>
                                     </tr>
                                 {% endfor %}
@@ -318,8 +320,6 @@
                                               style="font-family: Vazir-bold">سایر مطالب در دسته‌بندی پژوهشی</a></p>
                 </div>
             </div>
-
-
 
 
         </div>
