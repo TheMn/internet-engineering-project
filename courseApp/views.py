@@ -86,7 +86,6 @@ def upload_report(request):
                 student_report.save()
                 path = settings.MEDIA_ROOT + '/reports/' + str(report.id)
                 if not os.path.isdir(path):
-                    # print('lks;dfk;lsdfk')
                     os.makedirs(path)
                 with open(path + '/' + hashname, 'wb+') as destination:
                     for chunk in file.chunks():
@@ -111,14 +110,12 @@ def student_reports(request):
             "link": report_student.report_url
         }
         reports.append(report)
-    count = len(Reports.objects.all())
-    if len(reports) < count:
+    if user.profile.financial_problem:
         report = {
-            "name": 'بنا بر یکی از دلایل زیر، چهارشنبه ۴ تیرماه یکی از اولیاتون جهت دریافت کارنامه به مدرسه '
-                    'مراجعه کنند‌: ' + "\n" + 'وجود درس مردودی یا عدم تسویه حساب مالی یا درخواست مشاور',
+            "name": 'برای دریافت کارنامه به مدرسه مراجعه کنید.',
             "link": '#'
         }
-    reports.append(report)
+        reports = [report]
     context = {
         'reports': reports,
     }

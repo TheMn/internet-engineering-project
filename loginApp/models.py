@@ -223,6 +223,7 @@ class Profile(models.Model):
     birth_date = models.DateField(null=True, blank=True)
     job_title = models.CharField(max_length=50, default='دانش آموز')
     description = tinymce_models.HTMLField()
+    financial_problem = models.BooleanField(default=False)
 
     CHOICE = [
         ('math', 'ریاضی'),

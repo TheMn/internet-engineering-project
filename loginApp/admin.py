@@ -17,7 +17,7 @@ class PreRegistrationAdmin(admin.ModelAdmin):
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'job_title', 'grade', 'group',)
+    list_display = ('user', 'job_title', 'grade', 'group', 'financial_problem',)
     list_filter = ('grade', 'group',)
 
 
