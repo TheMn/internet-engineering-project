@@ -163,7 +163,7 @@ def check_classes(request):
                 all_students = User.objects.filter(username__regex='9d*').all()
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
-                        'webinar') + '&' + generate_date_query_param('08:00:00', '23:00:00') + '&session=' + breeze)
+                        'webinar') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
                 try:
                     response = response.content
                     students = xmltodict.parse(response)
