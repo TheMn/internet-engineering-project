@@ -160,8 +160,7 @@ def check_classes(request):
                     adobe_students = tmp
             elif cls == 'webinar':
                 adobe_students = []
-                all_students = User.objects.filter(username__regex='97*').all() | User.objects.filter(
-                    username__regex='98*').all() | User.objects.filter(username__regex='99*').all()
+                all_students = User.objects.filter(username__regex='9d*').order_by('+username')
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         'webinar') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
