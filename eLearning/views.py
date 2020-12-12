@@ -202,7 +202,7 @@ def check_classes(request):
                        'mom_phone': student.profile.mom_number,
                        'student_phone': student.profile.phone}
             checks[student.email] = row
-        sorted(checks, key=lambda x: int(x[4]))
+        sorted(checks, key=lambda x: x[4])
         context = {'response': checks}
         return render(request, 'pa_page.html', context)
 
