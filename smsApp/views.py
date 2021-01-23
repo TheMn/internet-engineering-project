@@ -12,7 +12,7 @@ from loginApp.models import User
 
 # Create your views here.
 @csrf_protect
-@has_perm('send_sms')
+@has_perm('loginApp.send_sms')
 def sms(request):
 
     if request.method == "POST":
