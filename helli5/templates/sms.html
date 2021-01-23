@@ -51,27 +51,36 @@
         <form method="post" action="{% url 'sms' %}">
             {% csrf_token %}
             <div class="row">
-                <div class="col-6">
+                <div class="col-4">
                     {{ sms_form.field_10_student|as_crispy_field }}
                 </div>
-                <div class="col-6">
+                <div class="col-4">
                     {{ sms_form.field_11_student|as_crispy_field }}
                 </div>
-                <div class="col-6">
+                <div class="col-4">
+                    {{ sms_form.field_12_student|as_crispy_field }}
+                </div>
+                <div class="col-4">
                     {{ sms_form.field_10_mom|as_crispy_field }}
                 </div>
-                <div class="col-6">
+                <div class="col-4">
                     {{ sms_form.field_11_mom|as_crispy_field }}
                 </div>
-                 <div class="col-6">
+                <div class="col-4">
+                    {{ sms_form.field_12_mom|as_crispy_field }}
+                </div>
+                <div class="col-4">
                     {{ sms_form.field_10_dad|as_crispy_field }}
                 </div>
-                <div class="col-6">
+                <div class="col-4">
                     {{ sms_form.field_11_dad|as_crispy_field }}
                 </div>
-                <div class="col-6">
-                    {{ sms_form.teacher|as_crispy_field }}
+                <div class="col-4">
+                    {{ sms_form.field_12_dad|as_crispy_field }}
                 </div>
+            </div>
+            <div class="col-12">
+                {{ sms_form.teacher|as_crispy_field }}
             </div>
             {{ sms_form.text|as_crispy_field }}
             <button type="submit">ارسال</button>
