@@ -214,9 +214,14 @@ def generate_date_query_param(start_time, end_time):
     year = date.year
     month = date.month
     day = date.day
+    if day % 10 == day:
+        day = '0' + str(day)
+    if month %10 == month:
+        month = '0' + str(month)
     return 'filter-gt-date-created=' + str(year) + '-' + str(month) + '-' + str(
         day) + 'T' + start_time + '&filter-lt-date-created=' + str(year) + '-' + str(month) + '-' + str(
         day) + 'T' + end_time
+
 
 
 def elearning_stuff(request):
