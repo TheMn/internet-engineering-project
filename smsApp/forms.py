@@ -9,9 +9,6 @@ class smsForm(forms.ModelForm):
     field_11_student = forms.MultipleChoiceField(required=False, label='دانش آموزان پایه یازدهم')
     field_11_mom = forms.MultipleChoiceField(required=False, label='مادر دانش آموزان پایه یاردهم')
     field_11_dad = forms.MultipleChoiceField(required=False, label='پدر دانش آموزان پایه یازدهم')
-    field_12_student = forms.MultipleChoiceField(required=False, label='پدر دانش آموزان پایه دوازدهم')
-    field_12_mom = forms.MultipleChoiceField(required=False, label='پدر دانش آموزان پایه دوازدهم')
-    field_12_dad = forms.MultipleChoiceField(required=False, label='پدر دانش آموزان پایه دوازدهم')
     teacher = forms.MultipleChoiceField(required=False, label='دبیران')
     text = forms.CharField(widget=forms.Textarea(attrs={
         'class': 'form-control',
@@ -21,23 +18,17 @@ class smsForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         choice_10_student = [(s.profile.phone, s.first_name + ' ' + s.last_name) for s in
-                             User.objects.filter(username__regex='99d*').all()]
+                             User.objects.filter(profile__grade=10).all()]
         choice_10_mom = [(s.profile.mom_number, s.first_name + ' ' + s.last_name) for s in
-                         User.objects.filter(username__regex='99d*').all()]
+                         User.objects.filter(profile__grade=10).all()]
         choice_10_dad = [(s.profile.dad_number, s.first_name + ' ' + s.last_name) for s in
-                         User.objects.filter(username__regex='99d*').all()]
+                         User.objects.filter(profile__grade=10).all()]
         choice_11_mom = [(s.profile.mom_number, s.first_name + ' ' + s.last_name) for s in
-                         User.objects.filter(username__regex='98d*').all()]
+                         User.objects.filter(profile__grade=11).all()]
         choice_11_dad = [(s.profile.dad_number, s.first_name + ' ' + s.last_name) for s in
-                         User.objects.filter(username__regex='98d*').all()]
+                         User.objects.filter(profile__grade=11).all()]
         choice_11_student = [(s.profile.phone, s.first_name + ' ' + s.last_name) for s in
-                             User.objects.filter(username__regex='98d*').all()]
-        choice_12_student = [(s.profile.phone, s.first_name + ' ' + s.last_name) for s in
-                             User.objects.filter(username__regex='97d*').all()]
-        choice_12_mom = [(s.profile.mom_number, s.first_name + ' ' + s.last_name) for s in
-                         User.objects.filter(username__regex='97d*').all()]
-        choice_12_dad = [(s.profile.dad_number, s.first_name + ' ' + s.last_name) for s in
-                         User.objects.filter(username__regex='97d*').all()]
+                             User.objects.filter(profile__grade=11).all()]
         choice_teachers = [(s.profile.phone, s.first_name + ' ' + s.last_name) for s in
                            User.objects.filter(groups__name='Teacher').all()]
         self.fields['field_10_student'] = forms.MultipleChoiceField(required=False, choices=choice_10_student,
@@ -52,12 +43,6 @@ class smsForm(forms.ModelForm):
                                                                 label='مادر دانش آموزان پایه یاردهم')
         self.fields['field_11_dad'] = forms.MultipleChoiceField(required=False, choices=choice_11_dad,
                                                                 label='پدر دانش آموزان پایه یازدهم')
-        self.fields['field_12_student'] = forms.MultipleChoiceField(required=False, choices=choice_12_student,
-                                                                    label='دانش آموزان پایه دوازدهم')
-        self.fields['field_12_dad'] = forms.MultipleChoiceField(required=False, choices=choice_12_dad,
-                                                                    label='پدر دانش آموزان پایه دوازدهم')
-        self.fields['field_12_mom'] = forms.MultipleChoiceField(required=False, choices=choice_12_mom,
-                                                                label='مادر دانش آموزان پایه دوازدهم')
         self.fields['teacher'] = forms.MultipleChoiceField(required=False, choices=choice_teachers,
                                                            label='دبیران')
 
