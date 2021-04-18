@@ -10,8 +10,7 @@ from loginApp.models import User
 def check_classes(request):
     try:
         classes = {
-            '101': '99902',
-            '102': '99981',
+            '10R': '242691',
             '103': '100064',
             '111': '393587',
             '112': '393749',
@@ -24,16 +23,16 @@ def check_classes(request):
 
         }
         start_times = {
-            '1': '7:30:00',
-            '2': '9:05:00',
-            '3': '10:40:00',
-            '4': '12:15:00'
+            '1': '8:00:00',
+            '2': '9:30:00',
+            '3': '10:50:00',
+            '4': '12:10:00'
         }
         end_times = {
-            '1': '9:15:00',
-            '2': '10:50:00',
-            '3': '12:25:00',
-            '4': '14:00:00'
+            '1': '9:35:00',
+            '2': '10:55:00',
+            '3': '12:15:00',
+            '4': '13:35:00'
         }
         zang = request.GET.get('zang')
         cls = request.GET.get('class')
@@ -54,23 +53,13 @@ def check_classes(request):
                 all_students = User.objects.filter(username__regex='99d*')
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
-                        '101') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
+                        '10R') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
                 try:
                     response = response.content
                     students = xmltodict.parse(response)
                     adobe_students.append(students)
                 except Exception:
                     adobe_students = []
-                response = requests.get(
-                    'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
-                        '102') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
-                tmp = adobe_students
-                try:
-                    response = response.content
-                    students = xmltodict.parse(response)
-                    adobe_students.append(students)
-                except Exception:
-                    adobe_students = tmp
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '103') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)

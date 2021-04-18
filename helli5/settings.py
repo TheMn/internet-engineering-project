@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'paymentApp',
     'eLearning',
     'pansouqApp',
+    'smsApp'
 ]
 
 MIDDLEWARE = [
