@@ -8,6 +8,7 @@ from loginApp.models import User
 
 @has_perm('loginApp.check_classes')
 def check_classes(request):
+    # salam
     try:
         classes = {
             '10R': '242691',
