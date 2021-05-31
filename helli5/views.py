@@ -195,7 +195,7 @@ def export(request):
     # Sheet body, remaining rows
     font_style = xlwt.XFStyle()
 
-    rows = Honors.objects.all().values_list('user', 'phone', 'grade', 'job_title', 'mom_number', 'dad_number')
+    rows = Profile.objects.all().values_list('user', 'phone', 'grade', 'job_title', 'mom_number', 'dad_number')
     for row in rows:
         row_num += 1
         for col_num in range(len(row)):
