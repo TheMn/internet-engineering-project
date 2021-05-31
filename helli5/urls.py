@@ -44,7 +44,7 @@ urlpatterns = [
     path('درباره-ما/', views.about, name='about'),
     path('دبیران/', views.teachers, name='teachers'),
     path('bunch_add', views.bunch_add_model, name='bunch_add'),
-    path('export', views.export, name='export'),
+    # path('export', views.export, name='export'),
 
     # path('پیش-ثبت-نام/', pre_registration, name='pre_registration'),
     path('complete/<melli>', pre_registration, name='compelete_form'),
