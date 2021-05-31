@@ -12,6 +12,7 @@ from .forms import BunchAddForm
 from django.http import HttpResponse
 import xlrd
 import xlwt
+from honorsApp.models import Honors
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -186,7 +187,7 @@ def export(request):
     font_style = xlwt.XFStyle()
     font_style.font.bold = True
 
-    columns = ['date', 'title', 'description', 'visible']
+    columns = ['name', 'title', 'title2', 'period']
 
     for col_num in range(len(columns)):
         ws.write(row_num, col_num, columns[col_num], font_style)
@@ -194,7 +195,7 @@ def export(request):
     # Sheet body, remaining rows
     font_style = xlwt.XFStyle()
 
-    rows = SliderContent.objects.all().values_list('date', 'title', 'description', 'visible')
+    rows = Honors.objects.all().values_list('name', 'title', 'title_2', 'period')
     for row in rows:
         row_num += 1
         for col_num in range(len(row)):
