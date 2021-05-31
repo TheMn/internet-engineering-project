@@ -12,7 +12,7 @@ from .forms import BunchAddForm
 from django.http import HttpResponse
 import xlrd
 import xlwt
-from honorsApp.models import Honors
+from loginApp.models import Profile
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -176,10 +176,10 @@ def bunch_add_model(request):
 
 def export(request):
     response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="Slider_contents.xls"'
+    response['Content-Disposition'] = 'attachment; filename="Profile.xls"'
 
     wb = xlwt.Workbook(encoding='utf-8')
-    ws = wb.add_sheet('Slider-Contents')
+    ws = wb.add_sheet('Profile')
 
     # Sheet header, first row
     row_num = 0
@@ -187,7 +187,7 @@ def export(request):
     font_style = xlwt.XFStyle()
     font_style.font.bold = True
 
-    columns = ['name', 'title', 'title2', 'period']
+    columns = ['user', 'phone', 'grade', 'job_title', 'mom_number', 'dad_number']
 
     for col_num in range(len(columns)):
         ws.write(row_num, col_num, columns[col_num], font_style)
@@ -195,7 +195,7 @@ def export(request):
     # Sheet body, remaining rows
     font_style = xlwt.XFStyle()
 
-    rows = Honors.objects.all().values_list('name', 'title', 'title_2', 'period')
+    rows = Honors.objects.all().values_list('user', 'phone', 'grade', 'job_title', 'mom_number', 'dad_number')
     for row in rows:
         row_num += 1
         for col_num in range(len(row)):
