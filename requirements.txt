@@ -10,7 +10,7 @@ django-tinymce==2.8.0
 idna==2.9
 jdatetime==3.6.2
 kavenegar==1.1.2
-Pillow==7.1.2
+Pillow==8.2.0
 pytz==2020.1
 requests==2.24.0
 sqlparse==0.3.1
