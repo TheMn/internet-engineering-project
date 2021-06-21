@@ -100,35 +100,16 @@ class Participant(models.Model):
 class Transaction(models.Model):
     participant = models.ForeignKey(Participant, on_delete=models.CASCADE, verbose_name='شرکت کننده')
     challenge = models.ForeignKey(Challenge, on_delete=models.CASCADE, verbose_name='چالش مربوطه')
-    points = models.FloatField(verbose_name='امتیاز کسب شده',
-                               validators=[
-                                   MaxValueValidator(100),
-                                   MinValueValidator(-100)
-                               ])
-    alpha_correctness = models.FloatField(verbose_name='نسبت درستی پاسخ',
-                                          help_text='یک ضریب بین ۰ تا ۱ در نمره‌ی کسب شده تاثیر مستقیم خواهد داشت',
-                                          validators=[
-                                              MaxValueValidator(1),
-                                              MinValueValidator(0)
-                                          ])
-    beta_ranking = models.FloatField(verbose_name='درصد جبران گذشته',
-                                     help_text='تیم‌هایی که در جدول امتیازات پایین تر هستند، فرصت جبران بیشتری دارند',
-                                     validators=[
-                                         MaxValueValidator(20),
-                                         MinValueValidator(0)
-                                     ])
+    points = models.FloatField(verbose_name='امتیاز کسب شده',)
+
     time_received = jmodels.jDateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ('time_received',)
 
-    def __str__(self):
-        return str(self.participant) + ': ' + str(self.challenge) + ', ' + str(
-            self.points * self.alpha_correctness + self.beta_ranking)
-
     def save(self, *args, **kwargs):
         t = self.participant.team
-        t.add_score(self.points * self.alpha_correctness + self.beta_ranking)
+        t.add_score(self.points)
         t.save()
         super().save(*args, **kwargs)
 
