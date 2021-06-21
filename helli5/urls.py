@@ -46,7 +46,7 @@ urlpatterns = [
     path('bunch_add', views.bunch_add_model, name='bunch_add'),
     # path('export', views.export, name='export'),
 
-    # path('پیش-ثبت-نام/', pre_registration, name='pre_registration'),
+    path('پیش-ثبت-نام/', pre_registration, name='pre_registration'),
     path('complete/<melli>', pre_registration, name='compelete_form'),
     path('students_list/<challenge_id>/', students_list, name='pansouq_students'),
     # path('error503/', views.error503, name='error503'),
