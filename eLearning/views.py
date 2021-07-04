@@ -19,6 +19,7 @@ def check_classes(request):
             'zaA': '93411',
             'zaB': '93463',
             'zaC': '93515',
+            '12m': '29355',
             'webinar': '29501'
 
         }
@@ -85,6 +86,16 @@ def check_classes(request):
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '122') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
+                tmp = adobe_students
+                try:
+                    response = response.content
+                    students = xmltodict.parse(response)
+                    adobe_students.append(students)
+                except Exception:
+                    adobe_students = tmp
+                response = requests.get(
+                    'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
+                        '12m') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
                 tmp = adobe_students
                 try:
                     response = response.content
@@ -205,12 +216,11 @@ def generate_date_query_param(start_time, end_time):
     day = date.day
     if day % 10 == day:
         day = '0' + str(day)
-    if month %10 == month:
+    if month % 10 == month:
         month = '0' + str(month)
     return 'filter-gt-date-created=' + str(year) + '-' + str(month) + '-' + str(
         day) + 'T' + start_time + '&filter-lt-date-created=' + str(year) + '-' + str(month) + '-' + str(
         day) + 'T' + end_time
-
 
 
 def elearning_stuff(request):
