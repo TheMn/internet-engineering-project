@@ -14,12 +14,12 @@ def check_classes(request):
             '103': '100064',
             '111': '393587',
             '112': '393749',
-            '121': '27590',
-            '122': '27715',
+            '121': '28443',
+            '122': '28466',
             'zaA': '93411',
             'zaB': '93463',
             'zaC': '93515',
-            'webinar': '27838'
+            'webinar': '29501'
 
         }
         start_times = {
@@ -48,7 +48,7 @@ def check_classes(request):
             breeze = response.cookies.get('BREEZESESSION')
             all_students = []
             adobe_students = []
-            if cls == '10':
+            if cls == '11':
                 adobe_students = []
                 all_students = User.objects.filter(username__regex='99d*')
                 response = requests.get(
@@ -70,7 +70,7 @@ def check_classes(request):
                     adobe_students.append(students)
                 except Exception:
                     adobe_students = tmp
-            elif cls == '11':
+            elif cls == '12':
                 adobe_students = []
                 all_students = User.objects.filter(username__regex='98d*').all()
                 response = requests.get(
@@ -92,9 +92,9 @@ def check_classes(request):
                     adobe_students.append(students)
                 except Exception:
                     adobe_students = tmp
-            elif cls == '12':
+            elif cls == '10':
                 adobe_students = []
-                all_students = User.objects.filter(username__regex='97d*').all()
+                all_students = User.objects.filter(username__regex='400d*').all()
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '121') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)

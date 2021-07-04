@@ -18,17 +18,17 @@ class smsForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         choice_10_student = [(s.profile.phone, s.first_name + ' ' + s.last_name) for s in
-                             User.objects.filter(profile__grade=10).all()]
+                             User.objects.filter(username__regex='99d*').all()]
         choice_10_mom = [(s.profile.mom_number, s.first_name + ' ' + s.last_name) for s in
-                         User.objects.filter(profile__grade=10).all()]
+                         User.objects.filter(username__regex='99d*').all()]
         choice_10_dad = [(s.profile.dad_number, s.first_name + ' ' + s.last_name) for s in
-                         User.objects.filter(profile__grade=10).all()]
+                         User.objects.filter(username__regex='99d*').all()]
         choice_11_mom = [(s.profile.mom_number, s.first_name + ' ' + s.last_name) for s in
-                         User.objects.filter(profile__grade=11).all()]
+                         User.objects.filter(username__regex='98d*').all()]
         choice_11_dad = [(s.profile.dad_number, s.first_name + ' ' + s.last_name) for s in
-                         User.objects.filter(profile__grade=11).all()]
+                         User.objects.filter(username__regex='98d*').all()]
         choice_11_student = [(s.profile.phone, s.first_name + ' ' + s.last_name) for s in
-                             User.objects.filter(profile__grade=11).all()]
+                             User.objects.filter(username__regex='98d*').all()]
         choice_teachers = [(s.profile.phone, s.first_name + ' ' + s.last_name) for s in
                            User.objects.filter(groups__name='Teacher').all()]
         self.fields['field_10_student'] = forms.MultipleChoiceField(required=False, choices=choice_10_student,

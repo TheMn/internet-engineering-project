@@ -133,7 +133,6 @@ def bunch_add_model(request):
                 if not os.path.isdir(path):
                     os.makedirs(path)
                 with open(path + '/' + file.name, 'wb+') as destination:
-                    print('hello')
                     for chunk in file.chunks():
                         destination.write(chunk)
                 excel_folders = path
