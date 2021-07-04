@@ -44,7 +44,7 @@ def check_classes(request):
             zang_start = start_times.get(zang)
             zang_end = end_times.get(zang)
             response = requests.get(
-                'https://online.allamehelli5.ir/api/xml?action=login&login=mahdighanbari@helli5.ir&password=mahdipass')
+                'https://online.allamehelli5.ir/api/xml?action=login&login=soroushsharify@gmail.com&password=4wmr4wmr')
             breeze = response.cookies.get('BREEZESESSION')
             all_students = []
             adobe_students = []
