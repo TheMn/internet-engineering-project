@@ -75,7 +75,7 @@ def check_classes(request):
                 all_students = User.objects.filter(username__regex='98d*').all()
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
-                        '111') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
+                        '121') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
                 try:
                     response = response.content
                     students = xmltodict.parse(response)
@@ -84,7 +84,7 @@ def check_classes(request):
                     adobe_students = []
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
-                        '112') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
+                        '122') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
                 tmp = adobe_students
                 try:
                     response = response.content
