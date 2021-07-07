@@ -10,10 +10,12 @@ from loginApp.models import User
 def check_classes(request):
     try:
         classes = {
-            '10R': '242691',
-            '103': '100064',
-            '111': '393587',
-            '112': '393749',
+            '10R': '30634',
+            '10M': '30520',
+            '103': '30743',
+            '111': '29901',
+            '112': '30072',
+            '11M': '30237',
             '121': '28443',
             '122': '28466',
             'zaA': '93411',
@@ -51,7 +53,7 @@ def check_classes(request):
             adobe_students = []
             if cls == '11':
                 adobe_students = []
-                all_students = User.objects.filter(username__regex='99d*')
+                all_students = User.objects.filter(username__regex='5399d*')
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '111') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
@@ -61,6 +63,16 @@ def check_classes(request):
                     adobe_students.append(students)
                 except Exception:
                     adobe_students = []
+                response = requests.get(
+                    'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
+                        '11M') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
+                tmp = adobe_students
+                try:
+                    response = response.content
+                    students = xmltodict.parse(response)
+                    adobe_students.append(students)
+                except Exception:
+                    adobe_students = tmp
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '112') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
@@ -73,7 +85,7 @@ def check_classes(request):
                     adobe_students = tmp
             elif cls == '12':
                 adobe_students = []
-                all_students = User.objects.filter(username__regex='98d*').all()
+                all_students = User.objects.filter(username__regex='5398d*').all()
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '121') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
@@ -105,10 +117,10 @@ def check_classes(request):
                     adobe_students = tmp
             elif cls == '10':
                 adobe_students = []
-                all_students = User.objects.filter(username__regex='400d*').all()
+                all_students = User.objects.filter(username__regex='999d*').all()
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
-                        '121') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
+                        '10R') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
                 try:
                     response = response.content
                     students = xmltodict.parse(response)
@@ -117,7 +129,17 @@ def check_classes(request):
                     adobe_students = []
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
-                        '122') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
+                        '103') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
+                tmp = adobe_students
+                try:
+                    response = response.content
+                    students = xmltodict.parse(response)
+                    adobe_students.append(students)
+                except Exception:
+                    adobe_students = tmp
+                response = requests.get(
+                    'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
+                        '10M') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
                 tmp = adobe_students
                 try:
                     response = response.content
@@ -160,7 +182,7 @@ def check_classes(request):
                     adobe_students = tmp
             elif cls == 'webinar':
                 adobe_students = []
-                all_students = User.objects.filter(username__regex='9d*').all()
+                all_students = User.objects.filter(username__regex='d*').all()
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         'webinar') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
