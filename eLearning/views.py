@@ -15,7 +15,7 @@ def check_classes(request):
             '103': '30743',
             '111': '29901',
             '112': '30072',
-            '11M': '30237',
+            '11m': '30237',
             '121': '28443',
             '122': '28466',
             'zaA': '93411',
@@ -53,7 +53,7 @@ def check_classes(request):
             adobe_students = []
             if cls == '11':
                 adobe_students = []
-                all_students = User.objects.filter(username__regex='5399d*')
+                all_students = User.objects.filter(username__regex='3995d*')
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '111') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
@@ -65,7 +65,7 @@ def check_classes(request):
                     adobe_students = []
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
-                        '11M') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
+                        '11m') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
                 tmp = adobe_students
                 try:
                     response = response.content
