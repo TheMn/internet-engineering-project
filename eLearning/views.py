@@ -66,8 +66,6 @@ def check_classes(request):
                 response = requests.get(
                     'https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
                         '112') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
-                print('https://online.allamehelli5.ir/api/xml?action=report-meeting-attendance&sco-id=' + classes.get(
-                    '112') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
                 tmp = adobe_students
                 try:
                     response = response.content
