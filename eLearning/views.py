@@ -196,7 +196,8 @@ def check_classes(request):
                     adobe_students = []
 
             checks = {}
-            emails = {}            for adobe_student in adobe_students:
+            emails = {}
+            for adobe_student in adobe_students:
                 if adobe_student['results']['report-meeting-attendance'] is not None:
                     print('salam')
                     for student in adobe_student['results']['report-meeting-attendance']['row']:
