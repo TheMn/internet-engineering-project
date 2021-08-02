@@ -199,7 +199,6 @@ def check_classes(request):
             emails = {}
             for adobe_student in adobe_students:
                 if adobe_student['results']['report-meeting-attendance'] is not None:
-                    print(adobe_student['results']['report-meeting-attendance']['row'])
                     for student in adobe_student['results']['report-meeting-attendance']['row']:
                         if isinstance(student, dict):
                             date_end = 'todayT' + end_times[zang] + '.'  # to do split with "T" character
