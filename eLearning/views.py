@@ -82,8 +82,9 @@ def check_classes(request):
                 try:
                     response = response.content
                     students = xmltodict.parse(response)
-                    print(students)
+                    print(adobe_students)
                     adobe_students.append(students)
+                    print(adobe_students)
                     print('salam')
                 except Exception:
                     adobe_students = tmp
