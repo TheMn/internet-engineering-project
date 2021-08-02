@@ -80,10 +80,10 @@ def check_classes(request):
                         '112') + '&' + generate_date_query_param(zang_start, zang_end) + '&session=' + breeze)
                 tmp = adobe_students
                 try:
-                    print('salam')
                     response = response.content
                     students = xmltodict.parse(response)
                     adobe_students.append(students)
+                    print('salam')
                 except Exception:
                     adobe_students = tmp
             elif cls == '12':
