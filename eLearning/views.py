@@ -199,12 +199,12 @@ def check_classes(request):
             emails = {}
             for adobe_student in adobe_students:
                 if adobe_student['results']['report-meeting-attendance'] is not None:
-                    print(adobe_student['results']['report-meeting-attendance'])
                     for student in adobe_student['results']['report-meeting-attendance']['row']:
                         if isinstance(student, dict):
                             date_end = 'todayT' + end_times[zang] + '.'  # to do split with "T" character
                             if 'date-end' in student.keys():
                                 date_end = student['date-end']
+                            print(student['login'])
                             if 'login' in student.keys():
                                 emails[student['login']] = {'time_in': student['date-created'], 'time_out': date_end}
             for student in all_students:
