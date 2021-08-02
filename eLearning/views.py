@@ -197,6 +197,7 @@ def check_classes(request):
 
             checks = {}
             emails = {}
+            print(len(adobe_students))
             for adobe_student in adobe_students:
                 if adobe_student['results']['report-meeting-attendance'] is not None:
                     for student in adobe_student['results']['report-meeting-attendance']['row']:
@@ -206,7 +207,6 @@ def check_classes(request):
                                 date_end = student['date-end']
                             if 'login' in student.keys():
                                 emails[student['login']] = {'time_in': student['date-created'], 'time_out': date_end}
-            print(emails)
             for student in all_students:
                 if student.email in emails.keys():
                     row = {'check': True,
