@@ -78,12 +78,12 @@
         <span class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
 
-{#            {% if not user.is_authenticated %}#}
-{#                <li class="nav-item"><a href="{% url 'pre_registration' %}"#}
-{#                                        style="font-family: Vazir-Medium" class="nav-link"><strong>#}
-{#                  پیش ثبت نام پایه دهم#}
-{#                </strong></a></li>#}
-{#            {% endif %}#}
+            {% if not user.is_authenticated %}
+                <li class="nav-item"><a href="{% url 'pre_registration' %}"
+                                        style="font-family: Vazir-Medium" class="nav-link"><strong>
+                  پیش ثبت نام پایه دهم
+                </strong></a></li>
+            {% endif %}
 
                 <li class="nav-item"><a href="{% url 'about' %}" style="font-family: Vazir-Medium" class="nav-link">درباره
                     ما</a></li>
