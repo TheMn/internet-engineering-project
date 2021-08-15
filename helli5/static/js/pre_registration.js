@@ -1,16 +1,16 @@
 function copy_to_clipboard() {
-  /* Get the text field */
-  var copyText = document.getElementById("url_to_copy");
+    /* Get the text field */
+    var copyText = document.getElementById("url_to_copy");
 
-  /* Select the text field */
-  copyText.select();
-  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
 
-  /* Copy the text inside the text field */
-  document.execCommand("copy");
+    /* Copy the text inside the text field */
+    document.execCommand("copy");
 
-  /* Alert the copied text */
-  alert("از طریق آدرس کپی شده می توانید اطلاعات خود را ویرایش کنید");
+    /* Alert the copied text */
+    alert("از طریق آدرس کپی شده می توانید اطلاعات خود را ویرایش کنید");
 }
 
 $(document).ready(function () {
@@ -247,7 +247,7 @@ $(document).ready(function () {
         if (mother_mail.val().length !== 0 && !isEmail(mother_mail.val())) {
             error("ایمیل مادر نا معتبر است.");
         }
-        if (father_phone.val() === undefined || home_phone.val().length !== 11) {
+        if (father_phone.val() === undefined || father_phone.val().length !== 11) {
             error("شماره موبایل پدر نا معتبر است.");
         }
         if (mother_phone.val() === undefined || mother_phone.val().length !== 11) {
@@ -309,7 +309,7 @@ $(document).ready(function () {
             error_element += "<div dir ='rtl' class='alert alert-danger text-right'><strong>" + item + "  </strong></div>\n";
         })
         $("#error-container").append(error_element)
-        error_list=[];
+        error_list = [];
     }
 
     function scroll(id) {
