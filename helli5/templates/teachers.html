@@ -53,7 +53,7 @@
                         <h3 style="font-family: Vazir-Bold; font-size: 18px" class="heading">
                             <a style="color: #2A4324;">{{ prf.user.first_name }} {{ prf.user.last_name }}</a>
                         </h3>
-                        <p style="width: 100%; overflow: hidden; white-space: nowrap;">{{ prf.description|truncatechars:20 }}</p>
+                        <p title="{{prf.description}}">{{ prf.description|truncatechars:80 }}</p>
                         <div style="direction: rtl;position: absolute; left: 15px; bottom: 10px;" class="d-flex align-items-center mt-4">
                             <p style="font-family: Vazir-Medium" class="ml-auto mb-0">
                                 <a style="font-family: Vazir-Medium;

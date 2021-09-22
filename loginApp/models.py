@@ -222,7 +222,7 @@ class Profile(models.Model):
                                       ('12', 'پایه ی دوازدهم')], max_length=2, blank=True, null=True)
     birth_date = models.DateField(null=True, blank=True)
     job_title = models.CharField(max_length=50, default='دانش آموز')
-    description = tinymce_models.HTMLField()
+    description = models.CharField(max_length=150, blank=True)
     financial_problem = models.BooleanField(default=False)
 
     CHOICE = [
