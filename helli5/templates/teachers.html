@@ -24,6 +24,42 @@
 </section>
 
 {% for group_name, group_teachers in groups.items %}
+<section class="container p-3" dir="rtl" style="font-family: Vazir-Medium;">
+    <h2 class="text-center" style="font-family: Vazir-Regular;"><strong>{% if group_name == "سایر" %}
+        سایر گروه ها
+    {% else %}
+    گروه {{ group_name }}
+    {% endif %}</strong></h2>
+    <div class="row container">
+        {% for prf in group_teachers %}
+        <div class="m-auto col-sm-6 col-md-6 col-lg-4">
+            <div class="p-2 row justify-content-center text-center" dir="rtl" style="border-bottom-left-radius: 20px; border-top-right-radius: 20px;">
+
+                <div class="col-4"
+                style="background-image: url({{ prf.img.url }});
+                                        border-top-right-radius: inherit;
+                                        background-repeat: no-repeat;
+                                        background-position: center top;
+                                        background-size: cover;"></div>
+
+                <div class="p-2 text col-8"
+                style="border-bottom-left-radius: inherit;">
+                    <h5><strong>{{ prf.user.first_name }} {{ prf.user.last_name }}</strong></h5>
+                    <small class="text-info"><strong>{{ prf.job_title }}</strong></small>
+                    <hr>
+                    <small>{{ prf.description }}</small>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% if not forloop.last %}
+    <hr>
+    {% endif %}
+</section>
+{% endfor %}
+
+<!-- {% for group_name, group_teachers in groups.items %}
 <section class="ftco-section pt-3 pb-0 bg-white">
     <div class="container">
         <h2 class="text-dark"
@@ -54,11 +90,6 @@
                         <div class="faded">
                             <p style="font-family: Vazir-Medium;
                                     text-align: center">{{ prf.description|safe }}</p>
-<!--                            TODO: add teacher emails or sth else-->
-                            <!--                            <ul class="ftco-social text-center">-->
-                            <!--                                <li class="ftco-animate"><a href="#"><span class="icon-"></span></a>-->
-                            <!--                                </li>-->
-                            <!--                            </ul>-->
                         </div>
                     </div>
                 </div>
@@ -71,5 +102,5 @@
     <hr class="pt-0">
     {% endif %}
 </section>
-{% endfor %}
+{% endfor %} -->
 {% endblock %}
