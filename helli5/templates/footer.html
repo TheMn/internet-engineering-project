@@ -1,93 +1,46 @@
 {% load static %}
-<footer dir="rtl" class="ftco-footer ftco-bg-dark ftco-section">
-    <div class="container">
-
-
-        {#        <p style="color: #232323">#}
-        {#            Copyright &copy;<script>document.write(new Date().getFullYear());</script>#}
-        {#            All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a#}
-        {#                style="color: #232323"#}
-        {#                href="https://colorlib.com" target="_blank">Colorlib</a>#}
-        <div class="row mb-1">
-
-            <div class="col-md-6 col-lg-3">
-                <div class="ftco-footer-widget mb-5">
-                    <h2 style="font-family: Vazir-Bold" class="ftco-heading-2 text-center">دسترسی ها</h2>
-                    <div class="block-23 mb-3">
-                        <ul>
-                            <li><span class="icon icon-map-marker"></span><span style="font-family: Vazir-Medium"
-                                                                                class="text">خیابان ایرانشهر جنوبی، بعد از تقاطع سمیه، پلاک ۵۰</span>
-                            </li>
-                            <li><span style="font-family: Vazir-Medium" class="icon icon-phone"></span><span
-                                    class="text" style="font-family:Vazir-Medium;">۸۸۳۲۹۲۶۷  و ۸۸۳۲۹۲۷۹<br> مالی ۸۸۳۲۹۱۸۲</span></li>
-                            <li><span style="font-family: Vazir-Medium" class="icon icon-at"></span><span
-                                    class="text" style="font-family:Vazir-Medium;">admin[at]allamehelli5.ir</span></li>
-                            <li><span style="font-family: Vazir-Medium" class="icon icon-telegram"></span><a
-                                    href="https://t.me/allamehelli5"><span
-                                    class="text"
-                                    style="font-family:Vazir-Medium; color: inherit">کانال اطلاع رسانی</span></a></li>
-
-                            <!--                            TODO: Add email address-->
-                            <!--                            <li><a href="#"><span style="font-family: Vazir-Medium"-->
-                            <!--                                                  class="icon icon-envelope"></span><span-->
-                            <!--                                    class="text">info@example.com</span></a>-->
-                            <!--                            </li>-->
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3">
-                <div class="ftco-footer-widget mb-5 ml-md-4">
-                    <h2 style="font-family: Vazir-Bold;" class="ftco-heading-2 text-center">پیوندها</h2>
-                    <ul class="list-unstyled">
-                        <li style="font-family:Vazir-Medium; text-align: right; margin-right: -10%"><a
-                                href="https://www.medu.ir/fa/"><span
-                                class="ion-ios-arrow-round-back mr-2" style="line-height:2em"></span>وزارت آموزش و پرورش</a>
-                        </li>
-                        <li style="font-family:Vazir-Medium; text-align: right; margin-right: -10%"><a
-                                href="https://www.bmn.ir/"><span
-                                class="ion-ios-arrow-round-back mr-2" style="line-height:2em"></span>بنیاد ملی
-                            نخبگان</a>
-                        </li>
-                        {#                        <li style="font-family:Vazir-Medium; text-align: right; margin-right: -10%"><a#}
-                        {#                                href="https://www.irysc.com/"><span#}
-                        {#                                class="ion-ios-arrow-round-back mr-2" style="line-height:2em"></span>المپیادهای علمی#}
-                        {#                            ایران</a></li>#}
-
+<footer>
+    <div class="container py-5 px-4">
+        <div class="row">
+            <div class="col col-12 col-md-3">
+                <h5 class="text-md-center mb-3">دسترسی‌ها</h5>
+                <ul>
+                    <li>خیابان ایرانشهر جنوبی، بعد از تقاطع سمیه، پلاک ۵۰</li>
+                    <li>۸۸۳۲۹۲۶۷ و ۸۸۳۲۹۲۷۹ مالی ۸۸۳۲۹۱۸۲</li>
+                    <li>admin[at]allamehelli5.ir</li>
                     </ul>
+                    </div>
+            <div class="col col-12 col-md-3">
+                <h5 class="text-md-center mb-3">پیوندها</h5>
+                <ul>
+                    <li>
+                        <a href="">وزارت آموزش و پرورش</a>
+                    </li>
+                    <li>
+                        <a href="">بنیاد ملی نخبگان</a>
+                    </li>
+                </ul>
                 </div>
+            <div class="col col-12 col-md-3">
+                <h5 class="text-md-center mb-3">عضویت در خبرنامه</h5>
+                <div class="row">
+                    <div class="col p-0">
+                        <input type="email" class="form-control mb-2" placeholder="آدرس ایمیل خود را وارد کنید" />
+                    </div>
+                    <div class="col-auto py-0 pe-1 ps-0">
+                        <button class="btn btn-primary w-100">عضویت</button>
+                    </div>
+                    </div>
             </div>
-
-            <div class="col-md-6 col-lg-3">
-                <div class="ftco-footer-widget mb-5">
-                    <h2 style="font-family: Vazir-Bold" class="ftco-heading-2 text-center">عضویت در خبرنامه</h2>
-                    <form action="{% url 'index' %}" method="POST" class="subscribe-form">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <input type="email" name="email" id="email"
-                                   style="font-family: Vazir-Medium; border-top-right-radius: 20px"
-                                   class="form-control mb-2 text-center"
-                                   placeholder="رایانامه خود را وارد نمایید">
-                            <input style="font-family: Vazir-Medium; border-bottom-left-radius: 20px"
-                                   type="submit"
-                                   name="submit"
-                                   value="عضویت"
-                                   class="form-control submit px-3">
-                        </div>
-                    </form>
+            <div class="col col-12 col-md-3 row pe-md-5">
+                <div class="col col-6">
+                    <img src="{% static 'images/لوگو-دبیرستان-علامه-حلی-۵-دوره-دوم.png' %}"
+                        alt="لوگوی دبیرستان علامه حلی پنج دوره دوم" class="w-100">
                 </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3">
-                <div class="ftco-footer-widget mb-5" style="text-align: center">
-                    <img title="دبیرستان متوسطه دوم علامه حلی پنچ" src="{% static 'images/لوگو-علامه-حلی۵.png' %}"
-                         alt="دبیرستان دوره دوم علامه حلی ۵ تهران"
-                         style="filter: invert(1); height: 75%; width: 75%">
+                <div class="col col-6">
+                    <img src="{% static 'images/لوگو-سمپاد.png' %}" alt="لوگوی سازمان پرورش استعدادهای درخشان" class="w-100">
                 </div>
             </div>
         </div>
-
-
     </div>
 </footer>

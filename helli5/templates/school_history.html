@@ -1,59 +1,28 @@
 {% load static %}
 
-<section class="ftco-intro ftco-section ftco-counter ftco-section ftco-counter img" id="section-counter"
-         style="background-image: url({% static 'images/دبیرستان-پسرانه-علامه-حلی۵-دوره-دوم.jpg' %});" data-stellar-background-ratio="0.6">
-    <div class="overlay" style="width: 100%; height: 100%"></div>
-    <div class="container">
-        <div class="row justify-content-center mb-5 pb-2">
-            <div class="col-md-8 text-center heading-section heading-section-black ftco-animate">
-                <h2 style="color:#dea44a; font-family:Vazir-Bold; text-align: center" class="mb-4">افتخارات</h2>
-                <p style="font-family:Vazir-Medium; text-align: center">
-                    به طور میانگین، از هر ۲۵ دانش آموزی که در حلی ۵ تحصیل کرده اند، ۸ نفر رتبه زیر ۱۰۰۰ رشه ریاضی و تجربی منطقه ۱، یک نفر رتبه زیر
-                    ۱۰۰ رشته ی ریاضی و تجربه منطقه ۱ و ۱ نفر مقام کشوری/جهانی المپیاد کسب کرده است
-                </p>
-            </div>
-        </div>
-        <div class="row d-md-flex align-items-center justify-content-center">
-            <div class="col-lg-10">
-                <div class="row d-md-flex align-items-center">
-
-
-                    <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-                        <div class="block-18">
-                            <div class="icon"><span class="flaticon-doctor"></span></div>
-                            <div class="text">
-                                <strong style="color:#dea44a; font-family:Vazir-Bold" class="number"
-                                        data-number="5">0</strong>
-                                <span style="color:white; font-family:Vazir-Bold; text-align: center">مقام مسابقات کشوری و جهانی</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-                        <div class="block-18">
-                            <div class="icon"><span class="flaticon-doctor"></span></div>
-                            <div class="text">
-                                <strong style="color:#dea44a; font-family:Vazir-Bold" class="number"
-                                        data-number="119">0</strong>
-                                <span style="color:white; font-family:Vazir-Bold; text-align: center">رتبه ی زیر هزار کنکور</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-                        <div class="block-18">
-                            <div class="icon"><span class="flaticon-doctor"></span></div>
-                            <div class="text">
-                                <strong style="color:#dea44a; font-family:Vazir-Bold" class="number"
-                                        data-number="17">0</strong>
-                                <span style="color:white; font-family:Vazir-Bold; text-align: center">مدال المپیاد</span>
-                            </div>
-                        </div>
-                    </div>
-
+    <div class="bg-light text-center py-5">
+        <div class="container px-lg-5">
+            <h1>افتخارات</h1>
+            <p class="fs-4 text-muted mx-auto">
+                به طور میانگین، از هر ۲۵ دانش‌آموزی که در حلی ۵ تحصیل کرده‌اند، ۸
+                نفر رتبه زیر ۱۰۰۰ رشته ریاضی و تجربی منطقه ۱، یک نفر رتبه زیر ۱۰۰
+                رشته‌ی ریاضی و تجربی منطقه ۱ و ۱ نفر مقام کشوری یا جهانی المپیاد کسب
+                کرده است.
+            </p>
+            <div class="row my-5">
+                <div class="col">
+                    <div class="text-secondary h1">۱۷</div>
+                    <div class="h5">مدال المپیاد</div>
                 </div>
-<!--TODO: uncomment this button-->
-                <p style="text-align:center; font-family:Vazir-Medium; text-align: center"><a href="{% url 'honors' %}" class="btn btn-secondary px-4 py-3 mt-3">تالار افتخارات </a></p>
-
+                <div class="col">
+                    <div class="text-secondary h1">۱۱۹</div>
+                    <div class="h5">رتبه زیر هزار کنکور</div>
+                </div>
+                <div class="col">
+                    <div class="text-secondary h1">۵</div>
+                    <div class="h5">مقام مسابقات کشوری و جهانی</div>
+                </div>
             </div>
+            <a href="{% url 'honors' %}" class="btn btn-lg btn-primary rounded-pill">تالار افتخارات</a>
         </div>
     </div>
-</section>
