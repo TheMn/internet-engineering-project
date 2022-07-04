@@ -17,10 +17,7 @@
         <div
             class="carousel-item active text-center position-relative d-flex align-items-center justify-content-center h-100 flex-column px-5">
             <div class="position-absolute top-0 bottom-0 start-0 end-0 h-100"
-                style="background-image: url({{ slider_item.img.url }});
-                                                                                                        filter: brightness(0.3);
-                                                                                                        z-index: -1;
-                                                                                                        background-size: cover;">
+                style="background-image: url({{ slider_item.img.url }}); filter: brightness(0.3); z-index: -1; background-size: cover;">
             </div>
             <h1 class="text-white display-2">
                 {{ slider_item.title }}
@@ -48,22 +45,21 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ post.title }}</h5>
                                 <h6 class="card-subtitle text-muted">
-                                    {{ post.date | date:"d" }}
-                                    {{ post.date | jformat:"%b" }}
-                                    {{ post.date | date:"Y" }}
+                                    {{ post.date | date:"Y/m/d" }}
                                 </h6>
                                 <div class="card-text text-muted text-truncate my-3">
                                     {{ post.description }}
                                 </div>
-                                <a href="{{ post.get_absolute_url }}" class="btn btn-secondary rounded-pill d-inline-block me-auto">
+                                <a href="{{ post.get_absolute_url }}"
+                                    class="btn btn-secondary rounded-pill d-inline-block me-auto">
                                     بیش‌تر بخوانید
                                 </a>
                             </div>
-                            </div>
-                            </div>
-                            {% endfor %}
-                            </div>
+                        </div>
                     </div>
+                    {% endfor %}
+                </div>
+            </div>
             <div class="col pt-5 pt-lg-0">
                 <h2>رویدادها</h2>
                 {% for event in events %}
@@ -73,7 +69,7 @@
                 <div class="text-muted me-1">{{event.text}}</div>
                 {% endfor %}
             </div>
-            </div>
+        </div>
     </div>
 </main>
 {% include 'school_history.html' %}
