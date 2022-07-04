@@ -8,8 +8,8 @@
                     <li>خیابان ایرانشهر جنوبی، بعد از تقاطع سمیه، پلاک ۵۰</li>
                     <li>۸۸۳۲۹۲۶۷ و ۸۸۳۲۹۲۷۹ مالی ۸۸۳۲۹۱۸۲</li>
                     <li>admin[at]allamehelli5.ir</li>
-                    </ul>
-                    </div>
+                </ul>
+            </div>
             <div class="col col-12 col-md-3">
                 <h5 class="text-md-center mb-3">پیوندها</h5>
                 <ul>
@@ -20,17 +20,20 @@
                         <a href="">بنیاد ملی نخبگان</a>
                     </li>
                 </ul>
-                </div>
+            </div>
             <div class="col col-12 col-md-3">
                 <h5 class="text-md-center mb-3">عضویت در خبرنامه</h5>
-                <div class="row">
-                    <div class="col p-0">
-                        <input type="email" class="form-control mb-2" placeholder="آدرس ایمیل خود را وارد کنید" />
+                <form action="{% url 'index' %}" method="POST" class="subscribe-form">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col p-0">
+                            <input required type="email" name="email" class="form-control mb-2" placeholder="آدرس ایمیل خود را وارد کنید" />
+                        </div>
+                        <div class="col-auto py-0 pe-1 ps-0">
+                            <button type="submit" class="btn btn-primary w-100">عضویت</button>
+                        </div>
                     </div>
-                    <div class="col-auto py-0 pe-1 ps-0">
-                        <button class="btn btn-primary w-100">عضویت</button>
-                    </div>
-                    </div>
+                </form>
             </div>
             <div class="col col-12 col-md-3 row pe-md-5">
                 <div class="col col-6">
@@ -38,7 +41,8 @@
                         alt="لوگوی دبیرستان علامه حلی پنج دوره دوم" class="w-100">
                 </div>
                 <div class="col col-6">
-                    <img src="{% static 'images/لوگو-سمپاد.png' %}" alt="لوگوی سازمان پرورش استعدادهای درخشان" class="w-100">
+                    <img src="{% static 'images/لوگو-سمپاد.png' %}" alt="لوگوی سازمان پرورش استعدادهای درخشان"
+                        class="w-100">
                 </div>
             </div>
         </div>
