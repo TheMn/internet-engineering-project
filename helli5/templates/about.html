@@ -2,19 +2,12 @@
 {% load static %}
 {% block title %} درباره ما | وبسایت دبیرستان دوره دوم علامه حلی ۵ تهران {% endblock %}
 {% block content %}
-<section class="hero-wrap hero-wrap-2"
-    style="background-image: url({% static '/images/حیاط-دبیرستان-علامه-حلی-۵.JPG' %});">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-            <div class="col-md-9 ftco-animate text-center">
-                <h1 class="mb-2 bread">درباره ما</h1>
-            </div>
-        </div>
-    </div>
-</section>
+<header class="hero">
+    <div class="hero-image" style="background-image: url({% static '/images/حیاط-دبیرستان-علامه-حلی-۵.JPG' %});"></div>
+    <h1 class="display-3">درباره ما</h1>
+</header>
 
-<section class="container my-5">
+<main class="container my-5">
     <div class="row gx-5">
         <div class="col col-12 col-md-8 lh-lg">
             <h2 class="mb-3">چرا ما؟</h2>
@@ -61,7 +54,7 @@
             شد.
         </div>
     </div>
-</section>
+</main>
 
 {% include 'school_history.html' %}
 
