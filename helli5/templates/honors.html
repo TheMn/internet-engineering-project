@@ -1,117 +1,76 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %} افتخارات {% endblock %}
-{% block extra_head %}
-<link rel="stylesheet" href="{% static 'css/search_honors.css' %}">
-{% endblock %}
 
 {% block content %}
-<section class="hero-wrap hero-wrap-2"
-         style="background-image: url({% static '/images/حیاط-دبیرستان-علامه-حلی-۵.JPG' %});">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-            <div class="col-md-9 ftco-animate text-center">
-                <h1 style="font-family: Vazir-Bold" class="mb-2 bread">افتخارات</h1>
-                <p style="font-family: Vazir-Medium" class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}">صفحه نخست <i
-                        class="ion-ios-arrow-back"></i></a></span> <span>افتخارات <i
-                        class="ion-ios-arrow-back"></i></span></p>
+<header class="hero">
+    <div class="hero-image" style="background-image: url({% static '/images/حیاط-دبیرستان-علامه-حلی-۵.JPG' %});"></div>
+    <h1 class="display-3">افتخارات</h1>
+</header>
+
+<section>
+    <div class="container py-5">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label for="quicksearch" class="form-label">جست‌وجو</label>
+                <input type="text" class="form-control" id="quicksearch" placeholder="عنوانی را جست‌وجو کنید...">
+            </div>
+            <div class="col-md-4">
+                <label for="firstSelector" class="form-label">حوزه</label>
+                <select id="firstSelector" class="form-select">
+                    <option value="">همه ی حوزه ها</option>
+                    {% for cat in all_cats %}
+                    {% if cat.is_honored %}
+                    <option value="{{ cat.title }}">
+                        {{ cat.title }}
+                    </option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label" for="selectorTwo">سال تحصیلی</label>
+                <select id="selectorTwo" class="form-select">
+                    <option>همه دوره‌ها</option>
+                    {% for per in all_periods %}
+                    <option>
+                        {{ per }}
+                    </option>
+                    {% endfor %}
+                </select>
             </div>
         </div>
     </div>
 </section>
 
-<section style="background: #fafafa; padding-top: 1%">
-    <div class="container" dir="rtl">
-        <div class="canvas-95">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <p style="font-family: Vazir-Medium" for="quicksearch">جستجو</p>
-                        <input style="border-top-right-radius: 20px; border-bottom-left-radius: 20px; font-family: Vazir-Medium"
-                               type="text" id="quicksearch"
-                               placeholder="عنوانی را جستجو کنید" class="form-control"/>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <p style="font-family: Vazir-Medium" for="firstSelector">حوزه</p>
-                        <select style="border-top-right-radius: 20px; border-bottom-left-radius: 20px; font-family: Vazir-Medium"
-                                id="firstSelector"
-                                class="filters-select form-control">
-
-                            <option style="font-family: Vazir-Medium" value="*">همه ی حوزه ها</option>
-                            {% for cat in all_cats %}
-                            {% if cat.is_honored %}
-                            <option style="font-family: Vazir-Medium" value=".{{ cat.title }}">
-                                {{ cat.title }}
-                            </option>
-                            {% endif %}
-                            {% endfor %}
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <p style="font-family: Vazir-Medium" for="selectorTwo">سال تحصیلی</p>
-                        <select style="border-top-right-radius: 20px; border-bottom-left-radius: 20px; font-family: Vazir-Medium"
-                                id="selectorTwo" class="filters-select2 form-control">
-                            <option style="font-family: Vazir-Medium" value="*">همه ی دوره ها</option>
-                            {% for per in all_periods %}
-                            <option style="font-family: Vazir-Medium" value=".{{ per }}">
-                                {{ per }}
-                            </option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="ftco-section bg-light" dir="rtl">
-    <div class="container" style="margin-top: -4%">
-        <div class="row grid isotope">
-
+<section>
+    <div class="container pb-5">
+        <div class="row g-3">
             {% for honor_card in all_honors %}
-            <div class="element-item col-md-6 col-lg-4 {{ honor_card.get_class }}" style="width: 100%;">
-                <div dir="rtl"
-                     style="margin-right:5px;margin-top: 10px;margin-left: 5px;margin-bottom: 10px; height:200px;
-                     border-radius: 0px 20px 0px 20px;
-                     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1), 0 5px 15px 0 rgba(0, 0, 0, 0.1);"
-                     class="row">
-
-                    <a class="col-4 block-20 d-flex align-items-end"
-                       style="border-radius: 0px  20px 0px 0px; height:unset;
-                       background-image: url({{ honor_card.avatar.url }});">
-                    </a>
-                    <div style="border-radius: 0px 0px 0px 20px; height:unset;position: relative;" class="col-8 text bg-white p-4">
-                        <h3 style="font-family: Vazir-Bold; font-size: 18px" class="heading">
-                            <a style="color: #2A4324;">{{ honor_card.name }}</a>
-                        </h3>
-                        <p style="font-family: Vazir-Medium; margin-bottom: -5px">{{ honor_card.title }}</p>
-                        <p style="font-family: Vazir-Medium; margin-bottom: -5px ">{{ honor_card.title_2 }}</p>
-                        <p style="font-family: Vazir-Medium;">{{ honor_card.title_3 }}</p>
-                        <div style="direction: rtl;position: absolute; left: 15px; bottom: 10px;" class="d-flex align-items-center mt-4">
-                            <p style="font-family: Vazir-Medium" class="ml-auto mb-0">
-                                <a style="font-family: Vazir-Medium;
-                                color: #74A29E" class="mr-2">{{ honor_card.period }}</a>
-                            </p>
+            <div class="item col col-12 col-md-6 col-lg-4 h-100 {{ honor_card.get_class }}" data-name="{{honor_card.name}}" data-period="{{honor_card.period}}">
+                <div class="bg-light shadow-sm rounded p-3 h-100">
+                    <div class="row">
+                        <div class="col col-auto">
+                            <img src="{{ honor_card.avatar.url }}" width="80" class="rounded">
+                        </div>
+                        <div class="col">
+                            <h4>
+                                {{honor_card.name}}
+                                <div class="badge bg-secondary">{{honor_card.period}}</div>
+                            </h4>
+                            <h6 class="text-muted">{{honor_card.title}}</h6>
+                            <h6 class="text-muted">{{honor_card.title_2}}&zwnj;</h6>
+                            <h6 class="text-muted">{{honor_card.title_3}}&zwnj;</h6>
                         </div>
                     </div>
                 </div>
             </div>
             {% endfor %}
-
         </div>
-        <!--    </div>-->
     </div>
-
 </section>
 
 {% endblock %}
 {% block extra_js %}
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-<script src='https://npmcdn.com/isotope-layout@3/dist/isotope.pkgd.js'></script>
-<script src="{% static 'js/honor.js' %}"></script>
+<script src="{% static 'js/honors.js' %}"></script>
 {% endblock %}
