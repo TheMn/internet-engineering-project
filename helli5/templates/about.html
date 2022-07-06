@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %} درباره ما | وبسایت دبیرستان دوره دوم علامه حلی ۵ تهران {% endblock %}
+{% block extra_head %}
+<style>
+    [data-fslightbox] img {
+        object-fit: cover;
+    }
+</style>
+{% endblock %}
 {% block content %}
 <header class="hero">
     <div class="hero-image" style="background-image: url({% static '/images/حیاط-دبیرستان-علامه-حلی-۵.JPG' %});"></div>
@@ -40,7 +47,7 @@
             انگیزه فعالیت
             هائی در حوزه ی اجتماعی و انسانی به طور هرچه مستقیم تر به دنبال ایجاد محیطی برای رشد چندجانبه شخصیتی، روحی و
             علمی و
-            مهارتی تعدادی از جوانان بودند که نزد خود این محیط را "مدرسه زندگی" می نامیدند.
+            مهارتی تعدادی از جوانان بودند که نزد خود این محیط را «مدرسه زندگی» می‌نامیدند.
             <br>
             سپس به مدت یک سال و نیم، تحقیقات در جزئیات آموزشی، فرهنگی و گردش کارها و بسترسازی برای اجرائی شدن پروژه و
             رفع موانع
@@ -94,22 +101,34 @@
                     دانشجوی مهندسی کامپیوتر دانشگاه شریف
                 </p>
             </div>
-
         </div>
     </div>
 </section>
 
-<div class="row g-0">
-    <div class="col col-3">
-        <img src="{% static 'images/کتابخانه-دبیرستان-علامه-حلی۵.jpg' %}" class="w-100">
+<div class="row g-0" id="images">
+    <div class="col col-6 col-md-3">
+        <a href="{% static 'images/کتابخانه-دبیرستان-علامه-حلی۵.jpg' %}" data-fslightbox="gallery" class="ratio ratio-4x3">
+            <img src="{% static 'images/کتابخانه-دبیرستان-علامه-حلی۵.jpg' %}" class="w-100">
+        </a>
     </div>
-    <div class="col col-3">
-        <img src="{% static 'images/راهرو-امتحانات-دبیرستان-علامه-حلی۵.jpg' %}" alt="" class="w-100">
+    <div class="col col-6 col-md-3">
+        <a href="{% static 'images/راهرو-امتحانات-دبیرستان-علامه-حلی۵.jpg' %}" data-fslightbox="gallery" class="ratio ratio-4x3">
+            <img src="{% static 'images/راهرو-امتحانات-دبیرستان-علامه-حلی۵.jpg' %}" alt="" class="w-100">
+        </a>
     </div>
-    <div class="col col-3"><img src="{% static 'images/ورودی-اصلی-دبیرستان-علامه-حلی۵.jpg' %}" alt="" class="w-100">
+    <div class="col col-6 col-md-3">
+        <a href="{% static 'images/ورودی-اصلی-دبیرستان-علامه-حلی۵.jpg' %}" data-fslightbox="gallery" class="ratio ratio-4x3">
+            <img src="{% static 'images/ورودی-اصلی-دبیرستان-علامه-حلی۵.jpg' %}" alt="" class="w-100">
+        </a>
     </div>
-    <div class="col col-3"><img src="{% static 'images/دبیرستان-پسرانه-علامه-حلی۵-دوره-دوم.jpg' %}" alt=""
-            class="w-100">
+    <div class="col col-6 col-md-3">
+        <a href="{% static 'images/دبیرستان-پسرانه-علامه-حلی۵-دوره-دوم.jpg' %}" data-fslightbox="gallery" class="ratio ratio-4x3">
+            <img src="{% static 'images/دبیرستان-پسرانه-علامه-حلی۵-دوره-دوم.jpg' %}" alt="" class="w-100">
+        </a>
     </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/fslightbox@3.3.1/index.js"></script>
 {% endblock %}
