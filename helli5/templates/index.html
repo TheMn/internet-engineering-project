@@ -3,21 +3,20 @@
 {% load jformat %}
 
 {% block content %}
-<header style="height: 500px" class="carousel slide d-flex justify-content-center align-items-stretch"
-    id="headerCarousel" data-bs-slide="carousel">
+<header style="height: 500px" class="carousel carousel-fade d-flex justify-content-center align-items-stretch"
+    id="headerCarousel" data-bs-ride="carousel">
     <div class="carousel-indicators">
         {% for slider_item in slider_contents %}
-        <button type="button" data-bs-target="#carousel" data-bs-slide-to="{{ forloop.counter0 }}"
+        <button data-bs-target="#headerCarousel" data-bs-slide-to="{{ forloop.counter0 }}"
             class="{% if forloop.counter == 1%}active{%endif%}"></button>
         {% endfor %}
     </div>
     <div class="carousel-inner">
-
         {% for slider_item in slider_contents %}
         <div
-            class="carousel-item active text-center position-relative d-flex align-items-center justify-content-center h-100 flex-column px-5">
+            class="carousel-item text-center position-relative align-items-center justify-content-center h-100 flex-column px-5 {%if forloop.counter == 1%}active{%endif%}">
             <div class="position-absolute top-0 bottom-0 start-0 end-0 h-100"
-                style="background-image: url({{ slider_item.img.url }}); filter: brightness(0.3); z-index: -1; background-size: cover;">
+                style="background-image: url({{ slider_item.img.url }}); filter: brightness(0.3); z-index: -1; background-size: cover; background-position: center center;">
             </div>
             <h1 class="text-white display-2">
                 {{ slider_item.title }}

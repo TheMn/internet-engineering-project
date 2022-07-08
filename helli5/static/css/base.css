@@ -1,0 +1,12 @@
+:root {
+  --bs-body-font-family: ibm plex sans arabic;
+}
+
+svg.bi {
+  width: 1em;
+  height: 1em;
+}
+
+.carousel-item.active {
+  display: flex;
+}
