@@ -39,8 +39,8 @@
                 <div class="row">
                     {% for post in latest_posts %}
                     <div class="col col-12 col-sm-6 col-md-4">
-                        <div class="card border-0 shadow-sm">
-                            <img src="{{ post.img.url }}" alt="{{ post.title }}" class="card-img-top" />
+                        <div class="card border-0 shadow-sm bg-light">
+                            <img src="{{ post.img.url }}" alt="{{ post.title }}" class="card-img-top" loading="lazy" />
                             <div class="card-body">
                                 <h5 class="card-title">{{ post.title }}</h5>
                                 <h6 class="card-subtitle text-muted">
@@ -50,7 +50,7 @@
                                     {{ post.description }}
                                 </div>
                                 <a href="{{ post.get_absolute_url }}"
-                                    class="btn btn-secondary rounded-pill d-inline-block me-auto stretched-link float-start">
+                                    class="btn bg-secondary text-white rounded-pill d-inline-block me-auto stretched-link float-start">
                                     بیش‌تر بخوانید
                                 </a>
                             </div>

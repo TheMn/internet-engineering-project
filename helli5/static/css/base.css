@@ -1,5 +1,10 @@
 :root {
   --bs-body-font-family: ibm plex sans arabic;
+  --bs-light-rgb: 255, 247, 177;
+  --bs-secondary-rgb: 55, 87, 55;
+  --bs-body-bg: rgb(255, 250, 210);
+  --bs-body-color-rgb: 70, 30, 20;
+  /* --bs-heading-color: rgb(var(--bs-body-color-rgb)); */
 }
 
 svg.bi {
