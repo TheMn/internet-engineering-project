@@ -18,7 +18,7 @@
         <div class="col col-12 col-md-7">
             {% if queryset %}
             {% for post in queryset %}
-            <div class="card border-0 shadow-sm mb-2">
+            <div class="card bg-light border-0 shadow-sm mb-3">
                 <div class="card-body">
                     <h4 class="card-title">{{ post.title }}</h4>
                     <h6 class="card-subtitle text-muted">نوشته: {{ post.username.user.last_name }} &bull;
@@ -64,7 +64,7 @@
 
             <h3 class="mb-3">مطالب مهم</h3>
             {% for post in featured_posts %}
-            <div class="card border-0 shadow-sm mb-2">
+            <div class="card bg-light border-0 shadow-sm mb-3">
                 <div class="card-body">
                     <h4 class="card-title">{{ post.title }}</h4>
                     <h6 class="card-subtitle text-muted">
