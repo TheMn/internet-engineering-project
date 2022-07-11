@@ -18,7 +18,7 @@
         <div class="col col-12 col-md-7">
             {% if queryset %}
             {% for post in queryset %}
-            <div class="card border-0 shadow-sm">
+            <div class="card border-0 shadow-sm mb-2">
                 <div class="card-body">
                     <h4 class="card-title">{{ post.title }}</h4>
                     <h6 class="card-subtitle text-muted">نوشته: {{ post.username.user.last_name }} &bull;
@@ -79,7 +79,7 @@
             {% endfor %}
             <h3 class="mt-5 mb-3">تگ ها</h3>
             {% for cat in categories %}
-            <a class="badge bg-secondary text-bg-secondary text-decoration-none fs-6"
+            <a class="badge bg-secondary text-bg-secondary text-decoration-none fs-6 mb-1"
                 href="{% url 'blog' tag=cat.title %}">{{ cat.title }}</a>
             {% endfor %}
         </div>

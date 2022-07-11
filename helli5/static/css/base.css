@@ -18,3 +18,12 @@ svg.bi {
 .carousel-item.active {
   display: flex;
 }
+
+.ratio > img {
+  object-fit: cover;
+}
+
+.blur {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}

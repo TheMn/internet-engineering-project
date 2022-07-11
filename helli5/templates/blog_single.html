@@ -50,7 +50,7 @@
 
                 {% for cat in this_post.categories.all %}
                 <a href="{% url 'blog' tag=cat.title %}"
-                    class="badge bg-secondary text-bg-secondary text-decoration-none fs-6">
+                    class="badge bg-secondary text-bg-secondary text-decoration-none fs-6 mb-1">
                     {{cat.title}}
                 </a>
                 {% endfor %}
