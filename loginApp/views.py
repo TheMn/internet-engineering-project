@@ -53,7 +53,7 @@ def pre_registration(request, melli=None):
                 obj.save()
                 if valid:
                     messages.success(request,
-                                     'مشخصات وارد شده در سامانه ثبت شد، برای پیگیری مراحل بعدی لازم است از چهارشنبه ۳ ام شهریور، ضمن به همراه داشتن ۴قطعه عکس پرسنلی و کارت واکسن ۱۵سالگی (در صورتی که تزریق واکسن در موقعیت فعلی از نظر پروتکل های بهداشتی منعی نداشته باشد)، به صورت حضوری به مدرسه مراجعه کنید.')
+                                     'مشخصات وارد شده در سامانه ثبت شد و برای پیگیری منتظر اطلاعیه‌های بعدی باشید..')
                 else:
                     url = "http://allamehelli5.ir/complete/" + form.cleaned_data['melli_code']
                     messages.warning(request,
