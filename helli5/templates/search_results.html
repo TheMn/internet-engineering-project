@@ -2,22 +2,38 @@
 {% load static %}
 
 {% block content %}
-    <div dir="rtl" class="container col-md-8 div-border py-2 mt-5"
-         style="background: #FAFAFA; border-bottom-left-radius: 20px;
-     border-top-right-radius: 20px; margin-bottom: 20px">
-        {% if queryset %}
-            <p style="text-align: center; font-family: Vazir-Medium">لیست پست هایی که عبارت مورد نظر در آنها یافت شده
-                است</p>
-            <div class="list-group">
-                {% for post in queryset %}
-                    <a href="{{ post.get_absolute_url }}" class="list-group-item"
-                       style="text-align: center">{{ post.title }}</a>
-
-                {% endfor %}
-            </div>
-        {% else %}
-            <p style="text-align: center; font-family: Vazir-Medium">هیچ پستی شامل عبارت مورد نظر شما نیست!</p>
-
-        {% endif %}
-    </div>
+<div class="container">
+    <h1 class="mt-5 mb-4">نتیجه جست‌وجو</h1>
+    {% if queryset %}
+        <div class="row">
+            {% for post in queryset %}
+                <div class="col col-12 col-md-6">
+                    <div class="card bg-light border-0 shadow-sm mb-3">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ post.title }}</h4>
+                            <h6 class="card-subtitle text-muted">
+                                نوشته: {{ post.username.user.last_name }} &bull;
+                                {{post.date|date:"Y/m/d" }}
+                            </h6>
+                            <div class="card-text text-muted mt-3">
+                                <div class="row g-0">
+                                    <div class="col text-truncate">
+                                        {{ post.description }}...
+                                    </div>
+                                    <div class="col col-auto">
+                                        <a href="{{ post.get_absolute_url }}" class="stretched-link">
+                                            بیش‌تر بخوانید
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-muted h4 text-center mt-5 mb-3">نوشته‌ای یافت نشد!</p>
+    {% endif %}
+</div>
 {% endblock %}
