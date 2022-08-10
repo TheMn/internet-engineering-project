@@ -38,10 +38,9 @@
 <main class="container py-5">
     <div>
         <div class="row">
-            <div id="blog_single_content" class="col">
-                <p class="lh-lg fs-4">
-                    {{this_post.text|safe}}
-                </p>
+            <div id="blog_single_content" class="col lh-lg fs-4">
+                {{this_post.text|safe}}
+
                 <h6 class="text-muted">
                     نوشته شده توسط {{this_post.username.user.last_name}}
                     &bull;
