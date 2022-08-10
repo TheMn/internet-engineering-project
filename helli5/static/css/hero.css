@@ -21,6 +21,7 @@
   right: 0;
   z-index: -1;
   background-size: cover;
+  background-color: white; /* makes the filter work properly if the image is transparent */
   background-position: center center;
   filter: brightness(0.3);
 }
