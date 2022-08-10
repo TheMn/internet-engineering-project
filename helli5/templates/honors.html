@@ -50,7 +50,7 @@
                 نتیجه‌ای یافت نشد!
             </div>
             {% for honor_card in all_honors %}
-            <div class="item col col-12 col-md-6 col-lg-4 h-100 {{ honor_card.get_class }}" data-name="{{honor_card.name}}" data-period="{{honor_card.period}}">
+            <div class="item col col-12 col-md-6 col-lg-4 h-100 {{ honor_card.get_class }}" data-period="{{honor_card.period}}">
                 <div class="bg-light shadow-sm rounded p-3 h-100">
                     <div class="row">
                         <div class="col col-auto">
@@ -58,12 +58,18 @@
                         </div>
                         <div class="col">
                             <h4>
-                                {{honor_card.name}}
-                                <div class="badge bg-secondary">{{honor_card.period}}</div>
+                                <span class="honor-name">
+                                    {{honor_card.name}}
+                                </span>
+                                <div class="badge bg-secondary honor-period">
+                                    {{honor_card.period}}
+                                </div>
                             </h4>
-                            <h6 class="text-muted">{{honor_card.title}}</h6>
-                            <h6 class="text-muted">{{honor_card.title_2}}&zwnj;</h6>
-                            <h6 class="text-muted">{{honor_card.title_3}}&zwnj;</h6>
+                            <h6 class="text-muted lh-base honor-text">
+                                {{honor_card.title}}<br>
+                                {{honor_card.title_2}}&zwnj;<br>
+                                {{honor_card.title_3}}&zwnj;
+                            </h6>
                         </div>
                     </div>
                 </div>
