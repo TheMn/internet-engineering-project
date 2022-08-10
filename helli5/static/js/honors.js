@@ -63,12 +63,15 @@ const subjectSelect = document.getElementById('firstSelector')
 const periodSelect = document.getElementById('selectorTwo')
 /** @type {HTMLInputElement} */
 const searchInput = document.getElementById('quicksearch')
+const notFound = document.getElementById('not-found')
 const items = document.querySelectorAll('.item')
 
 function filter() {
   const period = periodSelect.selectedIndex // zero if nothing is selected
   const subject = subjectSelect.value // empty string if nothing is selected
   const searchQuery = searchInput.value
+  
+  let found = false
   for (const item of items) {
     const itemName = item.getAttribute('data-name')
     const itemPeriodNumber = parseInt(item.getAttribute('data-period').match(/\d+/)[0])
@@ -78,9 +81,16 @@ function filter() {
       (!subject || item.classList.contains(subject))
     ) {
       item.classList.remove('d-none')
+      found = true
     } else {
       item.classList.add('d-none')
     }
+  }
+
+  if (!found) {
+    notFound.classList.remove('d-none')
+  } else {
+    notFound.classList.add('d-none')
   }
 }
 

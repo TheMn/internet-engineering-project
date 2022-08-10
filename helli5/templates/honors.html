@@ -46,6 +46,9 @@
 <section>
     <div class="container pb-5">
         <div class="row g-3">
+            <div id="not-found" class="h4 text-center my-5 text-muted d-none">
+                نتیجه‌ای یافت نشد!
+            </div>
             {% for honor_card in all_honors %}
             <div class="item col col-12 col-md-6 col-lg-4 h-100 {{ honor_card.get_class }}" data-name="{{honor_card.name}}" data-period="{{honor_card.period}}">
                 <div class="bg-light shadow-sm rounded p-3 h-100">
