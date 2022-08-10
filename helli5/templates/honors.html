@@ -50,21 +50,19 @@
                 نتیجه‌ای یافت نشد!
             </div>
             {% for honor_card in all_honors %}
-            <div class="item col col-12 col-md-6 col-lg-4 h-100 {{ honor_card.get_class }}" data-period="{{honor_card.period}}">
+            <div class="item col col-12 col-md-6 col-lg-4 h-100 {{ honor_card.get_class }}">
                 <div class="bg-light shadow-sm rounded p-3 h-100">
                     <div class="row">
                         <div class="col col-auto">
-                            <img src="{{ honor_card.avatar.url }}" width="80" class="rounded">
+                            <div class="ratio rounded-top overflow-hidden" style="--bs-aspect-ratio: 133.33%; width: 80px">
+                                <img src="{{ honor_card.avatar.url }}" class="w-full">
+                            </div>
+                            <div class="badge bg-secondary honor-period d-block rounded-0 rounded-bottom py-2">
+                                {{honor_card.period}}
+                            </div>
                         </div>
                         <div class="col">
-                            <h4>
-                                <span class="honor-name">
-                                    {{honor_card.name}}
-                                </span>
-                                <div class="badge bg-secondary honor-period">
-                                    {{honor_card.period}}
-                                </div>
-                            </h4>
+                            <h4 class="honor-name">{{honor_card.name}}</h4>
                             <h6 class="text-muted lh-base honor-text">
                                 {{honor_card.title}}<br>
                                 {{honor_card.title_2}}&zwnj;<br>
