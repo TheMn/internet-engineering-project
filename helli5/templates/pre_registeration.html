@@ -9,23 +9,13 @@
 
 {% endblock %}
 {% block content %}
-    <section class="hero-wrap hero-wrap-2"
-             style="background-image: url({% static '/images/دبیرستان-پسرانه-علامه-حلی۵-دوره-دوم.jpg' %});">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row no-gutters slider-text align-items-center justify-content-center">
-                <div dir="rtl" class="col-md-9 ftco-animate text-center">
-                    <h1 style="font-family: Vazir-Bold" class="mb-2 bread">پیش ثبت نام دانش آموزان پایه دهم</h1>
-                    <p style="font-family: Vazir-Medium" class="breadcrumbs">
-                    <span class="mr-2"><a href="{% url 'index' %}">صفحه نخست <i
-                            class="ion-ios-arrow-back"></i></a></span> <span>پیش ثبت نام پایه دهم</span></p>
-                </div>
-            </div>
-        </div>
+    <section class="hero">
+        <div class="hero-image" style="background-image: url({% static '/images/دبیرستان-پسرانه-علامه-حلی۵-دوره-دوم.jpg' %});"></div>
+        <h1 class="display-3">پیش‌ثبت‌نام دانش‌آموزان پایه دهم</h1>
     </section>
 
     {% for message in messages %}
-        <div dir="rtl" class="alert alert-warning text-center" style="font-family: Vazir-Bold">
+        <div dir="rtl" class="alert alert-warning text-center">
             <strong>{{ message }}</strong></div>
     {% endfor %}
     {% if complete_url %}
@@ -36,8 +26,7 @@
         </section>
     {% endif %}
     {% if not messages %}
-        <div dir="rtl" style="background: rgba(0,0,0,0.75); color: white; border-radius: 0 20px 0 20px;
-                    font-family: Vazir-Bold">
+        <div dir="rtl" style="background: rgba(0,0,0,0.75); color: white; border-radius: 0 20px 0 20px;">
             <p class="m-3">در پر کردن فرم پیش ثبت نام به موارد زیر توجه داشته باشید:<br>
                 - دکمه ی "ذخیره" در واقع ثبت موقت اطلاعات شماست و تا موقعی که "ثبت نهایی" انجام ندهید، ثبت
                 نام تکمیل نشده است.<br>
@@ -52,8 +41,7 @@
                 <div dir="rtl" class="row d-flex align-items-stretch no-gutters bg-light"
                      style="box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1), 0 5px 15px 0 rgba(0, 0, 0, 0.1);
                     border-top-right-radius: 20px;
-                    border-bottom-left-radius: 20px;
-                    font-family: Vazir-Medium">
+                    border-bottom-left-radius: 20px">
                     <form class="col-11 m-auto text-center" id="pre_registeration" name="pre_registration"
                           action="{% url 'pre_registration' %}" method="post"
                           enctype="multipart/form-data" id="my_form">
@@ -83,7 +71,7 @@
                                 {{ pre_registration_form.birth_month|as_crispy_field }}
                             </div>
                             <div class="col-lg-2 col-sm-4">
-                                {{ pre_registration_form.birth_year|as_crispy_field }}
+                                 {{ pre_registration_form.birth_year|as_crispy_field }}
                             </div>
                             <div class="col-lg-5">
                                 {{ pre_registration_form.ss|as_crispy_field }}
