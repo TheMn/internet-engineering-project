@@ -44,7 +44,7 @@
                                 <img src="{{ post.img.url }}" alt="{{ post.title }}" loading="lazy" />
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title text-truncate">{{ post.title }}</h5>
+                                <h5 class="card-title text-truncate" title="{{ post.title }}">{{ post.title }}</h5>
                                 <h6 class="card-subtitle text-muted">
                                     {{ post.date | date:"Y/m/d" }}
                                 </h6>
