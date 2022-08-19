@@ -3,7 +3,7 @@
 {% load jformat %}
 
 {% block content %}
-<header class="carousel carousel-fade" id="headerCarousel" data-bs-ride="carousel">
+<header class="carousel slide" id="headerCarousel" data-bs-ride="carousel">
     <div class="carousel-indicators">
         {% for slider_item in slider_contents %}
         <button data-bs-target="#headerCarousel" data-bs-slide-to="{{ forloop.counter0 }}"
@@ -12,17 +12,19 @@
     </div>
     <div class="carousel-inner">
         {% for slider_item in slider_contents %}
-        <div class="carousel-item hero big {%if forloop.counter == 1%}active{%endif%}">
-            <div class="hero-image" style="background-image: url({{ slider_item.img.url }});"></div>
-            <h1 class="display-2">
-                {{ slider_item.title }}
-            </h1>
-            <p class="fs-3 opacity-50">
-                {{ slider_item.description }}
-            </p>
-            {% if slider_item.post %}
-            <a href="{{ slider_item.post.get_absolute_url }}" class="btn btn-outline-primary btn-lg">بیش‌تر بدانید</a>
-            {% endif %}
+        <div class="carousel-item {%if forloop.counter == 1%}active{%endif%}">
+            <div class="hero big">
+                <div class="hero-image" style="background-image: url({{ slider_item.img.url }});"></div>
+                <h1 class="display-2">
+                    {{ slider_item.title }}
+                </h1>
+                <p class="fs-3 opacity-50">
+                    {{ slider_item.description }}
+                </p>
+                {% if slider_item.post %}
+                <a href="{{ slider_item.post.get_absolute_url }}" class="btn btn-outline-primary btn-lg">بیش‌تر بدانید</a>
+                {% endif %}
+            </div>
         </div>
         {%endfor%}
     </div>

@@ -15,10 +15,6 @@ svg.bi {
   height: 1em;
 }
 
-.carousel-item.active {
-  display: flex;
-}
-
 .ratio > img {
   object-fit: cover;
 }
