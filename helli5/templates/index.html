@@ -31,16 +31,16 @@
 </header>
 <main>
     <div class="container my-5">
-        <div class="row">
+        <div class="row g-4 g-lg-5">
             <div class="col col-12 col-lg-9">
-                <h2>نوشته‌ها</h2>
-                <div class="row g-3">
+                <h2 class="h1 mb-4">نوشته‌ها</h2>
+                <div class="row gx-5">
                     {% for post in latest_posts %}
                     <div class="col col-12 col-sm-6 col-md-4">
                         <div class="card border-0 shadow-sm bg-light overflow-hidden">
-                            <div class="card-img-top ratio ratio-4x3">
+                            <a class="card-img-top ratio ratio-4x3" href="{{ post.get_absolute_url }}">
                                 <img src="{{ post.img.url }}" alt="{{ post.title }}" loading="lazy" />
-                            </div>
+                            </a>
                             <div class="card-body">
                                 <h5 class="card-title text-truncate" title="{{ post.title }}">{{ post.title }}</h5>
                                 <h6 class="card-subtitle text-muted">
@@ -49,7 +49,7 @@
                                 <div class="card-text text-muted text-truncate my-3" title="{{ post.description }}">
                                     {{ post.description }}
                                 </div>
-                                <a href="{{ post.get_absolute_url }}" class="btn bg-secondary text-white rounded-pill d-inline-block float-end">
+                                <a href="{{ post.get_absolute_url }}" class="btn btn-link d-inline-block float-end">
                                     بیش‌تر بخوانید
                                 </a>
                             </div>
@@ -62,7 +62,7 @@
                 </div>
             </div>
             <div class="col pt-5 pt-lg-0">
-                <h2>رویدادها</h2>
+                <h2 class="h1">رویدادها</h2>
                 {% for event in events %}
                 {% ifchanged event.order %}
                 <h5 class="mt-4 text-body">{{event.day}}</h5>
