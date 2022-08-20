@@ -14,7 +14,7 @@
 </header>
 
 <main class="container py-5">
-    <div class="row">
+    <div class="row gx-5 gy-4">
         <div class="col col-12 col-md-7">
             {% if queryset %}
             {% for post in queryset %}
@@ -77,7 +77,7 @@
                 </div>
             </div>
             {% endfor %}
-            <h3 class="mt-5 mb-3">تگ ها</h3>
+            <h3 class="mt-5 mb-3">تگ‌ها</h3>
             {% for cat in categories %}
             <a class="badge bg-secondary text-bg-secondary text-decoration-none fs-6 mb-1"
                 href="{% url 'blog' tag=cat.title %}">{{ cat.title }}</a>
