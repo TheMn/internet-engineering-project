@@ -3,7 +3,7 @@ const toggler = navbar.querySelector('.navbar-toggler')
 const collapse = navbar.querySelector('.navbar-collapse')
 
 const inactiveClasses = ['navbar-dark', 'bg-transparent']
-const activeClasses = ['navbar-light', 'bg-light', 'blur', 'shadow-sm']
+const activeClasses = ['navbar-light', 'bg-body', 'blur', 'shadow-sm']
 
 function handleNoHeader() {
   navbar.classList.remove(...inactiveClasses, 'fixed-top')

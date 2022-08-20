@@ -1,7 +1,8 @@
 :root {
   --bs-body-font-family: 'IBM Plex Sans Arabic', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   --bs-light-rgb: 248, 249, 250;
-  --bs-body-bg: #ebf2f7;
+  --bs-body-bg-rgb: 235, 242, 247;
+  --bs-body-bg: rgb(var(--bs-body-bg-rgb));
   --bs-body-color-rgb: 12, 25, 39;
   --bs-secondary-rgb: 102, 16,242;
 }
