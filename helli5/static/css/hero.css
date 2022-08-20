@@ -2,7 +2,8 @@
   text-align: center;
   position: relative;
   color: white;
-  height: 300px;
+  min-height: 384px;
+  padding: 1rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,7 +11,10 @@
 }
 
 .hero.big {
-  height: 500px;
+  padding: 0;
+  min-height: unset;
+  height: 576px;
+  max-height: 100vh;
 }
 
 .hero-image {
@@ -21,7 +25,12 @@
   right: 0;
   z-index: -1;
   background-size: cover;
-  background-color: white; /* makes the filter work properly if the image is transparent */
   background-position: center center;
+  /* makes the filter work properly if the image has a transparent background */
+  background-color: white;
   filter: brightness(0.3);
+}
+
+.hero h1 {
+  font-weight: 500;
 }
