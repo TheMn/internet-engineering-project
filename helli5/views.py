@@ -145,8 +145,8 @@ def bunch_add_model(request):
                     User = get_user_model()
                     for i in range(1, rows):
                         user = User()
-                        user.username = int(sheet.cell_value(i, 0))
-                        user.set_password(sheet.cell_value(i, 1))
+                        user.username = sheet.cell_value(i, 0)
+                        user.set_password(str(sheet.cell_value(i, 1)))
                         user.first_name = sheet.cell_value(i, 2)
                         user.last_name = sheet.cell_value(i, 3)
                         user.email = sheet.cell_value(i, 4)
