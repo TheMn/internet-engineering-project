@@ -145,7 +145,12 @@ def bunch_add_model(request):
                     User = get_user_model()
                     for i in range(1, rows):
                         user = User()
-                        user.username = sheet.cell_value(i, 0)
+                        username = sheet.cell_value(i, 0)
+                        # Integers may be stored as floats in Excel
+                        # This leads to having usernames with trailing zeros, like 40000000.0
+                        if isinstance(username, float) and username == int(username):
+                            username = int(username)
+                        user.username = username
                         user.set_password(str(sheet.cell_value(i, 1)))
                         user.first_name = sheet.cell_value(i, 2)
                         user.last_name = sheet.cell_value(i, 3)
