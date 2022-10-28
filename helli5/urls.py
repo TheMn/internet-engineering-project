@@ -42,6 +42,7 @@ urlpatterns = [
     path('feed/rss', LatestPostsFeed(), name='posts_feed'),
     path('ارتباط-با-ما/', views.contact, name='contact'),
     path('درباره-ما/', views.about, name='about'),
+    path('کنکور/', views.konkour, name='konkour'),
     path('دبیران/', views.teachers, name='teachers'),
     path('bunch_add', views.bunch_add_model, name='bunch_add'),
     # path('export', views.export, name='export'),
