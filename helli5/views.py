@@ -151,7 +151,11 @@ def bunch_add_model(request):
                         if isinstance(username, float) and username == int(username):
                             username = int(username)
                         user.username = username
-                        user.set_password(str(sheet.cell_value(i, 1)))
+                        password = sheet.cell_value(i, 1)
+                        # same problem as above
+                        if isinstance(password, float) and password == int(password):
+                            password = int(password)
+                        user.set_password(str(password))
                         user.first_name = sheet.cell_value(i, 2)
                         user.last_name = sheet.cell_value(i, 3)
                         user.email = sheet.cell_value(i, 4)
