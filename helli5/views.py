@@ -211,3 +211,6 @@ def export(request):
 
     wb.save(response)
     return response
+
+def konkour(request):
+    return render(request, 'konkour.html')

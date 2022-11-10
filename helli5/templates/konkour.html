@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load jformat %}
+
+{% block extra_head %}
+<meta name="keywords" content="کنکور,سمپاد,علامه حلی,تیزهوشان">
+<link rel="stylesheet" href="{% static 'css/konkour.css' %}">
+{% endblock %}
+
+{% block content %}
+<header class="hero">
+    <div class="hero-image" style="background-image: url({% static 'images/ورودی-اصلی-دبیرستان-علامه-حلی۵.jpg' %})"></div>
+    <h1 class="display-3">نتایج کنکور ۱۴۰۱</h1>
+</header>
+<div class="container pt-5">
+    <div class="row gy-5 gx-3 gx-md-5">
+        <div class="col col-12">
+            <div class="row numbers-row">
+                <div class="col col-4">
+                    <div class="display-3 text-secondary">۷۱٪</div>
+                    <div>رتبه زیر هزار ریاضی</div>
+                    <div class="text-muted">(۱۵ نفر از ۲۱ نفر)</div>
+                </div>
+                <div class="col col-4 fs-5">
+                    <div class="display-2 text-secondary fw-semibold">۸۶٪</div>
+                    <div>رتبه زیر هزار کل رشته‌ها</div>
+                    <div class="text-muted">(۳۶ نفر از ۴۲ نفر)</div>
+                </div>
+                <div class="col col-4">
+                    <div class="display-3 text-secondary">۶۲٪</div>
+                    <div>رتبه زیر هزار تجربی</div>
+                    <div class="text-muted">(۱۳ نفر از ۲۱ نفر)</div>
+                </div>
+            </div>
+        </div>
+        <div class="col col-12 col-md-6">
+            <img src="{% static 'images/rotbeha.jpg' %}" alt="رتبه‌های برتر دبیرستان علامه حلی 5 در کنکور سراسری 1401" class="w-100 rounded-3 shadow">
+            <img src="{% static 'images/rotbe-konkour.png' %}" alt="نتایج کنکور ۱۴۰۱ مدارس علامه حلی" class="w-100 rounded-3 shadow mt-5">
+        </div>
+        <div class="col col-12 col-md-6">
+            <div class="bg-light rounded shadow overflow-hidden">
+                <h2 class="text-center p-3 m-0" style="font-weight: 500">رتبه‌ها</h2>
+                <hr class="m-0">
+                <div class="table-container overflow-auto position-relative" style="height: 200px;">
+                    <table class="table w-100 m-0">
+                        <thead class="top-0 bg-light position-sticky shadow-sm">
+                            <th>نام و نام خانوادگی</th>
+                            <th>رشته کنکور</th>
+                            <th>رتبه <span class="text-muted fs-6 fw-normal">(منطقه یک)</span></th>
+                            <th>رشته قبولی</th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+<tr><td>علی سبحانی</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>14</td><td>دندانپزشکی دانشگاه بهشتی</td><td class='text-muted'>کنکور مجدد</td></tr>
+<tr><td>حسین خوانساری</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>59</td><td>مهندسی کامپیوتر دانشگاه شریف</td><td class='text-muted'></td></tr>
+<tr><td>مهدی طاهری</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>83</td><td>علوم کامپیوتر دانشگاه شریف</td><td class='text-muted'></td></tr>
+<tr><td>شهداد همایونی</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>233</td><td>مهندسی برق دانشگاه تهران</td><td class='text-muted'></td></tr>
+<tr><td>پویان رضا</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>246</td><td>پزشکی دانشگاه ایران</td><td class='text-muted'></td></tr>
+<tr><td>علیرضا آذرفر</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>475</td><td>مهندسی برق دانشگاه امیرکبیر</td><td class='text-muted'></td></tr>
+<tr><td>حسین مریخ</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>475</td><td>مهندسی برق دانشگاه امیرکبیر</td><td class='text-muted'></td></tr>
+<tr><td>میثم حکمی نجفی</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>488</td><td>مهندسی کامپیوتر دانشگاه بهشتی</td><td class='text-muted'></td></tr>
+<tr><td>مهدی کاظم پور</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>507</td><td>داروسازی دانشگاه تهران</td><td class='text-muted'></td></tr>
+<tr><td>رضا ولی نژاد</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>561</td><td>پزشکی کرج (البرز)</td><td class='text-muted'></td></tr>
+<tr><td>آرمان خانی بیگ</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>578</td><td>داروسازی دانشگاه تهران</td><td class='text-muted'></td></tr>
+<tr><td>سهراب عصاره</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>585</td><td>پزشکی دانشگاه ایران</td><td class='text-muted'>رتبه سهمیه ۱۵۶</td></tr>
+<tr><td>مهدی رحیم پور</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>628</td><td>مهندسی برق دانشگاه علم و صنعت</td><td class='text-muted'></td></tr>
+<tr><td>محمد مدرسی</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>690</td><td>مهندسی کامپیوتر دانشگاه خوارزمی</td><td class='text-muted'></td></tr>
+<tr><td>حسین پایدار</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>720</td><td>مهندسی مکانیک دانشگاه امیرکبیر</td><td class='text-muted'></td></tr>
+<tr><td>حسین روشنائی</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>724</td><td>مهندسی مکانیک دانشگاه امیرکبیر</td><td class='text-muted'></td></tr>
+<tr><td>مبین حسینی</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>726</td><td>پزشکی کاشان</td><td class='text-muted'></td></tr>
+<tr><td>یاسین عظیمی</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>732</td><td>مهندسی مکانیک دانشگاه امیرکبیر</td><td class='text-muted'></td></tr>
+<tr><td>محمدرضا ریحانی</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>784</td><td>مهندسی برق دانشگاه علم و صنعت</td><td class='text-muted'>کنکور مجدد</td></tr>
+<tr><td>علیرضا دهقانی</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>861</td><td>علوم کامپیوتر دانشگاه علم و صنعت</td><td class='text-muted'></td></tr>
+<tr><td>مهرداد کلاهی</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>886</td><td>دندانپزشکی آزاد تهران</td><td class='text-muted'></td></tr>
+<tr><td>امیر حسین شعبانی</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>893</td><td>پزشکی دانشگاه ایران</td><td class='text-muted'>رتبه سهمیه ۲۴۱</td></tr>
+<tr><td>علی عسگری</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>908</td><td>پزشکی رشت</td><td class='text-muted'>کنکور مجدد</td></tr>
+<tr><td>آریا عبداللهی</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>911</td><td>مهندسی مکانیک دانشگاه علم و صنعت</td><td class='text-muted'></td></tr>
+<tr><td>آرتین شاکرمی</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>995</td><td>دندانپزشکی آزاد تهران</td><td class='text-muted'>کنکور مجدد</td></tr>
+<tr><td>محمد امین ذاکر شبیری</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>1020</td><td>مهندسی مکانیک (ساخت و تولید) دانشگاه امیرکبیر</td><td class='text-muted'></td></tr>
+<tr><td>مرتضی محسنی یکتا</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>1115</td><td>دندانپزشکی زنجان</td><td class='text-muted'></td></tr>
+<tr><td>علیرضا خبازی</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>1185</td><td>دندانپزشکی آزاد تهران</td><td class='text-muted'>رتبه سهمیه ۳۱۱ / کنکور مجدد</td></tr>
+<tr><td>علیرضا توزنده</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>1194</td><td>پزشکی قزوین</td><td class='text-muted'></td></tr>
+<tr><td>صدرا حسینی</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>1688</td><td>پزشکی کاشان</td><td class='text-muted'></td></tr>
+<tr><td>محمدرضا مولائی</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>1701</td><td>مهندسی نفت دانشگاه شریف</td><td class='text-muted'></td></tr>
+<tr><td>علی کشفی</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>1791</td><td>پزشکی کاشان</td><td class='text-muted'>کنکور مجدد</td></tr>
+<tr><td>سروش میرنتاج</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>1855</td><td>مهندسی صنایع دانشگاه خواجه نصیر</td><td class='text-muted'></td></tr>
+<tr><td>امیررضا محمدی</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>1908</td><td>داروسازی کرج</td><td class='text-muted'>کنکور مجدد</td></tr>
+<tr><td>سعید تسلیمی</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>2209</td><td>داروسازی رشت</td><td class='text-muted'>کنکور مجدد</td></tr>
+<tr><td>ارشیا طاووسی</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>2411</td><td>مهندسی مواد و متالوژی دانشگاه امیرکبیر</td><td class='text-muted'></td></tr>
+<tr><td>محمدمهدی عسگری</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>2500</td><td>معماری دانشگاه هنر</td><td class='text-muted'>کنکور مجدد</td></tr>
+<tr><td>محمدامین ایلخانی</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>2778</td><td>داروسازی اهواز (دانشگاه جندی شاپور)</td><td class='text-muted'></td></tr>
+<tr><td>آرمین جانبور شبستری</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>2785</td><td>داروسازی اهواز</td><td class='text-muted'></td></tr>
+<tr><td>شایان تقوایی</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>3300</td><td>پزشکی زاهدان</td><td class='text-muted'>کنکور مجدد</td></tr>
+<tr><td>علی عرب</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>3509</td><td>مهندسی عمران دانشگاه خوارزمی</td><td class='text-muted'></td></tr>
+<tr><td>مهراد نوری</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>3685</td><td>پرستاری تهران</td><td class='text-muted'></td></tr>
+<tr><td>محمدحسین رضایی</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>3800</td><td>مهندسی مواد و متالوژی صنعتی اصفهان</td><td class='text-muted'>کنکور مجدد</td></tr>
+<tr><td>مهرگان محمدی</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>4000</td><td>مهندسی مکانیک رشت (دانشگاه گیلان)</td><td class='text-muted'></td></tr>
+<tr><td>محمدمهدی همایونی</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>5500</td><td>پرستاری دانشگاه بهشتی</td><td class='text-muted'>کنکور مجدد</td></tr>
+<tr><td>دانیال مهدیون</td><td>ریاضی</td><td class='fs-5 fw-bold text-secondary'>7000</td><td>ریاضی دانشگاه خوارزمی</td><td class='text-muted'></td></tr>
+<tr><td>علی حسین زاده</td><td>تجربی</td><td class='fs-5 fw-bold text-secondary'>7054</td><td>مدیریت مالی دانشگاه خوارزمی</td><td class='text-muted'>کنکور مجدد</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col col-12" id="prev-years">
+            <h2 class="text-center display-5 mb-4" style="font-weight: 500">آمار سال‌های قبل</h2>
+            <div class="text-muted fs-3 text-center">سال ۱۴۰۰</div>
+            <div class="row numbers-row">
+                <div class="col col-4">
+                    <div class="display-3 text-secondary">۲۸٪</div>
+                    <div>رتبه زیر هزار ریاضی</div>
+                    <div class="text-muted">(۱۰ نفر از ۳۶ نفر)</div>
+                </div>
+                <div class="col col-4 fs-5">
+                    <div class="display-2 text-secondary fw-semibold">۳۱٪</div>
+                    <div>رتبه زیر هزار کل رشته‌ها</div>
+                    <div class="text-muted">(۲۱ نفر از ۶۷ نفر)</div>
+                </div>
+                <div class="col col-4">
+                    <div class="display-3 text-secondary">۱۰٪</div>
+                    <div>رتبه زیر هزار تجربی</div>
+                    <div class="text-muted">(۳ نفر از ۳۱ نفر)</div>
+                </div>
+            </div>
+            <div class="text-muted fs-3 text-center">سال ۱۳۹۷</div>
+            <div class="row numbers-row">
+                <div class="col col-4">
+                    <div class="display-3 text-secondary">۴۹٪</div>
+                    <div>رتبه زیر هزار ریاضی</div>
+                    <div class="text-muted">(۲۳ نفر از ۴۷ نفر)</div>
+                </div>
+                <div class="col col-4 fs-5">
+                    <div class="display-2 text-secondary fw-semibold">۵۳٪</div>
+                    <div>رتبه زیر هزار کل رشته‌ها</div>
+                    <div class="text-muted">(۳۸ نفر از ۷۲ نفر)</div>
+                </div>
+                <div class="col col-4">
+                    <div class="display-3 text-secondary">۳۶٪</div>
+                    <div>رتبه زیر هزار تجربی</div>
+                    <div class="text-muted">(۹ نفر از ۲۵ نفر)</div>
+                </div>
+            </div>
+            <div class="text-muted fs-3 text-center">سال ۱۳۹۶</div>
+            <div class="row numbers-row">
+                <div class="col col-4">
+                    <div class="display-3 text-secondary">۴۵٪</div>
+                    <div>رتبه زیر هزار ریاضی</div>
+                    <div class="text-muted">(۲۱ نفر از ۴۷ نفر)</div>
+                </div>
+                <div class="col col-4 fs-5">
+                    <div class="display-2 text-secondary fw-semibold">۴۸٪</div>
+                    <div>رتبه زیر هزار کل رشته‌ها</div>
+                    <div class="text-muted">(۳۲ نفر از ۷۰ نفر)</div>
+                </div>
+                <div class="col col-4">
+                    <div class="display-3 text-secondary">۴۸٪</div>
+                    <div>رتبه زیر هزار تجربی</div>
+                    <div class="text-muted">(۱۱ نفر از ۲۳ نفر)</div>
+                </div>
+            </div>
+            <div class="text-muted fs-3 text-center">سال ۱۳۹۵</div>
+            <div class="row numbers-row">
+                <div class="col col-4">
+                    <div class="display-3 text-secondary">۴۵٪</div>
+                    <div>رتبه زیر هزار ریاضی</div>
+                    <div class="text-muted">(۲۸ نفر از ۶۲ نفر)</div>
+                </div>
+                <div class="col col-4 fs-5">
+                    <div class="display-2 text-secondary fw-semibold">۴۲٪</div>
+                    <div>رتبه زیر هزار کل رشته‌ها</div>
+                    <div class="text-muted">(۳۹ نفر از ۹۲ نفر)</div>
+                </div>
+                <div class="col col-4">
+                    <div class="display-3 text-secondary">۳۷٪</div>
+                    <div>رتبه زیر هزار تجربی</div>
+                    <div class="text-muted">(۱۱ نفر از ۳۰ نفر)</div>
+                </div>
+            </div>
+            <div class="text-muted fs-3 text-center">سال ۱۳۹۴</div>
+            <div class="row numbers-row">
+                <div class="col col-4">
+                    <div class="display-3 text-secondary">۴۵٪</div>
+                    <div>رتبه زیر هزار ریاضی</div>
+                    <div class="text-muted">(۲۲ نفر از ۹۰ نفر)</div>
+                </div>
+                <div class="col col-4 fs-5">
+                    <div class="display-2 text-secondary fw-semibold">۲۳٪</div>
+                    <div>رتبه زیر هزار کل رشته‌ها</div>
+                    <div class="text-muted">(۲۵ نفر از ۱۱۰ نفر)</div>
+                </div>
+                <div class="col col-4">
+                    <div class="display-3 text-secondary">۱۵٪</div>
+                    <div>رتبه زیر هزار تجربی</div>
+                    <div class="text-muted">(۳ نفر از ۲۰ نفر)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.querySelector('.table-container')
+        const height = [...container.querySelectorAll('table tr')].slice(0, 20).reduce((h, row) => row.clientHeight + h, 0)
+        container.style.height = `${height}px`
+    })
+</script>
+{% endblock %}
