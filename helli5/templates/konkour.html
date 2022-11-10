@@ -4,21 +4,7 @@
 
 {% block extra_head %}
 <meta name="keywords" content="کنکور,سمپاد,علامه حلی,تیزهوشان">
-<style>
-    td, th {
-        padding-top: 0.5em !important;
-        padding-bottom: 0.5em !important;
-        vertical-align: middle;
-    }
-    tr:last-child > td, th {
-        border: 0 !important;
-    }
-    @media (max-width: 768px) {
-        .table-container {
-            height: auto !important;
-        }
-    }
-</style>
+<link rel="stylesheet" href="{% static 'css/konkour.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -29,7 +15,7 @@
 <div class="container pt-5">
     <div class="row gy-5 gx-3 gx-md-5">
         <div class="col col-12">
-            <div class="row align-items-center text-center pb-3">
+            <div class="row numbers-row">
                 <div class="col col-4">
                     <div class="display-3 text-secondary">۷۱٪</div>
                     <div>رتبه زیر هزار ریاضی</div>
@@ -117,16 +103,106 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="col col-12">
+        <div class="col col-12" id="prev-years">
             <h2 class="text-center display-5 mb-4" style="font-weight: 500">آمار سال‌های قبل</h2>
             <div class="text-muted fs-3 text-center">سال ۱۴۰۰</div>
-            no data
-        </div> -->
+            <div class="row numbers-row">
+                <div class="col col-4">
+                    <div class="display-3 text-secondary">۲۸٪</div>
+                    <div>رتبه زیر هزار ریاضی</div>
+                    <div class="text-muted">(۱۰ نفر از ۳۶ نفر)</div>
+                </div>
+                <div class="col col-4 fs-5">
+                    <div class="display-2 text-secondary fw-semibold">۳۱٪</div>
+                    <div>رتبه زیر هزار کل رشته‌ها</div>
+                    <div class="text-muted">(۲۱ نفر از ۶۷ نفر)</div>
+                </div>
+                <div class="col col-4">
+                    <div class="display-3 text-secondary">۱۰٪</div>
+                    <div>رتبه زیر هزار تجربی</div>
+                    <div class="text-muted">(۳ نفر از ۳۱ نفر)</div>
+                </div>
+            </div>
+            <div class="text-muted fs-3 text-center">سال ۱۳۹۷</div>
+            <div class="row numbers-row">
+                <div class="col col-4">
+                    <div class="display-3 text-secondary">۴۹٪</div>
+                    <div>رتبه زیر هزار ریاضی</div>
+                    <div class="text-muted">(۲۳ نفر از ۴۷ نفر)</div>
+                </div>
+                <div class="col col-4 fs-5">
+                    <div class="display-2 text-secondary fw-semibold">۵۳٪</div>
+                    <div>رتبه زیر هزار کل رشته‌ها</div>
+                    <div class="text-muted">(۳۸ نفر از ۷۲ نفر)</div>
+                </div>
+                <div class="col col-4">
+                    <div class="display-3 text-secondary">۳۶٪</div>
+                    <div>رتبه زیر هزار تجربی</div>
+                    <div class="text-muted">(۹ نفر از ۲۵ نفر)</div>
+                </div>
+            </div>
+            <div class="text-muted fs-3 text-center">سال ۱۳۹۶</div>
+            <div class="row numbers-row">
+                <div class="col col-4">
+                    <div class="display-3 text-secondary">۴۵٪</div>
+                    <div>رتبه زیر هزار ریاضی</div>
+                    <div class="text-muted">(۲۱ نفر از ۴۷ نفر)</div>
+                </div>
+                <div class="col col-4 fs-5">
+                    <div class="display-2 text-secondary fw-semibold">۴۸٪</div>
+                    <div>رتبه زیر هزار کل رشته‌ها</div>
+                    <div class="text-muted">(۳۲ نفر از ۷۰ نفر)</div>
+                </div>
+                <div class="col col-4">
+                    <div class="display-3 text-secondary">۴۸٪</div>
+                    <div>رتبه زیر هزار تجربی</div>
+                    <div class="text-muted">(۱۱ نفر از ۲۳ نفر)</div>
+                </div>
+            </div>
+            <div class="text-muted fs-3 text-center">سال ۱۳۹۵</div>
+            <div class="row numbers-row">
+                <div class="col col-4">
+                    <div class="display-3 text-secondary">۴۵٪</div>
+                    <div>رتبه زیر هزار ریاضی</div>
+                    <div class="text-muted">(۲۸ نفر از ۶۲ نفر)</div>
+                </div>
+                <div class="col col-4 fs-5">
+                    <div class="display-2 text-secondary fw-semibold">۴۲٪</div>
+                    <div>رتبه زیر هزار کل رشته‌ها</div>
+                    <div class="text-muted">(۳۹ نفر از ۹۲ نفر)</div>
+                </div>
+                <div class="col col-4">
+                    <div class="display-3 text-secondary">۳۷٪</div>
+                    <div>رتبه زیر هزار تجربی</div>
+                    <div class="text-muted">(۱۱ نفر از ۳۰ نفر)</div>
+                </div>
+            </div>
+            <div class="text-muted fs-3 text-center">سال ۱۳۹۴</div>
+            <div class="row numbers-row">
+                <div class="col col-4">
+                    <div class="display-3 text-secondary">۴۵٪</div>
+                    <div>رتبه زیر هزار ریاضی</div>
+                    <div class="text-muted">(۲۲ نفر از ۹۰ نفر)</div>
+                </div>
+                <div class="col col-4 fs-5">
+                    <div class="display-2 text-secondary fw-semibold">۲۳٪</div>
+                    <div>رتبه زیر هزار کل رشته‌ها</div>
+                    <div class="text-muted">(۲۵ نفر از ۱۱۰ نفر)</div>
+                </div>
+                <div class="col col-4">
+                    <div class="display-3 text-secondary">۱۵٪</div>
+                    <div>رتبه زیر هزار تجربی</div>
+                    <div class="text-muted">(۳ نفر از ۲۰ نفر)</div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script>
-    const container = document.querySelector('.table-container')
-    const height = [...container.querySelectorAll('table tr')].slice(0, 20).reduce((h, row) => row.clientHeight + h, 0)
-    container.style.height = `${height}px`
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.querySelector('.table-container')
+        const height = [...container.querySelectorAll('table tr')].slice(0, 20).reduce((h, row) => row.clientHeight + h, 0)
+        container.style.height = `${height}px`
+    })
 </script>
 {% endblock %}
