@@ -152,7 +152,8 @@ class PreRegisteredStudent(models.Model):
                                       max_length=20,
                                       choices=[
                                           ('ریاضی', 'ریاضی'),
-                                          ('تجربی', 'تجربی')]
+                                          ('تجربی', 'تجربی'),
+                                          ('انسانی', 'انسانی')]
                                       )
     field_of_olympiad = models.CharField(blank=True, null=True,
                                          verbose_name='زمینه ی مورد علاقه در المپیاد های علمی',
