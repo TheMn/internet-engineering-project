@@ -1,147 +1,105 @@
-<!--
-*** Thanks for checking out this README Template. If you have a suggestion that would
-*** make this better, please fork the repo and create a pull request or simply open
-*** an issue with the tag "enhancement".
-*** Thanks again! Now go create something AMAZING! :D
--->
-
-
-
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-
-
+# Helli 5 Website
 
 <a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangomade124x25_grey.gif" border="0" alt="Made with Django." title="Made with Django." /></a>
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
 [![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg?style=flat-square)](https://www.python.org/downloads/release/python-360/)
 
-![Helli5](http://bayanbox.ir/preview/3500780877665903653/helli5-logo.jpg)
+This project is a comprehensive website for a high school, designed to facilitate communication and information sharing between the school administration, teachers, and students.
 
-<!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
 * [About the Project](#about-the-project)
+  * [Features](#features)
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
-  * [Runnig the Project Locally](#running-the-project-locally)
-* [Roadmap](#roadmap)
-* [Database structure](#database-structure)
-* [Contributers](#contributers)
+  * [Installation](#installation)
+* [Project Structure](#project-structure)
+* [Database Structure](#database-structure)
 
+## About the Project
 
+This project is a high school website that provides a platform for the school to manage its daily activities and communication. It allows teachers to upload homework and course materials, students to access their grades and submit their work, and the administration to publish news and announcements.
 
+### Features
 
+The project is divided into several Django apps, each responsible for a specific set of features:
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
-This project is a high school website which gives the school boards and teachers
-the opportunity to inform students, upload homework and etc.
- 
-
-
-
-
-
+*   **`loginApp`**: Handles user authentication, registration, and profile management.
+*   **`courseApp`**: Manages courses, homework, and student reports.
+*   **`postingApp`**: A blog for publishing news and announcements.
+*   **`honorsApp`**: Displays student honors and awards.
+*   **`pansouqApp`**: A platform for programming contests.
+*   **`smsApp`**: Sends SMS notifications to users.
+*   **`paymentApp`**: Handles student payments and debts.
+*   **`dynamicApp`**: Manages dynamic content, such as the homepage slider.
+*   **`eLearning`**: Provides tools for online learning, including class attendance tracking.
 
 ### Built With
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Django](https://www.djangoproject.com)
 
+*   [Django](https://www.djangoproject.com/)
+*   [Bootstrap](https://getbootstrap.com/)
+*   [JQuery](https://jquery.com/)
 
+## Getting Started
 
-<!-- GETTING STARTED -->
-## Getting started
+To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
-prerequisites packages install with below command
+
+You will need to have Python 3.7 and `pip` installed on your system.
+
+*   **Python 3.7**
+    ```sh
+    sudo apt-get update
+    sudo apt-get install python3.7
+    ```
+*   **pip**
+    ```sh
+    sudo apt install python3-pip
+    ```
+
+### Installation
+
+1.  Clone the repository:
+    ```sh
+    git clone https://github.com/TheMn/internet-engineering-project.git
+    ```
+2.  Install the required packages:
+    ```sh
+    pip3 install -r requirements.txt
+    ```
+3.  Create the database:
+    ```sh
+    python3 manage.py makemigrations
+    python3 manage.py migrate
+    ```
+4.  Run the development server:
+    ```sh
+    python3 manage.py runserver
+    ```
+
+## Project Structure
+
+The project is organized into several Django apps, each with its own models, views, and templates. The main project directory is `helli5`, which contains the project-wide settings and URL configuration.
+
 ```
-$ sudo pip3 install -r requirements.txt 
-```
-in order to run this project you need to install few packages which its listed below
-
-
-1)python 3.7
-```
-$ sudo apt-get update
-$ sudo apt-get install python3.7
-```
-2)pip
-```
-$ sudo apt install python3-pip
-
-```
-prerequisites packages install with below command
-```
-$ sudo pip3 install -r requirements.txt 
+.
+├── courseApp/
+├── dynamicApp/
+├── eLearning/
+├── helli5/
+├── honorsApp/
+├── loginApp/
+├── pansouqApp/
+├── paymentApp/
+├── postingApp/
+├── smsApp/
+├── manage.py
+└── README.md
 ```
 
-<!-- Running the Project Locally -->
-### Running the Project Locally
-First, clone the repository to your local machine:
-```
-$ git clone git@github.com:TheMn/internet-engineering-project.git
-```
-Create the database
-```
-$ python manage.py makemigrations
-$ python manage.py migrate
-```
-Finally, run the development server
-```
-$ python manage.py runserver
-```
+## Database Structure
 
-<!-- ROADMAP -->
-## Roadmap
+The project uses SQLite3 as its database. The ER diagram below shows the relationships between the different models in the database.
 
-See the [Network graph](https://github.com/TheMn/internet-engineering-project/network) for timeline of the most recent commits to this repository and its network ordered by most recently pushed to.
-
-
-<!-- LICENSE -->
-## Database structure
-* we've used sqlite3 as our db manager which is the django default database.
-* below is an Er Diagram of our models and their relations.
- 
-![Image of Er](http://bayanbox.ir/view/8823936539620629848/db-er.jpg)
-
-
-
-
-
-<!-- CONTACT -->
-## Contributers
-* [@mahdi13761376](https://github.com/mahdi13761376) Mahdi Ghanbari - Project Manager
-* [@asal97](https://github.com/asal97) Asal Asgari - Database Developer
-* [@Emadpourjafar](https://github.com/Emadpourjafar) Emad Pourjafar - Front-End Developer
-* [@TheMn](https://github.com/TheMn) Amirhossein Mahdinejad - Back-End Developer
-
-Project Link: [https://github.com/TheMn/internet-engineering-project](https://github.com/TheMn/internet-engineering-project)
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/TheMn/internet-engineering-project?style=flat-square
-[contributors-url]: https://github.com/TheMn/internet-engineering-project/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/TheMn/internet-engineering-project?style=flat-square
-[forks-url]: https://github.com/TheMn/internet-engineering-project/network/members
-[stars-shield]: https://img.shields.io/github/stars/TheMn/internet-engineering-project?style=flat-square
-[stars-url]: https://github.com/TheMn/internet-engineering-project/stargazers
-[issues-shield]: https://img.shields.io/github/issues/TheMn/internet-engineering-project?style=flat-square
-[issues-url]: https://github.com/TheMn/internet-engineering-project/issues
-
-
+![Database ER Diagram](http://bayanbox.ir/view/8823936539620629848/db-er.jpg)
