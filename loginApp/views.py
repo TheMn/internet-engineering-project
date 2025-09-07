@@ -1,3 +1,9 @@
+"""
+Views for the login app.
+
+This module contains the views for the login app, which handles user authentication,
+registration, and profile management.
+"""
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.shortcuts import render, redirect
@@ -17,6 +23,15 @@ from .models import PreRegisteredStudent
 
 @login_required(login_url='login')
 def profile(request):
+    """
+    Renders the user's profile page.
+
+    Args:
+        request: The HTTP request.
+
+    Returns:
+        The rendered profile page.
+    """
     user = request.user
     try:
         debt = Debt.objects.get(user=user.id)
@@ -33,6 +48,19 @@ def profile(request):
 @csrf_protect
 @unauth_user
 def pre_registration(request, melli=None):
+    """
+    Handles the pre-registration process for students.
+
+    This view allows new students to pre-register by filling out a form.
+    It also allows existing pre-registered students to complete their registration.
+
+    Args:
+        request: The HTTP request.
+        melli (str, optional): The national ID of the student. Defaults to None.
+
+    Returns:
+        The rendered pre-registration page.
+    """
     url = None
     form = PreRegistrationFrom()
     if melli is not None:
@@ -70,6 +98,18 @@ def pre_registration(request, melli=None):
 @csrf_protect
 @unauth_user
 def login(request):
+    """
+    Handles user login and registration.
+
+    This view displays the login and registration forms and handles the
+    authentication and registration of users.
+
+    Args:
+        request: The HTTP request.
+
+    Returns:
+        The rendered login page.
+    """
     login_form, signup_form = None, None
     if request.method == "POST":
 
@@ -104,6 +144,18 @@ def login(request):
 
 
 def export_pre_registrations(request):
+    """
+    Exports pre-registration data to an Excel file.
+
+    This view is only accessible to the admin user and allows them to download
+    a list of all pre-registered students in an Excel format.
+
+    Args:
+        request: The HTTP request.
+
+    Returns:
+        An HttpResponse with the Excel file, or a 401 Unauthorized page.
+    """
     user = request.user
     if user.is_authenticated and user.username == 'admin':
         response = HttpResponse(content_type='application/ms-excel')

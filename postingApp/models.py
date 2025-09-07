@@ -1,3 +1,9 @@
+"""
+Models for the posting app.
+
+This module contains the models for the posting app, which handles blog posts,
+categories, events, attachments, and comments.
+"""
 from django.db import models
 from django.db import models
 from django.db.models.signals import post_save, pre_save
@@ -10,6 +16,13 @@ from django_jalali.db import models as jmodels
 
 
 class Category(models.Model):
+    """
+    Represents a category for a blog post.
+
+    Attributes:
+        title (CharField): The title of the category.
+        is_honored (BooleanField): Whether the category is for honored posts.
+    """
     title = models.CharField(max_length=20)
     is_honored = models.BooleanField(default=False)
 
@@ -28,6 +41,21 @@ class Category(models.Model):
 
 
 class PostStuff(models.Model):
+    """
+    Represents a blog post.
+
+    Attributes:
+        title (CharField): The title of the post.
+        slug (SlugField): The slug for the post's URL.
+        username (ForeignKey): The author of the post.
+        text (HTMLField): The content of the post.
+        description (CharField): A short description of the post.
+        img (ImageField): A thumbnail image for the post.
+        date (jDateTimeField): The date and time the post was created.
+        comment_count (IntegerField): The number of comments on the post.
+        categories (ManyToManyField): The categories the post belongs to.
+        featured (BooleanField): Whether the post is featured.
+    """
     title = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
     username = models.ForeignKey(Profile, on_delete=models.CASCADE)
@@ -46,29 +74,67 @@ class PostStuff(models.Model):
         return self.title
 
     def get_absolute_url(self):
+        """
+        Returns the absolute URL for a post.
+
+        Returns:
+            str: The absolute URL for the post.
+        """
         return reverse('blog_single', kwargs={
             'slug': self.slug
         })
 
     def get_update_url(self):
+        """
+        Returns the URL for updating a post.
+
+        Returns:
+            str: The URL for updating the post.
+        """
         return reverse('blog_update', kwargs={
             'slug': self.slug
         })
 
     def get_delete_url(self):
+        """
+        Returns the URL for deleting a post.
+
+        Returns:
+            str: The URL for deleting the post.
+        """
         return reverse('blog_delete', kwargs={
             'slug': self.slug
         })
 
     @property
     def get_comments(self):
+        """
+        Gets all comments for a post.
+
+        Returns:
+            QuerySet: A queryset of all comments for the post.
+        """
         return self.comments.all()
 
     def comment_count(self):
+        """
+        Returns the number of comments for a post.
+
+        Returns:
+            int: The number of comments for the post.
+        """
         return Comment.objects.filter(post=self).count()
 
 
 class Event(models.Model):
+    """
+    Represents an event.
+
+    Attributes:
+        text (CharField): The text of the event.
+        day (CharField): The day of the event.
+        order (IntegerField): The order of the event.
+    """
     text = models.CharField(max_length=64, blank=False)
     day = models.CharField(max_length=64, blank=True)
     order = models.IntegerField(blank=False, default=-1)
@@ -86,6 +152,15 @@ class Event(models.Model):
 
 
 def pre_save_post_receiver(sender, instance, *args, **kwargs):
+    """
+    Generates a unique slug for a post before it is saved.
+
+    Args:
+        sender: The model class that sent the signal.
+        instance: The instance of the model that is being saved.
+        *args: Variable length argument list.
+        **kwargs: Arbitrary keyword arguments.
+    """
     if not instance.slug:
         instance.slug = unique_slug_generator(instance)
 
@@ -94,6 +169,13 @@ pre_save.connect(pre_save_post_receiver, sender=PostStuff)
 
 
 class Attachment(models.Model):
+    """
+    Represents an attachment for a post.
+
+    Attributes:
+        post (ForeignKey): The post the attachment belongs to.
+        attach (FileField): The attached file.
+    """
     post = models.ForeignKey(PostStuff, on_delete=models.CASCADE)
     attach = models.FileField(upload_to='uploads/%Y/%m/%d/')
 
@@ -102,6 +184,15 @@ class Attachment(models.Model):
 
 
 class Comment(models.Model):
+    """
+    Represents a comment on a post.
+
+    Attributes:
+        post (ForeignKey): The post the comment belongs to.
+        author (ForeignKey): The author of the comment.
+        text (TextField): The content of the comment.
+        cm_date (jDateTimeField): The date and time the comment was created.
+    """
     post = models.ForeignKey(PostStuff, related_name='comments', on_delete=models.CASCADE)
     author = models.ForeignKey(Profile, on_delete=models.CASCADE)
     text = models.TextField(max_length=400)

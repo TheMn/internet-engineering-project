@@ -1,3 +1,9 @@
+"""
+Views for the main helli5 project.
+
+This module contains the views for the main helli5 project, which handle the
+homepage, contact page, about page, and other miscellaneous pages.
+"""
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from postingApp.models import PostStuff, Event
@@ -19,6 +25,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 def index(request):
+    """
+    Renders the homepage.
+
+    This view displays the latest posts, events, and slider content on the
+    homepage.
+
+    Args:
+        request: The HTTP request.
+
+    Returns:
+        The rendered homepage.
+    """
     # TODO: uncomment subscribe form
     # if request.method == "POST":
     #     if request.POST.get('submit') == 'عضویت':
@@ -51,6 +69,15 @@ def index(request):
 
 
 def contact(request):
+    """
+    Renders the contact page and handles contact form submissions.
+
+    Args:
+        request: The HTTP request.
+
+    Returns:
+        The rendered contact page.
+    """
     status = 0
     if request.method == 'POST':
         if request.POST.get('form-key') == 'ارتباط-با-ما':
@@ -76,10 +103,30 @@ def contact(request):
 
 
 def about(request):
+    """
+    Renders the about page.
+
+    Args:
+        request: The HTTP request.
+
+    Returns:
+        The rendered about page.
+    """
     return render(request, 'about.html', {})
 
 
 def teachers(request):
+    """
+    Renders the teachers page.
+
+    This view displays a list of all teachers, grouped by their subject.
+
+    Args:
+        request: The HTTP request.
+
+    Returns:
+        The rendered teachers page.
+    """
     math_teachers = Profile.objects.filter(group='math')
     phys_teachers = Profile.objects.filter(group='phys')
     chem_teachers = Profile.objects.filter(group='chem')
@@ -106,22 +153,74 @@ def teachers(request):
 
 
 def custom_400(request, exception):
+    """
+    Renders the 400 error page.
+
+    Args:
+        request: The HTTP request.
+        exception: The exception that caused the error.
+
+    Returns:
+        The rendered 400 error page.
+    """
     return render(request, '400.html', status=400)
 
 
 def custom_403(request, exception):
+    """
+    Renders the 403 error page.
+
+    Args:
+        request: The HTTP request.
+        exception: The exception that caused the error.
+
+    Returns:
+        The rendered 403 error page.
+    """
     return render(request, '401.html', status=403)
 
 
 def custom_404(request, exception):
+    """
+    Renders the 404 error page.
+
+    Args:
+        request: The HTTP request.
+        exception: The exception that caused the error.
+
+    Returns:
+        The rendered 404 error page.
+    """
     return render(request, '404.html', status=404)
 
 
 def custom_500(request):
+    """
+    Renders the 500 error page.
+
+    Args:
+        request: The HTTP request.
+
+    Returns:
+        The rendered 500 error page.
+    """
     return render(request, '500.html', status=500)
 
 
 def bunch_add_model(request):
+    """
+    Handles the bulk creation of users from an Excel file.
+
+    This view is only accessible to the admin user. It allows them to upload an
+    Excel file containing user data and creates the users in the database.
+
+    Args:
+        request: The HTTP request.
+
+    Returns:
+        The rendered bunch add page, or an HttpResponse with status 401 if the
+        user is not authorized.
+    """
     user = request.user
     if user.is_authenticated and user.username == 'admin':
         if request.method == "POST":
@@ -183,6 +282,15 @@ def bunch_add_model(request):
 
 
 def export(request):
+    """
+    Exports all user profiles to an Excel file.
+
+    Args:
+        request: The HTTP request.
+
+    Returns:
+        An HttpResponse with the Excel file.
+    """
     response = HttpResponse(content_type='application/ms-excel')
     response['Content-Disposition'] = 'attachment; filename="Profile.xls"'
 
@@ -213,4 +321,13 @@ def export(request):
     return response
 
 def konkour(request):
+    """
+    Renders the konkour page.
+
+    Args:
+        request: The HTTP request.
+
+    Returns:
+        The rendered konkour page.
+    """
     return render(request, 'konkour.html')

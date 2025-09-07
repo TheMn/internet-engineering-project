@@ -82,24 +82,20 @@ You will need to have Python 3.7 and `pip` installed on your system.
 
 The project is organized into several Django apps, each with its own models, views, and templates. The main project directory is `helli5`, which contains the project-wide settings and URL configuration.
 
-```
-.
-├── courseApp/
-├── dynamicApp/
-├── eLearning/
-├── helli5/
-├── honorsApp/
-├── loginApp/
-├── pansouqApp/
-├── paymentApp/
-├── postingApp/
-├── smsApp/
-├── manage.py
-└── README.md
-```
+The project consists of the following apps:
+*   `courseApp`
+*   `dynamicApp`
+*   `eLearning`
+*   `helli5`
+*   `honorsApp`
+*   `loginApp`
+*   `pansouqApp`
+*   `paymentApp`
+*   `postingApp`
+*   `smsApp`
 
 ## Database Structure
 
-The project uses SQLite3 as its database. The ER diagram below shows the relationships between the different models in the database.
+The ER diagram below shows the relationships between the different models in the database.
 
 ![Database ER Diagram](http://bayanbox.ir/view/8823936539620629848/db-er.jpg)

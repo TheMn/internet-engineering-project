@@ -1,3 +1,9 @@
+"""
+Models for the login app.
+
+This module contains the models for the login app, which handles user profiles,
+pre-registration of students, newsletter subscriptions, and contact form submissions.
+"""
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.db.models.signals import post_save
@@ -8,6 +14,13 @@ User = get_user_model()
 
 
 class PreRegisteredStudent(models.Model):
+    """
+    Represents a student who has pre-registered for the school.
+
+    This model stores all the information collected during the pre-registration
+    process, including personal details, family information, and educational
+    background.
+    """
     #     مشخصات فردی
     student_first_name = models.CharField(blank=True, null=True, max_length=30, verbose_name='نام*', )
     student_last_name = models.CharField(blank=True, null=True, max_length=30, verbose_name='نام خانوادگی*')
@@ -215,6 +228,13 @@ class PreRegisteredStudent(models.Model):
 
 
 class Profile(models.Model):
+    """
+    Represents a user's profile.
+
+    This model extends the default Django User model and contains additional
+    information about a user, such as their profile picture, phone number,
+    grade, and so on.
+    """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     img = models.ImageField(upload_to='profilePic', default="/profilePic/default.png")
     phone = models.CharField(max_length=30, blank=True, null=True)
@@ -252,16 +272,39 @@ class Profile(models.Model):
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
+    """
+    Creates a user profile when a new user is created.
+
+    Args:
+        sender: The model class that sent the signal.
+        instance: The instance of the model that was saved.
+        created (bool): A boolean indicating whether a new record was created.
+        **kwargs: Additional keyword arguments.
+    """
     if created:
         Profile.objects.create(user=instance)
 
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
+    """
+    Saves the user profile when the user is saved.
+
+    Args:
+        sender: The model class that sent the signal.
+        instance: The instance of the model that was saved.
+        **kwargs: Additional keyword arguments.
+    """
     instance.profile.save()
 
 
 class Subscriber(models.Model):
+    """
+    Represents a newsletter subscriber.
+
+    This model stores the email addresses of users who have subscribed to the
+    newsletter.
+    """
     email = models.EmailField(unique=True)
 
     def __str__(self):
@@ -269,6 +312,12 @@ class Subscriber(models.Model):
 
 
 class Contact(models.Model):
+    """
+    Represents a contact form submission.
+
+    This model stores the information submitted through the contact form,
+    including the user's name, email, subject, and message.
+    """
     name = models.CharField(max_length=50, blank=True)
     email = models.EmailField(max_length=50, blank=False)
     subject = models.CharField(max_length=50, blank=True)

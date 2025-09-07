@@ -1,3 +1,10 @@
+"""
+Views for the course app.
+
+This module contains the views for the course app, which handle displaying
+courses, homework, and reports, as well as uploading reports and downloading
+student lists.
+"""
 import os
 from helli5 import settings
 from django.shortcuts import render, get_object_or_404, redirect, reverse
@@ -26,6 +33,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 #     print(create_zip(this_assignment, files))
 
 def download_excel(request, course_id):
+    """
+    Downloads a list of all users in a CSV file.
+
+    Args:
+        request: The HTTP request.
+        course_id: The ID of the course.
+
+    Returns:
+        An HttpResponse with the CSV file.
+    """
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="students.csv"'
     writer = csv.writer(response)
@@ -37,6 +54,15 @@ def download_excel(request, course_id):
 
 
 def courses(request):
+    """
+    Renders the list of all courses.
+
+    Args:
+        request: The HTTP request.
+
+    Returns:
+        The rendered courses page.
+    """
     course_list = Course.objects.all()
     context = {
         'course_list': course_list
@@ -45,10 +71,29 @@ def courses(request):
 
 
 def add_course(request):
+    """
+    Renders the page for adding a new course.
+
+    Args:
+        request: The HTTP request.
+
+    Returns:
+        The rendered add course page.
+    """
     return render(request, 'add_course.html', {})
 
 
 def course_single(request, course_id):
+    """
+    Renders a single course page.
+
+    Args:
+        request: The HTTP request.
+        course_id: The ID of the course.
+
+    Returns:
+        The rendered course page.
+    """
     this_course = get_object_or_404(Course, id=course_id)
     context = {
         'this_course': this_course
@@ -57,6 +102,17 @@ def course_single(request, course_id):
 
 
 def homework(request, course_id, assignment_id):
+    """
+    Renders a single homework page.
+
+    Args:
+        request: The HTTP request.
+        course_id: The ID of the course.
+        assignment_id: The ID of the homework.
+
+    Returns:
+        The rendered homework page.
+    """
     related_course = get_object_or_404(Course, id=course_id)
     this_assignment = get_object_or_404(Homework, id=assignment_id, course=related_course)
     context = {
@@ -67,6 +123,19 @@ def homework(request, course_id, assignment_id):
 
 @has_perm('courseApp.add_report')
 def upload_report(request):
+    """
+    Handles the uploading of student reports.
+
+    This view is only accessible to users with the 'add_report' permission.
+    It allows them to upload report files for students.
+
+    Args:
+        request: The HTTP request.
+
+    Returns:
+        A redirect to the upload report page on success, or an HttpResponse
+        with status 503 on failure.
+    """
     if request.method == "POST":
         form = reportForm(request.POST, request.FILES)
         if form.is_valid():
@@ -100,6 +169,18 @@ def upload_report(request):
 
 @has_perm('courseApp.see_reports')
 def student_reports(request):
+    """
+    Renders the reports page for a student.
+
+    This view is only accessible to users with the 'see_reports' permission.
+    It displays a list of all reports for the current user.
+
+    Args:
+        request: The HTTP request.
+
+    Returns:
+        The rendered reports page.
+    """
     user = request.user
 
     report_students = StudentReports.objects.filter(student=user.username).all()

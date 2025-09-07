@@ -1,3 +1,10 @@
+"""
+Views for the posting app.
+
+This module contains the views for the posting app, which handle displaying,
+creating, updating, and deleting blog posts, as well as searching for posts and
+handling comments.
+"""
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -24,6 +31,19 @@ from django.db.models import Count, Q
 
 
 def search(request):
+    """
+    Searches for blog posts.
+
+    This view searches for blog posts that match the query provided in the
+    'search' GET parameter. The search is performed on the title and text of
+    the posts.
+
+    Args:
+        request: The HTTP request.
+
+    Returns:
+        The rendered search results page.
+    """
     queryset = PostStuff.objects.all()
     query = request.GET.get('search')
     if query:
@@ -48,6 +68,19 @@ def search(request):
 
 
 def blog(request, tag=None):
+    """
+    Renders the blog page.
+
+    This view displays a paginated list of all blog posts. If a 'tag' is
+    provided, it filters the posts by that tag.
+
+    Args:
+        request: The HTTP request.
+        tag (str, optional): The tag to filter the posts by. Defaults to None.
+
+    Returns:
+        The rendered blog page.
+    """
     categories = Category.objects.all()
 
     if tag:
@@ -79,6 +112,19 @@ def blog(request, tag=None):
 
 
 def blog_single(request, slug):
+    """
+    Renders a single blog post page.
+
+    This view displays a single blog post, identified by its slug. It also
+    handles the submission of comments on the post.
+
+    Args:
+        request: The HTTP request.
+        slug (str): The slug of the post.
+
+    Returns:
+        The rendered blog post page.
+    """
     post = get_object_or_404(PostStuff, slug=slug)
     categories = Category.objects.all()
     featured_posts = PostStuff.objects.filter(featured=True)[:5]
@@ -103,6 +149,15 @@ def blog_single(request, slug):
 
 
 def get_author(user):
+    """
+    Gets the profile of a user.
+
+    Args:
+        user: The user object.
+
+    Returns:
+        The user's profile object, or None if it doesn't exist.
+    """
     qs = Profile.objects.filter(user=user)
     if qs.exists():
         return qs[0]
@@ -110,6 +165,18 @@ def get_author(user):
 
 
 def blog_update(request, slug):
+    """
+    Handles the updating of a blog post.
+
+    This view allows the author of a post to update its content.
+
+    Args:
+        request: The HTTP request.
+        slug (str): The slug of the post to be updated.
+
+    Returns:
+        The rendered update post page.
+    """
     title = 'Update'
     post = get_object_or_404(PostStuff, slug=slug)
     form = PageForm(request.POST or None, request.FILES or None, instance=post)
@@ -129,12 +196,33 @@ def blog_update(request, slug):
 
 
 def blog_delete(request, slug):
+    """
+    Handles the deletion of a blog post.
+
+    This view allows the author of a post to delete it.
+
+    Args:
+        request: The HTTP request.
+        slug (str): The slug of the post to be deleted.
+
+    Returns:
+        A redirect to the blog page.
+    """
     post = get_object_or_404(PostStuff, slug=slug)
     post.delete()
     return redirect(reverse("blog"))
 
 
 def add_post(request):
+    """
+    Handles the creation of a new blog post.
+
+    Args:
+        request: The HTTP request.
+
+    Returns:
+        The rendered add post page.
+    """
     form = PageForm
     if request.method == 'POST':
         form = PageForm(request.POST, request.FILES)
